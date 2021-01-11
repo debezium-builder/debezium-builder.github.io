@@ -1,16 +1,335 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-01-08T03:32:47+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Distributed Tracing with Debezium</title><link href="https://debezium.io/blog/2020/12/16/ditributed-tracing/" rel="alternate" type="text/html" title="Distributed Tracing with Debezium" /><published>2020-12-16T11:00:00+00:00</published><updated>2020-12-16T11:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/16/ditributed-tracing</id><content type="html" xml:base="https://debezium.io/blog/2020/12/16/ditributed-tracing/">&lt;div id=&quot;preamble&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-01-11T09:34:45+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.4.0.Final Released</title><link href="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Final Released" /><published>2021-01-07T00:00:00+00:00</published><updated>2021-01-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/07/debezium-1-4-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I am pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release concludes the major work put into Debezium over the last three months.
+Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.4.0.Final%2C%201.4.0.Alpha1%2C%201.4.0.Beta1%2C%201.4.0.CR1)%20ORDER%20BY%20issuetype%20DESC%2C%20updated%20DESC%2C%20priority%20DESC&quot;&gt;117 issues&lt;/a&gt; during that time, including the following key features and changes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;New &lt;a href=&quot;/documentation/reference/connectors/vitess.html&quot;&gt;Vitess&lt;/a&gt; connector, featured in an in-depth &lt;a href=&quot;/blog/2020/11/04/streaming-vitess-at-bolt/&quot;&gt;blog post&lt;/a&gt; by Kewei Shang&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fine-grained selection of snapshotted tables&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PostgreSQL &lt;code&gt;Snapshotter&lt;/code&gt; completion hook&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Distributed &lt;a href=&quot;/blog/2020/12/16/distributed-tracing-with-debezium/&quot;&gt;Tracing&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL support for &lt;em&gt;create&lt;/em&gt; or &lt;em&gt;read&lt;/em&gt; records emitted during snapshot&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Many Oracle &lt;a href=&quot;/documentation/reference/connectors/oracle.html#_logminer&quot;&gt;Logminer adapter&lt;/a&gt; improvements&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Full support for Oracle JDBC connection strings&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved reporting of DDL errors&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please refer to previous release announcements (&lt;a href=&quot;/blog/2020/10/23/debezium-1-4-alpha1-released/&quot;&gt;Alpha1&lt;/a&gt;, &lt;a href=&quot;/blog/2020/11/17/debezium-1-4-alpha2-released/&quot;&gt;Alpha2&lt;/a&gt;, &lt;a href=&quot;/blog/2020/12/09/debezium-1-4-beta1-released/&quot;&gt;Beta1&lt;/a&gt;, &lt;a href=&quot;/blog/2020/12/17/debezium-1-4-cr1-released/&quot;&gt;CR1&lt;/a&gt;) for more details.
+Since the CR1 release just before the holidays, we&amp;#8217;ve &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.Final%20ORDER%20BY%20issuetype%20DESC%2C%20updated%20DESC%2C%20priority%20DESC&quot;&gt;focused&lt;/a&gt; on addressing some remaining bugs and improvements.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Thank you to everyone involved in testing the previous releases, this is invaluable by spotting and addressing any problems with new features as well as regressions.
+And of course we&amp;#8217;d like to thank all the community members contributing to this release:
+&lt;a href=&quot;https://github.com/alisator&quot;&gt;Alisa Houskova&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/ani-sha&quot;&gt;Anisha Mohanty&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/AndreyIg&quot;&gt;Andrey Ignatenko&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/bduisenov&quot;&gt;Babur Duisenov&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/creactiviti&quot;&gt;Arik Cohen&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/Faizan&quot;&gt;Faizan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/grantcooksey&quot;&gt;Grant Cooksey&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/hauntingEcho&quot;&gt;Matt Beary&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/hussain-k1&quot;&gt;Mohamed Pudukulathan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/mans2singh&quot;&gt;Mans Singh&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/martper2&quot;&gt;Martin Perez&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/michaelwang&quot;&gt;Michael Wang&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/Iskuskov&quot;&gt;Alexander Iskuskov&lt;/a&gt;
+&lt;a href=&quot;https://github.com/jgormley6&quot;&gt;James Gormley&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/jinguangyang&quot;&gt;jinguangyang&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/KaushikIyer16&quot;&gt;Kaushik Iyer&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/jeremy-l-ford&quot;&gt;Jeremy Ford&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/johnjmartin&quot;&gt;John Martin&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/rareddy&quot;&gt;Ramesh Reddy&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/rgannu&quot;&gt;Ganesh Ramasubramanian&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/seeekr&quot;&gt;Denis Andrejew&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/telnicky&quot;&gt;Travis Elnicky&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/vanhoale&quot;&gt;Hoa Le&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/yimingl17&quot;&gt;Yiming Liu&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/yrodiere&quot;&gt;Yoann Rodière&lt;/a&gt;, and
+&lt;a href=&quot;https://github.com/zrlurb&quot;&gt;Peter Urbanetz&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Overall, more than 245 individuals have contributed to the Debezium project and the number of Debezium &lt;a href=&quot;/community/users/&quot;&gt;users&lt;/a&gt; continues to grow.
+As we usher in 2021, check out our &lt;a href=&quot;/blog/2021/01/06/debezium-2020-recap/&quot;&gt;recap of Debezium in 2020&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;outlook&quot;&gt;Outlook&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With 1.4 Final released, planning for the 1.5 version (due by the end of March) is currently underway.
+The &lt;a href=&quot;/roadmap/&quot;&gt;roadmap&lt;/a&gt; is still being discussed, so be sure to let us know about your requirements and feature requests.
+Some of the things we&amp;#8217;re considering for this next release are:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Moving the MySQL connector to the CDC connector framework shared by most other Debezium connectors; this will drastically reduce maintenance burden of this connector in the future&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Exploring more powerful snapshotting options (e.g. for parallelization and re-doing snapshots of selected tables)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Continued stability and improvements to the new LogMiner-based implementation for Oracle&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Until then remain safe, it&amp;#8217;s onwards and upwards from here!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">I am pleased to announce the release of Debezium 1.4.0.Final! This release concludes the major work put into Debezium over the last three months. Overall, the community fixed 117 issues during that time, including the following key features and changes: New Vitess connector, featured in an in-depth blog post by Kewei Shang Fine-grained selection of snapshotted tables PostgreSQL Snapshotter completion hook Distributed Tracing MySQL support for create or read records emitted during snapshot Many Oracle Logminer adapter improvements Full support for Oracle JDBC connection strings Improved reporting of DDL errors</summary></entry><entry><title type="html">Debezium in 2020 – The Recap!</title><link href="https://debezium.io/blog/2021/01/06/debezium-2020-recap/" rel="alternate" type="text/html" title="Debezium in 2020 – The Recap!" /><published>2021-01-06T00:00:00+00:00</published><updated>2021-01-06T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/06/debezium-2020-recap</id><content type="html" xml:base="https://debezium.io/blog/2021/01/06/debezium-2020-recap/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A Happy New Year to the Debezium Community!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;May all your endavours be successful, your data be consistent, and most importantly, everyone stay safe and healthy.
+With 2020 in the books, I thought it&amp;#8217;d be nice to take a look back and do a quick recap of what has happened around Debezium over the last year.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;First, some facts and numbers for you stats lovers out there:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;After the release of &lt;a href=&quot;/blog/2019/12/18/debezium-1-0-0-final-released/&quot;&gt;Debezium 1.0&lt;/a&gt; in December 2019, we successfully released a stable Debezium version at the end of each quarter, with preview releases roughly every three weeks&lt;sup class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnotedef_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;About 1,400 commits in the core repo (plus many more in the other ones), 36 blog posts and release announcements, 166 threads on the &lt;a href=&quot;https://groups.google.com/g/debezium/&quot;&gt;mailing list&lt;/a&gt; (if the query in my Google inbox is to be trusted)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;About 100 new contributors, bringing the &lt;a href=&quot;https://github.com/debezium/debezium/blob/master/COPYRIGHT.txt&quot;&gt;overall number&lt;/a&gt; of people contributing to the Debezium core repo to 245, plus additional people contributing to the other repositories of the Debezium GitHub organization&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The first &lt;a href=&quot;https://developers.redhat.com/blog/2020/04/14/capture-database-changes-with-debezium-apache-kafka-connectors/&quot;&gt;GA release&lt;/a&gt; of the commercially supported Debezium offering by Red Hat, as part of &lt;a href=&quot;https://www.redhat.com/en/products/integration&quot;&gt;Red Hat Integration&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;/blog/2020/07/28/hello-debezium/&quot;&gt;Two&lt;/a&gt; &lt;a href=&quot;/blog/2020/10/27/hello-debezium/&quot;&gt;new&lt;/a&gt; members on the core engineering team&amp;#8201;&amp;#8212;&amp;#8201;the more, the merrier!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;About 1,600 additional GitHub ⭐s for the Debezium core repo, bringing the total number of star gazers to more than 4,100&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;exampleblock centered-image responsive-image&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;/assets/images/github_stars_2020.png&quot; style=&quot;max-width:75%;&quot; class=&quot;responsive-image&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While those figures give a nice impression of the overall activity of Debezium, they don&amp;#8217;t really tell &lt;em&gt;what&lt;/em&gt; has been happening exactly.
+What&amp;#8217;s behind the numbers?
+Here are some of my personal Debezium highlights from the last year:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Two new, community-led Debezium connectors for &lt;a href=&quot;https://github.com/debezium/debezium-connector-db2/&quot;&gt;Db2&lt;/a&gt; and &lt;a href=&quot;https://github.com/debezium/debezium-connector-vitess/&quot;&gt;Vitess&lt;/a&gt;;
+a big shout-out to the engineers of &lt;a href=&quot;/blog/2020/03/05/db2-cdc-approaches/&quot;&gt;IBM&lt;/a&gt; and &lt;a href=&quot;/blog/2020/11/04/streaming-vitess-at-bolt/&quot;&gt;Bolt&lt;/a&gt;, respectively, for stepping up and taking the lead of these connectors!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Besides these new connectors, each of the releases brought a wide range of new features; some of the things I&amp;#8217;m most excited about are &lt;a href=&quot;/documentation/reference/1.2/operations/debezium-server.html&quot;&gt;Debezium Server&lt;/a&gt; for integrating Debezium with message infrastructure like Apache Pulsar, AWS Kinesis, Google Cloud Pub/Sub, and Azure Event Hubs, the &lt;a href=&quot;/documentation/reference/1.1/integrations/outbox.html&quot;&gt;Quarkus extension&lt;/a&gt; for implementing the outbox pattern,
+the new &lt;a href=&quot;/documentation/reference/connectors/oracle.html#_logminer&quot;&gt;LogMiner-based connector implementation&lt;/a&gt; for ingesting change events from Oracle,
+transaction markers, support for CloudEvents, and so much more!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Integration of Debezium by multiple open-source projects,
+e.g. &lt;a href=&quot;https://ci.apache.org/projects/flink/flink-docs-stable/dev/table/connectors/formats/debezium.html&quot;&gt;Apache Flink&lt;/a&gt;,
+&lt;a href=&quot;https://spring.io/blog/2020/12/14/case-study-change-data-capture-cdc-analysis-with-cdc-debezium-source-and-analytics-sink-in-real-time&quot;&gt;Spring Cloud Stream&lt;/a&gt;,
+&lt;a href=&quot;https://jet-start.sh/docs/tutorials/cdc&quot;&gt;Hazecast Jet&lt;/a&gt;, and
+&lt;a href=&quot;https://camel.apache.org/blog/2020/05/CdcWithCamelAndDebezium/&quot;&gt;Apache Camel&lt;/a&gt;.
+Further integrators of Debezium include &lt;a href=&quot;https://materialize.io/docs/third-party/debezium/&quot;&gt;Materialize&lt;/a&gt;, &lt;a href=&quot;https://cloud.google.com/blog/products/data-analytics/how-to-move-data-from-mysql-to-bigquery&quot;&gt;Google Cloud DataFlow&lt;/a&gt; and &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-data-connectors&quot;&gt;Heroku’s streaming data connectors&lt;/a&gt;.
+Here on this blog, we also discussed how to integrate and use Debezium with technologies such as &lt;a href=&quot;/blog/2020/03/19/integration-testing-for-change-data-capture-with-testcontainers/&quot;&gt;Testcontainers&lt;/a&gt;,
+the &lt;a href=&quot;/blog/2020/04/09/using-debezium-with-apicurio-api-schema-registry/&quot;&gt;Apicurio API and schema registry&lt;/a&gt;,
+and &lt;a href=&quot;/blog/2020/12/16/distributed-tracing-with-debezium/&quot;&gt;OpenTracing&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Debezium being &lt;a href=&quot;https://www.thoughtworks.com/radar/platforms/debezium&quot;&gt;listed at &quot;Trial&quot; level&lt;/a&gt; on the ThoughtWorks Tech Radar&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A proof-of-concept for a &lt;a href=&quot;/blog/2020/10/22/towards-debezium-ui/&quot;&gt;graphical user interface for configuring and operating Debezium&lt;/a&gt;;
+stay tuned for more details here, as this is currently in the process of being built out for other connectors&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The year also brought a large number of blog posts and presentations from the community about their experiences with Debezium.
+You can find our full list of Debezium-related resources &lt;a href=&quot;debezium.io/documentation/online-resources/&quot;&gt;here&lt;/a&gt;
+(please send a PR for adding anything you think should be listed there).
+Some contents I particularly enjoyed include:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://static.sched.com/hosted_files/ossna2020/c6/Managing Data Consistency with Debezium.pdf&quot;&gt;&quot;Managing Data Consistency Among Microservices with Debezium&quot;&lt;/a&gt; by Justin Chao&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://noti.st/morsapaes/liQzgs/change-data-capture-with-flink-sql-and-debezium&quot;&gt;&quot;Change Data Capture with Flink SQL and Debezium&quot;&lt;/a&gt; by Marta Paes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=6nU9i022yeY&quot;&gt;&quot;Microservices &amp;amp; Data: Implementing the Outbox Pattern with Debezium&quot;&lt;/a&gt; by Thorben Janssen&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.systemcraftsman.com/2020/11/30/asap-the-storified-demo-of-introduction-to-debezium-and-kafka-on-kubernetes/&quot;&gt;&quot;ASAP! – The Storified Demo of Introduction to Debezium and Kafka on Kubernetes&quot;&lt;/a&gt; by Aykut Bulgu&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://elephanttamer.net/?p=50&quot;&gt;&quot;Setting up PostgreSQL for Debezium&quot;&lt;/a&gt; by Michał Mackiewicz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@midhunsukumaran.mec/a-year-and-a-half-with-debezium-f4f323b4909d&quot;&gt;&quot;A year and a half with Debezium: CDC With MySQL&quot;&lt;/a&gt; by Midhun Sukumaran&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developers.redhat.com/cheat-sheets/debezium-openshift-cheat-sheet&quot;&gt;&quot;Debezium on OpenShift Cheat Sheet&quot;&lt;/a&gt; by Abdellatif Bouchama&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@changeant/implementing-the-transactional-outbox-pattern-with-debezium-in-quarkus-f2680306951&quot;&gt;&quot;Implementing the Transactional Outbox pattern with Debezium in Quarkus&quot;&lt;/a&gt; by Iain Porter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.confluent.io/blog/cdc-and-streaming-analytics-using-debezium-kafka/&quot;&gt;&quot;Analysing Changes with Debezium and Kafka Streams&quot;&lt;/a&gt; by Mike Fowler&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@bogdan.dina03/de-coupling-yourself-507a15fa100d&quot;&gt;&quot;(De)coupling yourself&quot;&lt;/a&gt; by Dina Bogdan&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@limadelrey/kafka-connect-how-to-create-a-real-time-data-pipeline-using-change-data-capture-cdc-c60e06e5306a&quot;&gt;&quot;Kafka Connect: How to create a real time data pipeline using Change Data Capture (CDC)&quot;&lt;/a&gt; by Francisco Lima&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://dev.to/abhirockzz/tutorial-set-up-a-change-data-capture-architecture-on-azure-using-debezium-postgres-and-kafka-49h6&quot;&gt;&quot;Tutorial: Set up a Change Data Capture architecture on Azure using Debezium, Postgres and Kafka &quot;&lt;/a&gt; by Abhishek Gupta&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It is just so amazing to see how engaged and helpful this community is; A big thank you to everyone for writing and talking about your experiences with Debezium and change data capture!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I think 2020 has been a great year for the Debezium community,
+and I couldn&amp;#8217;t be happier about all the things we&amp;#8217;ve achieved together.
+Again, a huge thank you to each and everyone in the community contributing to the project,
+be it via by implementing features and bug fixes, reporting issues, engaging in discussions, answering questions on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/debezium&quot;&gt;Stack Overflow&lt;/a&gt;, helping to spread the word in blog posts and conference talks, or otherwise!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What&amp;#8217;s on the roadmap for this year?
+It&amp;#8217;s fair to say: &quot;A lot&quot; :) E.g. we&amp;#8217;d like to rework the way snapshots are done: they should be parallelizeable, updates to the include/exclude filters should be possible, and more.
+The Debezium UI will see substantial expansion and improvements. We&amp;#8217;re planning to conduct a systematic performance profiling and improvements of identified bottlenecks. There may be official support for MariaDB, as well as an operator for running Debezium Server on Kubernetes.
+Plus some super-cool things I cannot talk about at this point yet :)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Onwards and Upwards!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnotedef_1&quot;&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt;. Where is Debezium 1.4, you ask? The agile bunch we are, we adhered to the &quot;Individuals over processes&quot; principle and decided to move this release to later this week, due to the holiday break :)
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="discussion" /><summary type="html">A Happy New Year to the Debezium Community! May all your endavours be successful, your data be consistent, and most importantly, everyone stay safe and healthy. With 2020 in the books, I thought it&amp;#8217;d be nice to take a look back and do a quick recap of what has happened around Debezium over the last year. First, some facts and numbers for you stats lovers out there:</summary></entry><entry><title type="html">Debezium 1.4.0.CR1 Released</title><link href="https://debezium.io/blog/2020/12/17/debezium-1-4-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.CR1 Released" /><published>2020-12-17T00:00:00+00:00</published><updated>2020-12-17T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/17/debezium-1-4-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/12/17/debezium-1-4-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.0.CR1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release focuses primarily on polishing the 1.4 release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.CR1%20ORDER%20BY%20issuetype%20DESC&quot;&gt;15 issues&lt;/a&gt; for this release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A number of bugs were fixed, e.g.:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Document &quot;database.oracle.version&quot; option &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2603&quot;&gt;DBZ-2603&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move Cassandra connector to separate repository &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2636&quot;&gt;DBZ-2636&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove link in MySQL docs section that points to the same section &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2710&quot;&gt;DBZ-2710&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Invalid column name should fail connector with meaningful message &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2836&quot;&gt;DBZ-2836&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fix typos in downstream ModuleID declarations in monitoring.adoc &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2838&quot;&gt;DBZ-2838&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Duplicate anchor ID in partials/ref-connector-monitoring-snapshot-metrics.adoc &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2839&quot;&gt;DBZ-2839&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Oracle schema history events fail on partitioned table &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2841&quot;&gt;DBZ-2841&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fix additional typo in ModuleID declaration in monitoring.adoc &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2843&quot;&gt;DBZ-2843&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Edit modularization annotations in logging.adoc &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2846&quot;&gt;DBZ-2846&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;outbox extension emits UPDATE events when delete is disabled &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2847&quot;&gt;DBZ-2847&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Update Groovy version to 3.0.7 &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2850&quot;&gt;DBZ-2850&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A big thank you to all the contributors from the community who worked on this release:
+&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;outlook&quot;&gt;Outlook&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Barring any unforeseen regressions and bug reports, Debezium 1.4 Final should be out the first week of January.
+Until then, we wish everyone a safe and happy holiday season!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m pleased to announce the release of Debezium 1.4.0.CR1! This release focuses primarily on polishing the 1.4 release.</summary></entry><entry><title type="html">Distributed Tracing with Debezium</title><link href="https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/" rel="alternate" type="text/html" title="Distributed Tracing with Debezium" /><published>2020-12-16T11:00:00+00:00</published><updated>2020-12-16T11:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium</id><content type="html" xml:base="https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/">&lt;div id=&quot;preamble&quot;&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The current pattern in application development gravitates toward microservices and microservices architecture.
-While this approach gives the developer teams great flexibility in independent deployment and development velocity the drawback is at hand when you try to track a bug in production.&lt;/p&gt;
+While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Monolithic applications sit nicely at a single place so you can introspect the code-flows and their runtime state.
-This is a problem with microservice architecture as a single business transaction can span across tens of services deployed in separate processes and nodes.&lt;/p&gt;
+&lt;p&gt;Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&amp;#8217;s runtime state.
+This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can rely on traditional methods like logging where you need to collect and correlate logs at a single place so you can try to reconstruct the business transaction path.
-This is one of the tool in the toolbox we need to use but it still can be crude and it will not provide the necessary context.
+&lt;p&gt;You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path.
+This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context.
 &lt;a href=&quot;https://microservices.io/patterns/observability/distributed-tracing.html&quot;&gt;Distributed Tracing&lt;/a&gt; comes here to the rescue.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -19,8 +338,16 @@ This is one of the tool in the toolbox we need to use but it still can be crude 
 &lt;h2 id=&quot;distributed-tracing&quot;&gt;Distributed Tracing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like who, what,  and where.
-A developer can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problem in deployment (services unavailability) or even a bug.&lt;/p&gt;
+&lt;p&gt;Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;.
+SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And this is where Debezium becomes part of the picture.
+Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into.
+How long does it take for change events to flow from source database to sink systems?
+Where is the most time spent in the pipeline?
+Are there any anomalies like spikes in end-to-end lags?
+The integration of distributed tracing with Debezium can help to answer these questions.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -28,7 +355,7 @@ A developer can then use it to browse through the recorded executions and check 
 &lt;h2 id=&quot;opentracing&quot;&gt;OpenTracing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;There are multiple solutions for distributed tracing but we have decided to follow and use open standard specification &lt;a href=&quot;https://opentracing.io/&quot;&gt;OpenTracing&lt;/a&gt;.
+&lt;p&gt;There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the &lt;a href=&quot;https://opentracing.io/&quot;&gt;OpenTracing&lt;/a&gt; specification.
 OpenTracing is an incubating project of &lt;a href=&quot;https://www.cncf.io/&quot;&gt;Cloud Native Computing Foundation&lt;/a&gt; which guarantees that the user will be free of any vendor lock-in by adhering to an open standard.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock note&quot;&gt;
@@ -39,8 +366,9 @@ OpenTracing is an incubating project of &lt;a href=&quot;https://www.cncf.io/&qu
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;OpenTracing project will in future be replaced with an improved &lt;a href=&quot;https://opentelemetry.io/&quot;&gt;OpenTelemtry&lt;/a&gt; standard.
-Debezium will use it in the future too.&lt;/p&gt;
+&lt;p&gt;The OpenTracing project is in the process of being merged with OpenCensus to the improved &lt;a href=&quot;https://opentelemetry.io/&quot;&gt;OpenTelemetry&lt;/a&gt; standard.
+Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus),
+but it will use and support OpenTelemetry in the future, too.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
@@ -52,13 +380,13 @@ Each span represents a logical unit of work executed.
 The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;OpenTracing is only the specification.
-To use it you need to have an implementation too.
-Debezium could use any OpenTracing client implementation but examples and documentation is based on &lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; distributed tracing.&lt;/p&gt;
+&lt;p&gt;OpenTracing is only the specification and the instrumentation API.
+To use it you need to have an implementation, too.
+While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the &lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; distributed tracing platform.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Jaeger consists of multiple components responsible for data collection and storage and also a graphical user interface available as a web application.
-&lt;a href=&quot;https://www.jaegertracing.io/docs/1.21/getting-started/#all-in-one&quot;&gt;All In One&lt;/a&gt; container image will be used to simplify the deployment.&lt;/p&gt;
+&lt;p&gt;Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application.
+The Jaeger &lt;a href=&quot;https://www.jaegertracing.io/docs/1.21/getting-started/#all-in-one&quot;&gt;All-In-One&lt;/a&gt; container image will be used to simplify the deployment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -66,74 +394,74 @@ Debezium could use any OpenTracing client implementation but examples and docume
 &lt;h2 id=&quot;debezium-and-opentracing&quot;&gt;Debezium and OpenTracing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Debezium integration with OpenTracing consists of three distinct components&lt;/p&gt;
+&lt;p&gt;The Debezium integration with OpenTracing consists of three distinct components:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;EventDispatcher&lt;/code&gt; in Debezium outbox extension&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;EventRouter&lt;/code&gt; SMT&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
 &lt;p&gt;&lt;code&gt;ActivateTracingSpan&lt;/code&gt; SMT&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;EventDispatcher&lt;/code&gt; in the &lt;a href=&quot;/documentation/reference/integrations/outbox.html&quot;&gt;Debezium outbox extension&lt;/a&gt; for Quarkus applications&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;EventRouter&lt;/code&gt; &lt;a href=&quot;/documentation/reference/configuration/outbox-event-router.html&quot;&gt;SMT&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The first two must be used hand-in-hand when a service using the outbox pattern should be traced.
-The third one is intended for general use.&lt;/p&gt;
+&lt;p&gt;The first one is intended for general use.
+The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
 &lt;h3 id=&quot;outbox-distributed-tracing&quot;&gt;Outbox Distributed Tracing&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The biggest problem with tracing integration is keeping the trace across process boundaries so the additional spans are recorded in the same trace to enable end-to-end tracing.
-Opentracing specification provides a way how to export and import trace related metadata so the trace could be passed among different processes.
-In the outbox extension we use this approach to export the metadata into a new database column in the outbox table and then event router SMT imports them and resumes the trace.&lt;/p&gt;
+&lt;p&gt;The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing.
+The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In each of the steps executed one or more spans are created&lt;/p&gt;
+&lt;p&gt;In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;When an event arrives at &lt;code&gt;EventDispatcher&lt;/code&gt; a new span &lt;code&gt;outbox-write&lt;/code&gt; is created.
-It is created as a child of a current active span or as a root span if no parent span is available.&lt;/p&gt;
+It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The span metadata is exported into a distinct field of the outbox event.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Outbox event is written to and deleted from the outbox table.&lt;/p&gt;
+&lt;p&gt;The outbox event is written to the outbox table.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Event Router SMT receives the event and imports the span metadata from the field&lt;/p&gt;
+&lt;p&gt;The Event Router SMT receives the event and imports the span metadata from the field&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Two new spans are created&lt;/p&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;db-log-write&lt;/code&gt; with start timestamp to database write timestamp.
-Fields from the &lt;code&gt;source&lt;/code&gt; block are added to the span as &lt;strong&gt;tags&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;db-log-write&lt;/code&gt; with its start timestamp set to database write timestamp.
+The fields from the &lt;code&gt;source&lt;/code&gt; block are added to the span as &lt;strong&gt;tags&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;debezium-read&lt;/code&gt; with start time set to the processing timestamp.
+&lt;p&gt;&lt;code&gt;debezium-read&lt;/code&gt; with its start time set to the processing timestamp.
 Fields from the envelope are added to the span as &lt;strong&gt;tags&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Optionally if OpenTracing integration is enabled at the Kafka producer level a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata.&lt;/p&gt;
+&lt;p&gt;Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect3&quot;&gt;
 &lt;h4 id=&quot;demo&quot;&gt;Demo&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/outbox&quot;&gt;outbox example&lt;/a&gt; was extended with distributed tracing support to demonstrate the functionality.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/outbox&quot;&gt;outbox example&lt;/a&gt; was extended with distributed tracing support to demonstrate the functionality.
+This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock note&quot;&gt;
 &lt;table&gt;
@@ -143,7 +471,7 @@ Fields from the envelope are added to the span as &lt;strong&gt;tags&lt;/strong&
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This demo uses &lt;a href=&quot;https://strimzi.io/&quot;&gt;Strimzi&lt;/a&gt; container image for Kafka Connect as it already contains baked-in integration of OpenTracing at Kafka producer level.&lt;/p&gt;
+&lt;p&gt;This demo uses the &lt;a href=&quot;https://strimzi.io/&quot;&gt;Strimzi&lt;/a&gt; container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
@@ -155,7 +483,7 @@ Fields from the envelope are added to the span as &lt;strong&gt;tags&lt;/strong&
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;checkout the repository and switch to the &lt;code&gt;outbox&lt;/code&gt; directory&lt;/p&gt;
+&lt;p&gt;check out the repository and switch to the &lt;code&gt;outbox&lt;/code&gt; directory&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;build the services&lt;/p&gt;
@@ -170,7 +498,7 @@ Fields from the envelope are added to the span as &lt;strong&gt;tags&lt;/strong&
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;deploy application&lt;/p&gt;
+&lt;p&gt;deploy the application&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -183,7 +511,7 @@ docker-compose up --build&lt;/pre&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;register Debezium connector to listen on an outbox table&lt;/p&gt;
+&lt;p&gt;register a Debezium connector to listen on the outbox table&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -220,15 +548,15 @@ $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel
     &lt;img src=&quot;/assets/images/tracing-tutorial/tracing-main.png&quot; class=&quot;responsive-image&quot; alt=&quot;Jaeger intro&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Select &lt;code&gt;order-service&lt;/code&gt; service and click on &lt;code&gt;Find Traces&lt;/code&gt;.
+&lt;p&gt;Filter on &lt;code&gt;order-service&lt;/code&gt; as a service and click on &lt;code&gt;Find Traces&lt;/code&gt;.
 Two traces should be available:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;imageblock centered-image&quot;&gt;
     &lt;img src=&quot;/assets/images/tracing-tutorial/tracing-service.png&quot; class=&quot;responsive-image&quot; alt=&quot;Service traces&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Click on the &lt;code&gt;&amp;#8230;&amp;#8203;addOrder&lt;/code&gt; service.
-A tree will open that will display how the initial request incoming via REST API was&lt;/p&gt;
+&lt;p&gt;Click on the &lt;code&gt;addOrder&lt;/code&gt; service.
+A tree will open that displays how the initial request incoming via REST API was&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
@@ -245,7 +573,7 @@ A tree will open that will display how the initial request incoming via REST API
 &lt;p&gt;read from a Kafka topic by &lt;code&gt;shipment-service&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;processed in the multiple &lt;code&gt;shipment-service&lt;/code&gt; business methods&lt;/p&gt;
+&lt;p&gt;processed in the different &lt;code&gt;shipment-service&lt;/code&gt; business methods&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -253,8 +581,8 @@ A tree will open that will display how the initial request incoming via REST API
     &lt;img src=&quot;/assets/images/tracing-tutorial/tracing-trace.png&quot; class=&quot;responsive-image&quot; alt=&quot;Service traces&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Click on &lt;code&gt;db-log-write&lt;/code&gt; and &lt;code&gt;debezium-read&lt;/code&gt; spans.
-The &lt;strong&gt;tags&lt;/strong&gt; of each of them contain extracted Debezium related metadata like &lt;code&gt;operation&lt;/code&gt; or &lt;code&gt;source&lt;/code&gt; fields:&lt;/p&gt;
+&lt;p&gt;Click on the &lt;code&gt;db-log-write&lt;/code&gt; and &lt;code&gt;debezium-read&lt;/code&gt; spans.
+The &lt;strong&gt;tags&lt;/strong&gt; of each of them contain extracted Debezium-related metadata like &lt;code&gt;operation&lt;/code&gt; or &lt;code&gt;source&lt;/code&gt; fields:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;imageblock centered-image&quot;&gt;
     &lt;img src=&quot;/assets/images/tracing-tutorial/tracing-debezium-details.png&quot; class=&quot;responsive-image&quot; alt=&quot;Service traces&quot;&gt;
@@ -267,11 +595,21 @@ The &lt;strong&gt;tags&lt;/strong&gt; of each of them contain extracted Debezium
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In this blogpost, we have discussed what the distributed tracing is and why it is useful to use it.
+&lt;p&gt;In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it.
 We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration.&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While this example was focused on the specific use case of microservices data exchange via the outbox pattern,
+Debezium integrates with distributed tracing also independently of this particular pattern.
+By means of the &lt;code&gt;ActivateTracingSpan&lt;/code&gt; SMT, Debezium can produce spans representing the time of the change in the source database itself,
+as well as the time of processing the event by the Debezium connector.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="tracing" /><category term="jaeger" /><summary type="html">The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in independent deployment and development velocity the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code-flows and their runtime state. This is a problem with microservice architecture as a single business transaction can span across tens of services deployed in separate processes and nodes. You can rely on traditional methods like logging where you need to collect and correlate logs at a single place so you can try to reconstruct the business transaction path. This is one of the tool in the toolbox we need to use but it still can be crude and it will not provide the necessary context. Distributed Tracing comes here to the rescue. Distributed Tracing Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like who, what, and where. A developer can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problem in deployment (services unavailability) or even a bug. OpenTracing There are multiple solutions for distributed tracing but we have decided to follow and use open standard specification OpenTracing. OpenTracing is an incubating project of Cloud Native Computing Foundation which guarantees that the user will be free of any vendor lock-in by adhering to an open standard. Note OpenTracing project will in future be replaced with an improved OpenTelemtry standard. Debezium will use it in the future too. A distributed trace in OpenTracing consists of a set of spans. Each span represents a logical unit of work executed. The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span. OpenTracing is only the specification. To use it you need to have an implementation too. Debezium could use any OpenTracing client implementation but examples and documentation is based on Jaeger distributed tracing. Jaeger consists of multiple components responsible for data collection and storage and also a graphical user interface available as a web application. All In One container image will be used to simplify the deployment. Debezium and OpenTracing Debezium integration with OpenTracing consists of three distinct components EventDispatcher in Debezium outbox extension EventRouter SMT ActivateTracingSpan SMT The first two must be used hand-in-hand when a service using the outbox pattern should be traced. The third one is intended for general use. Outbox Distributed Tracing The biggest problem with tracing integration is keeping the trace across process boundaries so the additional spans are recorded in the same trace to enable end-to-end tracing. Opentracing specification provides a way how to export and import trace related metadata so the trace could be passed among different processes. In the outbox extension we use this approach to export the metadata into a new database column in the outbox table and then event router SMT imports them and resumes the trace. In each of the steps executed one or more spans are created When an event arrives at EventDispatcher a new span outbox-write is created. It is created as a child of a current active span or as a root span if no parent span is available. The span metadata is exported into a distinct field of the outbox event. Outbox event is written to and deleted from the outbox table. Event Router SMT receives the event and imports the span metadata from the field Two new spans are created db-log-write with start timestamp to database write timestamp. Fields from the source block are added to the span as tags. debezium-read with start time set to the processing timestamp. Fields from the envelope are added to the span as tags. Optionally if OpenTracing integration is enabled at the Kafka producer level a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata. Demo The outbox example was extended with distributed tracing support to demonstrate the functionality. Note This demo uses Strimzi container image for Kafka Connect as it already contains baked-in integration of OpenTracing at Kafka producer level. To try it yourself you need to: checkout the repository and switch to the outbox directory build the services $ mvn clean install deploy application export DEBEZIUM_VERSION=1.4 docker-compose up --build register Debezium connector to listen on an outbox table $ http PUT http://localhost:8083/connectors/outbox-connector/config &amp;lt; register-postgres.json HTTP/1.1 201 Created execute multiple business requests $ http POST http://localhost:8080/orders &amp;lt; resources/data/create-order-request.json $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel-order-line-request.json check the Jaeger UI After all the steps above were completed you should see an introduction screen of the Jaeger UI: Select order-service service and click on Find Traces. Two traces should be available: Click on the &amp;#8230;&amp;#8203;addOrder service. A tree will open that will display how the initial request incoming via REST API was written to the database by the outbox extension read by Debezium and processed by outbox SMT written to a Kafka topic read from a Kafka topic by shipment-service processed in the multiple shipment-service business methods Click on db-log-write and debezium-read spans. The tags of each of them contain extracted Debezium related metadata like operation or source fields: Conclusion In this blogpost, we have discussed what the distributed tracing is and why it is useful to use it. We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration.</summary></entry><entry><title type="html">Debezium 1.4.0.Beta1 Released</title><link href="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Beta1 Released" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases.
+Your feedback on this new functionality is highly welcomed!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="tracing" /><category term="jaeger" /><summary type="html">The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&amp;#8217;s runtime state. This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes. You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path. This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context. Distributed Tracing comes here to the rescue. Distributed Tracing Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;. SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs. And this is where Debezium becomes part of the picture. Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into. How long does it take for change events to flow from source database to sink systems? Where is the most time spent in the pipeline? Are there any anomalies like spikes in end-to-end lags? The integration of distributed tracing with Debezium can help to answer these questions. OpenTracing There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the OpenTracing specification. OpenTracing is an incubating project of Cloud Native Computing Foundation which guarantees that the user will be free of any vendor lock-in by adhering to an open standard. Note The OpenTracing project is in the process of being merged with OpenCensus to the improved OpenTelemetry standard. Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus), but it will use and support OpenTelemetry in the future, too. A distributed trace in OpenTracing consists of a set of spans. Each span represents a logical unit of work executed. The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span. OpenTracing is only the specification and the instrumentation API. To use it you need to have an implementation, too. While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the Jaeger distributed tracing platform. Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application. The Jaeger All-In-One container image will be used to simplify the deployment. Debezium and OpenTracing The Debezium integration with OpenTracing consists of three distinct components: ActivateTracingSpan SMT EventDispatcher in the Debezium outbox extension for Quarkus applications EventRouter SMT The first one is intended for general use. The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced. Outbox Distributed Tracing The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing. The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes. In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created: When an event arrives at EventDispatcher a new span outbox-write is created. It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available. The span metadata is exported into a distinct field of the outbox event. The outbox event is written to the outbox table. The Event Router SMT receives the event and imports the span metadata from the field Two new spans are created db-log-write with its start timestamp set to database write timestamp. The fields from the source block are added to the span as tags. debezium-read with its start time set to the processing timestamp. Fields from the envelope are added to the span as tags. Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata. Demo The outbox example was extended with distributed tracing support to demonstrate the functionality. This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern. Note This demo uses the Strimzi container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level. To try it yourself you need to: check out the repository and switch to the outbox directory build the services $ mvn clean install deploy the application export DEBEZIUM_VERSION=1.4 docker-compose up --build register a Debezium connector to listen on the outbox table $ http PUT http://localhost:8083/connectors/outbox-connector/config &amp;lt; register-postgres.json HTTP/1.1 201 Created execute multiple business requests $ http POST http://localhost:8080/orders &amp;lt; resources/data/create-order-request.json $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel-order-line-request.json check the Jaeger UI After all the steps above were completed you should see an introduction screen of the Jaeger UI: Filter on order-service as a service and click on Find Traces. Two traces should be available: Click on the addOrder service. A tree will open that displays how the initial request incoming via REST API was written to the database by the outbox extension read by Debezium and processed by outbox SMT written to a Kafka topic read from a Kafka topic by shipment-service processed in the different shipment-service business methods Click on the db-log-write and debezium-read spans. The tags of each of them contain extracted Debezium-related metadata like operation or source fields: Conclusion In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it. We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration. While this example was focused on the specific use case of microservices data exchange via the outbox pattern, Debezium integrates with distributed tracing also independently of this particular pattern. By means of the ActivateTracingSpan SMT, Debezium can produce spans representing the time of the change in the source database itself, as well as the time of processing the event by the Debezium connector. Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases. Your feedback on this new functionality is highly welcomed!</summary></entry><entry><title type="html">Debezium 1.4.0.Beta1 Released</title><link href="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Beta1 Released" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2321,313 +2659,4 @@ the Debezium container image for Kafka Connect comes with the required converter
 &lt;a href=&quot;https://github.com/michaelwang&quot;&gt;Michael Wang&lt;/a&gt;,
 &lt;a href=&quot;https://github.com/omarsmak&quot;&gt;Omar Al-Safi&lt;/a&gt;, and
 &lt;a href=&quot;https://github.com/rhauch&quot;&gt;Randall Hauch&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="testcontainers" /><category term="debezium-server" /><summary type="html">I am happy to announce the release of Debezium 1.2.1.Final! This release includes several bug fixes to different Debezium connectors, and we highly recommend the upgrade from 1.2.0.Final and earlier versions: The Debezium Postgres connector may have missed events from concurrent transactions when transitioning from snapshotting to streaming events from the WAL (DBZ-2288); this is fixed now when using the exported snapshotting mode; this mode should preferably be used, and for Debezium 1.3 we&amp;#8217;re planning for this to be the basis for all the existing snapshotting modes The Postgres JDBC driver got upgraded to 42.2.14 (DBZ-2317), which fixes a CVE in the driver related to processing XML column values sourced from untrusted XML input The Debezium MySQL connector MariaDB&amp;#8217;s supports ALTER TABLE statements with IF EXISTS (DBZ-2219); it also handles single dimension DECIMAL columns in CAST expressions (DBZ-2305) The MySQL connector automatically filters out specific DML binlog entries from internal tables when using it with Amazon RDS (DBZ-2275) The Debezium MongoDB connector got more resilient against connection losses (DBZ-2141)</summary></entry><entry><title type="html">Debezium 1.2.0.Final Released</title><link href="https://debezium.io/blog/2020/06/24/debezium-1-2-final-released/" rel="alternate" type="text/html" title="Debezium 1.2.0.Final Released" /><published>2020-06-24T16:19:59+00:00</published><updated>2020-06-24T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/06/24/debezium-1-2-final-released</id><content type="html" xml:base="https://debezium.io/blog/2020/06/24/debezium-1-2-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m very happy to announce the release of Debezium &lt;strong&gt;1.2.0.Final&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Over the last three months, the community has resolved nearly &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.2.0.Alpha1%2C%201.2.0.Beta1%2C%201.2.0.Beta2%2C%201.2.0.CR1%2C%201.2.0.CR2%2C%201.2.0.Final)&quot;&gt;200 issues&lt;/a&gt;. Key features of this release include:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;New Kafka Connect single message transforms (SMTs) for content-based event &lt;a href=&quot;/documentation/reference/1.2/configuration/content-based-routing.html&quot;&gt;routing&lt;/a&gt; and &lt;a href=&quot;/documentation/reference/1.2/configuration/filtering.html&quot;&gt;filtering&lt;/a&gt;;
-Upgrade to Apache Kafka 2.5&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Schema change topics for the Debezium connectors for &lt;a href=&quot;/documentation/reference/1.2/connectors/sqlserver.html&quot;&gt;SQL Server&lt;/a&gt;, &lt;a href=&quot;/documentation/reference/1.2/connectors/db2.html&quot;&gt;Db2&lt;/a&gt; and &lt;a href=&quot;/documentation/reference/1.2/connectors/oracle.html&quot;&gt;Oracle&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Support for SMTs and message converters in the Debezium &lt;a href=&quot;/documentation/reference/1.2/development/engine.html&quot;&gt;embedded engine&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;/documentation/reference/1.2/operations/debezium-server.html&quot;&gt;Debezium Server&lt;/a&gt;, a brand-new runtime which allows to propagate data change events to a range of messaging infrastructures like Amazon Kinesis, Google Cloud Pub/Sub, and Apache Pulsar&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;A new column masking mode &quot;consistent hashing&quot;, allowing to anonymize column values while still keeping them correlatable&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;New metrics for the MongoDB connector&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Improved re-connect capability for the SQL Server connector&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;debezium-server&quot;&gt;Debezium Server&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Should I pick one feature I&amp;#8217;m the most excited about, it would be Debezium Server.
-It allows even more users to benefit from open-source change data capture with Debezium,
-no matter which messaging infrastructure they are on.
-Being able to propagate Debezium data change events via managed services such as Kinesis and Pub/Sub was a feature request we&amp;#8217;ve received again and again from the community,
-and it&amp;#8217;s amazing to see that this feature eventually becomes a reality.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Debezium Server will also be a great foundation for exposing Debezium as a native &lt;a href=&quot;https://knative.dev/docs/eventing/&quot;&gt;Knative Eventing&lt;/a&gt; event source, and you can expect to see more exciting developments in this area very soon.
-With Debezium Server, there&amp;#8217;s now &lt;a href=&quot;/documentation/reference/1.2/architecture.html&quot;&gt;three ways&lt;/a&gt; for running Debezium:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Via &lt;em&gt;Kafka Connect&lt;/em&gt;, using its fantastic eco-system of connectors to set up low-latency data streaming pipelines with Apache Kafka&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;With &lt;em&gt;Debezium Server&lt;/em&gt;, sending data change events to a growing number of messaging platforms like Kinesis&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Through the &lt;em&gt;Debezium Engine&lt;/em&gt;, embedded as a library into custom JVM-based applications, e.g. addressing use cases like updating embedded caches&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m really excited about all the opportunties which this brings to the Debezium community.
-Debezium Server is powered by the innovative &lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus&lt;/a&gt; framework, which also opens up many interesting technical possibilities.
-E.g. we could explore running Debezium connectors as native binaries via &lt;a href=&quot;https://www.graalvm.org/&quot;&gt;GraalVM&lt;/a&gt;,
-resulting in a largely reduced memory consumption, which could make this a very interesting deployment option for cloud environments.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;a-big-thank-you-to-the-community&quot;&gt;A Big Thank You to the Community!&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Please refer to the original announcements (&lt;a href=&quot;/blog/2020/04/16/debezium-1-2-alpha1-released/&quot;&gt;Alpha1&lt;/a&gt;, &lt;a href=&quot;/blog/2020/05/07/debezium-1-2-beta1-released/&quot;&gt;Beta1&lt;/a&gt;, &lt;a href=&quot;/blog/2020/05/19/debezium-1-2-beta2-released/&quot;&gt;Beta2&lt;/a&gt;, &lt;a href=&quot;/blog/2020/06/11/debezium-1-2-cr1-released/&quot;&gt;CR1&lt;/a&gt;) to learn more about all the new features of Debezium 1.2.
-You can find the complete list of addressed issues, upgrade procedures, and notes on any backward compatibility changes in the &lt;a href=&quot;/releases/1.2/release-notes/#release-1.2.0-final&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;An open-source project would be nothing without its community of users in contributors;
-thanks a lot to the following people from the community who worked on the Debezium 1.2 release:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://github.com/insom&quot;&gt;Aaron Brady&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/Iskuskov&quot;&gt;Alexander Iskuskov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ahus1&quot;&gt;Alexander Schwartz&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/andersenleo&quot;&gt;Anders Engström&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ant0nk&quot;&gt;Anton Kondratev&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ateijelo&quot;&gt;Andy Teijelo Pérez&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/nbali&quot;&gt;Balázs Németh&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bradengroom&quot;&gt;Braden Groom&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/brbrown25&quot;&gt;Brandon Brown&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/cobolbaby&quot;&gt;cobolbaby&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/dajerome&quot;&gt;David Jerome&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/dcumberland&quot;&gt;Dave Cumberland&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ebrard&quot;&gt;Emmanuel Brard&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/edbighead&quot;&gt;Ed Laur&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/mozinator&quot;&gt;Fabian Aussems&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/fgakk&quot;&gt;Fatih Güçlü Akkaya&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/gergof&quot;&gt;Fándly Gergő&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/grantcooksey&quot;&gt;Grant Cooksey&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/blcksrx&quot;&gt;Hossein Torabi&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ivan-klass&quot;&gt;Ivan Klass&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/renardeinside&quot;&gt;Ivan Trusov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/JanHendrikDolling&quot;&gt;Jan-Hendrik Dolling&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jfinzel&quot;&gt;Jeremy Finzel&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jgao54&quot;&gt;Joy Gao&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jantpedraza&quot;&gt;Juan Antonio Pedraza&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jhiza&quot;&gt;Justin Hiza&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jhuiting&quot;&gt;Jos Huiting&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jpsoroulas&quot;&gt;John Psoroulas&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/hoanglinh0710&quot;&gt;Linh Nguyen Hoang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/lga-zurich&quot;&gt;Luis Garcés-Erice&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/metlos&quot;&gt;Lukas Krejci&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/lyidataminr&quot;&gt;lyidataminr&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/kaplanmaxe&quot;&gt;Max Kaplan&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/devzer01&quot;&gt;Nayana Hettiarachchi&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/zrlurb&quot;&gt;Peter Urbanetz&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/rk3rn3r&quot;&gt;René Kerner&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/RobertHana&quot;&gt;Robert B. Hanviriyapunt&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/TechnocratSid&quot;&gt;Siddhant Agnihotry&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/crazy-2020&quot;&gt;Xuan Shen&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This brings the total number of contributors to the main Debezium code repositories to over 200!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;outlook&quot;&gt;Outlook&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Let&amp;#8217;s close this post with an outlook to the next things to come.
-We&amp;#8217;ll stick to our quarterly release cadence, i.e. you can expect Debezium 1.3 to be out by the end of September,
-with preview releases in between every three weeks.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We&amp;#8217;re currently updating the &lt;a href=&quot;/roadmap&quot;&gt;roadmap&lt;/a&gt; for the next release,
-and your input and feedback on this will be very welcomed!
-The things we&amp;#8217;ve planned so far include more flexible options for snapshotting (re-snapshotting specific tables, filter changes, parallelized snapshotting, etc.),
-moving Db2 connector out of incubating state, and an exploration of what it&amp;#8217;d take to officially support MariaDB.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Onwards and upwards!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="debezium-server" /><summary type="html">I&amp;#8217;m very happy to announce the release of Debezium 1.2.0.Final! Over the last three months, the community has resolved nearly 200 issues. Key features of this release include: New Kafka Connect single message transforms (SMTs) for content-based event routing and filtering; Upgrade to Apache Kafka 2.5 Schema change topics for the Debezium connectors for SQL Server, Db2 and Oracle Support for SMTs and message converters in the Debezium embedded engine Debezium Server, a brand-new runtime which allows to propagate data change events to a range of messaging infrastructures like Amazon Kinesis, Google Cloud Pub/Sub, and Apache Pulsar A new column masking mode &quot;consistent hashing&quot;, allowing to anonymize column values while still keeping them correlatable New metrics for the MongoDB connector Improved re-connect capability for the SQL Server connector</summary></entry><entry><title type="html">Debezium 1.2.0.CR1 Released</title><link href="https://debezium.io/blog/2020/06/11/debezium-1-2-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.2.0.CR1 Released" /><published>2020-06-11T16:19:59+00:00</published><updated>2020-06-11T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/06/11/debezium-1-2-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/06/11/debezium-1-2-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.2.0.CR1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release includes several notable features, enhancements, and fixes:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;PostgreSQL can restrict the set of tables with a publication while using pgoutput (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-1813&quot;&gt;DBZ-1813&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Metrics MBean registration is skipped if a platform MBean server does not exist (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2089&quot;&gt;DBZ-2089&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;SQL Server reconnection improved during shutdown and connection resets (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2106&quot;&gt;DBZ-2106&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;EventRouter SMT can now pass non-String based keys (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2152&quot;&gt;DBZ-2152&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;PostgreSQL &lt;code&gt;include.unknown.datatypes&lt;/code&gt; can now return strings rather than hashes (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-1266&quot;&gt;DBZ-1266&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Debezium Server now supports Google Cloud PubSub (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2092&quot;&gt;DBZ-2092&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Debezium Server now supports Apache Pulsar sink (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2112&quot;&gt;DBZ-2112&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can find the complete list of addressed issues, upgrade procedures, and notes on any backward compatibility changes in the &lt;a href=&quot;/releases/1.2/release-notes/#release-1.2.0-cr&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Many thanks to all the community members contributing to this release:
-&lt;a href=&quot;https://github.com/ateijelo&quot;&gt;Andy Teijelo Pérez&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/nbali&quot;&gt;Balázs Németh&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/brbrown25&quot;&gt;Brandon Brown&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/cobolbaby&quot;&gt;cobolbaby&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/dcumberland&quot;&gt;Dave Cumberland&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/edbighead&quot;&gt;Ed Laur&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ebrard&quot;&gt;Emmanuel Brard&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/mozinator&quot;&gt;Fabian Aussems&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/renardeinside&quot;&gt;Ivan Trusov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jhiza&quot;&gt;Justin Hiza&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jfinzel&quot;&gt;Jeremy Finzel&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/metlos&quot;&gt;Lukas Krejci&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/RobertHana&quot;&gt;Robert B. Hanviriyapunt&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="testcontainers" /><category term="ebezium-server" /><summary type="html">It&amp;#8217;s my pleasure to announce the release of Debezium 1.2.0.CR1! This release includes several notable features, enhancements, and fixes: PostgreSQL can restrict the set of tables with a publication while using pgoutput (DBZ-1813). Metrics MBean registration is skipped if a platform MBean server does not exist (DBZ-2089). SQL Server reconnection improved during shutdown and connection resets (DBZ-2106). EventRouter SMT can now pass non-String based keys (DBZ-2152). PostgreSQL include.unknown.datatypes can now return strings rather than hashes (DBZ-1266). Debezium Server now supports Google Cloud PubSub (DBZ-2092). Debezium Server now supports Apache Pulsar sink (DBZ-2112). You can find the complete list of addressed issues, upgrade procedures, and notes on any backward compatibility changes in the release notes. Many thanks to all the community members contributing to this release: Andy Teijelo Pérez, Balázs Németh, Bingqin Zhou, Brandon Brown, cobolbaby, Dave Cumberland, Ed Laur, Emmanuel Brard, Fabian Aussems, Ivan Trusov, Justin Hiza, Jeremy Finzel, Kewei Shang, Lukas Krejci, and Robert B. Hanviriyapunt.</summary></entry><entry><title type="html">Debezium 1.2.0.Beta2 Released</title><link href="https://debezium.io/blog/2020/05/19/debezium-1-2-beta2-released/" rel="alternate" type="text/html" title="Debezium 1.2.0.Beta2 Released" /><published>2020-05-19T16:19:59+00:00</published><updated>2020-05-19T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/05/19/debezium-1-2-beta2-released</id><content type="html" xml:base="https://debezium.io/blog/2020/05/19/debezium-1-2-beta2-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m very happy to share the news that Debezium &lt;strong&gt;1.2.0.Beta2&lt;/strong&gt; has been released!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Core feature of this release is &lt;em&gt;Debezium Server&lt;/em&gt;,
-a dedicated stand-alone runtime for Debezium, opening up its open-source change data capture capabilities towards messaging infrastructure like Amazon Kinesis.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, the community has fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.2.0.Beta2%20ORDER%20BY%20issuetype%20DESC&quot;&gt;25 issues&lt;/a&gt; since the Beta1 release,
-some of which we&amp;#8217;re going to explore in more depth in the remainder of this post.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;debezium-server&quot;&gt;Debezium Server&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Adding the &lt;a href=&quot;/documentation/reference/operations/debezium-server.html&quot;&gt;Debezium Server&lt;/a&gt; runtime is a major milestone for the project.
-It is a ready-to-use standalone application for executing Debezium connectors.
-With Debezium Server, users can now choose from three different ways of operating Debezium,
-matching their individual needs:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;As plug-ins for &lt;a href=&quot;https://kafka.apache.org/documentation/#connect&quot;&gt;Kafka Connect&lt;/a&gt;, ingesting data change events into an Apache Kafka cluster&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Through the &lt;a href=&quot;/documentation/reference/development/engine.html&quot;&gt;Debezium Engine&lt;/a&gt;, embedded as a library into bespoke JVM-based applications&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Via Debezium Server, sending data change events to a growing number of messaging platforms like Kinesis&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Which one of these modes of execution you should use depends on your specific prerequisites, requirements and CDC use cases.
-Organizations running Apache Kafka and interested in setting up no-code data integration pipelines leveraging a rich connector eco-system, should go for the Kafka Connect approach.
-In-application cache invalidation is an application benefitting from the Debezium embedded engine.
-Debezium Server finally is meant for users who would like to take advantage of Debezium&amp;#8217;s CDC functionality,
-using messaging platforms other than Apache Kafka.
-While you could have done so before by means of the embedded engine and a bit of bespoke Java programming,
-Debezium Server will greatly simplify this scenario.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Powered by the popular &lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus&lt;/a&gt; stack,
-Debezium Server is a ready-made configurable Java application which runs a Debezium connector and propagates the produced change events to consumers via a chosen sink adapter.
-Initially supporting Amazon Kinesis, the Debezium Server architecture is extensible,
-and other adapters&amp;#8201;&amp;#8212;&amp;#8201;e.g. for Google Cloud Pub/Sub or Microsoft Azure Event Hubs&amp;#8201;&amp;#8212;&amp;#8201;will follow soon.
-Through the Debezium Server extension API, you can also implement custom sink adapters for your preferred infrastructure of propagating change events to consumers.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Ultimately, Debezium Server also is means of realizing our vision of CDC-as-a-Service,
-smoothly integrated with cloud-native infrastructure like Kubernetes and Knative.
-This release marks the first step of this endavour, and we couldn&amp;#8217;t be more excited about the prospect of working together with the Debezium community towards this goal.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Stay tuned for more sink adapters, a container image, support for &lt;a href=&quot;https://knative.dev/docs/eventing/&quot;&gt;Knative Eventing&lt;/a&gt;, an operator for running Debezium Server on Kubernetes, and more!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;other-features-and-fixes&quot;&gt;Other Features and Fixes&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Besides Debezium Server, a few other improvements and fixes found their way into this release.
-A number of improvements was done to the different single message transforms (SMTs) coming with Debezium:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The recently added SMTs for content-based change &lt;a href=&quot;/documentation/reference/configuration/filtering.html&quot;&gt;event filtering&lt;/a&gt; and &lt;a href=&quot;/documentation/reference/configuration/content-based-routing.html&quot;&gt;routing&lt;/a&gt; can be applied to a sub-set of topics now (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2024&quot;&gt;DBZ-2024&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Record headers and topic name are exposed to script expressions configured for these SMTs, so they can be evaluated by the filtering and routing logic (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2074&quot;&gt;DBZ-2074&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The &lt;a href=&quot;/documentation/reference/configuration/topic-routing.html&quot;&gt;logical topic routing&lt;/a&gt; SMT can optionally pass through message keys as-is, instead of enriching them with a source topic identifier (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2034&quot;&gt;DBZ-2034&lt;/a&gt;); this is very helpful when uniqueness of keys already is ensured across the different re-routed topics, e.g. when routing change events from the partition tables of a partitioned Postgres table into a single topic&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Debezium&amp;#8217;s &lt;a href=&quot;/documentation/reference/integrations/testcontainers.html&quot;&gt;Testcontainers integration&lt;/a&gt; allows for the usage of custom container images for Kafka Connect now (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2070&quot;&gt;DBZ-2070&lt;/a&gt;), which comes in handy if you want to leverage custom connectors, converters or SMTs in your integration tests.
-For the SQL Server connector it&amp;#8217;s optionally possible now to skip the queries for obtaining LSN timestamps
-(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-1988&quot;&gt;DBZ-1988&lt;/a&gt;).
-This can help to signficantly increase through-put of the connector.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Several fixes relate to the MySQL DDL parser,
-e.g. due to additional DDL capabilities in MySQL 8.0.x (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2080&quot;&gt;DBZ-2080&lt;/a&gt;, &quot;Unable to parse MySQL ALTER statement with named primary key&quot;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2067&quot;&gt;DBZ-2067&lt;/a&gt;; &quot;Error and connector stops when DDL contains algorithm=instant&quot;) and when being used with MariaDB (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2062&quot;&gt;DBZ-2062&lt;/a&gt;, &quot;DDL statement throws error if compression keyword contains backticks (``)&quot;).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As always, you can find the complete list of all addressed issues and upgrading procedures in the &lt;a href=&quot;/releases/1.2/release-notes/#release-1.2.0-beta2&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Many thanks to all the community members contributing to this release:
-&lt;a href=&quot;https://github.com/insom&quot;&gt;Aaron Brady&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bradengroom&quot;&gt;Braden Groom&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/gergof&quot;&gt;Fándly Gergő&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/grantcooksey&quot;&gt;Grant Cooksey&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jgao54&quot;&gt;Joy Gao&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jantpedraza&quot;&gt;Juan Antonio Pedraza&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/kaplanmaxe&quot;&gt;Max Kaplan&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/crazy-2020&quot;&gt;Xuan Shen&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="testcontainers" /><category term="debezium-server" /><summary type="html">I&amp;#8217;m very happy to share the news that Debezium 1.2.0.Beta2 has been released! Core feature of this release is Debezium Server, a dedicated stand-alone runtime for Debezium, opening up its open-source change data capture capabilities towards messaging infrastructure like Amazon Kinesis. Overall, the community has fixed 25 issues since the Beta1 release, some of which we&amp;#8217;re going to explore in more depth in the remainder of this post.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="testcontainers" /><category term="debezium-server" /><summary type="html">I am happy to announce the release of Debezium 1.2.1.Final! This release includes several bug fixes to different Debezium connectors, and we highly recommend the upgrade from 1.2.0.Final and earlier versions: The Debezium Postgres connector may have missed events from concurrent transactions when transitioning from snapshotting to streaming events from the WAL (DBZ-2288); this is fixed now when using the exported snapshotting mode; this mode should preferably be used, and for Debezium 1.3 we&amp;#8217;re planning for this to be the basis for all the existing snapshotting modes The Postgres JDBC driver got upgraded to 42.2.14 (DBZ-2317), which fixes a CVE in the driver related to processing XML column values sourced from untrusted XML input The Debezium MySQL connector MariaDB&amp;#8217;s supports ALTER TABLE statements with IF EXISTS (DBZ-2219); it also handles single dimension DECIMAL columns in CAST expressions (DBZ-2305) The MySQL connector automatically filters out specific DML binlog entries from internal tables when using it with Amazon RDS (DBZ-2275) The Debezium MongoDB connector got more resilient against connection losses (DBZ-2141)</summary></entry></feed>

@@ -15,7 +15,7 @@
   <meta content="https://debezium.io/assets/images/color_white_debezium_type_600px.svg" property="og:image">
   
   <meta property="og:description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong."> 
-  <meta property="og:url" content="https://debezium.io/blog/2020/12/16/ditributed-tracing/"> 
+  <meta property="og:url" content="https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/"> 
   <meta name="twitter:site" content="@debezium ‏">
   <meta name="twitter:title" content="Distributed Tracing with Debezium">
   
@@ -25,7 +25,7 @@
   <meta name="twitter:description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.">
   
   <meta name="twitter:card"  content="summary_large_image">
-  <meta property="twitter:url" content="https://debezium.io/blog/2020/12/16/ditributed-tracing/"> 
+  <meta property="twitter:url" content="https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/"> 
   
   <link rel="alternate" type="application/rss+xml" title="Debezium Blog" href="/blog.atom">
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" >
@@ -127,6 +127,12 @@
     <div class="featured-posts">
       <div id="#featured" style="margin-bottom: 4px; border-bottom: 1px solid #ccc; font-size: 115%; margin-left: 2px;">Featured Posts</div>
         <ul style="padding-inline-start: 22px;">
+          
+            
+          
+            
+          
+            
           
             
           
@@ -483,7 +489,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/cassandra/" style="font-size: 130%">
+            <a href="/tag/cassandra/" style="font-size: 134%">
               cassandra
             </a>
           </span>
@@ -501,7 +507,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/db2/" style="font-size: 110%">
+            <a href="/tag/db2/" style="font-size: 114%">
               db2
             </a>
           </span>
@@ -513,7 +519,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/discussion/" style="font-size: 112%">
+            <a href="/tag/discussion/" style="font-size: 114%">
               discussion
             </a>
           </span>
@@ -621,13 +627,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mongodb/" style="font-size: 184%">
+            <a href="/tag/mongodb/" style="font-size: 186%">
               mongodb
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mysql/" style="font-size: 248%">
+            <a href="/tag/mysql/" style="font-size: 252%">
               mysql
             </a>
           </span>
@@ -645,19 +651,19 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/oracle/" style="font-size: 146%">
+            <a href="/tag/oracle/" style="font-size: 150%">
               oracle
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/outbox/" style="font-size: 98%">
+            <a href="/tag/outbox/" style="font-size: 100%">
               outbox
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/postgres/" style="font-size: 218%">
+            <a href="/tag/postgres/" style="font-size: 222%">
               postgres
             </a>
           </span>
@@ -687,7 +693,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/releases/" style="font-size: 232%">
+            <a href="/tag/releases/" style="font-size: 236%">
               releases
             </a>
           </span>
@@ -729,7 +735,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/sqlserver/" style="font-size: 166%">
+            <a href="/tag/sqlserver/" style="font-size: 170%">
               sqlserver
             </a>
           </span>
@@ -759,7 +765,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/vitess/" style="font-size: 92%">
+            <a href="/tag/vitess/" style="font-size: 96%">
               vitess
             </a>
           </span>
@@ -803,13 +809,13 @@
                 class="hidden-sm hidden-xs"
                 style="font-size: 2.75rem; line-height: 1"
               >
-                <a href="/blog/2020/12/16/ditributed-tracing/">Distributed Tracing with Debezium</a>
+                <a href="/blog/2020/12/16/distributed-tracing-with-debezium/">Distributed Tracing with Debezium</a>
               </span>
               <span
                 class="hidden-md hidden-lg"
                 style="font-size: 2rem; line-height: 1"
               >
-                <a href="/blog/2020/12/16/ditributed-tracing/">Distributed Tracing with Debezium</a>
+                <a href="/blog/2020/12/16/distributed-tracing-with-debezium/">Distributed Tracing with Debezium</a>
               </span>
               <div class="byline" style="line-height: 1">
                 
@@ -840,15 +846,15 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>The current pattern in application development gravitates toward microservices and microservices architecture.
-While this approach gives the developer teams great flexibility in independent deployment and development velocity the drawback is at hand when you try to track a bug in production.</p>
+While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production.</p>
 </div>
 <div class="paragraph">
-<p>Monolithic applications sit nicely at a single place so you can introspect the code-flows and their runtime state.
-This is a problem with microservice architecture as a single business transaction can span across tens of services deployed in separate processes and nodes.</p>
+<p>Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&#8217;s runtime state.
+This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes.</p>
 </div>
 <div class="paragraph">
-<p>You can rely on traditional methods like logging where you need to collect and correlate logs at a single place so you can try to reconstruct the business transaction path.
-This is one of the tool in the toolbox we need to use but it still can be crude and it will not provide the necessary context.
+<p>You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path.
+This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context.
 <a href="https://microservices.io/patterns/observability/distributed-tracing.html">Distributed Tracing</a> comes here to the rescue.</p>
 </div>
 </div>
@@ -857,8 +863,16 @@ This is one of the tool in the toolbox we need to use but it still can be crude 
 <h2 id="distributed-tracing">Distributed Tracing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like who, what,  and where.
-A developer can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problem in deployment (services unavailability) or even a bug.</p>
+<p>Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like "who", "what", and "where".
+SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs.</p>
+</div>
+<div class="paragraph">
+<p>And this is where Debezium becomes part of the picture.
+Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into.
+How long does it take for change events to flow from source database to sink systems?
+Where is the most time spent in the pipeline?
+Are there any anomalies like spikes in end-to-end lags?
+The integration of distributed tracing with Debezium can help to answer these questions.</p>
 </div>
 </div>
 </div>
@@ -866,7 +880,7 @@ A developer can then use it to browse through the recorded executions and check 
 <h2 id="opentracing">OpenTracing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are multiple solutions for distributed tracing but we have decided to follow and use open standard specification <a href="https://opentracing.io/">OpenTracing</a>.
+<p>There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the <a href="https://opentracing.io/">OpenTracing</a> specification.
 OpenTracing is an incubating project of <a href="https://www.cncf.io/">Cloud Native Computing Foundation</a> which guarantees that the user will be free of any vendor lock-in by adhering to an open standard.</p>
 </div>
 <div class="admonitionblock note">
@@ -877,8 +891,9 @@ OpenTracing is an incubating project of <a href="https://www.cncf.io/">Cloud Nat
 </td>
 <td class="content">
 <div class="paragraph">
-<p>OpenTracing project will in future be replaced with an improved <a href="https://opentelemetry.io/">OpenTelemtry</a> standard.
-Debezium will use it in the future too.</p>
+<p>The OpenTracing project is in the process of being merged with OpenCensus to the improved <a href="https://opentelemetry.io/">OpenTelemetry</a> standard.
+Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus),
+but it will use and support OpenTelemetry in the future, too.</p>
 </div>
 </td>
 </tr>
@@ -890,13 +905,13 @@ Each span represents a logical unit of work executed.
 The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span.</p>
 </div>
 <div class="paragraph">
-<p>OpenTracing is only the specification.
-To use it you need to have an implementation too.
-Debezium could use any OpenTracing client implementation but examples and documentation is based on <a href="https://www.jaegertracing.io/">Jaeger</a> distributed tracing.</p>
+<p>OpenTracing is only the specification and the instrumentation API.
+To use it you need to have an implementation, too.
+While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the <a href="https://www.jaegertracing.io/">Jaeger</a> distributed tracing platform.</p>
 </div>
 <div class="paragraph">
-<p>Jaeger consists of multiple components responsible for data collection and storage and also a graphical user interface available as a web application.
-<a href="https://www.jaegertracing.io/docs/1.21/getting-started/#all-in-one">All In One</a> container image will be used to simplify the deployment.</p>
+<p>Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application.
+The Jaeger <a href="https://www.jaegertracing.io/docs/1.21/getting-started/#all-in-one">All-In-One</a> container image will be used to simplify the deployment.</p>
 </div>
 </div>
 </div>
@@ -904,74 +919,74 @@ Debezium could use any OpenTracing client implementation but examples and docume
 <h2 id="debezium-and-opentracing">Debezium and OpenTracing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Debezium integration with OpenTracing consists of three distinct components</p>
+<p>The Debezium integration with OpenTracing consists of three distinct components:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>EventDispatcher</code> in Debezium outbox extension</p>
-</li>
-<li>
-<p><code>EventRouter</code> SMT</p>
-</li>
-<li>
 <p><code>ActivateTracingSpan</code> SMT</p>
+</li>
+<li>
+<p><code>EventDispatcher</code> in the <a href="/documentation/reference/integrations/outbox.html">Debezium outbox extension</a> for Quarkus applications</p>
+</li>
+<li>
+<p><code>EventRouter</code> <a href="/documentation/reference/configuration/outbox-event-router.html">SMT</a></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The first two must be used hand-in-hand when a service using the outbox pattern should be traced.
-The third one is intended for general use.</p>
+<p>The first one is intended for general use.
+The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced.</p>
 </div>
 <div class="sect2">
 <h3 id="outbox-distributed-tracing">Outbox Distributed Tracing</h3>
 <div class="paragraph">
-<p>The biggest problem with tracing integration is keeping the trace across process boundaries so the additional spans are recorded in the same trace to enable end-to-end tracing.
-Opentracing specification provides a way how to export and import trace related metadata so the trace could be passed among different processes.
-In the outbox extension we use this approach to export the metadata into a new database column in the outbox table and then event router SMT imports them and resumes the trace.</p>
+<p>The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing.
+The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes.</p>
 </div>
 <div class="paragraph">
-<p>In each of the steps executed one or more spans are created</p>
+<p>In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>When an event arrives at <code>EventDispatcher</code> a new span <code>outbox-write</code> is created.
-It is created as a child of a current active span or as a root span if no parent span is available.</p>
+It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available.</p>
 </li>
 <li>
 <p>The span metadata is exported into a distinct field of the outbox event.</p>
 </li>
 <li>
-<p>Outbox event is written to and deleted from the outbox table.</p>
+<p>The outbox event is written to the outbox table.</p>
 </li>
 <li>
-<p>Event Router SMT receives the event and imports the span metadata from the field</p>
+<p>The Event Router SMT receives the event and imports the span metadata from the field</p>
 </li>
 <li>
 <p>Two new spans are created</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>db-log-write</code> with start timestamp to database write timestamp.
-Fields from the <code>source</code> block are added to the span as <strong>tags</strong>.</p>
+<p><code>db-log-write</code> with its start timestamp set to database write timestamp.
+The fields from the <code>source</code> block are added to the span as <strong>tags</strong>.</p>
 </li>
 <li>
-<p><code>debezium-read</code> with start time set to the processing timestamp.
+<p><code>debezium-read</code> with its start time set to the processing timestamp.
 Fields from the envelope are added to the span as <strong>tags</strong>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Optionally if OpenTracing integration is enabled at the Kafka producer level a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata.</p>
+<p>Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="demo">Demo</h4>
 <div class="paragraph">
-<p>The <a href="https://github.com/debezium/debezium-examples/tree/master/outbox">outbox example</a> was extended with distributed tracing support to demonstrate the functionality.</p>
+<p>The <a href="https://github.com/debezium/debezium-examples/tree/master/outbox">outbox example</a> was extended with distributed tracing support to demonstrate the functionality.
+This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -981,7 +996,7 @@ Fields from the envelope are added to the span as <strong>tags</strong>.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This demo uses <a href="https://strimzi.io/">Strimzi</a> container image for Kafka Connect as it already contains baked-in integration of OpenTracing at Kafka producer level.</p>
+<p>This demo uses the <a href="https://strimzi.io/">Strimzi</a> container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level.</p>
 </div>
 </td>
 </tr>
@@ -993,7 +1008,7 @@ Fields from the envelope are added to the span as <strong>tags</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>checkout the repository and switch to the <code>outbox</code> directory</p>
+<p>check out the repository and switch to the <code>outbox</code> directory</p>
 </li>
 <li>
 <p>build the services</p>
@@ -1008,7 +1023,7 @@ Fields from the envelope are added to the span as <strong>tags</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>deploy application</p>
+<p>deploy the application</p>
 </li>
 </ul>
 </div>
@@ -1021,7 +1036,7 @@ docker-compose up --build</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>register Debezium connector to listen on an outbox table</p>
+<p>register a Debezium connector to listen on the outbox table</p>
 </li>
 </ul>
 </div>
@@ -1058,15 +1073,15 @@ $ http PUT http://localhost:8080/orders/1/lines/2 &lt; resources/data/cancel-ord
     <img src="/assets/images/tracing-tutorial/tracing-main.png" class="responsive-image" alt="Jaeger intro">
 </div>
 <div class="paragraph">
-<p>Select <code>order-service</code> service and click on <code>Find Traces</code>.
+<p>Filter on <code>order-service</code> as a service and click on <code>Find Traces</code>.
 Two traces should be available:</p>
 </div>
 <div class="imageblock centered-image">
     <img src="/assets/images/tracing-tutorial/tracing-service.png" class="responsive-image" alt="Service traces">
 </div>
 <div class="paragraph">
-<p>Click on the <code>&#8230;&#8203;addOrder</code> service.
-A tree will open that will display how the initial request incoming via REST API was</p>
+<p>Click on the <code>addOrder</code> service.
+A tree will open that displays how the initial request incoming via REST API was</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1083,7 +1098,7 @@ A tree will open that will display how the initial request incoming via REST API
 <p>read from a Kafka topic by <code>shipment-service</code></p>
 </li>
 <li>
-<p>processed in the multiple <code>shipment-service</code> business methods</p>
+<p>processed in the different <code>shipment-service</code> business methods</p>
 </li>
 </ul>
 </div>
@@ -1091,8 +1106,8 @@ A tree will open that will display how the initial request incoming via REST API
     <img src="/assets/images/tracing-tutorial/tracing-trace.png" class="responsive-image" alt="Service traces">
 </div>
 <div class="paragraph">
-<p>Click on <code>db-log-write</code> and <code>debezium-read</code> spans.
-The <strong>tags</strong> of each of them contain extracted Debezium related metadata like <code>operation</code> or <code>source</code> fields:</p>
+<p>Click on the <code>db-log-write</code> and <code>debezium-read</code> spans.
+The <strong>tags</strong> of each of them contain extracted Debezium-related metadata like <code>operation</code> or <code>source</code> fields:</p>
 </div>
 <div class="imageblock centered-image">
     <img src="/assets/images/tracing-tutorial/tracing-debezium-details.png" class="responsive-image" alt="Service traces">
@@ -1105,8 +1120,18 @@ The <strong>tags</strong> of each of them contain extracted Debezium related met
 <h2 id="conclusion">Conclusion</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this blogpost, we have discussed what the distributed tracing is and why it is useful to use it.
+<p>In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it.
 We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration.</p>
+</div>
+<div class="paragraph">
+<p>While this example was focused on the specific use case of microservices data exchange via the outbox pattern,
+Debezium integrates with distributed tracing also independently of this particular pattern.
+By means of the <code>ActivateTracingSpan</code> SMT, Debezium can produce spans representing the time of the change in the source database itself,
+as well as the time of processing the event by the Debezium connector.</p>
+</div>
+<div class="paragraph">
+<p>Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases.
+Your feedback on this new functionality is highly welcomed!</p>
 </div>
 </div>
 </div></div>
@@ -1117,22 +1142,22 @@ We have seen how the distributed tracing integration is done at the Debezium lev
 <div class="share-box">
   <h2>Share:</h2>
 
-  <a class="t" href="https://twitter.com/intent/tweet?text=Distributed+Tracing+with+Debezium&via=debezium ‏&url=https%3A%2F%2Fdebezium.io%2Fblog%2F2020%2F12%2F16%2Fditributed-tracing%2F"
+  <a class="t" href="https://twitter.com/intent/tweet?text=Distributed+Tracing+with+Debezium&via=debezium ‏&url=https%3A%2F%2Fdebezium.io%2Fblog%2F2020%2F12%2F16%2Fdistributed-tracing-with-debezium%2F"
   onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
   title="Share on Twitter">
   <i class="fa fa-twitter fa"></i><span> twitter</span>
   </a>
 
-  <a class="f" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdebezium.io%2Fblog%2F2020%2F12%2F16%2Fditributed-tracing%2F" onclick="window.open(this.href, 'debezium',
+  <a class="f" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdebezium.io%2Fblog%2F2020%2F12%2F16%2Fdistributed-tracing-with-debezium%2F" onclick="window.open(this.href, 'debezium',
   'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fa fa-facebook-official fa"></i><span> facebook</span></a>
   
-  <a class="l" href="https://www.linkedin.com/shareArticle?mini=true&url=https://debezium.io/blog/2020/12/16/ditributed-tracing/" onclick="window.open(this.href, 'debezium',
+  <a class="l" href="https://www.linkedin.com/shareArticle?mini=true&url=https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/" onclick="window.open(this.href, 'debezium',
   'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Linkedin"><i class="fa fa-linkedin fa"></i><span> linkedin</span></a>
 
-  <a class="r" href="http://www.reddit.com/submit?url=https://debezium.io/blog/2020/12/16/ditributed-tracing/}&title=Distributed Tracing with Debezium" onclick="window.open(this.href, 'debezium',
+  <a class="r" href="http://www.reddit.com/submit?url=https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/}&title=Distributed Tracing with Debezium" onclick="window.open(this.href, 'debezium',
   'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Reddit"><i class="fa fa-reddit fa"></i><span> reddit</span></a>
 
-  <a class="e" href="mailto:?subject=Distributed Tracing with Debezium&body=Check out this site https://debezium.io/blog/2020/12/16/ditributed-tracing/" title="Share via Email"><i class="fa fa-envelope fa"></i><span> email</span></a>          
+  <a class="e" href="mailto:?subject=Distributed Tracing with Debezium&body=Check out this site https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/" title="Share via Email"><i class="fa fa-envelope fa"></i><span> email</span></a>          
 
 </div>
       </div>
@@ -1188,7 +1213,7 @@ We have seen how the distributed tracing integration is done at the Debezium lev
         </li>
                 
         
-          <li class="next disabled"><a href="">Next &raquo; </a></li>
+        <li class="next"><a href="/blog/2020/12/17/debezium-1-4-cr1-released/">Next &raquo; </a></li>
         
       </ul>
     
