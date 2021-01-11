@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.">
-  
+
   <meta content="Debezium" property="og:site_name">
   
   <meta content="Hello Debezium Team!" property="og:title">
@@ -26,11 +26,12 @@
   
   <meta name="twitter:card"  content="summary_large_image">
   <meta property="twitter:url" content="https://debezium.io/blog/2020/07/28/hello-debezium/"> 
-  
+
   <link rel="alternate" type="application/rss+xml" title="Debezium Blog" href="/blog.atom">
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" >
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/assets/css/custom.css" />
+  
   
 </head>
 
@@ -902,32 +903,19 @@ my work to support Debezium and the Debezium community now!</p>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<div class="share-box">
-  <h2>Share:</h2>
-
-  <a class="t" href="https://twitter.com/intent/tweet?text=Hello+Debezium+Team%21&via=debezium ‏&url=https%3A%2F%2Fdebezium.io%2Fblog%2F2020%2F07%2F28%2Fhello-debezium%2F"
-  onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
-  title="Share on Twitter">
-  <i class="fa fa-twitter fa"></i><span> twitter</span>
-  </a>
-
-  <a class="f" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdebezium.io%2Fblog%2F2020%2F07%2F28%2Fhello-debezium%2F" onclick="window.open(this.href, 'debezium',
-  'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fa fa-facebook-official fa"></i><span> facebook</span></a>
-  
-  <a class="l" href="https://www.linkedin.com/shareArticle?mini=true&url=https://debezium.io/blog/2020/07/28/hello-debezium/" onclick="window.open(this.href, 'debezium',
-  'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Linkedin"><i class="fa fa-linkedin fa"></i><span> linkedin</span></a>
-
-  <a class="r" href="http://www.reddit.com/submit?url=https://debezium.io/blog/2020/07/28/hello-debezium/}&title=Hello Debezium Team!" onclick="window.open(this.href, 'debezium',
-  'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Reddit"><i class="fa fa-reddit fa"></i><span> reddit</span></a>
-
-  <a class="e" href="mailto:?subject=Hello Debezium Team!&body=Check out this site https://debezium.io/blog/2020/07/28/hello-debezium/" title="Share via Email"><i class="fa fa-envelope fa"></i><span> email</span></a>          
-
+        <div class="share-box">
+  <h3>Share:</h3>
+  <div 
+    data-social-share-privacy='true'
+    data-options='{
+      "order"    : ["fbshare", "twitter", "linkedin"]
+    }'
+  ></div>
 </div>
+
       </div>
     </div>
     
-   
       
       
       <div class="well">
@@ -1009,7 +997,6 @@ my work to support Debezium and the Debezium community now!</p>
         </p>
       </div>
     </div>
-    
     
   </div>
 </div>
@@ -1108,11 +1095,44 @@ my work to support Debezium and the Debezium community now!</p>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
-  <script>
-    addBackToTop({
-      scrollDuration: 400
-    })
+  <script type="text/javascript" src="/assets/javascript/jquery.cookies.js"></script>
+  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
+  <script type="application/x-social-share-privacy-settings">
+    {
+      "path_prefix":"/assets/socialshare/",
+      "layout":"line",
+      "services": {
+        "buffer": {
+            "status": false
+        },
+        "delicious": {
+            "status": false
+        },
+        "disqus": {
+            "status": false
+        },
+        "facebook": {
+          "status": false
+        },
+        "flattr": {
+            "status": false
+        },
+        "gplus": {
+            "status": false
+        },
+        "hackernews": {
+            "status": false
+        },
+        "pinterest": {
+            "status": false
+        },
+        "xing": {
+            "status": false
+        }
+      }
+    }
   </script>
+  <script> addBackToTop({ scrollDuration: 400 })</script>
 </body>
 
 </html>
