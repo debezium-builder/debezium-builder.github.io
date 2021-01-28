@@ -867,7 +867,7 @@ The result of this exercise should be similar to the recent <a href="/blog/2018/
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="entity-diagram">Entity diagram</h2>
+<h2 id="entity_diagram">Entity diagram</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>First let&#8217;s look at the entities in the database and the relations between them.</p>
@@ -939,7 +939,7 @@ To do so, clone the <a href="https://github.com/debezium/debezium-examples/">deb
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">export DEBEZIUM_VERSION=0.8
+<pre class="CodeRay highlight"><code data-lang="bash">export DEBEZIUM_VERSION=0.8
 git clone https://github.com/debezium/debezium-examples.git
 cd debezium-examples/ksql/
 docker-compose up</code></pre>
@@ -950,27 +950,27 @@ docker-compose up</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @- &lt;&lt;-EOF
+<pre class="CodeRay highlight"><code data-lang="bash">curl -i -X POST -H &quot;Accept:application/json&quot; -H  &quot;Content-Type:application/json&quot; http://localhost:8083/connectors/ -d @- &lt;&lt;-EOF
 {
-    "name": "inventory-connector",
-    "config": {
-        "connector.class": "io.debezium.connector.mysql.MySqlConnector",
-        "tasks.max": "1",
-        "database.hostname": "mysql",
-        "database.port": "3306",
-        "database.user": "debezium",
-        "database.password": "dbz",
-        "database.server.id": "184055",
-        "database.server.name": "dbserver",
-        "database.whitelist": "inventory",
-        "database.history.kafka.bootstrap.servers": "kafka:9092",
-        "database.history.kafka.topic": "schema-changes.inventory",
-        "transforms": "unwrap",
-        "transforms.unwrap.type": "io.debezium.transforms.UnwrapFromEnvelope",
-        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-        "key.converter.schemas.enable": "false",
-        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-        "value.converter.schemas.enable": "false"
+    &quot;name&quot;: &quot;inventory-connector&quot;,
+    &quot;config&quot;: {
+        &quot;connector.class&quot;: &quot;io.debezium.connector.mysql.MySqlConnector&quot;,
+        &quot;tasks.max&quot;: &quot;1&quot;,
+        &quot;database.hostname&quot;: &quot;mysql&quot;,
+        &quot;database.port&quot;: &quot;3306&quot;,
+        &quot;database.user&quot;: &quot;debezium&quot;,
+        &quot;database.password&quot;: &quot;dbz&quot;,
+        &quot;database.server.id&quot;: &quot;184055&quot;,
+        &quot;database.server.name&quot;: &quot;dbserver&quot;,
+        &quot;database.whitelist&quot;: &quot;inventory&quot;,
+        &quot;database.history.kafka.bootstrap.servers&quot;: &quot;kafka:9092&quot;,
+        &quot;database.history.kafka.topic&quot;: &quot;schema-changes.inventory&quot;,
+        &quot;transforms&quot;: &quot;unwrap&quot;,
+        &quot;transforms.unwrap.type&quot;: &quot;io.debezium.transforms.UnwrapFromEnvelope&quot;,
+        &quot;key.converter&quot;: &quot;org.apache.kafka.connect.json.JsonConverter&quot;,
+        &quot;key.converter.schemas.enable&quot;: &quot;false&quot;,
+        &quot;value.converter&quot;: &quot;org.apache.kafka.connect.json.JsonConverter&quot;,
+        &quot;value.converter.schemas.enable&quot;: &quot;false&quot;
     }
 }
 EOF</code></pre>
@@ -1003,7 +1003,7 @@ Also please note <code>--net</code> parameter. This guarantees that KSQL contain
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec ksql-cli ksql http://ksql-server:8088</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec ksql-cli ksql http://ksql-server:8088</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1011,7 +1011,7 @@ Also please note <code>--net</code> parameter. This guarantees that KSQL contain
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; LIST TOPICS;
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; LIST TOPICS;
 
  Kafka Topic                         | Registered | Partitions | Partition Replicas
 ------------------------------------------------------------------------------------
@@ -1037,7 +1037,7 @@ We want to process the events already in the topics so we switch processing from
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; SET 'auto.offset.reset' = 'earliest';
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; SET 'auto.offset.reset' = 'earliest';
 Successfully changed local property 'auto.offset.reset' from 'null' to 'earliest'</code></pre>
 </div>
 </div>
@@ -1047,7 +1047,7 @@ A <em>stream</em> in KSQL and Kafka Streams terminology is an unbounded incoming
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; CREATE STREAM orders_from_debezium (order_number integer, order_date string, purchaser integer, quantity integer, product_id integer) WITH (KAFKA_TOPIC='dbserver.inventory.orders',VALUE_FORMAT='json');
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; CREATE STREAM orders_from_debezium (order_number integer, order_date string, purchaser integer, quantity integer, product_id integer) WITH (KAFKA_TOPIC='dbserver.inventory.orders',VALUE_FORMAT='json');
 
  Message
 ----------------
@@ -1071,7 +1071,7 @@ The repartitioned data are written into a new topic <code>ORDERS_REPART</code>:<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; CREATE STREAM orders WITH (KAFKA_TOPIC='ORDERS_REPART',VALUE_FORMAT='json',PARTITIONS=1) as SELECT * FROM orders_from_debezium PARTITION BY PURCHASER;
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; CREATE STREAM orders WITH (KAFKA_TOPIC='ORDERS_REPART',VALUE_FORMAT='json',PARTITIONS=1) as SELECT * FROM orders_from_debezium PARTITION BY PURCHASER;
 
  Message
 ----------------------------
@@ -1104,7 +1104,7 @@ See <a href="https://github.com/confluentinc/ksql/issues/749">this KSQL issue</a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; CREATE STREAM customers_stream WITH (KAFKA_TOPIC='CUSTOMERS_REPART',VALUE_FORMAT='json',PARTITIONS=1) as SELECT * FROM customers_from_debezium PARTITION BY ID;
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; CREATE STREAM customers_stream WITH (KAFKA_TOPIC='CUSTOMERS_REPART',VALUE_FORMAT='json',PARTITIONS=1) as SELECT * FROM customers_from_debezium PARTITION BY ID;
 
  Message
 ----------------------------
@@ -1123,8 +1123,8 @@ ksql&gt; LIST TOPICS;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; SELECT * FROM orders_from_debezium LIMIT 1;
-1524034842810 | {"order_number":10001} | 10001 | 16816 | 1001 | 1 | 102
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; SELECT * FROM orders_from_debezium LIMIT 1;
+1524034842810 | {&quot;order_number&quot;:10001} | 10001 | 16816 | 1001 | 1 | 102
 LIMIT reached for the partition.
 Query terminated
 ksql&gt; SELECT * FROM orders LIMIT 1;
@@ -1137,7 +1137,7 @@ Query terminated</code></pre>
 <p>The second column contains <code>ROWKEY</code> which is the key of the message.</p>
 </div>
 <div class="sect3">
-<h4 id="customerorder-join">Customer/order join</h4>
+<h4 id="customerorder_join">Customer/order join</h4>
 <div class="paragraph">
 <p>So far we were only declaring streams as an unbounded stateless data set.
 In our use case the <code>order</code> is really an event that comes and goes.
@@ -1147,7 +1147,7 @@ We are going to create a table of customers from the topic containing repartitio
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; CREATE TABLE customers (id integer, first_name string, last_name string, email string) WITH (KAFKA_TOPIC='CUSTOMERS_REPART',VALUE_FORMAT='json',KEY='id');
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; CREATE TABLE customers (id integer, first_name string, last_name string, email string) WITH (KAFKA_TOPIC='CUSTOMERS_REPART',VALUE_FORMAT='json',KEY='id');
 
  Message
 ---------------
@@ -1159,7 +1159,7 @@ We are going to create a table of customers from the topic containing repartitio
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">ksql&gt; SELECT order_number,quantity,customers.first_name,customers.last_name FROM orders left join customers on orders.purchaser=customers.id;
+<pre class="CodeRay highlight"><code data-lang="bash">ksql&gt; SELECT order_number,quantity,customers.first_name,customers.last_name FROM orders left join customers on orders.purchaser=customers.id;
 10001 | 1 | Sally | Thomas
 10002 | 2 | George | Bailey
 10003 | 2 | George | Bailey
@@ -1171,7 +1171,7 @@ We are going to create a table of customers from the topic containing repartitio
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER -p$MYSQL_PASSWORD inventory'
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER -p$MYSQL_PASSWORD inventory'
 
 mysql&gt; INSERT INTO orders VALUES(default,NOW(), 1003,5,101);
 Query OK, 1 row affected, 1 warning (0.02 sec)
@@ -1195,7 +1195,7 @@ We would need a stream/stream join to trigger changes if any of input streams is
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">10001 | 1 | Sally | Thomas
+<pre class="CodeRay highlight"><code data-lang="bash">10001 | 1 | Sally | Thomas
 10002 | 2 | George | Bailey
 10003 | 2 | George | Bailey
 10004 | 1 | Edward | Walker

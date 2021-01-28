@@ -886,7 +886,7 @@ this should be the case within the next few others.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="transaction-markers">Transaction Markers</h2>
+<h2 id="transaction_markers">Transaction Markers</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A common requirements for Debezium users is to materialize some kind of "aggregate" made up of change events from multiple change data topics.</p>
@@ -917,25 +917,25 @@ a separate topic will be published which contains events indicating the begin an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "status": "BEGIN",
-  "id": "571",
-  "event_count": null,
-  "data_collections": null
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">status</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">BEGIN</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">571</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">event_count</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">data_collections</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
 }
-...
+<span class="error">.</span><span class="error">.</span><span class="error">.</span>
 {
-  "status": "END",
-  "id": "571",
-  "event_count": "11",
-  "data_collections": [
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">status</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">END</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">571</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">event_count</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">11</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">data_collections</span><span class="delimiter">&quot;</span></span>: [
     {
-      "data_collection": "inventory.purchaseorder",
-      "event_count": "1"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">data_collection</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory.purchaseorder</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">event_count</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>
     },
     {
-      "data_collection": "inventory.orderline",
-      "event_count": "10"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">data_collection</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory.orderline</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">event_count</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">10</span><span class="delimiter">&quot;</span></span>
     }
   ]
 }</code></pre>
@@ -954,7 +954,7 @@ avoiding the issue of exposing intermediary aggregate views.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="ibm-db2-connector">IBM Db2 Connector</h2>
+<h2 id="ibm_db2_connector">IBM Db2 Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Support for the <a href="https://www.ibm.com/products/db2-database">IBM Db2</a> database has been on
@@ -971,7 +971,7 @@ in the mean time please refer to the connector <a href="https://debezium.io/docu
 </div>
 </div>
 <div class="sect1">
-<h2 id="further-changes-and-bugfixes">Further Changes and Bugfixes</h2>
+<h2 id="further_changes_and_bugfixes">Further Changes and Bugfixes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Besides the transaction metadata topic and the Db2 connector, a few more improvements and fixes have been completed for Debezium 1.1 Beta1:</p>

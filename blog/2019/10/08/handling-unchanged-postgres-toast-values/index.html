@@ -891,12 +891,12 @@ but that value can be overridden using the <code>toasted.value.placeholder</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">CREATE TABLE customers (
-  id SERIAL NOT NULL PRIMARY KEY,
-  first_name VARCHAR(255) NOT NULL,
-  last_name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  biography TEXT
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="class">CREATE</span> <span class="type">TABLE</span> customers (
+  id SERIAL <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span> <span class="directive">PRIMARY</span> <span class="type">KEY</span>,
+  first_name <span class="predefined-type">VARCHAR</span>(<span class="integer">255</span>) <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span>,
+  last_name <span class="predefined-type">VARCHAR</span>(<span class="integer">255</span>) <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span>,
+  email <span class="predefined-type">VARCHAR</span>(<span class="integer">255</span>) <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span> <span class="directive">UNIQUE</span>,
+  biography <span class="predefined-type">TEXT</span>
 );</code></pre>
 </div>
 </div>
@@ -908,30 +908,30 @@ you might receive a data change event in Apache Kafka which looks like this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "before": null,
-  "after": {
-    "id": 1004,
-    "first_name": "Dana",
-    "last_name": "Kretchmar",
-    "email": "annek@noanswer.org",
-    "biography": "__debezium_unavailable_value"
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">before</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1004</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Dana</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kretchmar</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">annek@noanswer.org</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">__debezium_unavailable_value</span><span class="delimiter">&quot;</span></span>
   },
-  "source": {
-    "version": "0.10.0.Final",
-    "connector": "postgresql",
-    "name": "dbserver1",
-    "ts_ms": 1570448151151,
-    "snapshot": "false",
-    "db": "sourcedb",
-    "schema": "inventory",
-    "table": "customers",
-    "txId": 627,
-    "lsn": 34650016,
-    "xmin": null
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.10.0.Final</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">connector</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">postgresql</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1570448151151</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">snapshot</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">db</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sourcedb</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">txId</span><span class="delimiter">&quot;</span></span>: <span class="integer">627</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">lsn</span><span class="delimiter">&quot;</span></span>: <span class="integer">34650016</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">xmin</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
   },
-  "op": "u",
-  "ts_ms": 1570448151611
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">u</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1570448151611</span>
 }</code></pre>
 </div>
 </div>
@@ -946,7 +946,7 @@ This can be achieved by using a "replica identity" of <code>FULL</code> for the 
 Alternatively, the replica identity can be based on an index which comprises the TOAST-able column.</p>
 </div>
 <div class="sect1">
-<h2 id="excluding-unchanged-values">Excluding Unchanged Values</h2>
+<h2 id="excluding_unchanged_values">Excluding Unchanged Values</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If changing the source table&#8217;s replica identity is not an option,
@@ -970,24 +970,24 @@ The following shows an example of such a trigger in Postgres:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">CREATE OR REPLACE FUNCTION ignore_unchanged_biography()
-  RETURNS TRIGGER AS
-$BODY$
-BEGIN
-  IF NEW."biography" = '__debezium_unavailable_value'
-  THEN
-    NEW."biography" = OLD."biography";
-  END IF;
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="class">CREATE</span> <span class="keyword">OR</span> <span class="class">REPLACE</span> <span class="type">FUNCTION</span> ignore_unchanged_biography()
+  RETURNS <span class="type">TRIGGER</span> <span class="keyword">AS</span>
+<span class="error">$</span>BODY$
+<span class="class">BEGIN</span>
+  <span class="keyword">IF</span> NEW.<span class="string"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span> = <span class="string"><span class="delimiter">'</span><span class="content">__debezium_unavailable_value</span><span class="delimiter">'</span></span>
+  <span class="keyword">THEN</span>
+    NEW.<span class="string"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span> = OLD.<span class="string"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span>;
+  <span class="keyword">END</span> <span class="keyword">IF</span>;
 
-  RETURN NEW;
-END;
-$BODY$ LANGUAGE PLPGSQL;
+  <span class="directive">RETURN</span> NEW;
+<span class="keyword">END</span>;
+<span class="error">$</span>BODY$ LANGUAGE PLPGSQL;
 
-CREATE TRIGGER customer_biography_trigger
-BEFORE UPDATE OF "biography"
-  ON customers
-FOR EACH ROW
-EXECUTE PROCEDURE ignore_unchanged_biography();</code></pre>
+<span class="class">CREATE</span> <span class="type">TRIGGER</span> customer_biography_trigger
+<span class="keyword">BEFORE</span> <span class="class">UPDATE</span> <span class="keyword">OF</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">ON</span> customers
+<span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="type">ROW</span>
+EXECUTE <span class="type">PROCEDURE</span> ignore_unchanged_biography();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -996,7 +996,7 @@ EXECUTE PROCEDURE ignore_unchanged_biography();</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="stateful-stream-processing">Stateful Stream Processing</h2>
+<h2 id="stateful_stream_processing">Stateful Stream Processing</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>An alternative approach to dealing with unchanged TOAST column values is a stateful stream processing application.</p>
@@ -1018,71 +1018,71 @@ a solution could look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class TopologyProducer {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">TopologyProducer</span> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TopologyProducer.class);
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOG = LoggerFactory.getLogger(TopologyProducer.class);
 
-    static final String BIOGRAPHY_STORE = "biography-store";
+    <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> BIOGRAPHY_STORE = <span class="string"><span class="delimiter">&quot;</span><span class="content">biography-store</span><span class="delimiter">&quot;</span></span>;
 
-    @ConfigProperty(name = "pgtoast.customers.topic")
-    String customersTopic;
+    <span class="annotation">@ConfigProperty</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">pgtoast.customers.topic</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> customersTopic;
 
-    @ConfigProperty(name = "pgtoast.customers.enriched.topic")
-    String customersEnrichedTopic;
+    <span class="annotation">@ConfigProperty</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">pgtoast.customers.enriched.topic</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> customersEnrichedTopic;
 
-    @Produces
-    public Topology buildTopology() {
-        StreamsBuilder builder = new StreamsBuilder();
+    <span class="annotation">@Produces</span>
+    <span class="directive">public</span> Topology buildTopology() {
+        StreamsBuilder builder = <span class="keyword">new</span> StreamsBuilder();
 
-        StoreBuilder&lt;KeyValueStore&lt;JsonObject, String&gt;&gt; biographyStore = // <b class="conum">(1)</b>
+        StoreBuilder&lt;KeyValueStore&lt;JsonObject, <span class="predefined-type">String</span>&gt;&gt; biographyStore = <i class="conum" data-value="1"></i><b>(1)</b>
                 Stores.keyValueStoreBuilder(
                     Stores.persistentKeyValueStore(BIOGRAPHY_STORE),
-                    new JsonObjectSerde(),
-                    new Serdes.StringSerde()
+                    <span class="keyword">new</span> JsonObjectSerde(),
+                    <span class="keyword">new</span> Serdes.StringSerde()
                 );
         builder.addStateStore(biographyStore);
 
-        builder.&lt;JsonObject, JsonObject&gt;stream(customersTopic) // <b class="conum">(2)</b>
-                .transformValues(ToastColumnValueProvider::new, BIOGRAPHY_STORE)
+        builder.&lt;JsonObject, JsonObject&gt;stream(customersTopic) <i class="conum" data-value="2"></i><b>(2)</b>
+                .transformValues(ToastColumnValueProvider::<span class="keyword">new</span>, BIOGRAPHY_STORE)
                 .to(customersEnrichedTopic);
 
-        return builder.build();
+        <span class="keyword">return</span> builder.build();
     }
 
-    class ToastColumnValueProvider implements
+    <span class="type">class</span> <span class="class">ToastColumnValueProvider</span> <span class="directive">implements</span>
             ValueTransformerWithKey&lt;JsonObject, JsonObject, JsonObject&gt; {
 
-        private KeyValueStore&lt;JsonObject, String&gt; biographyStore;
+        <span class="directive">private</span> KeyValueStore&lt;JsonObject, <span class="predefined-type">String</span>&gt; biographyStore;
 
-        @Override
-        @SuppressWarnings("unchecked")
-        public void init(ProcessorContext context) {
-            biographyStore = (KeyValueStore&lt;JsonObject, String&gt;) context.getStateStore(
+        <span class="annotation">@Override</span>
+        <span class="annotation">@SuppressWarnings</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">unchecked</span><span class="delimiter">&quot;</span></span>)
+        <span class="directive">public</span> <span class="type">void</span> init(ProcessorContext context) {
+            biographyStore = (KeyValueStore&lt;JsonObject, <span class="predefined-type">String</span>&gt;) context.getStateStore(
                 TopologyProducer.BIOGRAPHY_STORE);
         }
 
-        @Override
-        public JsonObject transform(JsonObject key, JsonObject value) {
-            JsonObject payload = value.getJsonObject("payload");
-            JsonObject newRowState = payload.getJsonObject("after");
-            String biography = newRowState.getString("biography");
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> JsonObject transform(JsonObject key, JsonObject value) {
+            JsonObject payload = value.getJsonObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>);
+            JsonObject newRowState = payload.getJsonObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>);
+            <span class="predefined-type">String</span> biography = newRowState.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span>);
 
-            if (isUnavailableValueMarker(biography)) { // <b class="conum">(3)</b>
-                String currentValue = biographyStore.get(key); // <b class="conum">(4)</b>
+            <span class="keyword">if</span> (isUnavailableValueMarker(biography)) { <i class="conum" data-value="3"></i><b>(3)</b>
+                <span class="predefined-type">String</span> currentValue = biographyStore.get(key); <i class="conum" data-value="4"></i><b>(4)</b>
 
-                if (currentValue == null) {
-                    LOG.warn("No biography value found for key '{}'", key);
+                <span class="keyword">if</span> (currentValue == <span class="predefined-constant">null</span>) {
+                    LOG.warn(<span class="string"><span class="delimiter">&quot;</span><span class="content">No biography value found for key '{}'</span><span class="delimiter">&quot;</span></span>, key);
                 }
-                else {
-                    value = Json.createObjectBuilder(value) // <b class="conum">(5)</b>
+                <span class="keyword">else</span> {
+                    value = Json.createObjectBuilder(value) <i class="conum" data-value="5"></i><b>(5)</b>
                         .add(
-                            "payload",
+                            <span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>,
                             Json.createObjectBuilder(payload)
                                 .add(
-                                    "after",
+                                    <span class="string"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>,
                                     Json.createObjectBuilder(newRowState).add(
-                                        "biography",
+                                        <span class="string"><span class="delimiter">&quot;</span><span class="content">biography</span><span class="delimiter">&quot;</span></span>,
                                         currentValue
                                     )
                                 )
@@ -1090,45 +1090,51 @@ public class TopologyProducer {
                         .build();
                 }
             }
-            else { // <b class="conum">(6)</b>
+            <span class="keyword">else</span> { <i class="conum" data-value="6"></i><b>(6)</b>
                 biographyStore.put(key, biography);
             }
 
-            return value;
+            <span class="keyword">return</span> value;
         }
 
-        private boolean isUnavailableValueMarker(String value) {
-            return "__debezium_unavailable_value".contentEquals(value);
+        <span class="directive">private</span> <span class="type">boolean</span> isUnavailableValueMarker(<span class="predefined-type">String</span> value) {
+            <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">__debezium_unavailable_value</span><span class="delimiter">&quot;</span></span>.contentEquals(value);
         }
 
-        @Override
-        public void close() {
+        <span class="annotation">@Override</span>
+        <span class="directive">public</span> <span class="type">void</span> close() {
         }
     }
 }</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>Set up a state store for storing the latest <code>biography</code> value per customer id</p>
-</li>
-<li>
-<p>The actual streaming pipeline: for each message on the customers topic, apply the logic for replacing the TOAST column marker value and write the transformed message to an output topic</p>
-</li>
-<li>
-<p>Check whether the <code>biography</code> value from the incoming message is the marker</p>
-</li>
-<li>
-<p>If so, get the current <code>biography</code> value for the customer from the state store</p>
-</li>
-<li>
-<p>Replace the marker value with the actual value obtained from the state store</p>
-</li>
-<li>
-<p>If the incoming message has an actual <code>biography</code> value, put this to the state store</p>
-</li>
-</ol>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Set up a state store for storing the latest <code>biography</code> value per customer id</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The actual streaming pipeline: for each message on the customers topic, apply the logic for replacing the TOAST column marker value and write the transformed message to an output topic</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Check whether the <code>biography</code> value from the incoming message is the marker</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>If so, get the current <code>biography</code> value for the customer from the state store</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Replace the marker value with the actual value obtained from the state store</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>If the incoming message has an actual <code>biography</code> value, put this to the state store</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Now, if a consumer subscribes to the "enriched" topic,
@@ -1141,7 +1147,7 @@ is fully transparent at that point.</p>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Primary Key Changes</div>
@@ -1162,7 +1168,7 @@ let us know if you&#8217;d like to contribute and implement this feature.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="when-to-use-what">When to Use What?</h2>
+<h2 id="when_to_use_what">When to Use What?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;ve discussed different options for dealing with unchanged TOAST column values in Debezium&#8217;s data change events.

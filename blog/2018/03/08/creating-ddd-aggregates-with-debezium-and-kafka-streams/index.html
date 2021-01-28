@@ -882,7 +882,7 @@ and can also be beneficial for overall performance,
 as each service can hold optimized views just of those data items owned by other services which it is interested in.</p>
 </div>
 <div class="sect1">
-<h2 id="how-to-handle-aggregate-objects">How to Handle Aggregate Objects?</h2>
+<h2 id="how_to_handle_aggregate_objects">How to Handle Aggregate Objects?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>There are use cases however, where things are a bit more tricky. It is sometimes
@@ -920,7 +920,7 @@ using the <a href="https://kafka.apache.org/documentation/streams/">Kafka Stream
 </div>
 </div>
 <div class="sect1">
-<h2 id="capturing-change-events-from-a-data-source">Capturing Change Events from a Data Source</h2>
+<h2 id="capturing_change_events_from_a_data_source">Capturing Change Events from a Data Source</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The complete source code for this blog post is provided in the Debezium <a href="https://github.com/debezium/debezium-examples/tree/master/kstreams">examples repository</a> on GitHub.
@@ -928,7 +928,7 @@ Begin by cloning this repository and changing into the <em>kstreams</em> directo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">git clone https://github.com/debezium/debezium-examples.git
+<pre class="CodeRay highlight"><code data-lang="shell">git clone https://github.com/debezium/debezium-examples.git
 cd kstreams</code></pre>
 </div>
 </div>
@@ -972,7 +972,7 @@ cd kstreams</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">export DEBEZIUM_VERSION=0.7
+<pre class="CodeRay highlight"><code data-lang="shell">export DEBEZIUM_VERSION=0.7
 docker-compose up mysql zookeeper kafka connect_source</code></pre>
 </div>
 </div>
@@ -981,23 +981,23 @@ docker-compose up mysql zookeeper kafka connect_source</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "name": "mysql-source",
-    "config": {
-        "connector.class": "io.debezium.connector.mysql.MySqlConnector",
-        "tasks.max": "1",
-        "database.hostname": "mysql",
-        "database.port": "3306",
-        "database.user": "debezium",
-        "database.password": "dbz",
-        "database.server.id": "184054",
-        "database.server.name": "dbserver1",
-        "table.whitelist": "inventory.customers,inventory.addresses",
-        "database.history.kafka.bootstrap.servers": "kafka:9092",
-        "database.history.kafka.topic": "schema-changes.inventory",
-        "transforms": "unwrap",
-        "transforms.unwrap.type":"io.debezium.transforms.UnwrapFromEnvelope",
-        "transforms.unwrap.drop.tombstones":"false"
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql-source</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.mysql.MySqlConnector</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.hostname</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3306</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">debezium</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbz</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">184054</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">table.whitelist</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory.customers,inventory.addresses</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.kafka.bootstrap.servers</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">kafka:9092</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.kafka.topic</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">schema-changes.inventory</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">unwrap</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.unwrap.type</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.transforms.UnwrapFromEnvelope</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.unwrap.drop.tombstones</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
@@ -1007,7 +1007,7 @@ docker-compose up mysql zookeeper kafka connect_source</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @mysql-source.json</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">curl -i -X POST -H &quot;Accept:application/json&quot; -H  &quot;Content-Type:application/json&quot; http://localhost:8083/connectors/ -d @mysql-source.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1024,7 +1024,7 @@ only the new state will be propagated into the corresponding Kafka topics.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker-compose exec kafka /kafka/bin/kafka-console-consumer.sh \
+<pre class="CodeRay highlight"><code data-lang="shell">docker-compose exec kafka /kafka/bin/kafka-console-consumer.sh \
     --bootstrap-server kafka:9092 \
     --from-beginning \
     --property print.key=true \
@@ -1039,19 +1039,19 @@ only the new state will be propagated into the corresponding Kafka topics.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">{
-    "schema": { ... },
-    "payload": {
-        "id": 1001
+<pre class="CodeRay highlight"><code data-lang="shell">{
+    &quot;schema&quot;: { ... },
+    &quot;payload&quot;: {
+        &quot;id&quot;: 1001
     }
 }
 {
-    "schema": { ... },
-    "payload": {
-        "id": 1001,
-        "first_name": "Sally",
-        "last_name": "Thomas",
-        "email": "sally.thomas@acme.com"
+    &quot;schema&quot;: { ... },
+    &quot;payload&quot;: {
+        &quot;id&quot;: 1001,
+        &quot;first_name&quot;: &quot;Sally&quot;,
+        &quot;last_name&quot;: &quot;Thomas&quot;,
+        &quot;email&quot;: &quot;sally.thomas@acme.com&quot;
     }
 }
 ...</code></pre>
@@ -1060,7 +1060,7 @@ only the new state will be propagated into the corresponding Kafka topics.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="building-ddd-aggregates">Building DDD Aggregates</h2>
+<h2 id="building_ddd_aggregates">Building DDD Aggregates</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The KStreams application is going to process data from the two Kafka topics. These topics
@@ -1077,27 +1077,27 @@ one, being able to deserialize from either Debezium CDC events or jsonified POJO
 <p>With that in place, the KStreams topology to create and maintain DDD aggregates on-the-fly can be built as follows:</p>
 </div>
 <div class="sect2">
-<h3 id="customers-topic-parent">Customers Topic ("parent")</h3>
+<h3 id="customers_topic_parent">Customers Topic ("parent")</h3>
 <div class="paragraph">
 <p>All the customer records are simply read from the customer topic into a <strong>KTable</strong> which will automatically maintain
 the latest state per customer according to the record key (i.e. the customer&#8217;s PK)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">KTable&lt;DefaultId, Customer&gt; customerTable =
+<pre class="CodeRay highlight"><code data-lang="java">KTable&lt;DefaultId, Customer&gt; customerTable =
         builder.table(parentTopic, Consumed.with(defaultIdSerde,customerSerde));</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="addresses-topic-children">Addresses Topic ("children")</h3>
+<h3 id="addresses_topic_children">Addresses Topic ("children")</h3>
 <div class="paragraph">
 <p>For the address records the processing is a bit more involved and needs several steps. First, all the address
 records are read into a <strong>KStream</strong>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">KStream&lt;DefaultId, Address&gt; addressStream = builder.stream(childrenTopic,
+<pre class="CodeRay highlight"><code data-lang="java">KStream&lt;DefaultId, Address&gt; addressStream = builder.stream(childrenTopic,
         Consumed.with(defaultIdSerde, addressSerde));</code></pre>
 </div>
 </div>
@@ -1110,17 +1110,17 @@ relation in addition to the <em>Address</em> record itself.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">KTable&lt;DefaultId,LatestAddress&gt; tempTable = addressStream
+<pre class="CodeRay highlight"><code data-lang="java">KTable&lt;DefaultId,LatestAddress&gt; tempTable = addressStream
         .groupByKey(Serialized.with(defaultIdSerde, addressSerde))
         .aggregate(
-                () -&gt; new LatestAddress(),
+                () -&gt; <span class="keyword">new</span> LatestAddress(),
                 (DefaultId addressId, Address address, LatestAddress latest) -&gt; {
                     latest.update(
-                        address, addressId, new DefaultId(address.getCustomer_id()));
-                    return latest;
+                        address, addressId, <span class="keyword">new</span> DefaultId(address.getCustomer_id()));
+                    <span class="keyword">return</span> latest;
                 },
-                Materialized.&lt;DefaultId,LatestAddress,KeyValueStore&lt;Bytes, byte[]&gt;&gt;
-                        as(childrenTopic+"_table_temp")
+                Materialized.&lt;DefaultId,LatestAddress,KeyValueStore&lt;Bytes, <span class="type">byte</span><span class="type">[]</span>&gt;&gt;
+                        as(childrenTopic+<span class="string"><span class="delimiter">&quot;</span><span class="content">_table_temp</span><span class="delimiter">&quot;</span></span>)
                             .withKeySerde(defaultIdSerde)
                                 .withValueSerde(latestAddressSerde)
         );</code></pre>
@@ -1136,18 +1136,18 @@ most recent <em>Addresses</em> per customer id.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">KTable&lt;DefaultId, Addresses&gt; addressTable = tempTable.toStream()
+<pre class="CodeRay highlight"><code data-lang="java">KTable&lt;DefaultId, Addresses&gt; addressTable = tempTable.toStream()
         .map((addressId, latestAddress) -&gt;
-            new KeyValue&lt;&gt;(latestAddress.getCustomerId(),latestAddress))
+            <span class="keyword">new</span> KeyValue&lt;&gt;(latestAddress.getCustomerId(),latestAddress))
         .groupByKey(Serialized.with(defaultIdSerde,latestAddressSerde))
         .aggregate(
-                () -&gt; new Addresses(),
+                () -&gt; <span class="keyword">new</span> Addresses(),
                 (customerId, latestAddress, addresses) -&gt; {
                     addresses.update(latestAddress);
-                    return addresses;
+                    <span class="keyword">return</span> addresses;
                 },
-                Materialized.&lt;DefaultId,Addresses,KeyValueStore&lt;Bytes, byte[]&gt;&gt;
-                        as(childrenTopic+"_table_aggregate")
+                Materialized.&lt;DefaultId,Addresses,KeyValueStore&lt;Bytes, <span class="type">byte</span><span class="type">[]</span>&gt;&gt;
+                        as(childrenTopic+<span class="string"><span class="delimiter">&quot;</span><span class="content">_table_aggregate</span><span class="delimiter">&quot;</span></span>)
                             .withKeySerde(defaultIdSerde)
                                 .withValueSerde(addressesSerde)
         );</code></pre>
@@ -1155,7 +1155,7 @@ most recent <em>Addresses</em> per customer id.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="combining-customers-with-addresses">Combining Customers With Addresses</h3>
+<h3 id="combining_customers_with_addresses">Combining Customers With Addresses</h3>
 <div class="paragraph">
 <p>Finally, it&#8217;s easy to bring customers and addresses together by <strong>joining the customers KTable with
 the addresses KTable</strong> and thereby building the DDD aggregates which are represented by the <em>CustomerAddressAggregate</em> POJO.
@@ -1164,14 +1164,14 @@ This allows to make use of the resulting DDD aggregates in manifold ways.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">KTable&lt;DefaultId,CustomerAddressAggregate&gt; dddAggregate =
+<pre class="CodeRay highlight"><code data-lang="java">KTable&lt;DefaultId,CustomerAddressAggregate&gt; dddAggregate =
           customerTable.join(addressTable, (customer, addresses) -&gt;
               customer.get_eventType() == EventType.DELETE ?
-                      null :
-                      new CustomerAddressAggregate(customer,addresses.getEntries())
+                      <span class="predefined-constant">null</span> :
+                      <span class="keyword">new</span> CustomerAddressAggregate(customer,addresses.getEntries())
           );
 
-  dddAggregate.toStream().to("final_ddd_aggregates",
+  dddAggregate.toStream().to(<span class="string"><span class="delimiter">&quot;</span><span class="content">final_ddd_aggregates</span><span class="delimiter">&quot;</span></span>,
                               Produced.with(defaultIdSerde,(Serde)aggregateSerde));</code></pre>
 </div>
 </div>
@@ -1179,7 +1179,7 @@ This allows to make use of the resulting DDD aggregates in manifold ways.</p>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1195,7 +1195,7 @@ Such a convention can be helpful whenever consuming parties also need to act to 
 </div>
 </div>
 <div class="sect1">
-<h2 id="running-the-aggregation-pipeline">Running the Aggregation Pipeline</h2>
+<h2 id="running_the_aggregation_pipeline">Running the Aggregation Pipeline</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Having implemented the aggregation pipeline, it&#8217;s time to give it a test run.
@@ -1203,7 +1203,7 @@ To do so, build the <em>poc-ddd-aggregates</em> Maven project which contains the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">mvn clean package -f poc-ddd-aggregates/pom.xml</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">mvn clean package -f poc-ddd-aggregates/pom.xml</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1212,7 +1212,7 @@ and launches it using the <a href="https://hub.docker.com/r/fabric8/java-jboss-o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker-compose up -d aggregator</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">docker-compose up -d aggregator</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1220,7 +1220,7 @@ and launches it using the <a href="https://hub.docker.com/r/fabric8/java-jboss-o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker-compose exec kafka /kafka/bin/kafka-console-consumer.sh \
+<pre class="CodeRay highlight"><code data-lang="shell">docker-compose exec kafka /kafka/bin/kafka-console-consumer.sh \
     --bootstrap-server kafka:9092 \
     --from-beginning \
     --property print.key=true \
@@ -1230,7 +1230,7 @@ and launches it using the <a href="https://hub.docker.com/r/fabric8/java-jboss-o
 </div>
 </div>
 <div class="sect1">
-<h2 id="transferring-ddd-aggregates-to-data-sinks">Transferring DDD Aggregates to Data Sinks</h2>
+<h2 id="transferring_ddd_aggregates_to_data_sinks">Transferring DDD Aggregates to Data Sinks</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We originally set out to build these DDD aggregates in order to transfer data and synchronize changes between
@@ -1252,7 +1252,7 @@ to the <a href="https://docs.confluent.io/current/connect/restapi.html">REST API
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker-compose up -d mongodb connect_sink</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">docker-compose up -d mongodb connect_sink</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1260,16 +1260,16 @@ to the <a href="https://docs.confluent.io/current/connect/restapi.html">REST API
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "name": "mongodb-sink",
-    "config": {
-        "connector.class": "at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector",
-        "tasks.max": "1",
-        "topics": "final_ddd_aggregates",
-        "mongodb.connection.uri": "mongodb://mongodb:27017/inventory?w=1&amp;journal=true",
-        "mongodb.collection": "customers_with_addresses",
-        "mongodb.document.id.strategy": "at.grahsl.kafka.connect.mongodb.processor.id.strategy.FullKeyStrategy",
-        "mongodb.delete.on.null.values": true
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mongodb-sink</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">topics</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">final_ddd_aggregates</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">mongodb.connection.uri</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mongodb://mongodb:27017/inventory?w=1&amp;journal=true</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">mongodb.collection</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers_with_addresses</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">mongodb.document.id.strategy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">at.grahsl.kafka.connect.mongodb.processor.id.strategy.FullKeyStrategy</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">mongodb.delete.on.null.values</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>
     }
 }</code></pre>
 </div>
@@ -1279,7 +1279,7 @@ to the <a href="https://docs.confluent.io/current/connect/restapi.html">REST API
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8084/connectors/ -d @mongodb-sink.json</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">curl -i -X POST -H &quot;Accept:application/json&quot; -H  &quot;Content-Type:application/json&quot; http://localhost:8084/connectors/ -d @mongodb-sink.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1291,45 +1291,45 @@ write them as <strong>MongoDB documents</strong> into the "customers_with_addres
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker-compose exec mongodb bash -c 'mongo inventory'
+<pre class="CodeRay highlight"><code data-lang="shell">docker-compose exec mongodb bash -c 'mongo inventory'
 
 &gt; db.customers_with_addresses.find().pretty()</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "_id": {
-        "id": "1001"
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">_id</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1001</span><span class="delimiter">&quot;</span></span>
     },
-    "addresses": [
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">addresses</span><span class="delimiter">&quot;</span></span>: [
         {
-            "zip": "76036",
-            "_eventType": "UPSERT",
-            "city": "Euless",
-            "street": "3183 Moore Avenue",
-            "id": "10",
-            "state": "Texas",
-            "customer_id": "1001",
-            "type": "SHIPPING"
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">zip</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">76036</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">_eventType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">UPSERT</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">city</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Euless</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">street</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3183 Moore Avenue</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">10</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Texas</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">customer_id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1001</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">SHIPPING</span><span class="delimiter">&quot;</span></span>
         },
         {
-            "zip": "17116",
-            "_eventType": "UPSERT",
-            "city": "Harrisburg",
-            "street": "2389 Hidden Valley Road",
-            "id": "11",
-            "state": "Pennsylvania",
-            "customer_id": "1001",
-            "type": "BILLING"
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">zip</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">17116</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">_eventType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">UPSERT</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">city</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Harrisburg</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">street</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">2389 Hidden Valley Road</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">11</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Pennsylvania</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">customer_id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1001</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">BILLING</span><span class="delimiter">&quot;</span></span>
         }
     ],
-    "customer": {
-        "_eventType": "UPSERT",
-        "last_name": "Thomas",
-        "id": "1001",
-        "first_name": "Sally",
-        "email": "sally.thomas@acme.com"
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">customer</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">_eventType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">UPSERT</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Thomas</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1001</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Sally</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sally.thomas@acme.com</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
@@ -1344,9 +1344,9 @@ to adapt the configuration in order to blacklist said fields.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER -p$MYSQL_PASSWORD inventory'
+<pre class="CodeRay highlight"><code data-lang="shell">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER -p$MYSQL_PASSWORD inventory'
 
-mysql&gt; update customers set first_name= "Sarah" where id = 1001;</code></pre>
+mysql&gt; update customers set first_name= &quot;Sarah&quot; where id = 1001;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1355,7 +1355,7 @@ mysql&gt; update customers set first_name= "Sarah" where id = 1001;</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="drawbacks-and-limitations">Drawbacks and Limitations</h2>
+<h2 id="drawbacks_and_limitations">Drawbacks and Limitations</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>While this first version for creating DDD aggregates from table-based CDC events basically works, it is very important to understand its current limitations:</p>

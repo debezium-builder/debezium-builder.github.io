@@ -852,7 +852,7 @@
 <!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="vitess-at-bolt">Vitess at Bolt</h2>
+<h2 id="vitess_at_bolt">Vitess at Bolt</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Bolt has grown considerably over the past few years, and so did the volume of data written to MySQL. Manual database sharding has become quite an expensive and long-lasting process prone to errors. So we started to evaluate more scalable databases, one of which is <a href="https://vitess.io/">Vitess</a>. Vitess is an open-source database clustering system that is based on MySQL and provides horizontal scalability for it. Originated and battle-tested at YouTube, it was later open-sourced and is used by companies like Slack, Github, JD.com to power their backend storage. It combines important MySQL features with the scalability of a NoSQL database.</p>
@@ -902,13 +902,13 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="streaming-vitess-options">Streaming Vitess Options</h2>
+<h2 id="streaming_vitess_options">Streaming Vitess Options</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The ability to capture data changes and publish them to Apache Kafka was one of the requirements for adopting Vitess at Bolt. There were several different options we’ve considered.</p>
 </div>
 <div class="sect2">
-<h3 id="option-1-using-debezium-mysql-connector">Option 1: Using Debezium MySQL Connector</h3>
+<h3 id="option_1_using_debezium_mysql_connector">Option 1: Using Debezium MySQL Connector</h3>
 <div class="paragraph">
 <p>Applications connect to Vitess VTGate to send queries. VTGate supports the MySQL protocol and has a SQL parser. You can use any MySQL client (e.g. JDBC) to connect to VTGate, which redirects your query to the correct shard and returns the result to your client.</p>
 </div>
@@ -926,7 +926,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="option-2-using-jdbc-source-connector">Option 2: Using JDBC Source Connector</h3>
+<h3 id="option_2_using_jdbc_source_connector">Option 2: Using JDBC Source Connector</h3>
 <div class="paragraph">
 <p>We&#8217;ve also considered using the <a href="https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/index.html">JDBC Source Connector</a>. It allows sourcing data from any relational databases that support the JDBC driver into Kafka. Therefore, it is compatible with Vitess VTGate. It has its advantages and disadvantages as well.</p>
 </div>
@@ -967,7 +967,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="option-3-using-vstream-grpc">Option 3: Using VStream gRPC</h3>
+<h3 id="option_3_using_vstream_grpc">Option 3: Using VStream gRPC</h3>
 <div class="paragraph">
 <p>VTGate exposes a gRPC service called VStream. It is a server-side streaming service. Any gRPC client can subscribe to the <a href="https://vitess.io/docs/concepts/vstream/">VStream</a> service to get a continuous stream of change events from the underlying MySQL instances. The change events that VStream emits have similar information to the MySQL binary logs of the underlying MySQL instances. A single VStream can even subscribe to multiple shards for a given keyspace, making it quite a convenient API to build CDC tools.</p>
 </div>
@@ -1033,7 +1033,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="vitess-connector-deep-dive-and-open-source">Vitess Connector Deep Dive and Open Source</h2>
+<h2 id="vitess_connector_deep_dive_and_open_source">Vitess Connector Deep Dive and Open Source</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>After we’ve decided to implement our Vitess Connector, we started looking into the implementation details of various Debezium source connectors (MySQL, Postgres, SQLServer), to borrow some ideas. Almost all of them are implemented using a common Connector development framework. So it was clear we should develop the Vitess connector on top of it. Given we are very active users of the MySql Connector and we benefit from it being open-sourced, as it allows us to contribute to it things we were missing ourselves. So we decided we want to give back to community and open-source the Vitess source connector code-base under the Debezium umbrella. Please feel free to learn more at <a href="https://github.com/debezium/debezium-connector-vitess/">Debezium Connector Vitess</a>. We welcome and value any contributions.</p>
@@ -1081,12 +1081,12 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="replication-challenges">Replication Challenges</h3>
+<h3 id="replication_challenges">Replication Challenges</h3>
 <div class="paragraph">
 <p>While we were implementing the Vitess Connector and digging deeper into Vitess, we’ve also realized a few challenges.</p>
 </div>
 <div class="sect3">
-<h4 id="vitess-reshard">Vitess Reshard</h4>
+<h4 id="vitess_reshard">Vitess Reshard</h4>
 <div class="paragraph">
 <p>The Vitess connector supports the Vitess Reshard operation when the connector is configured to subscribe to all shards of a given keyspace. VStream sends a VGTID that contains the shard GTID for all shards. Vitess Resharding is transparent to users. Once it’s completed, Vitess will send the VGTID of the new shards. Therefore, the connector will use the new VGTID after reshard. However, you need to make sure that the connector is up and running when the reshard operation takes place. Especially please check that the offset topic of the connector has the new VGTID before deleting the old shards. This is because in case the old shards are deleted, VStream will not be able to recognize the VGTID from the old shards.</p>
 </div>
@@ -1095,7 +1095,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="offset-management">Offset Management</h4>
+<h4 id="offset_management">Offset Management</h4>
 <div class="paragraph">
 <p>VStream includes a VGTID event in its response. We save the VGTID as the offset in the Kafka offset topic, so when the connector restarts, we can start from the saved VGTID. However, in rare cases when a transaction includes a huge amount of rows, VStream batches the change events into multiple responses, and only the last response has the VGTID. In such cases, we don’t have the VGTID for every change event we receive. We have a few options to solve this particular issue:</p>
 </div>
@@ -1111,7 +1111,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="schema-management">Schema Management</h4>
+<h4 id="schema_management">Schema Management</h4>
 <div class="paragraph">
 <p>VStream’s response also includes a <code>FIELD</code> event. It’s a special event that contains the schemas of the tables of which the rows are affected. For example, let&#8217;s assume we have 2 tables, <code>A</code> and <code>B</code>. If we insert a few rows into table <code>A</code>, the <code>FIELD</code> event will only contain table <code>A</code>’s schema. The VStream is smart enough to only include the <code>FIELD</code> event whenever necessary. For example, when a VStream client reconnects, or when a table’s schema is changed.</p>
 </div>
@@ -1126,7 +1126,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="future-development-work">Future Development Work</h2>
+<h2 id="future_development_work">Future Development Work</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>

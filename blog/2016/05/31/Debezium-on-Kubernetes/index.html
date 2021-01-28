@@ -880,7 +880,7 @@ You can find instructions for the set-up of Debezium on OpenShift <a href="/docu
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="getting-started">Getting started</h2>
+<h2 id="getting_started">Getting started</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To get started, we need to have access to a Kubernetes cluster. Getting one started is pretty easy: just follow the <a href="http://kubernetes.io/docs/getting-started-guides/">getting started</a> guides. A favorite of ours is <a href="https://blog.openshift.com/one-vagrant-image-openshift-origin-v3/">OpenShift&#8217;s all in one VM</a> or the <a href="http://developers.redhat.com/products/cdk/overview/">Red Hat Container Development Kit</a> which provide a hardened, production-ready distribution of Kubernetes. Once you&#8217;ve installed it and logged in, you should be able to run <code>kubectl get pod</code> to get a list of Kubernetes pods you may have running. You don&#8217;t need anything running else inside Kubernetes to get started.</p>
@@ -890,7 +890,7 @@ You can find instructions for the set-up of Debezium on OpenShift <a href="/docu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ mvn clean
+<pre class="CodeRay highlight"><code data-lang="bash">$ mvn clean
 $ mvn install</code></pre>
 </div>
 </div>
@@ -979,14 +979,14 @@ kind: "List"</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="starting-zookeeper-and-kafka-on-kubernetes">Starting Zookeeper and Kafka on Kubernetes</h2>
+<h2 id="starting_zookeeper_and_kafka_on_kubernetes">Starting Zookeeper and Kafka on Kubernetes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To start <a href="http://zookeeper.apache.org">Apache Zookeeper</a> or <a href="http://kafka.apache.org">Apache Kafka</a> inside Kubernetes you have two options. If you have the <code>kubectl</code> command line (or the <code>oc</code> tool from the OpenShift client distros) on your machine you can apply any of the newly generated Kubernetes manifest files like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl create -f &lt;path_to_file&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl create -f &lt;path_to_file&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -997,11 +997,11 @@ kind: "List"</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd zk-standalone
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd zk-standalone
 $ kubectl create -f target/classes/kubernetes.yml
 
-service "zookeeper" created
-replicationcontroller "zk-standalone" created</code></pre>
+service &quot;zookeeper&quot; created
+replicationcontroller &quot;zk-standalone&quot; created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1009,7 +1009,7 @@ replicationcontroller "zk-standalone" created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd zk-standalone
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd zk-standalone
 $ mvn fabric8:apply
 
 Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=1512m; support was removed in 8.0
@@ -1043,11 +1043,11 @@ Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=1512m; su
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd ../kafka
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd ../kafka
 $ kubectl create -f target/classes/kubernetes.yml
 
-service "kafka" created
-replicationcontroller "kafka" created</code></pre>
+service &quot;kafka&quot; created
+replicationcontroller &quot;kafka&quot; created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1055,7 +1055,7 @@ replicationcontroller "kafka" created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd ../kafka
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd ../kafka
 $ mvn fabric8:apply
 
 Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=1512m; support was removed in 8.0
@@ -1089,7 +1089,7 @@ Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=1512m; su
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl get pod
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl get pod
 
 NAME                  READY     STATUS    RESTARTS   AGE
 kafka-mqmxt           1/1       Running   0          46s
@@ -1132,7 +1132,7 @@ zk-standalone-4mo02   1/1       Running   0          4m</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ KAFKA_POD_NAME=$(kubectl get pod | grep -i running | grep kafka | awk '{ print $1 }')
+<pre class="CodeRay highlight"><code data-lang="bash">$ KAFKA_POD_NAME=$(kubectl get pod | grep -i running | grep kafka | awk '{ print $1 }')
 
 $ kubectl exec $KAFKA_POD_NAME --  /kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic schema-changes.inventory</code></pre>
 </div>
@@ -1140,18 +1140,18 @@ $ kubectl exec $KAFKA_POD_NAME --  /kafka/bin/kafka-topics.sh --create --zookeep
 </div>
 </div>
 <div class="sect1">
-<h2 id="start-up-a-mysql-database-on-kubernetes">Start up a MySQL Database on Kubernetes</h2>
+<h2 id="start_up_a_mysql_database_on_kubernetes">Start up a MySQL Database on Kubernetes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Starting the MySQL database follows the same instructions as installing Zookeeper or Kafka. We will navigate to the <code>$PROJECT_ROOT/mysql56</code> directory, and we&#8217;ll use the <a href="https://github.com/openshift/mysql">MySQL 5.6 OpenShift Docker image</a> so that it runs on both vanilla Kubernetes and OpenShift v3.x. Here&#8217;s the <code>kubectl</code> command to start up our MySQL instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd ../mysql56
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd ../mysql56
 $ kubectl create -f target/classes/kubernetes.yml
 
-service "mysql" created
-replicationcontroller "mysql56" created</code></pre>
+service &quot;mysql&quot; created
+replicationcontroller &quot;mysql56&quot; created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1159,7 +1159,7 @@ replicationcontroller "mysql56" created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd mysql56
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd mysql56
 $ mvn fabric8:apply</code></pre>
 </div>
 </div>
@@ -1179,7 +1179,7 @@ zk-standalone-4mo02   1/1       Running   0          21m</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ MYSQL_POD_NAME=$(kubectl get pod | grep Running | grep ^mysql | awk '{ print $1 }')
+<pre class="CodeRay highlight"><code data-lang="bash">$ MYSQL_POD_NAME=$(kubectl get pod | grep Running | grep ^mysql | awk '{ print $1 }')
 $ MYSQL_POD_IP=$(kubectl describe pod $MYSQL_POD_NAME | grep IP | awk '{ print $2 }')</code></pre>
 </div>
 </div>
@@ -1188,7 +1188,7 @@ $ MYSQL_POD_IP=$(kubectl describe pod $MYSQL_POD_NAME | grep IP | awk '{ print $
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl exec -it $MYSQL_POD_NAME   -- /opt/rh/rh-mysql56/root/usr/bin/mysql -h$MYSQL_POD_IP -P3306 -uroot -padmin
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl exec -it $MYSQL_POD_NAME   -- /opt/rh/rh-mysql56/root/usr/bin/mysql -h$MYSQL_POD_IP -P3306 -uroot -padmin
 Warning: Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 1
@@ -1213,7 +1213,7 @@ mysql&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl exec  -it $MYSQL_POD_NAME -- bash -c "curl -s -L https://gist.github.com/christian-posta/e20ddb5c945845b4b9f6eba94a98af09/raw | /opt/rh/rh-mysql56/root/usr/bin/mysql -h$MYSQL_POD_IP -P3306 -uroot -padmin"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl exec  -it $MYSQL_POD_NAME -- bash -c &quot;curl -s -L https://gist.github.com/christian-posta/e20ddb5c945845b4b9f6eba94a98af09/raw | /opt/rh/rh-mysql56/root/usr/bin/mysql -h$MYSQL_POD_IP -P3306 -uroot -padmin&quot;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1221,7 +1221,7 @@ mysql&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl exec -it $MYSQL_POD_NAME   -- /opt/rh/rh-mysql56/root/usr/bin/mysql -h$MYSQL_POD_IP -P3306 -uroot -padmin -e 'use inventory; show tables;'
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl exec -it $MYSQL_POD_NAME   -- /opt/rh/rh-mysql56/root/usr/bin/mysql -h$MYSQL_POD_IP -P3306 -uroot -padmin -e 'use inventory; show tables;'
 
 +---------------------+
 | Tables_in_inventory |
@@ -1237,18 +1237,18 @@ mysql&gt;</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="start-kafka-connect-and-debezium">Start Kafka Connect and Debezium</h2>
+<h2 id="start_kafka_connect_and_debezium">Start Kafka Connect and Debezium</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Navigate into the directory <code>$PROJECT_ROOT/connect-mysql</code> directory. Here, we&#8217;ll start a Kubernetes pod that runs Kafka Connect with the Debezium MySQL connector already installed. The Debezium MySQL connector connects to a MySQL database, reads the binlog, and writes those row events to Kafka. Start up Kafka Connect with Debezium on Kubernetes similarly to the previous components:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd ../connect-mysql
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd ../connect-mysql
 $ kubectl create -f target/classes/kubernetes.yml
 
-service "connect-mysql" created
-replicationcontroller "connect-mysql" created</code></pre>
+service &quot;connect-mysql&quot; created
+replicationcontroller &quot;connect-mysql&quot; created</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1256,7 +1256,7 @@ replicationcontroller "connect-mysql" created</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ cd ../connect-mysql
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd ../connect-mysql
 $ mvn fabric8:apply
 Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=1512m; support was removed in 8.0
 [INFO] Scanning for projects...
@@ -1292,7 +1292,7 @@ Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=1512m; su
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ CONNECT_POD_NAME=$(kubectl get pod | grep -i running | grep ^connect | awk '{ print $1 }')
+<pre class="CodeRay highlight"><code data-lang="bash">$ CONNECT_POD_NAME=$(kubectl get pod | grep -i running | grep ^connect | awk '{ print $1 }')
 $ kubectl port-forward $CONNECT_POD_NAME 8083:8083
 
 I0525 09:30:08.390491    6651 portforward.go:213] Forwarding from 127.0.0.1:8083 -&gt; 8083
@@ -1307,7 +1307,7 @@ I0525 09:30:08.390631    6651 portforward.go:213] Forwarding from [::1]:8083 -&g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ CONNECT_POD_NAME=$(kubectl get pod | grep -i running | grep ^connect | awk '{ print $1 }')
+<pre class="CodeRay highlight"><code data-lang="bash">$ CONNECT_POD_NAME=$(kubectl get pod | grep -i running | grep ^connect | awk '{ print $1 }')
 $ kubectl logs -f $CONNECT_POD_NAME</code></pre>
 </div>
 </div>
@@ -1316,7 +1316,7 @@ $ kubectl logs -f $CONNECT_POD_NAME</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" http://localhost:8083/connectors/ -d '{ "name": "inventory-connector", "config": { "connector.class": "io.debezium.connector.mysql.MySqlConnector", "tasks.max": "1", "database.hostname": "mysql", "database.port": "3306", "database.user": "replicator", "database.password": "replpass", "database.server.id": "184054", "database.server.name": "mysql-server-1", "database.binlog": "mysql-bin.000001", "database.whitelist": "inventory", "database.history.kafka.bootstrap.servers": "kafka:9092", "database.history.kafka.topic": "schema-changes.inventory" } }'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">curl -i -X POST -H &quot;Accept:application/json&quot; -H &quot;Content-Type:application/json&quot; http://localhost:8083/connectors/ -d '{ &quot;name&quot;: &quot;inventory-connector&quot;, &quot;config&quot;: { &quot;connector.class&quot;: &quot;io.debezium.connector.mysql.MySqlConnector&quot;, &quot;tasks.max&quot;: &quot;1&quot;, &quot;database.hostname&quot;: &quot;mysql&quot;, &quot;database.port&quot;: &quot;3306&quot;, &quot;database.user&quot;: &quot;replicator&quot;, &quot;database.password&quot;: &quot;replpass&quot;, &quot;database.server.id&quot;: &quot;184054&quot;, &quot;database.server.name&quot;: &quot;mysql-server-1&quot;, &quot;database.binlog&quot;: &quot;mysql-bin.000001&quot;, &quot;database.whitelist&quot;: &quot;inventory&quot;, &quot;database.history.kafka.bootstrap.servers&quot;: &quot;kafka:9092&quot;, &quot;database.history.kafka.topic&quot;: &quot;schema-changes.inventory&quot; } }'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1339,7 +1339,7 @@ $ kubectl logs -f $CONNECT_POD_NAME</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl exec  $KAFKA_POD_NAME --  /kafka/bin/kafka-topics.sh --list --zookeeper zookeeper:2181
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl exec  $KAFKA_POD_NAME --  /kafka/bin/kafka-topics.sh --list --zookeeper zookeeper:2181
 __consumer_offsets
 my-connect-configs
 my-connect-offsets
@@ -1355,11 +1355,11 @@ schema-changes.inventory</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ kubectl exec  $KAFKA_POD_NAME --  /kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --new-consumer --topic mysql-server-1.inventory.customers --from-beginning --property print.key=true
-{"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"}],"optional":false,"name":"inventory.customers/pk"},"payload":{"id":1001}}   {"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"},{"type":"string","optional":false,"field":"first_name"},{"type":"string","optional":false,"field":"last_name"},{"type":"string","optional":false,"field":"email"}],"optional":false,"name":"inventory.customers"},"payload":{"id":1001,"first_name":"Sally","last_name":"Thomas","email":"sally.thomas@acme.com"}}
-{"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"}],"optional":false,"name":"inventory.customers/pk"},"payload":{"id":1002}}   {"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"},{"type":"string","optional":false,"field":"first_name"},{"type":"string","optional":false,"field":"last_name"},{"type":"string","optional":false,"field":"email"}],"optional":false,"name":"inventory.customers"},"payload":{"id":1002,"first_name":"George","last_name":"Bailey","email":"gbailey@foobar.com"}}
-{"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"}],"optional":false,"name":"inventory.customers/pk"},"payload":{"id":1003}}   {"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"},{"type":"string","optional":false,"field":"first_name"},{"type":"string","optional":false,"field":"last_name"},{"type":"string","optional":false,"field":"email"}],"optional":false,"name":"inventory.customers"},"payload":{"id":1003,"first_name":"Edward","last_name":"Walker","email":"ed@walker.com"}}
-{"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"}],"optional":false,"name":"inventory.customers/pk"},"payload":{"id":1004}}   {"schema":{"type":"struct","fields":[{"type":"int32","optional":false,"field":"id"},{"type":"string","optional":false,"field":"first_name"},{"type":"string","optional":false,"field":"last_name"},{"type":"string","optional":false,"field":"email"}],"optional":false,"name":"inventory.customers"},"payload":{"id":1004,"first_name":"Anne","last_name":"Kretchmar","email":"annek@noanswer.org"}}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl exec  $KAFKA_POD_NAME --  /kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --new-consumer --topic mysql-server-1.inventory.customers --from-beginning --property print.key=true
+{&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers/pk&quot;},&quot;payload&quot;:{&quot;id&quot;:1001}}   {&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;first_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;last_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;email&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers&quot;},&quot;payload&quot;:{&quot;id&quot;:1001,&quot;first_name&quot;:&quot;Sally&quot;,&quot;last_name&quot;:&quot;Thomas&quot;,&quot;email&quot;:&quot;sally.thomas@acme.com&quot;}}
+{&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers/pk&quot;},&quot;payload&quot;:{&quot;id&quot;:1002}}   {&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;first_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;last_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;email&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers&quot;},&quot;payload&quot;:{&quot;id&quot;:1002,&quot;first_name&quot;:&quot;George&quot;,&quot;last_name&quot;:&quot;Bailey&quot;,&quot;email&quot;:&quot;gbailey@foobar.com&quot;}}
+{&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers/pk&quot;},&quot;payload&quot;:{&quot;id&quot;:1003}}   {&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;first_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;last_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;email&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers&quot;},&quot;payload&quot;:{&quot;id&quot;:1003,&quot;first_name&quot;:&quot;Edward&quot;,&quot;last_name&quot;:&quot;Walker&quot;,&quot;email&quot;:&quot;ed@walker.com&quot;}}
+{&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers/pk&quot;},&quot;payload&quot;:{&quot;id&quot;:1004}}   {&quot;schema&quot;:{&quot;type&quot;:&quot;struct&quot;,&quot;fields&quot;:[{&quot;type&quot;:&quot;int32&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;id&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;first_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;last_name&quot;},{&quot;type&quot;:&quot;string&quot;,&quot;optional&quot;:false,&quot;field&quot;:&quot;email&quot;}],&quot;optional&quot;:false,&quot;name&quot;:&quot;inventory.customers&quot;},&quot;payload&quot;:{&quot;id&quot;:1004,&quot;first_name&quot;:&quot;Anne&quot;,&quot;last_name&quot;:&quot;Kretchmar&quot;,&quot;email&quot;:&quot;annek@noanswer.org&quot;}}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1375,7 +1375,7 @@ schema-changes.inventory</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -i -X DELETE -H "Accept:application/json" http://localhost:8083/connectors/inventory-connector</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">curl -i -X DELETE -H &quot;Accept:application/json&quot; http://localhost:8083/connectors/inventory-connector</code></pre>
 </div>
 </div>
 </div>

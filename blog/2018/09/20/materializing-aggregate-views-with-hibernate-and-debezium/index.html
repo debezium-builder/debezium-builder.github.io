@@ -907,7 +907,7 @@ you could implement something similar with any other API you&#8217;re using to a
 </div>
 </div>
 <div class="sect1">
-<h2 id="creating-aggregate-views-via-hibernate-orm">Creating Aggregate Views via Hibernate ORM</h2>
+<h2 id="creating_aggregate_views_via_hibernate_orm">Creating Aggregate Views via Hibernate ORM</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>For the following let&#8217;s assume we&#8217;re persisting a simple domain model
@@ -922,20 +922,20 @@ which marks those entity types that should be the roots of materialized aggregat
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Entity
-@MaterializeAggregate(aggregateName="customers-complete")
-public class Customer {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Entity</span>
+<span class="annotation">@MaterializeAggregate</span>(aggregateName=<span class="string"><span class="delimiter">&quot;</span><span class="content">customers-complete</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Customer</span> {
 
-    @Id
-    private long id;
+    <span class="annotation">@Id</span>
+    <span class="directive">private</span> <span class="type">long</span> id;
 
-    private String firstName;
+    <span class="directive">private</span> <span class="predefined-type">String</span> firstName;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set&lt;Address&gt; addresses;
+    <span class="annotation">@OneToMany</span>(mappedBy = <span class="string"><span class="delimiter">&quot;</span><span class="content">customer</span><span class="delimiter">&quot;</span></span>, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    <span class="directive">private</span> <span class="predefined-type">Set</span>&lt;Address&gt; addresses;
 
-    @ManyToOne
-    private Category category;
+    <span class="annotation">@ManyToOne</span>
+    <span class="directive">private</span> Category category;
 
     ...
 }</code></pre>
@@ -951,20 +951,20 @@ This means you can use any of its annotations to customize the JSON output, e.g.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Entity
-public class Address {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Entity</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Address</span> {
 
-    @Id
-    private long id;
+    <span class="annotation">@Id</span>
+    <span class="directive">private</span> <span class="type">long</span> id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    @JsonIgnore
-    private Customer customer;
+    <span class="annotation">@ManyToOne</span>
+    <span class="annotation">@JoinColumn</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">customer_id</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@JsonIgnore</span>
+    <span class="directive">private</span> Customer customer;
 
-    private String street;
+    <span class="directive">private</span> <span class="predefined-type">String</span> street;
 
-    private String city;
+    <span class="directive">private</span> <span class="predefined-type">String</span> city;
 
     ...
 }</code></pre>
@@ -980,47 +980,47 @@ let&#8217;s take a look at the <code>aggregates</code> table which has been popu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">&gt; select * from aggregates;
+<pre class="CodeRay highlight"><code data-lang="sql">&gt; <span class="class">select</span> * <span class="keyword">from</span> aggregates;
 
 | rootType | keySchema | rootId | materialization | valueSchema |
 
 | customers-complete
 
 | {
-  "schema" : {
-    "type" : "struct",
-    "fields" : [ {
-      "type" : "int64",
-      "optional" : false,
-      "field" : "id"
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span> : {
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">struct</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">fields</span><span class="delimiter">&quot;</span></span> : [ {
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">int64</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span> : <span class="predefined-constant">false</span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">field</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>
     } ],
-    "optional" : false,
-    "name" : "customers-complete.Key"
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span> : <span class="predefined-constant">false</span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">customers-complete.Key</span><span class="delimiter">&quot;</span></span>
   }
 }
 
-| { "id" : 1004 }
+| { <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> : <span class="integer">1004</span> }
 
-| { "schema" : { ... } }
+| { <span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span> : { ... } }
 
 | {
-  "id" : 1004,
-  "firstName" : "Anne",
-  "lastName" : "Kretchmar",
-  "email" : "annek@noanswer.org",
-  "tags" : [ "long-term", "vip" ],
-  "birthday" : 5098,
-  "category" : {
-    "id" : 100001,
-    "name" : "Retail"
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> : <span class="integer">1004</span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Anne</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Kretchmar</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">annek@noanswer.org</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">tags</span><span class="delimiter">&quot;</span></span> : [ <span class="string"><span class="delimiter">&quot;</span><span class="content">long-term</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">vip</span><span class="delimiter">&quot;</span></span> ],
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">birthday</span><span class="delimiter">&quot;</span></span> : <span class="integer">5098</span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">category</span><span class="delimiter">&quot;</span></span> : {
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> : <span class="integer">100001</span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Retail</span><span class="delimiter">&quot;</span></span>
   },
-  "addresses" : [ {
-    "id" : 16,
-    "street" : "1289 University Hill Road",
-    "city" : "Canehill",
-    "state" : "Arkansas",
-    "zip" : "72717",
-    "type" : "SHIPPING"
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">addresses</span><span class="delimiter">&quot;</span></span> : [ {
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> : <span class="integer">16</span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">street</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">1289 University Hill Road</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">city</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Canehill</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Arkansas</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">zip</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">72717</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">SHIPPING</span><span class="delimiter">&quot;</span></span>
   } ]
 } |</code></pre>
 </div>
@@ -1062,7 +1062,7 @@ This will come in handy in the following when we&#8217;d like to expand the stri
 </div>
 </div>
 <div class="sect1">
-<h2 id="capturing-changes-to-the-aggregate-table">Capturing Changes to the Aggregate Table</h2>
+<h2 id="capturing_changes_to_the_aggregate_table">Capturing Changes to the Aggregate Table</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We now have a mechanism in place which transparently persists aggregates into a separate table within the source database,
@@ -1080,28 +1080,28 @@ If an aggregate root entity is deleted, the listener will also drop the entry fr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">curl -i -X POST \
-  -H "Accept:application/json" \
-  -H "Content-Type:application/json" \
-  http://localhost:8083/connectors/ -d @- &lt;&lt;-EOF
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">c</span><span class="error">u</span><span class="error">r</span><span class="error">l</span> <span class="error">-</span><span class="error">i</span> <span class="error">-</span><span class="error">X</span> <span class="error">P</span><span class="error">O</span><span class="error">S</span><span class="error">T</span> <span class="error">\</span>
+  <span class="error">-</span><span class="error">H</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Accept:application/json</span><span class="delimiter">&quot;</span></span> <span class="error">\</span>
+  <span class="error">-</span><span class="error">H</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type:application/json</span><span class="delimiter">&quot;</span></span> <span class="error">\</span>
+  <span class="error">h</span><span class="error">t</span><span class="error">t</span><span class="error">p</span>:<span class="error">/</span><span class="error">/</span><span class="error">l</span><span class="error">o</span><span class="error">c</span><span class="error">a</span><span class="error">l</span><span class="error">h</span><span class="error">o</span><span class="error">s</span><span class="error">t</span>:<span class="integer">8083</span><span class="error">/</span><span class="error">c</span><span class="error">o</span><span class="error">n</span><span class="error">n</span><span class="error">e</span><span class="error">c</span><span class="error">t</span><span class="error">o</span><span class="error">r</span><span class="error">s</span><span class="error">/</span> <span class="error">-</span><span class="error">d</span> <span class="error">@</span><span class="error">-</span> <span class="error">&lt;</span><span class="error">&lt;</span><span class="error">-</span><span class="error">E</span><span class="error">O</span><span class="error">F</span>
   {
-      "name": "inventory-connector",
-      "config": {
-          "connector.class": "io.debezium.connector.mysql.MySqlConnector",
-          "tasks.max": "1",
-          "database.hostname": "mysql",
-          "database.port": "3306",
-          "database.user": "debezium",
-          "database.password": "dbz",
-          "database.server.id": "184054",
-          "database.server.name": "dbserver1",
-          "database.whitelist": "inventory",
-          "table.whitelist": ".*aggregates",
-          "database.history.kafka.bootstrap.servers": "kafka:9092",
-          "database.history.kafka.topic": "schema-changes.inventory"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory-connector</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.mysql.MySqlConnector</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.hostname</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3306</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">debezium</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbz</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">184054</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.whitelist</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">table.whitelist</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">.*aggregates</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.kafka.bootstrap.servers</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">kafka:9092</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.kafka.topic</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">schema-changes.inventory</span><span class="delimiter">&quot;</span></span>
       }
   }
-EOF</code></pre>
+<span class="error">E</span><span class="error">O</span><span class="error">F</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1112,7 +1112,7 @@ capturing any changes to the "aggregates" table.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="expanding-json">Expanding JSON</h2>
+<h2 id="expanding_json">Expanding JSON</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If we now were to browse the corresponding Kafka topic, we&#8217;d see data change events in the known Debezium format for all the changes to the <code>aggregates</code> table.</p>
@@ -1131,10 +1131,10 @@ allowing consumers to subscribe just to changes to specific aggregate types.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">...
-"transforms":"expandjson",
-"transforms.expandjson.type":"io.debezium.aggregation.smt.ExpandJsonSmt",
-...</code></pre>
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">.</span><span class="error">.</span><span class="error">.</span>
+<span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">expandjson</span><span class="delimiter">&quot;</span></span>,
+<span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.expandjson.type</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.aggregation.smt.ExpandJsonSmt</span><span class="delimiter">&quot;</span></span>,
+<span class="error">.</span><span class="error">.</span><span class="error">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1142,50 +1142,50 @@ allowing consumers to subscribe just to changes to specific aggregate types.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "schema": {
-        "type": "struct",
-        "fields": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">struct</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">fields</span><span class="delimiter">&quot;</span></span>: [
             {
-                "type": "int64",
-                "optional": false,
-                "field": "id"
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">int64</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">field</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>
             }
         ],
-        "optional": false,
-        "name": "customers-complete.Key"
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers-complete.Key</span><span class="delimiter">&quot;</span></span>
     },
-    "payload": {
-        "id": 1004
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1004</span>
     }
 }
 {
-    "schema": {
-        "type": "struct",
-        "fields": [ ... ],
-        "optional": true,
-        "name": "urn:jsonschema:com:example:domain:Customer"
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">struct</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">fields</span><span class="delimiter">&quot;</span></span>: [ <span class="error">.</span><span class="error">.</span><span class="error">.</span> ],
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jsonschema:com:example:domain:Customer</span><span class="delimiter">&quot;</span></span>
     },
-    "payload": {
-        "id": 1004,
-        "firstName": "Anne",
-        "lastName": "Kretchmar",
-        "email": "annek@noanswer.org",
-        "active": true,
-        "tags" : [ "long-term", "vip" ],
-        "birthday" : 5098,
-        "category": {
-            "id": 100001,
-            "name": "Retail"
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1004</span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Anne</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kretchmar</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">annek@noanswer.org</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">tags</span><span class="delimiter">&quot;</span></span> : [ <span class="string"><span class="delimiter">&quot;</span><span class="content">long-term</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">vip</span><span class="delimiter">&quot;</span></span> ],
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">birthday</span><span class="delimiter">&quot;</span></span> : <span class="integer">5098</span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">category</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">100001</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Retail</span><span class="delimiter">&quot;</span></span>
         },
-        "addresses": [
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">addresses</span><span class="delimiter">&quot;</span></span>: [
             {
-                "id": 16,
-                "street": "1289 University Hill Road",
-                "city": "Canehill",
-                "state": "Arkansas",
-                "zip": "72717",
-                "type": "LIVING"
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">16</span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">street</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1289 University Hill Road</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">city</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Canehill</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Arkansas</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">zip</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">72717</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">LIVING</span><span class="delimiter">&quot;</span></span>
             }
         ]
     }
@@ -1199,34 +1199,34 @@ you could for instance use the <a href="/docs/configuration/avro/">Avro message 
 </div>
 </div>
 <div class="sect1">
-<h2 id="sinking-aggregate-messages-into-elasticsearch">Sinking Aggregate Messages Into Elasticsearch</h2>
+<h2 id="sinking_aggregate_messages_into_elasticsearch">Sinking Aggregate Messages Into Elasticsearch</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The last missing step is to register the Confluent Elasticsearch sink connector, hooking it up with the "customers-complete" topic and letting it push any changes to the corresponding index:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">curl -i -X POST \
-  -H "Accept:application/json" \
-  -H "Content-Type:application/json" \
-  http://localhost:8083/connectors/ -d @- &lt;&lt;-EOF
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">c</span><span class="error">u</span><span class="error">r</span><span class="error">l</span> <span class="error">-</span><span class="error">i</span> <span class="error">-</span><span class="error">X</span> <span class="error">P</span><span class="error">O</span><span class="error">S</span><span class="error">T</span> <span class="error">\</span>
+  <span class="error">-</span><span class="error">H</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Accept:application/json</span><span class="delimiter">&quot;</span></span> <span class="error">\</span>
+  <span class="error">-</span><span class="error">H</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type:application/json</span><span class="delimiter">&quot;</span></span> <span class="error">\</span>
+  <span class="error">h</span><span class="error">t</span><span class="error">t</span><span class="error">p</span>:<span class="error">/</span><span class="error">/</span><span class="error">l</span><span class="error">o</span><span class="error">c</span><span class="error">a</span><span class="error">l</span><span class="error">h</span><span class="error">o</span><span class="error">s</span><span class="error">t</span>:<span class="integer">8083</span><span class="error">/</span><span class="error">c</span><span class="error">o</span><span class="error">n</span><span class="error">n</span><span class="error">e</span><span class="error">c</span><span class="error">t</span><span class="error">o</span><span class="error">r</span><span class="error">s</span><span class="error">/</span> <span class="error">-</span><span class="error">d</span> <span class="error">@</span><span class="error">-</span> <span class="error">&lt;</span><span class="error">&lt;</span><span class="error">-</span><span class="error">E</span><span class="error">O</span><span class="error">F</span>
   {
-      "name": "es-customers",
-      "config": {
-          "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
-          "tasks.max": "1",
-          "topics": "customers-complete",
-          "connection.url": "http://elastic:9200",
-          "key.ignore": "false",
-          "schema.ignore" : "false",
-          "behavior.on.null.values" : "delete",
-          "type.name": "customer-with-addresses",
-          "transforms" : "key",
-          "transforms.key.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
-          "transforms.key.field": "id"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">es-customers</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.confluent.connect.elasticsearch.ElasticsearchSinkConnector</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">topics</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers-complete</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">connection.url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://elastic:9200</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">key.ignore</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">schema.ignore</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">behavior.on.null.values</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">delete</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">type.name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customer-with-addresses</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.key.type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.connect.transforms.ExtractField$Key</span><span class="delimiter">&quot;</span></span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.key.field</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>
       }
   }
-EOF</code></pre>
+<span class="error">E</span><span class="error">O</span><span class="error">F</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1238,55 +1238,55 @@ Specifying the "behavior.on.null.values" option will let the connector delete th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">&gt; curl -X GET -H "Accept:application/json" \
-  http://localhost:9200/customers-complete/_search?pretty
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">&gt;</span> <span class="error">c</span><span class="error">u</span><span class="error">r</span><span class="error">l</span> <span class="error">-</span><span class="error">X</span> <span class="error">G</span><span class="error">E</span><span class="error">T</span> <span class="error">-</span><span class="error">H</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Accept:application/json</span><span class="delimiter">&quot;</span></span> <span class="error">\</span>
+  <span class="error">h</span><span class="error">t</span><span class="error">t</span><span class="error">p</span>:<span class="error">/</span><span class="error">/</span><span class="error">l</span><span class="error">o</span><span class="error">c</span><span class="error">a</span><span class="error">l</span><span class="error">h</span><span class="error">o</span><span class="error">s</span><span class="error">t</span>:<span class="integer">9200</span><span class="error">/</span><span class="error">c</span><span class="error">u</span><span class="error">s</span><span class="error">t</span><span class="error">o</span><span class="error">m</span><span class="error">e</span><span class="error">r</span><span class="error">s</span><span class="error">-</span><span class="error">c</span><span class="error">o</span><span class="error">m</span><span class="error">p</span><span class="error">l</span><span class="error">e</span><span class="error">t</span><span class="error">e</span><span class="error">/</span><span class="error">_</span><span class="error">s</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">c</span><span class="error">h</span><span class="error">?</span><span class="error">p</span><span class="error">r</span><span class="error">e</span><span class="error">t</span><span class="error">t</span><span class="error">y</span>
 
   {
-      "_shards": {
-          "failed": 0,
-          "successful": 5,
-          "total": 5
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">_shards</span><span class="delimiter">&quot;</span></span>: {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">failed</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">successful</span><span class="delimiter">&quot;</span></span>: <span class="integer">5</span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">total</span><span class="delimiter">&quot;</span></span>: <span class="integer">5</span>
       },
-      "hits": {
-          "hits": [
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">hits</span><span class="delimiter">&quot;</span></span>: {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">hits</span><span class="delimiter">&quot;</span></span>: [
               {
-                  "_id": "1004",
-                  "_index": "customers-complete",
-                  "_score": 1.0,
-                  "_source": {
-                      "active": true,
-                      "addresses": [
+                  <span class="key"><span class="delimiter">&quot;</span><span class="content">_id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1004</span><span class="delimiter">&quot;</span></span>,
+                  <span class="key"><span class="delimiter">&quot;</span><span class="content">_index</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers-complete</span><span class="delimiter">&quot;</span></span>,
+                  <span class="key"><span class="delimiter">&quot;</span><span class="content">_score</span><span class="delimiter">&quot;</span></span>: <span class="float">1.0</span>,
+                  <span class="key"><span class="delimiter">&quot;</span><span class="content">_source</span><span class="delimiter">&quot;</span></span>: {
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">addresses</span><span class="delimiter">&quot;</span></span>: [
                           {
-                              "city": "Canehill",
-                              "id": 16,
-                              "state": "Arkansas",
-                              "street": "1289 University Hill Road",
-                              "type": "LIVING",
-                              "zip": "72717"
+                              <span class="key"><span class="delimiter">&quot;</span><span class="content">city</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Canehill</span><span class="delimiter">&quot;</span></span>,
+                              <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">16</span>,
+                              <span class="key"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Arkansas</span><span class="delimiter">&quot;</span></span>,
+                              <span class="key"><span class="delimiter">&quot;</span><span class="content">street</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1289 University Hill Road</span><span class="delimiter">&quot;</span></span>,
+                              <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">LIVING</span><span class="delimiter">&quot;</span></span>,
+                              <span class="key"><span class="delimiter">&quot;</span><span class="content">zip</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">72717</span><span class="delimiter">&quot;</span></span>
                           }
                       ],
-                      "tags" : [ "long-term", "vip" ],
-                      "birthday" : 5098,
-                      "category": {
-                          "id": 100001,
-                          "name": "Retail"
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">tags</span><span class="delimiter">&quot;</span></span> : [ <span class="string"><span class="delimiter">&quot;</span><span class="content">long-term</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">vip</span><span class="delimiter">&quot;</span></span> ],
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">birthday</span><span class="delimiter">&quot;</span></span> : <span class="integer">5098</span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">category</span><span class="delimiter">&quot;</span></span>: {
+                          <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">100001</span>,
+                          <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Retail</span><span class="delimiter">&quot;</span></span>
                       },
-                      "email": "annek@noanswer.org",
-                      "firstName": "Anne",
-                      "id": 1004,
-                      "lastName": "Kretchmar",
-                      "scores": [],
-                      "someBlob": null,
-                      "tags": []
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">annek@noanswer.org</span><span class="delimiter">&quot;</span></span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">firstName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Anne</span><span class="delimiter">&quot;</span></span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1004</span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">lastName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kretchmar</span><span class="delimiter">&quot;</span></span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">scores</span><span class="delimiter">&quot;</span></span>: [],
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">someBlob</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+                      <span class="key"><span class="delimiter">&quot;</span><span class="content">tags</span><span class="delimiter">&quot;</span></span>: []
                   },
-                  "_type": "customer-with-addresses"
+                  <span class="key"><span class="delimiter">&quot;</span><span class="content">_type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customer-with-addresses</span><span class="delimiter">&quot;</span></span>
               }
           ],
-          "max_score": 1.0,
-          "total": 1
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">max_score</span><span class="delimiter">&quot;</span></span>: <span class="float">1.0</span>,
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">total</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>
       },
-      "timed_out": false,
-      "took": 11
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">timed_out</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">took</span><span class="delimiter">&quot;</span></span>: <span class="integer">11</span>
   }</code></pre>
 </div>
 </div>
@@ -1297,7 +1297,7 @@ If you&#8217;re using JPA to update the customer, you&#8217;ll see the data in t
 </div>
 </div>
 <div class="sect1">
-<h2 id="pros-and-cons">Pros and Cons</h2>
+<h2 id="pros_and_cons">Pros and Cons</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>So what are the advantages and disadvantages of this approach for materializing aggregates from multiple source tables compared to the <a href="/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/">KStreams-based approach</a>?</p>

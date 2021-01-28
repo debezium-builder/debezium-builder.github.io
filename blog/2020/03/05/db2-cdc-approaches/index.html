@@ -857,7 +857,7 @@ we took to implementing the Db2 Debezium connector.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="background-bringing-data-to-a-datalake">Background: Bringing Data to a Datalake</h2>
+<h2 id="background_bringing_data_to_a_datalake">Background: Bringing Data to a Datalake</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In 2016  IBM started  an effort to  build a
@@ -888,7 +888,7 @@ some variant of IBM&#8217;s Db2.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="getting-data-from-db2-efficiently">Getting Data From Db2 Efficiently</h2>
+<h2 id="getting_data_from_db2_efficiently">Getting Data From Db2 Efficiently</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Data is ingested  into an immutable Landing Zone  within the Datalake.
@@ -1069,7 +1069,7 @@ trying to use IIDR for a use-case for which it was not intended.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="approaches-to-implementing-a-debezium-db2-connector">Approaches to Implementing a Debezium Db2 Connector</h2>
+<h2 id="approaches_to_implementing_a_debezium_db2_connector">Approaches to Implementing a Debezium Db2 Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When  Debezium  became available  we  started  evaluating it  for  our
@@ -1128,7 +1128,7 @@ to implement the Db2 connector.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="future-workextensions">Future Work/Extensions</h2>
+<h2 id="future_workextensions">Future Work/Extensions</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="benchmarking">Benchmarking</h3>
@@ -1146,7 +1146,7 @@ source system.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="db2-notification-system">Db2 Notification System</h3>
+<h3 id="db2_notification_system">Db2 Notification System</h3>
 <div class="paragraph">
 <p>Rather than building a polling connector for Db2 it would also be possible to create a notification
 system. We considered this, but decided the polling connector was simpler for a first implementation.</p>
@@ -1175,7 +1175,7 @@ This would require the watcher agent to run locally on the database system, simi
 </div>
 </div>
 <div class="sect2">
-<h3 id="dml-v-ddl-changes">DML v DDL Changes</h3>
+<h3 id="dml_v_ddl_changes">DML v DDL Changes</h3>
 <div class="paragraph">
 <p>Change Data Capture (CDC) systems propagate modifications at the source tables made via Data Manipulation Language (DML) operations such as INSERT, DELETE etc. They do not explicitly handle changes to the source table made via Data Definition Language (DDL) operations such as TRUNCATE, ALTER etc. It is not really clear what the behavior of Debezium should be made when a DDL change occurs. We are
 looking at exploring what the Debezium model should be for changes of this sort.</p>

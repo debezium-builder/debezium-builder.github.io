@@ -899,7 +899,7 @@ Let&#8217;s take a closer look at some of them in the remainder of this post.</p
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="embedded-engine-improvements">Embedded Engine Improvements</h2>
+<h2 id="embedded_engine_improvements">Embedded Engine Improvements</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Debezium&#8217;s <a href="/documentation/reference/1.2/development/engine.html">embedded engine</a> is a very useful tool for handling change events in cases where Apache Kafka and Kafka Connect are not available.
@@ -913,17 +913,17 @@ As an example, here is how to use JSON as serialization format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Properties props = new Properties();
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> props = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
 
-// don't include schema in message
-props.setProperty("converter.schemas.enable", "false"); // <b class="conum">(1)</b>
-// further properties as needed...
+<span class="comment">// don't include schema in message</span>
+props.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">converter.schemas.enable</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="comment">// further properties as needed...</span>
 
-DebeziumEngine&lt;ChangeEvent&lt;String&gt;&gt; engine = DebeziumEngine.create(Json.class) // <b class="conum">(2)</b>
+DebeziumEngine&lt;<span class="predefined-type">ChangeEvent</span>&lt;<span class="predefined-type">String</span>&gt;&gt; engine = DebeziumEngine.create(Json.class) <i class="conum" data-value="2"></i><b>(2)</b>
     .using(props)
-    .notifying((records, committer) -&gt; { // <b class="conum">(3)</b>
-        for (ChangeEvent&lt;String&gt; r : records) {
-            System.out.println("Key = '" + key + "' value = '" + value + "'");
+    .notifying((records, committer) -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="keyword">for</span> (<span class="predefined-type">ChangeEvent</span>&lt;<span class="predefined-type">String</span>&gt; r : records) {
+            <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Key = '</span><span class="delimiter">&quot;</span></span> + key + <span class="string"><span class="delimiter">&quot;</span><span class="content">' value = '</span><span class="delimiter">&quot;</span></span> + value + <span class="string"><span class="delimiter">&quot;</span><span class="content">'</span><span class="delimiter">&quot;</span></span>);
             committer.markProcessed(r);
         }
     })
@@ -931,17 +931,20 @@ DebeziumEngine&lt;ChangeEvent&lt;String&gt;&gt; engine = DebeziumEngine.create(J
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>All the options of the underlying converter can be used</p>
-</li>
-<li>
-<p><code>Json.class</code> is a type token requesting serialization into JSON</p>
-</li>
-<li>
-<p><code>records</code> is a batch of change events, represented as JSON strings</p>
-</li>
-</ol>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>All the options of the underlying converter can be used</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>Json.class</code> is a type token requesting serialization into JSON</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>records</code> is a batch of change events, represented as JSON strings</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The embedded engine now also supports the usage of Kafka Connect SMTs
@@ -950,12 +953,12 @@ They can be simply configured via the properties passed to the engine builder:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Properties props = new Properties();
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> props = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
 
-props.setProperty("transforms", "router");
-props.setProperty("transforms.router.type", "org.apache.kafka.connect.transforms.RegexRouter");
-props.setProperty("transforms.router.regex", "(.*)");
-props.setProperty("transforms.router.replacement", "trf$1");</code></pre>
+props.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">router</span><span class="delimiter">&quot;</span></span>);
+props.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">transforms.router.type</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.connect.transforms.RegexRouter</span><span class="delimiter">&quot;</span></span>);
+props.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">transforms.router.regex</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">(.*)</span><span class="delimiter">&quot;</span></span>);
+props.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">transforms.router.replacement</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">trf$1</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -970,7 +973,7 @@ which will be based on the embedded engine and make its functionality available 
 </div>
 </div>
 <div class="sect1">
-<h2 id="content-based-event-filtering">Content-based Event Filtering</h2>
+<h2 id="content_based_event_filtering">Content-based Event Filtering</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This release also adds another very versatile transformation to Debezium:
@@ -991,7 +994,7 @@ instead you can choose from a wide range of available options such as Groovy, MV
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>...
+<pre class="CodeRay highlight"><code>...
 transforms=filter
 transforms.filter.type=io.debezium.transforms.Filter
 transforms.filter.language=jsr223.groovy
@@ -1011,7 +1014,7 @@ Please give it a try and share your experiences.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="other-features">Other Features</h2>
+<h2 id="other_features">Other Features</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Besides these key features, there&#8217;s a number of other new functionalities coming with the 1.2.0.Alpha1 release:</p>

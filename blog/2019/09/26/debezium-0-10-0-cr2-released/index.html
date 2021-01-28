@@ -890,7 +890,7 @@ barring any unforeseen regressions.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="customizable-message-keys">Customizable Message Keys</h2>
+<h2 id="customizable_message_keys">Customizable Message Keys</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Being able to configure which columns of a table should go into the key of corresponding Kafka messages has been a long-standing feature request (<a href="https://issues.redhat.com/browse/DBZ-1015">DBZ-1015</a>).
@@ -919,7 +919,7 @@ To do so, the new <code>message.key.columns</code> option can be used like so:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>message.key.columns=dbserver1.inventory.customerdetails:CustomerId</code></pre>
+<pre class="CodeRay highlight"><code>message.key.columns=dbserver1.inventory.customerdetails:CustomerId</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -928,7 +928,7 @@ To do so, the new <code>message.key.columns</code> option can be used like so:</
 </div>
 </div>
 <div class="sect1">
-<h2 id="pluggable-serializers-for-cassandra">Pluggable Serializers for Cassandra</h2>
+<h2 id="pluggable_serializers_for_cassandra">Pluggable Serializers for Cassandra</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>From previous announcements you might remember that Debezium&#8217;s Cassandra connector is a bit different from the other ones,
@@ -944,7 +944,7 @@ The serializer framework from Kafka Connect is reused for that, so you can lever
 </div>
 </div>
 <div class="sect1">
-<h2 id="improved-handling-of-postgres-toast-columns">Improved handling of Postgres TOAST Columns</h2>
+<h2 id="improved_handling_of_postgres_toast_columns">Improved handling of Postgres TOAST Columns</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.postgresql.org/docs/current/storage-toast.html">TOAST columns</a> are a mechanism in Postgres for dealing with column values that exceed the page size limit (typically 8 KB).
@@ -989,7 +989,7 @@ that ignores any updates that would set a column value to the marker, keeping th
 </div>
 </div>
 <div class="sect1">
-<h2 id="bugfixes-and-other-changes">Bugfixes and Other Changes</h2>
+<h2 id="bugfixes_and_other_changes">Bugfixes and Other Changes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Besides these feature implementations, this release contains a number of bugfixes, too:</p>

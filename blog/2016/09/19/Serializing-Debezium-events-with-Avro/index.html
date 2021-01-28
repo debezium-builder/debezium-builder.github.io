@@ -861,7 +861,7 @@
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="kafka-serializers-and-deserializers">Kafka serializers and deserializers</h2>
+<h2 id="kafka_serializers_and_deserializers">Kafka serializers and deserializers</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Before we get too far, let&#8217;s back up and review how Kafka producers and consumers normally do this serialization and deserialization. Because the keys and values are simple opaque byte arrays, you can use anything for your keys and values. For example, consider a case where we&#8217;re using simple whole numbers for the keys and strings for the values. Here, a producer of these messages would use a <em>long serializer</em> to convert the <code>long</code> keys to binary form and a <em>string serializer</em> to convert the <code>String</code> values to binary form. Meanwhile, the consumers use a <em>long deserializer</em> to convert the binary keys into usable <code>long</code> values, and a <em>string deserializer</em> to convert the binary values back into <code>String</code> objects.</p>
@@ -872,7 +872,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="avro-serialization">Avro serialization</h2>
+<h2 id="avro_serialization">Avro serialization</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="http://avro.apache.org/">Avro</a> is a data serialization mechanism that uses a <em>schema</em> to define the structure of data. Avro relies upon this schema when writing the data to the binary format, and the schema allows it to encode the fields within the data in a much more compact form. Avro also relies upon the schema when <em>reading</em> the data, too. But interestingly, Avro schemas are designed to evolve, so it is actually possible to use a slightly different schema for reading than what was used for writing. This feature makes Avro a great choice for Kafka serialization and deserialization.</p>
@@ -886,7 +886,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="kafka-connect-converters">Kafka Connect converters</h2>
+<h2 id="kafka_connect_converters">Kafka Connect converters</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Kafka Connect is a bit different than many Kafka producers/consumers, since the keys and values will often be structured. And rather than require connectors to work with JSON objects, Kafka Connect defines its own lightweight framework for defining data structures with a schema, making it much easier to write connectors to work with structured data. Kafka Connect defines its own <em>converters</em> that are similar to Kafka (de)serializers, except that Kafka Connect&#8217;s converters know about these structures and schemas and can serialize the keys and values to binary form. Kafka Connect provides a <em>JSON converter</em> that converts the structures into JSON and then uses the normal Kafka JSON serializer, so downstream consumers can just use the normal Kafka JSON deserializer and get a JSON representation of the Kafka Connect structs and schema. This is exactly what the <a href="/docs/tutorial/">Debezium tutorial</a> is using, and the <code>watch-topic</code> consumer knows to use the JSON deserializer.</p>
@@ -928,7 +928,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="using-the-avro-converter-with-debezium">Using the Avro Converter with Debezium</h2>
+<h2 id="using_the_avro_converter_with_debezium">Using the Avro Converter with Debezium</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As mentioned above, in the interest of keeping the Debezium tutorial as simple as possible, we avoid using the Schema Registry or the Avro converter in the tutorial. We also don&#8217;t (yet) include the Avro converter in our Docker images, though that <a href="https://issues.redhat.com/browse/DBZ-59">will change soon</a>.</p>
@@ -938,7 +938,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>key.converter=io.confluent.connect.avro.AvroConverter
+<pre class="CodeRay highlight"><code>key.converter=io.confluent.connect.avro.AvroConverter
 value.converter=io.confluent.connect.avro.AvroConverter</code></pre>
 </div>
 </div>
@@ -947,7 +947,7 @@ value.converter=io.confluent.connect.avro.AvroConverter</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>internal.key.converter=io.confluent.connect.avro.AvroConverter
+<pre class="CodeRay highlight"><code>internal.key.converter=io.confluent.connect.avro.AvroConverter
 internal.value.converter=io.confluent.connect.avro.AvroConverter</code></pre>
 </div>
 </div>

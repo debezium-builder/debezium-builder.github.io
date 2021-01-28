@@ -875,7 +875,7 @@ There are multiple ways how to achieve this goal</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="apache-camel">Apache Camel</h2>
+<h2 id="apache_camel">Apache Camel</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://camel.apache.org/">Camel</a> is an open-source integration framework that enables developers to read, transform, route and write data from and to disparate systems and services.
@@ -885,7 +885,7 @@ It provides a large amount of ready-made <a href="https://camel.apache.org/compo
 <p>This combination allows the developer to easily connect to target systems and express integration pipelines using a declarative DSL.</p>
 </div>
 <div class="sect2">
-<h3 id="camel-and-debezium">Camel and Debezium</h3>
+<h3 id="camel_and_debezium">Camel and Debezium</h3>
 <div class="paragraph">
 <p><a href="https://camel.apache.org/blog/Camel3-Whatsnew/">Camel 3</a> has been released by the end of the year 2019 and in addition to the major re-architecture new Debezium components have been added to the codebase.
 It also enables Camel to be used as <a href="https://camel.apache.org/camel-kafka-connector/latest/index.html">a connector</a> in Kafka Connect runtime.</p>
@@ -920,7 +920,7 @@ The advantage of this solution is the complete isolation of dependencies and the
 </div>
 </div>
 <div class="sect1">
-<h2 id="an-example">An Example</h2>
+<h2 id="an_example">An Example</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As an example we&#8217;ve built a simple Question &amp; Answer (Q &amp; A) application,
@@ -966,7 +966,7 @@ which sends emails via an SMTP server and posts a corresponding tweet on a provi
 </div>
 </div>
 <div class="sect2">
-<h3 id="question-answer-application">Question &amp; Answer Application</h3>
+<h3 id="question_answer_application">Question &amp; Answer Application</h3>
 <div class="paragraph">
 <p>The source application is a simple REST service based on Quarkus.
 It manages two entities, <code>Question</code> and <code>Answer</code>, with a <code>1:n</code> relation stored in the PostgreSQL database.</p>
@@ -984,7 +984,7 @@ It manages two entities, <code>Question</code> and <code>Answer</code>, with a <
 </div>
 </div>
 <div class="sect2">
-<h3 id="the-camel-pipeline">The Camel Pipeline</h3>
+<h3 id="the_camel_pipeline">The Camel Pipeline</h3>
 <div class="paragraph">
 <p>The Camel pipeline is an expression of the following business rules:</p>
 </div>
@@ -1016,52 +1016,52 @@ It manages two entities, <code>Question</code> and <code>Answer</code>, with a <
 </div>
 </div>
 <div class="sect1">
-<h2 id="code-walkthrough">Code Walkthrough</h2>
+<h2 id="code_walkthrough">Code Walkthrough</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To use Debezium Camel component we need to add at least following dependencies into a <code>pom.xml</code> file</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependencyManagement&gt;
-  &lt;dependencies&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.apache.camel&lt;/groupId&gt;
-      &lt;artifactId&gt;camel-bom&lt;/artifactId&gt;
-      &lt;version&gt;${version.camel}&lt;/version&gt;
-      &lt;type&gt;pom&lt;/type&gt;
-      &lt;scope&gt;import&lt;/scope&gt;
-    &lt;/dependency&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencyManagement&gt;</span>
+  <span class="tag">&lt;dependencies&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>org.apache.camel<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>camel-bom<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.camel}<span class="tag">&lt;/version&gt;</span>
+      <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
+      <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
 
-    &lt;!-- Use required Debezium version --&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-      &lt;artifactId&gt;debezium-connector-postgres&lt;/artifactId&gt;
-      &lt;version&gt;${version.debezium}&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-      &lt;artifactId&gt;debezium-embedded&lt;/artifactId&gt;
-      &lt;version&gt;${version.debezium}&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-      &lt;artifactId&gt;debezium-core&lt;/artifactId&gt;
-      &lt;version&gt;${version.debezium}&lt;/version&gt;
-    &lt;/dependency&gt;
+    <span class="comment">&lt;!-- Use required Debezium version --&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>debezium-connector-postgres<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.debezium}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>debezium-embedded<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.debezium}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>debezium-core<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>${version.debezium}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
 
-  &lt;/dependencies&gt;
-&lt;/dependencyManagement&gt;
-&lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.apache.camel&lt;/groupId&gt;
-    &lt;artifactId&gt;camel-core&lt;/artifactId&gt;
-  &lt;/dependency&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.apache.camel&lt;/groupId&gt;
-    &lt;artifactId&gt;camel-debezium-postgres&lt;/artifactId&gt;
-  &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+  <span class="tag">&lt;/dependencies&gt;</span>
+<span class="tag">&lt;/dependencyManagement&gt;</span>
+<span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.apache.camel<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>camel-core<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.apache.camel<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>camel-debezium-postgres<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1070,104 +1070,111 @@ Its main route looks like tis:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public class QaDatabaseUserNotifier extends RouteBuilder {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">QaDatabaseUserNotifier</span> <span class="directive">extends</span> RouteBuilder {
 
-  @Override
-  public void configure() throws Exception {
-    from("debezium-postgres:localhost?"
-        + "databaseHostname={{database.hostname}}"
-        + "&amp;databasePort={{database.port}}"
-        + "&amp;databaseUser={{database.user}}"
-        + "&amp;databasePassword={{database.password}}"
-        + "&amp;databaseDbname=postgres"
-        + "&amp;databaseServerName=qa"
-        + "&amp;schemaWhitelist={{database.schema}}"
-        + "&amp;tableWhitelist={{database.schema}}.question,{{database.schema}}.answer"
-        + "&amp;offsetStorage=org.apache.kafka.connect.storage.MemoryOffsetBackingStore")
-        .routeId(QaDatabaseUserNotifier.class.getName() + ".DatabaseReader")     // <b class="conum">(1)</b>
-        .log(LoggingLevel.DEBUG, "Incoming message ${body} with headers ${headers}")
-        .choice()                                                                // <b class="conum">(2)</b>
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="type">void</span> configure() <span class="directive">throws</span> <span class="exception">Exception</span> {
+    from(<span class="string"><span class="delimiter">&quot;</span><span class="content">debezium-postgres:localhost?</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">databaseHostname={{database.hostname}}</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;databasePort={{database.port}}</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;databaseUser={{database.user}}</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;databasePassword={{database.password}}</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;databaseDbname=postgres</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;databaseServerName=qa</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;schemaWhitelist={{database.schema}}</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;tableWhitelist={{database.schema}}.question,{{database.schema}}.answer</span><span class="delimiter">&quot;</span></span>
+        + <span class="string"><span class="delimiter">&quot;</span><span class="content">&amp;offsetStorage=org.apache.kafka.connect.storage.MemoryOffsetBackingStore</span><span class="delimiter">&quot;</span></span>)
+        .routeId(QaDatabaseUserNotifier.class.getName() + <span class="string"><span class="delimiter">&quot;</span><span class="content">.DatabaseReader</span><span class="delimiter">&quot;</span></span>)     <i class="conum" data-value="1"></i><b>(1)</b>
+        .log(LoggingLevel.DEBUG, <span class="string"><span class="delimiter">&quot;</span><span class="content">Incoming message ${body} with headers ${headers}</span><span class="delimiter">&quot;</span></span>)
+        .choice()                                                                <i class="conum" data-value="2"></i><b>(2)</b>
           .when(isQuestionEvent)
-            .filter(isCreateOrUpdateEvent)                                       // <b class="conum">(3)</b>
-              .convertBodyTo(Question.class)                                     // <b class="conum">(4)</b>
-              .log(LoggingLevel.TRACE, "Converted to logical class ${body}")
-              .bean(store, "readFromStoreAndUpdateIfNeeded")                     // <b class="conum">(5)</b>
-              .to(ROUTE_MAIL_QUESTION_CREATE)                                    // <b class="conum">(6)</b>
+            .filter(isCreateOrUpdateEvent)                                       <i class="conum" data-value="3"></i><b>(3)</b>
+              .convertBodyTo(Question.class)                                     <i class="conum" data-value="4"></i><b>(4)</b>
+              .log(LoggingLevel.TRACE, <span class="string"><span class="delimiter">&quot;</span><span class="content">Converted to logical class ${body}</span><span class="delimiter">&quot;</span></span>)
+              .bean(store, <span class="string"><span class="delimiter">&quot;</span><span class="content">readFromStoreAndUpdateIfNeeded</span><span class="delimiter">&quot;</span></span>)                     <i class="conum" data-value="5"></i><b>(5)</b>
+              .to(ROUTE_MAIL_QUESTION_CREATE)                                    <i class="conum" data-value="6"></i><b>(6)</b>
             .endChoice()
           .when(isAnswerEvent)
             .filter(isCreateOrUpdateEvent)
               .convertBodyTo(Answer.class)
-              .log(LoggingLevel.TRACE, "Converted to logical class ${body}")
-              .bean(store, "readFromStoreAndAddAnswer")
+              .log(LoggingLevel.TRACE, <span class="string"><span class="delimiter">&quot;</span><span class="content">Converted to logical class ${body}</span><span class="delimiter">&quot;</span></span>)
+              .bean(store, <span class="string"><span class="delimiter">&quot;</span><span class="content">readFromStoreAndAddAnswer</span><span class="delimiter">&quot;</span></span>)
               .to(ROUTE_MAIL_ANSWER_CHANGE)
-              .filter(hasManyAnswers)                                            // <b class="conum">(7)</b>
-                .setBody().simple("Question '${exchangeProperty[aggregate].text}' has " +
-                    "many answers (generated at " + Instant.now() + ")")
+              .filter(hasManyAnswers)                                            <i class="conum" data-value="7"></i><b>(7)</b>
+                .setBody().simple(<span class="string"><span class="delimiter">&quot;</span><span class="content">Question '${exchangeProperty[aggregate].text}' has </span><span class="delimiter">&quot;</span></span> +
+                    <span class="string"><span class="delimiter">&quot;</span><span class="content">many answers (generated at </span><span class="delimiter">&quot;</span></span> + Instant.now() + <span class="string"><span class="delimiter">&quot;</span><span class="content">)</span><span class="delimiter">&quot;</span></span>)
                 .to(TWITTER_SERVER)
               .end()
             .endChoice()
           .otherwise()
-            .log(LoggingLevel.WARN, "Unknown type ${headers[" +
-                DebeziumConstants.HEADER_IDENTIFIER + "]}")
+            .log(LoggingLevel.WARN, <span class="string"><span class="delimiter">&quot;</span><span class="content">Unknown type ${headers[</span><span class="delimiter">&quot;</span></span> +
+                DebeziumConstants.HEADER_IDENTIFIER + <span class="string"><span class="delimiter">&quot;</span><span class="content">]}</span><span class="delimiter">&quot;</span></span>)
         .endParent();
 
-    from(ROUTE_MAIL_QUESTION_CREATE)                                             // <b class="conum">(6)</b>
-      .routeId(QaDatabaseUserNotifier.class.getName() + ".QuestionNotifier")
-      .setHeader("To").simple("${body.email}")
-      .setHeader("Subject").simple("Question created/edited")
-      .setBody().simple("Question '${body.text}' was created or edited")
+    from(ROUTE_MAIL_QUESTION_CREATE)                                             <i class="conum" data-value="6"></i><b>(6)</b>
+      .routeId(QaDatabaseUserNotifier.class.getName() + <span class="string"><span class="delimiter">&quot;</span><span class="content">.QuestionNotifier</span><span class="delimiter">&quot;</span></span>)
+      .setHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">To</span><span class="delimiter">&quot;</span></span>).simple(<span class="string"><span class="delimiter">&quot;</span><span class="content">${body.email}</span><span class="delimiter">&quot;</span></span>)
+      .setHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Subject</span><span class="delimiter">&quot;</span></span>).simple(<span class="string"><span class="delimiter">&quot;</span><span class="content">Question created/edited</span><span class="delimiter">&quot;</span></span>)
+      .setBody().simple(<span class="string"><span class="delimiter">&quot;</span><span class="content">Question '${body.text}' was created or edited</span><span class="delimiter">&quot;</span></span>)
       .to(SMTP_SERVER);
   }
 
-  @Converter
-  public static class Converters {
+  <span class="annotation">@Converter</span>
+  <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Converters</span> {
 
-    @Converter
-    public static Question questionFromStruct(Struct struct) {                   // <b class="conum">(4)</b>
-      return new Question(struct.getInt64("id"), struct.getString("text"),
-          struct.getString("email"));
+    <span class="annotation">@Converter</span>
+    <span class="directive">public</span> <span class="directive">static</span> Question questionFromStruct(<span class="predefined-type">Struct</span> struct) {                   <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="keyword">return</span> <span class="keyword">new</span> Question(struct.getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>), struct.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>),
+          struct.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>));
     }
 
-    @Converter
-    public static Answer answerFromStruct(Struct struct) {                       // <b class="conum">(4)</b>
-      return new Answer(struct.getInt64("id"), struct.getString("text"),
-          struct.getString("email"), struct.getInt64("question_id"));
+    <span class="annotation">@Converter</span>
+    <span class="directive">public</span> <span class="directive">static</span> Answer answerFromStruct(<span class="predefined-type">Struct</span> struct) {                       <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="keyword">return</span> <span class="keyword">new</span> Answer(struct.getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>), struct.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span>),
+          struct.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>), struct.getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">question_id</span><span class="delimiter">&quot;</span></span>));
     }
   }
 }</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p><code>from</code> is the Debezium source endpoint. The URI parts map directly to connector configuration options.</p>
-</li>
-<li>
-<p>The pipeline logic is split depending on the change event type.
-The recognition is based on <code>CamelDebeziumIdentifier</code> header which contains the identifier (<code>&lt;server_name&gt;.&lt;schema_name&gt;.&lt;table_name&gt;</code>) of the source table.</p>
-</li>
-<li>
-<p>The pipeline is now able to process only updates and deletes.
-The recognition is based on <code>CamelDebeziumOperation</code> header that contains <code>op</code> field of the message <code>Envelope</code>.</p>
-</li>
-<li>
-<p>The Kafka Connect&#8217;s <code>Struct</code> type is converted into a logical type used in the pipeline.
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>from</code> is the Debezium source endpoint. The URI parts map directly to connector configuration options.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The pipeline logic is split depending on the change event type.
+The recognition is based on <code>CamelDebeziumIdentifier</code> header which contains the identifier (<code>&lt;server_name&gt;.&lt;schema_name&gt;.&lt;table_name&gt;</code>) of the source table.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The pipeline is now able to process only updates and deletes.
+The recognition is based on <code>CamelDebeziumOperation</code> header that contains <code>op</code> field of the message <code>Envelope</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The Kafka Connect&#8217;s <code>Struct</code> type is converted into a logical type used in the pipeline.
 The conversion is performed by a custom Camel converter.
-It is possible to use out-of-the-box <code>DebeziumTypeConverter</code> that converts <code>Struct</code> into a <code>Map</code> but this tightly couples pipeline logic into the table structure.</p>
-</li>
-<li>
-<p>A supplementary route is invoked that communicates with a <a href="https://github.com/debezium/debezium-examples/blob/master/camel-component/qa-camel/src/main/java/io/debezium/examples/camel/pipeline/AggregateStore.java">message store</a> based on an Infinispan cache to build a message aggregate.
+It is possible to use out-of-the-box <code>DebeziumTypeConverter</code> that converts <code>Struct</code> into a <code>Map</code> but this tightly couples pipeline logic into the table structure.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>A supplementary route is invoked that communicates with a <a href="https://github.com/debezium/debezium-examples/blob/master/camel-component/qa-camel/src/main/java/io/debezium/examples/camel/pipeline/AggregateStore.java">message store</a> based on an Infinispan cache to build a message aggregate.
 The message store checks if it has the question already stored.
-If not a new aggregate is created and stored otherwise the stored aggregate is updated with new data.</p>
-</li>
-<li>
-<p>A supplementary route is invoked that formats a mail message and delivers it to the question creator via the SMTP endpoint.</p>
-</li>
-<li>
-<p>The route part related to the answer message type is very similar (answers are added to question aggregate).
-The main difference is the posting of a Twitter message when the aggregate contains three answers.</p>
-</li>
-</ol>
+If not a new aggregate is created and stored otherwise the stored aggregate is updated with new data.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>A supplementary route is invoked that formats a mail message and delivers it to the question creator via the SMTP endpoint.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The route part related to the answer message type is very similar (answers are added to question aggregate).
+The main difference is the posting of a Twitter message when the aggregate contains three answers.</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>On a side note, for the sake of simplicitiy, the example currently uses volatile memory to store the Debezium offsets.
@@ -1186,7 +1193,7 @@ For persistent storage you could either use a file-based offset store or create 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">$ mvn clean install</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">$ mvn clean install</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1194,7 +1201,7 @@ For persistent storage you could either use a file-based offset store or create 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">$ env TWITTER_CONSUMER_KEY=&lt;...&gt; TWITTER_CONSUMER_SECRET=&lt;...&gt; TWITTER_ACCESS_TOKEN=&lt;...&gt; TWITTER_ACCESS_TOKEN_SECRET=&lt;...&gt; docker-compose up</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">$ env TWITTER_CONSUMER_KEY=&lt;...&gt; TWITTER_CONSUMER_SECRET=&lt;...&gt; TWITTER_ACCESS_TOKEN=&lt;...&gt; TWITTER_ACCESS_TOKEN_SECRET=&lt;...&gt; docker-compose up</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1202,7 +1209,7 @@ For persistent storage you could either use a file-based offset store or create 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">$ curl -v -X POST -H 'Content-Type: application/json' http://0.0.0.0:8080/question/ -d @src/test/resources/messages/create-question.json
+<pre class="CodeRay highlight"><code data-lang="shell">$ curl -v -X POST -H 'Content-Type: application/json' http://0.0.0.0:8080/question/ -d @src/test/resources/messages/create-question.json
 $ curl -v -X POST -H 'Content-Type: application/json' http://0.0.0.0:8080/question/1/answer -d @src/test/resources/messages/create-answer1.json
 $ curl -v -X POST -H 'Content-Type: application/json' http://0.0.0.0:8080/question/1/answer -d @src/test/resources/messages/create-answer2.json
 $ curl -v -X POST -H 'Content-Type: application/json' http://0.0.0.0:8080/question/1/answer -d @src/test/resources/messages/create-answer3.json</code></pre>

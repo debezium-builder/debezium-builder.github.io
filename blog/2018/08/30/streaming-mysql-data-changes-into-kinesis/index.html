@@ -859,7 +859,7 @@ a fully-managed data streaming service available on the Amazon cloud.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="introducing-the-debezium-embedded-engine">Introducing the Debezium Embedded Engine</h2>
+<h2 id="introducing_the_debezium_embedded_engine">Introducing the Debezium Embedded Engine</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Debezium is implemented as a set of connectors for Kafka and thus usually is run via <a href="https://kafka.apache.org/documentation/#connect">Kafka Connect</a>.
@@ -887,7 +887,7 @@ A complete executable example can be found in the <a href="https://github.com/de
 </div>
 </div>
 <div class="sect1">
-<h2 id="set-up">Set-Up</h2>
+<h2 id="set_up">Set-Up</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In order to use Debezium&#8217;s embedded engine, add the <em>debezium-embedded</em> dependency as well as the Debezium connector of your choice to your project&#8217;s <em>pom.xml</em>.
@@ -896,29 +896,29 @@ We also need to add a dependency to the <a href="https://docs.aws.amazon.com/AWS
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">...
-&lt;dependency&gt;
-    &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-    &lt;artifactId&gt;debezium-embedded&lt;/artifactId&gt;
-    &lt;version&gt;0.8.3.Final&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-    &lt;artifactId&gt;debezium-connector-mysql&lt;/artifactId&gt;
-    &lt;version&gt;0.8.3.Final&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.amazonaws&lt;/groupId&gt;
-    &lt;artifactId&gt;amazon-kinesis-client&lt;/artifactId&gt;
-    &lt;version&gt;1.9.0&lt;/version&gt;
-&lt;/dependency&gt;
+<pre class="CodeRay highlight"><code data-lang="xml">...
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>debezium-embedded<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>0.8.3.Final<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>debezium-connector-mysql<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>0.8.3.Final<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>com.amazonaws<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>amazon-kinesis-client<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.9.0<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
 ...</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuring-the-embedded-engine">Configuring the Embedded Engine</h2>
+<h2 id="configuring_the_embedded_engine">Configuring the Embedded Engine</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Debezium embedded engine is configured through an instance of <code>io.debezium.config.Configuration</code>.
@@ -927,22 +927,22 @@ but for the sake of the example we&#8217;ll simply pass all required values via 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">Configuration config = Configuration.create()
-    .with(EmbeddedEngine.CONNECTOR_CLASS, "io.debezium.connector.mysql.MySqlConnector")
-    .with(EmbeddedEngine.ENGINE_NAME, "kinesis")
-    .with(MySqlConnectorConfig.SERVER_NAME, "kinesis")
-    .with(MySqlConnectorConfig.SERVER_ID, 8192)
-    .with(MySqlConnectorConfig.HOSTNAME, "localhost")
-    .with(MySqlConnectorConfig.PORT, 3306)
-    .with(MySqlConnectorConfig.USER, "debezium")
-    .with(MySqlConnectorConfig.PASSWORD, "dbz")
-    .with(MySqlConnectorConfig.DATABASE_WHITELIST, "inventory")
-    .with(MySqlConnectorConfig.TABLE_WHITELIST, "inventory.customers")
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Configuration</span> config = <span class="predefined-type">Configuration</span>.create()
+    .with(EmbeddedEngine.CONNECTOR_CLASS, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.mysql.MySqlConnector</span><span class="delimiter">&quot;</span></span>)
+    .with(EmbeddedEngine.ENGINE_NAME, <span class="string"><span class="delimiter">&quot;</span><span class="content">kinesis</span><span class="delimiter">&quot;</span></span>)
+    .with(MySqlConnectorConfig.SERVER_NAME, <span class="string"><span class="delimiter">&quot;</span><span class="content">kinesis</span><span class="delimiter">&quot;</span></span>)
+    .with(MySqlConnectorConfig.SERVER_ID, <span class="integer">8192</span>)
+    .with(MySqlConnectorConfig.HOSTNAME, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>)
+    .with(MySqlConnectorConfig.PORT, <span class="integer">3306</span>)
+    .with(MySqlConnectorConfig.USER, <span class="string"><span class="delimiter">&quot;</span><span class="content">debezium</span><span class="delimiter">&quot;</span></span>)
+    .with(MySqlConnectorConfig.PASSWORD, <span class="string"><span class="delimiter">&quot;</span><span class="content">dbz</span><span class="delimiter">&quot;</span></span>)
+    .with(MySqlConnectorConfig.DATABASE_WHITELIST, <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>)
+    .with(MySqlConnectorConfig.TABLE_WHITELIST, <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory.customers</span><span class="delimiter">&quot;</span></span>)
     .with(EmbeddedEngine.OFFSET_STORAGE,
-        "org.apache.kafka.connect.storage.MemoryOffsetBackingStore")
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.connect.storage.MemoryOffsetBackingStore</span><span class="delimiter">&quot;</span></span>)
     .with(MySqlConnectorConfig.DATABASE_HISTORY,
         MemoryDatabaseHistory.class.getName())
-    .with("schemas.enable", false)
+    .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">schemas.enable</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">false</span>)
     .build();</code></pre>
 </div>
 </div>
@@ -970,11 +970,11 @@ Again this is done using a fluent API:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">EmbeddedEngine engine = EmbeddedEngine.create()
+<pre class="CodeRay highlight"><code data-lang="java">EmbeddedEngine engine = EmbeddedEngine.create()
     .using(config)
-    .using(this.getClass().getClassLoader())
+    .using(<span class="local-variable">this</span>.getClass().getClassLoader())
     .using(Clock.SYSTEM)
-    .notifying(this::sendRecord)
+    .notifying(<span class="local-variable">this</span>::sendRecord)
     .build();</code></pre>
 </div>
 </div>
@@ -986,7 +986,7 @@ So let&#8217;s take a look at the implementation of this method.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="sending-change-records-to-kinesis">Sending Change Records to Kinesis</h2>
+<h2 id="sending_change_records_to_kinesis">Sending Change Records to Kinesis</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>sendRecord()</code> method is where the magic happens.
@@ -1014,39 +1014,39 @@ While the key column values themselves are part of the value structure, too, a c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">private void sendRecord(SourceRecord record) {
-    // We are interested only in data events not schema change events
-    if (record.topic().equals("kinesis")) {
-        return;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> sendRecord(SourceRecord record) {
+    <span class="comment">// We are interested only in data events not schema change events</span>
+    <span class="keyword">if</span> (record.topic().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">kinesis</span><span class="delimiter">&quot;</span></span>)) {
+        <span class="keyword">return</span>;
     }
 
-    // create schema for container with key *and* value
-    Schema schema = SchemaBuilder.struct()
-        .field("key", record.keySchema())
-        .field("value", record.valueSchema())
+    <span class="comment">// create schema for container with key *and* value</span>
+    <span class="predefined-type">Schema</span> schema = SchemaBuilder.struct()
+        .field(<span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>, record.keySchema())
+        .field(<span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>, record.valueSchema())
         .build();
 
-    Struct message = new Struct(schema);
-    message.put("key", record.key());
-    message.put("value", record.value());
+    <span class="predefined-type">Struct</span> message = <span class="keyword">new</span> <span class="predefined-type">Struct</span>(schema);
+    message.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>, record.key());
+    message.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>, record.value());
 
-    // create partition key by hashing the record's key
-    String partitionKey = String.valueOf(
-        record.key() != null ? record.key().hashCode() : -1);
+    <span class="comment">// create partition key by hashing the record's key</span>
+    <span class="predefined-type">String</span> partitionKey = <span class="predefined-type">String</span>.valueOf(
+        record.key() != <span class="predefined-constant">null</span> ? record.key().hashCode() : -<span class="integer">1</span>);
 
-    // create data blob representing the container by using Kafka Connect's
-    // JSON converter
-    final byte[] payload = valueConverter.fromConnectData(
-        "dummy", schema, message);
+    <span class="comment">// create data blob representing the container by using Kafka Connect's</span>
+    <span class="comment">// JSON converter</span>
+    <span class="directive">final</span> <span class="type">byte</span><span class="type">[]</span> payload = valueConverter.fromConnectData(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">dummy</span><span class="delimiter">&quot;</span></span>, schema, message);
 
-    // Assemble the put-record request ...
-    PutRecordRequest putRecord = new PutRecordRequest();
+    <span class="comment">// Assemble the put-record request ...</span>
+    PutRecordRequest putRecord = <span class="keyword">new</span> PutRecordRequest();
 
     putRecord.setStreamName(record.topic());
     putRecord.setPartitionKey(partitionKey);
-    putRecord.setData(ByteBuffer.wrap(payload));
+    putRecord.setData(<span class="predefined-type">ByteBuffer</span>.wrap(payload));
 
-    // ... and execute it
+    <span class="comment">// ... and execute it</span>
     kinesisClient.putRecord(putRecord);
 }</code></pre>
 </div>
@@ -1061,13 +1061,13 @@ Then a <code>PutRecordRequest</code> is assembled from that blob, the partition 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">// Uses the credentials from the local "default" AWS profile
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Uses the credentials from the local &quot;default&quot; AWS profile</span>
 AWSCredentialsProvider credentialsProvider =
-    new ProfileCredentialsProvider("default");
+    <span class="keyword">new</span> ProfileCredentialsProvider(<span class="string"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>);
 
-this.kinesisClient = AmazonKinesisClientBuilder.standard()
+<span class="local-variable">this</span>.kinesisClient = AmazonKinesisClientBuilder.standard()
     .withCredentials(credentialsProvider)
-    .withRegion("eu-central-1") // use your AWS region here
+    .withRegion(<span class="string"><span class="delimiter">&quot;</span><span class="content">eu-central-1</span><span class="delimiter">&quot;</span></span>) <span class="comment">// use your AWS region here</span>
     .build();</code></pre>
 </div>
 </div>
@@ -1078,7 +1078,7 @@ This is done on a separate thread using an <code>Executor</code>, e.g. like so:<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">ExecutorService executor = Executors.newSingleThreadExecutor();
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">ExecutorService</span> executor = <span class="predefined-type">Executors</span>.newSingleThreadExecutor();
 executor.execute(engine);</code></pre>
 </div>
 </div>
@@ -1089,7 +1089,7 @@ How that can be done <a href="https://github.com/debezium/debezium-examples/blob
 </div>
 </div>
 <div class="sect1">
-<h2 id="running-the-example">Running the Example</h2>
+<h2 id="running_the_example">Running the Example</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Finally let&#8217;s take a look at running the complete example and consuming the Debezium CDC events from the Kinesis stream.
@@ -1097,7 +1097,7 @@ Start by cloning the examples repository and go to the <em>kinesis</em> director
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">git clone https://github.com/debezium/debezium-examples.git
+<pre class="CodeRay highlight"><code data-lang="shell">git clone https://github.com/debezium/debezium-examples.git
 cd debezium-examples/kinesis</code></pre>
 </div>
 </div>
@@ -1112,7 +1112,7 @@ Don&#8217;t forget to delete the streams you&#8217;ve set up once done, we won&#
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">docker run -it --rm --name mysql -p 3306:3306 \
+<pre class="CodeRay highlight"><code data-lang="shell">docker run -it --rm --name mysql -p 3306:3306 \
   -e MYSQL_ROOT_PASSWORD=debezium \
   -e MYSQL_USER=mysqluser \
   -e MYSQL_PASSWORD=mysqlpw \
@@ -1124,7 +1124,7 @@ Don&#8217;t forget to delete the streams you&#8217;ve set up once done, we won&#
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">aws kinesis create-stream --stream-name kinesis.inventory.customers \
+<pre class="CodeRay highlight"><code data-lang="shell">aws kinesis create-stream --stream-name kinesis.inventory.customers \
   --shard-count 1</code></pre>
 </div>
 </div>
@@ -1134,7 +1134,7 @@ Don&#8217;t forget to delete the streams you&#8217;ve set up once done, we won&#
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">mvn exec:java</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">mvn exec:java</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1147,7 +1147,7 @@ To do so, set up a <a href="https://docs.aws.amazon.com/streams/latest/dev/devel
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">ITERATOR=$(aws kinesis get-shard-iterator --stream-name kinesis.inventory.customers --shard-id 0 --shard-iterator-type TRIM_HORIZON | jq '.ShardIterator')</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">ITERATOR=$(aws kinesis get-shard-iterator --stream-name kinesis.inventory.customers --shard-id 0 --shard-iterator-type TRIM_HORIZON | jq '.ShardIterator')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1156,7 +1156,7 @@ Next that iterator can be used to examine the stream:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">aws kinesis get-records --shard-iterator $ITERATOR</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">aws kinesis get-records --shard-iterator $ITERATOR</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1164,16 +1164,16 @@ Next that iterator can be used to examine the stream:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "Records": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span>: [
         {
-            "SequenceNumber":
-                "49587760482547027816046765529422807492446419903410339842",
-            "ApproximateArrivalTimestamp": 1535551896.475,
-            "Data": "eyJiZWZvcm...4OTI3MzN9",
-            "PartitionKey": "eyJpZCI6MTAwMX0="
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">SequenceNumber</span><span class="delimiter">&quot;</span></span>:
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">49587760482547027816046765529422807492446419903410339842</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">ApproximateArrivalTimestamp</span><span class="delimiter">&quot;</span></span>: <span class="float">1535551896.475</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">Data</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">eyJiZWZvcm...4OTI3MzN9</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">PartitionKey</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">eyJpZCI6MTAwMX0=</span><span class="delimiter">&quot;</span></span>
         },
-        ...
+        <span class="error">.</span><span class="error">.</span><span class="error">.</span>
     ]
 }</code></pre>
 </div>
@@ -1185,7 +1185,7 @@ Again <em>jq</em> comes in handy: we can use it to just extract the <code>Data</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">aws kinesis get-records --shard-iterator $ITERATOR | \
+<pre class="CodeRay highlight"><code data-lang="shell">aws kinesis get-records --shard-iterator $ITERATOR | \
   jq -r '.Records[].Data | @base64d' | jq .</code></pre>
 </div>
 </div>
@@ -1194,38 +1194,38 @@ Again <em>jq</em> comes in handy: we can use it to just extract the <code>Data</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "key": {
-    "id": 1001
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1001</span>
   },
-  "value": {
-    "before": null,
-    "after": {
-      "id": 1001,
-      "first_name": "Sally",
-      "last_name": "Thomas",
-      "email": "sally.thomas@acme.com"
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">before</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1001</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Sally</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Thomas</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sally.thomas@acme.com</span><span class="delimiter">&quot;</span></span>
     },
-    "source": {
-      "version": "0.8.1.Final",
-      "name": "kinesis",
-      "server_id": 0,
-      "ts_sec": 0,
-      "gtid": null,
-      "file": "mysql-bin.000003",
-      "pos": 154,
-      "row": 0,
-      "snapshot": true,
-      "thread": null,
-      "db": "inventory",
-      "table": "customers",
-      "query": null
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.8.1.Final</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">kinesis</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">server_id</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_sec</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">gtid</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">file</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql-bin.000003</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">pos</span><span class="delimiter">&quot;</span></span>: <span class="integer">154</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">row</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">snapshot</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">thread</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">db</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
     },
-    "op": "c",
-    "ts_ms": 1535555325628
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1535555325628</span>
   }
 }
-...</code></pre>
+<span class="error">.</span><span class="error">.</span><span class="error">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1233,10 +1233,10 @@ Again <em>jq</em> comes in handy: we can use it to just extract the <code>Data</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell"># Start MySQL CLI client
+<pre class="CodeRay highlight"><code data-lang="shell"># Start MySQL CLI client
 docker run -it --rm --name mysqlterm --link mysql --rm mysql:5.7 \
-  sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" \
-  -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
+  sh -c 'exec mysql -h&quot;$MYSQL_PORT_3306_TCP_ADDR&quot; \
+  -P&quot;$MYSQL_PORT_3306_TCP_PORT&quot; -uroot -p&quot;$MYSQL_ENV_MYSQL_ROOT_PASSWORD&quot;'
 
 # In the MySQL client
 use inventory;
@@ -1248,42 +1248,42 @@ update customers set first_name = 'Trudy' where id = 1001;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">...
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">.</span><span class="error">.</span><span class="error">.</span>
 
 {
-  "key": {
-    "id": 1001
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1001</span>
   },
-  "value": {
-    "before": {
-      "id": 1001,
-      "first_name": "Sally",
-      "last_name": "Thomas",
-      "email": "sally.thomas@acme.com"
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">before</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1001</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Sally</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Thomas</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sally.thomas@acme.com</span><span class="delimiter">&quot;</span></span>
     },
-    "after": {
-      "id": 1001,
-      "first_name": "Trudy",
-      "last_name": "Thomas",
-      "email": "sally.thomas@acme.com"
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1001</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Trudy</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Thomas</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sally.thomas@acme.com</span><span class="delimiter">&quot;</span></span>
     },
-    "source": {
-      "version": "0.8.1.Final",
-      "name": "kinesis",
-      "server_id": 223344,
-      "ts_sec": 1535627629,
-      "gtid": null,
-      "file": "mysql-bin.000003",
-      "pos": 364,
-      "row": 0,
-      "snapshot": false,
-      "thread": 10,
-      "db": "inventory",
-      "table": "customers",
-      "query": null
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.8.1.Final</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">kinesis</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">server_id</span><span class="delimiter">&quot;</span></span>: <span class="integer">223344</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_sec</span><span class="delimiter">&quot;</span></span>: <span class="integer">1535627629</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">gtid</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">file</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql-bin.000003</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">pos</span><span class="delimiter">&quot;</span></span>: <span class="integer">364</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">row</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">snapshot</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">thread</span><span class="delimiter">&quot;</span></span>: <span class="integer">10</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">db</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
     },
-    "op": "u",
-    "ts_ms": 1535627622546
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">u</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1535627622546</span>
   }
 }</code></pre>
 </div>
@@ -1295,7 +1295,7 @@ stop the MySQL server by running <code>docker stop mysql</code> and delete the <
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-and-outlook">Summary and Outlook</h2>
+<h2 id="summary_and_outlook">Summary and Outlook</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this blog post we&#8217;ve demonstrated that Debezium cannot only be used to stream data changes into Apache Kafka, but also into other streaming platforms such as Amazon Kinesis.

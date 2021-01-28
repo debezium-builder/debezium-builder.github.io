@@ -851,7 +851,7 @@
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="batch-etl-options">Batch ETL Options</h2>
+<h2 id="batch_etl_options">Batch ETL Options</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>After introducing Cassandra to our infrastructure, our next challenge was to figure out a way to expose data in Cassandra to <a href="https://cloud.google.com/bigquery/">BigQuery</a>, our data warehouse, for analytics and reporting. We quickly built an Airflow <a href="https://github.com/apache/airflow/blob/master/airflow/contrib/hooks/cassandra_hook.py">hook</a> and <a href="https://github.com/apache/airflow/blob/master/airflow/contrib/operators/cassandra_to_gcs.py">operator</a> to execute full loads. This obviously doesn’t scale, as it rewrites the entire database on each load. To scale the pipeline, we evaluated two incremental load approaches, but both have their shortcomings:</p>
@@ -872,10 +872,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="streaming-options">Streaming Options</h2>
+<h2 id="streaming_options">Streaming Options</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="double-writing">Double-Writing</h3>
+<h3 id="double_writing">Double-Writing</h3>
 <div class="imageblock centered-image">
     <img src="/assets/images/cassandra/double-write.png" class="responsive-image" alt="Image showing writer send two distinct writes">
 </div>
@@ -884,7 +884,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="kafka-as-event-source">Kafka as Event Source</h3>
+<h3 id="kafka_as_event_source">Kafka as Event Source</h3>
 <div class="imageblock centered-image">
     <img src="/assets/images/cassandra/event-source.png" class="responsive-image" alt="Image showing writes sent to Kafka and then downstream DB">
 </div>
@@ -893,7 +893,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="parsing-commit-logs">Parsing Commit Logs</h3>
+<h3 id="parsing_commit_logs">Parsing Commit Logs</h3>
 <div class="imageblock centered-image">
     <img src="/assets/images/cassandra/commit-log.png" class="responsive-image" alt="Image showing commit logs sent to Kafka">
 </div>
@@ -907,43 +907,43 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="commit-log-deep-dive">Commit Log Deep Dive</h2>
+<h2 id="commit_log_deep_dive">Commit Log Deep Dive</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Aside from exposing commit logs, Cassandra also provides <code>CommitLogReader</code> and <code>CommitLogReadHandler</code> classes to help with the deserialization of logs. It seems like the hard work has been done, and what’s left is applying transformations – converting deserialized representations into Avro records and publish them to Kafka. However, as we dug further into the implementation of the CDC feature and of Cassandra itself, we realized that there are many new challenges.</p>
 </div>
 <div class="sect2">
-<h3 id="delayed-processing">Delayed Processing</h3>
+<h3 id="delayed_processing">Delayed Processing</h3>
 <div class="paragraph">
 <p>Commit logs only arrive in the CDC directory when it is full, in which case it would be flushed/discarded. This implies there is a delay between when the event is logged and when the event is captured. If little to no writes are executed, then the delay in event capturing could be arbitrarily long.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="space-management">Space Management</h3>
+<h3 id="space_management">Space Management</h3>
 <div class="paragraph">
 <p>In MySQL you can set binlog retention such that the logs will be automatically deleted after the configured retention period. However in Cassandra there is no such option. Once the commit logs are transferred to CDC directory, consumption must be in place to clean up commit logs after processing. If the available disk space for CDC directory exceeds a given threshold, further writes to the database will be rejected.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="duplicated-events">Duplicated Events</h3>
+<h3 id="duplicated_events">Duplicated Events</h3>
 <div class="paragraph">
 <p>Commit logs on an individual Cassandra node do not reflect all writes to the cluster; they only reflect writes to the node. This makes it necessary to process commit logs on all nodes. But with a replication factor of N, N copies of each event are sent downstream.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="out-of-order-events">Out-of-Order Events</h3>
+<h3 id="out_of_order_events">Out-of-Order Events</h3>
 <div class="paragraph">
 <p>Writes to an individual Cassandra node are logged serially as they arrive. However, these events may arrive out-of-order from when they are issued. Downstream consumers of these events must understand the event time and implement last write wins logic similar to <a href="https://docs.datastax.com/en/archived/cassandra/3.0/cassandra/dml/dmlAboutReads.html">Cassandra’s read path</a> to get the correct result.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="out-of-band-schema-change">Out-of-Band Schema Change</h3>
+<h3 id="out_of_band_schema_change">Out-of-Band Schema Change</h3>
 <div class="paragraph">
 <p>Schema changes of tables are communicated via a <a href="https://en.wikipedia.org/wiki/Gossip_protocol">gossip protocol</a> and are not recorded in commit logs. Therefore changes in schema could only be detected on a best-effort basis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="incomplete-row-data">Incomplete Row Data</h3>
+<h3 id="incomplete_row_data">Incomplete Row Data</h3>
 <div class="paragraph">
 <p>Cassandra does not perform read before write, as a result change events do not capture the state of every column, they only capture the state of modified columns. This makes the change event less useful than if the full row is available.</p>
 </div>
@@ -954,7 +954,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="minimum-viable-infrastructure">Minimum Viable Infrastructure</h2>
+<h2 id="minimum_viable_infrastructure">Minimum Viable Infrastructure</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Borrowing from the <a href="https://en.wikipedia.org/wiki/Minimum_viable_product">minimum viable product</a> philosophy, we want to design a data pipeline with a minimum set of features and requirements to satisfy our immediate customers. For Cassandra CDC, this means:</p>
@@ -971,19 +971,19 @@ With these criteria in front of us, we began to brainstorm for solutions, and ul
 </ul>
 </div>
 <div class="sect2">
-<h3 id="stateless-stream-processing">Stateless Stream Processing</h3>
+<h3 id="stateless_stream_processing">Stateless Stream Processing</h3>
 <div class="paragraph">
 <p>This solution is inspired by Datastax’s <a href="https://www.datastax.com/dev/blog/advanced-replication-in-dse-5-1">advanced replication blog post</a>. The idea is to deploy an agent on each Cassandra node to process local commit logs. Each agent is considered as “primary” for a subset of writes based on partition keys, such that every event has exactly one primary agent. Then during CDC, in order to avoid duplicate events, each agent only sends an event to Kafka if it is the primary agent for the event. To handle eventual consistency, each agent would sort events into per-table time-sliced windows as they arrive (but doesn’t publish them right away); when a window expires, events in that window are hashed, and the hash is compared against other nodes. If they don’t match, data is fetched from the inconsistent node so the correct value could be resolved by last write wins. Finally the corrected events in that window will be sent to Kafka. Any out-of-order event beyond the time-sliced windows would have to be logged into an out-of-sequence file and handled separately. Since deduplication and ordering are done in-memory, concerns with agent failover causing data loss, OOM issues impacting production database, and the overall complexity of this implementation stopped us from exploring it further.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="stateful-stream-processing">Stateful Stream Processing</h3>
+<h3 id="stateful_stream_processing">Stateful Stream Processing</h3>
 <div class="paragraph">
 <p>This solution is the most feature rich. The idea is that the agent on each Cassandra node will process commit logs and publish events to Kafka without deduplication and ordering. Then a stream processing engine will consume these raw events and do the heavy lifting (such as filtering out duplicate events with a cache, managing event orders with event-time windowing, and capturing state of unmodified columns by performing read before write on a state store), and then publish these derived events to a separate Kafka topic. Finally, <a href="https://github.com/wepay/kafka-connect-bigquery">KCBQ</a> will be used to consume events from this topic and upload them to BigQuery. This approach is appealing because it solves the problem generically – anyone can subscribe to the latter Kafka topic without needing to handle deduplication and ordering on their own. However, this approach introduces a nontrivial amount of operational overhead; we would have to maintain a stream processing engine, a database, and a cache.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="processing-on-read">Processing-On-Read</h3>
+<h3 id="processing_on_read">Processing-On-Read</h3>
 <div class="paragraph">
 <p>Similar to the previous approach, the idea is to process commit logs on each Cassandra node and send events to Kafka without deduplication and ordering. Unlike the previous approach, the stream processing portion is completely eliminated. Instead the raw events will be directly uploaded to BigQuery via KCBQ. <a href="https://cloud.google.com/bigquery/docs/views-intro">Views</a> are created on top of the raw tables to handle deduplication, ordering, and merging of columns to form complete rows. Because BigQuery views are virtual tables, the processing is done lazily each time the view is queried. To prevent the view query from getting too expensive, the views would be materialized periodically. This approach removes both operational complexity and code complexity by leveraging BigQuery’s <a href="https://cloud.google.com/blog/products/gcp/bigquery-under-the-hood">massively parallel query engine</a>. However, the drawback is that non-KCBQ downstream consumers must do all the work on their own.</p>
 </div>
@@ -994,7 +994,7 @@ With these criteria in front of us, we began to brainstorm for solutions, and ul
 </div>
 </div>
 <div class="sect1">
-<h2 id="open-source">Open Source</h2>
+<h2 id="open_source">Open Source</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>During this process of building a real-time data pipeline for Cassandra, we have received a substantial amount of interest on this project. As a result, we have decided to open-source the Cassandra CDC agent under the <a href="https://debezium.io">Debezium</a> umbrella as an <a href="https://github.com/debezium/debezium-incubator">incubating connector</a>. If you would like to learn more or contribute, check out the work-in-progress pull request for <a href="https://github.com/debezium/debezium-incubator/pull/98">source code</a> and <a href="https://github.com/debezium/debezium.github.io/pull/325">documentation</a>.</p>

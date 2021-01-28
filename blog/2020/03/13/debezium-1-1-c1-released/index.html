@@ -886,7 +886,7 @@ The Postgres connector gained the ability to reconnect to the database after a c
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="the-debezium-api-module">The Debezium API Module</h2>
+<h2 id="the_debezium_api_module">The Debezium API Module</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In most cases Debezium users don&#8217;t interact with Debezium programmatically,
@@ -905,17 +905,17 @@ whereas the <em>debezium-embedded</em> and <em>debezium-core</em> artifacts shou
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-    &lt;artifactId&gt;debezium-api&lt;/artifactId&gt;
-    &lt;version&gt;${version.debezium}&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-    &lt;artifactId&gt;debezium-embedded&lt;/artifactId&gt;
-    &lt;version&gt;${version.debezium}&lt;/version&gt;
-    &lt;scope&gt;runtime&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>debezium-api<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.debezium}<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>debezium-embedded<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${version.debezium}<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;scope&gt;</span>runtime<span class="tag">&lt;/scope&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -928,10 +928,10 @@ So you should make sure your application code doesn&#8217;t rely on these.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">DebeziumEngine&lt;SourceRecord&gt; engine = DebeziumEngine.create(Connect.class)
+<pre class="CodeRay highlight"><code data-lang="java">DebeziumEngine&lt;SourceRecord&gt; engine = DebeziumEngine.create(Connect.class)
     .using(config)
     .notifying(record -&gt; {
-        System.out.println(record);
+        <span class="predefined-type">System</span>.out.println(record);
     })
     .build();</code></pre>
 </div>
@@ -941,7 +941,7 @@ So you should make sure your application code doesn&#8217;t rely on these.</p>
 but going forward we&#8217;ll also support event handlers working with other representations such as JSON or Avro.</p>
 </div>
 <div class="sect2">
-<h3 id="schema-and-value-customization-spi">Schema and Value Customization SPI</h3>
+<h3 id="schema_and_value_customization_spi">Schema and Value Customization SPI</h3>
 <div class="paragraph">
 <p>A question that has come repeatedly in the chat and on the mailing list is how to customize the schema and value of specific change event fields.
 For instance you might want to export temporal column values as a specifically formatted string instead of the default representation (a long value representing milli-seconds since epoch).
@@ -956,22 +956,22 @@ which allows you to override the schema and value conversion for specific column
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public class IsbnConverter implements CustomConverter&lt;SchemaBuilder, RelationalColumn&gt; {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">IsbnConverter</span> <span class="directive">implements</span> CustomConverter&lt;SchemaBuilder, RelationalColumn&gt; {
 
-    private SchemaBuilder isbnSchema;
+    <span class="directive">private</span> SchemaBuilder isbnSchema;
 
-    // could evaluate config here
-    @Override
-    public void configure(Properties props) {
-        isbnSchema = SchemaBuilder.string().name("isbn");
+    <span class="comment">// could evaluate config here</span>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> configure(<span class="predefined-type">Properties</span> props) {
+        isbnSchema = SchemaBuilder.string().name(<span class="string"><span class="delimiter">&quot;</span><span class="content">isbn</span><span class="delimiter">&quot;</span></span>);
     }
 
-    @Override
-    public void converterFor(RelationalColumn column,
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> converterFor(RelationalColumn column,
             ConverterRegistration&lt;SchemaBuilder&gt; registration) {
 
-        // register custom schema and value conversion for "isbn" columns
-        if ("isbn".equals(column.typeName())) {
+        <span class="comment">// register custom schema and value conversion for &quot;isbn&quot; columns</span>
+        <span class="keyword">if</span> (<span class="string"><span class="delimiter">&quot;</span><span class="content">isbn</span><span class="delimiter">&quot;</span></span>.equals(column.typeName())) {
             registration.register(isbnSchema, x -&gt; x.toString());
         }
     }
@@ -984,9 +984,9 @@ Configure it like so:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">converters=isbn
+<pre class="CodeRay highlight"><code data-lang="java">converters=isbn
 isbn.type=com.example.IsbnConverter
-# custom options as needed
+<span class="error">#</span> custom options as needed
 isbn.foo=bar</code></pre>
 </div>
 </div>
@@ -994,7 +994,7 @@ isbn.foo=bar</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="other-features-and-changes">Other Features and Changes</h2>
+<h2 id="other_features_and_changes">Other Features and Changes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The MongoDB connector has been migrated to the common CDC connector framework we&#8217;ve been started to develop for the SQL Server and Oracle connectors.

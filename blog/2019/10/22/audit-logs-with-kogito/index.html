@@ -894,14 +894,14 @@ There are still a lot of such activities going on, either on purpose or because 
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="maintenance-on-database-level">Maintenance on database level</h2>
+<h2 id="maintenance_on_database_level">Maintenance on database level</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>So let’s assume there is a need to do some maintenance on the inventory database that will essentially make changes to the data stored in the vegetable table. To make it simple, let&#8217;s just add a new entry into the vegetable table:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">insert into inventory.vegetable (id, name, description) values (106, ‘cucumber, 'excellent');</code></pre>
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="class">insert</span> <span class="class">into</span> inventory.vegetable (id, name, description) <span class="keyword">values</span> (<span class="integer">106</span>, <span class="error">‘</span>cucumber, <span class="string"><span class="delimiter">'</span><span class="content">excellent</span><span class="delimiter">'</span></span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -909,11 +909,11 @@ There are still a lot of such activities going on, either on purpose or because 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-plain" data-lang="plain">log-enricher_1        | 2019-10-11 10:30:46,099 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {"id":106}
-log-enricher_1        | 2019-10-11 10:30:46,106 WARN  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) No metadata found for transaction {"transaction_id":611}
-log-enricher_1        | 2019-10-11 10:30:46,411 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {"id":106}
-log-enricher_1        | 2019-10-11 10:30:46,415 WARN  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) No metadata found for transaction {"transaction_id":611}
-log-enricher_1        | 2019-10-11 10:30:46,921 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {"id":106}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="plain">log-enricher_1        | 2019-10-11 10:30:46,099 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {&quot;id&quot;:106}
+log-enricher_1        | 2019-10-11 10:30:46,106 WARN  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) No metadata found for transaction {&quot;transaction_id&quot;:611}
+log-enricher_1        | 2019-10-11 10:30:46,411 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {&quot;id&quot;:106}
+log-enricher_1        | 2019-10-11 10:30:46,415 WARN  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) No metadata found for transaction {&quot;transaction_id&quot;:611}
+log-enricher_1        | 2019-10-11 10:30:46,921 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {&quot;id&quot;:106}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -926,7 +926,7 @@ correlate and by that merge/enrich them.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="kogito-to-the-rescue">Kogito to the rescue</h2>
+<h2 id="kogito_to_the_rescue">Kogito to the rescue</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>There would be a really good feature (or a neat feature as Gunnar said) if we could have some sort of admin service that
@@ -998,8 +998,8 @@ and you will be able to see the following lines in the log:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-plain" data-lang="plain">log-enricher_1        | 2019-10-11 10:31:00,385 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {"id":106}
-log-enricher_1        | 2019-10-11 10:31:00,389 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Enriched change event for key {"id":106}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="plain">log-enricher_1        | 2019-10-11 10:31:00,385 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Processing buffered change event for key {&quot;id&quot;:106}
+log-enricher_1        | 2019-10-11 10:31:00,389 INFO  [io.deb.dem.aud.enr.ChangeEventEnricher] (auditlog-enricher-c9e5d1bb-d953-42b4-8dc6-bbc328f5344f-StreamThread-1) Enriched change event for key {&quot;id&quot;:106}</code></pre>
 </div>
 </div>
 <div class="paragraph">

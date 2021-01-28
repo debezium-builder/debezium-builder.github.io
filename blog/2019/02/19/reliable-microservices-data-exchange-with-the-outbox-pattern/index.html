@@ -919,7 +919,7 @@ new consumers can subscribe, process the topic from the very beginning and mater
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Dealing with Topic Growth</div>
@@ -935,7 +935,7 @@ See the box "Deletion of Events from Kafka Topics" further below for some more t
 </table>
 </div>
 <div class="sect1">
-<h2 id="the-issue-of-dual-writes">The Issue of Dual Writes</h2>
+<h2 id="the_issue_of_dual_writes">The Issue of Dual Writes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In order to provide their functionality, microservices will typically have their own local data store.
@@ -986,7 +986,7 @@ This is where the outbox pattern comes in.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="the-outbox-pattern">The Outbox Pattern</h2>
+<h2 id="the_outbox_pattern">The Outbox Pattern</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The idea of this approach is to have an "outbox" table in the service&#8217;s database.
@@ -1026,7 +1026,7 @@ In the following, let&#8217;s explore how.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="an-implementation-based-on-change-data-capture">An Implementation Based on Change Data Capture</h2>
+<h2 id="an_implementation_based_on_change_data_capture">An Implementation Based on Change Data Capture</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="/blog/2018/07/19/advantages-of-log-based-change-data-capture/">Log-based Change Data Capture</a> (CDC) is a great fit for capturing new entries in the outbox table and stream them to Apache Kafka.
@@ -1061,13 +1061,13 @@ plain JDBC or other programming languages than Java altogether.</p>
 <p>Now let&#8217;s take a closer look at some of the relevant components of the solution.</p>
 </div>
 <div class="sect2">
-<h3 id="the-outbox-table">The Outbox Table</h3>
+<h3 id="the_outbox_table">The Outbox Table</h3>
 <div class="paragraph">
 <p>The <code>outbox</code> table resides in the database of the order service and has the following structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Column        |          Type          | Modifiers
+<pre class="CodeRay highlight"><code>Column        |          Type          | Modifiers
 --------------+------------------------+-----------
 id            | uuid                   | not null
 aggregatetype | character varying(255) | not null
@@ -1121,7 +1121,7 @@ which ensures that consumers of that topic will consume all the events related t
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-events-to-the-outbox">Sending Events to the Outbox</h3>
+<h3 id="sending_events_to_the_outbox">Sending Events to the Outbox</h3>
 <div class="paragraph">
 <p>In order to "send" events to the outbox, code in the order service could in general just do an <code>INSERT</code> into the outbox table.
 However, it&#8217;s a good idea to go for a slightly more abstract API, allowing to adjust implementation details of the outbox later on more easily, if needed.
@@ -1134,12 +1134,12 @@ which will do the required <code>INSERT</code> into the outbox table.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public interface ExportedEvent {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">ExportedEvent</span> {
 
-    String getAggregateId();
-    String getAggregateType();
+    <span class="predefined-type">String</span> getAggregateId();
+    <span class="predefined-type">String</span> getAggregateType();
     JsonNode getPayload();
-    String getType();
+    <span class="predefined-type">String</span> getType();
 }</code></pre>
 </div>
 </div>
@@ -1148,29 +1148,29 @@ which will do the required <code>INSERT</code> into the outbox table.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class OrderService {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrderService</span> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    <span class="annotation">@PersistenceContext</span>
+    <span class="directive">private</span> EntityManager entityManager;
 
-    @Inject
-    private Event&lt;ExportedEvent&gt; event;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> <span class="predefined-type">Event</span>&lt;ExportedEvent&gt; event;
 
-    @Transactional
-    public PurchaseOrder addOrder(PurchaseOrder order) {
+    <span class="annotation">@Transactional</span>
+    <span class="directive">public</span> PurchaseOrder addOrder(PurchaseOrder order) {
         order = entityManager.merge(order);
 
         event.fire(OrderCreatedEvent.of(order));
         event.fire(InvoiceCreatedEvent.of(order));
 
-        return order;
+        <span class="keyword">return</span> order;
     }
 
-    @Transactional
-    public PurchaseOrder updateOrderLine(long orderId, long orderLineId,
+    <span class="annotation">@Transactional</span>
+    <span class="directive">public</span> PurchaseOrder updateOrderLine(<span class="type">long</span> orderId, <span class="type">long</span> orderLineId,
             OrderLineStatus newStatus) {
-        // ...
+        <span class="comment">// ...</span>
     }
 }</code></pre>
 </div>
@@ -1188,58 +1188,58 @@ as an example, here&#8217;s the <code>OrderCreatedEvent</code> class:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public class OrderCreatedEvent implements ExportedEvent {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrderCreatedEvent</span> <span class="directive">implements</span> ExportedEvent {
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    <span class="directive">private</span> <span class="directive">static</span> ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();
 
-    private final long id;
-    private final JsonNode order;
+    <span class="directive">private</span> <span class="directive">final</span> <span class="type">long</span> id;
+    <span class="directive">private</span> <span class="directive">final</span> JsonNode order;
 
-    private OrderCreatedEvent(long id, JsonNode order) {
-        this.id = id;
-        this.order = order;
+    <span class="directive">private</span> OrderCreatedEvent(<span class="type">long</span> id, JsonNode order) {
+        <span class="local-variable">this</span>.id = id;
+        <span class="local-variable">this</span>.order = order;
     }
 
-    public static OrderCreatedEvent of(PurchaseOrder order) {
+    <span class="directive">public</span> <span class="directive">static</span> OrderCreatedEvent of(PurchaseOrder order) {
         ObjectNode asJson = mapper.createObjectNode()
-                .put("id", order.getId())
-                .put("customerId", order.getCustomerId())
-                .put("orderDate", order.getOrderDate().toString());
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, order.getId())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">customerId</span><span class="delimiter">&quot;</span></span>, order.getCustomerId())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">orderDate</span><span class="delimiter">&quot;</span></span>, order.getOrderDate().toString());
 
-        ArrayNode items = asJson.putArray("lineItems");
+        ArrayNode items = asJson.putArray(<span class="string"><span class="delimiter">&quot;</span><span class="content">lineItems</span><span class="delimiter">&quot;</span></span>);
 
-        for (OrderLine orderLine : order.getLineItems()) {
+        <span class="keyword">for</span> (OrderLine orderLine : order.getLineItems()) {
         items.add(
                 mapper.createObjectNode()
-                .put("id", orderLine.getId())
-                .put("item", orderLine.getItem())
-                .put("quantity", orderLine.getQuantity())
-                .put("totalPrice", orderLine.getTotalPrice())
-                .put("status", orderLine.getStatus().name())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, orderLine.getId())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">item</span><span class="delimiter">&quot;</span></span>, orderLine.getItem())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">quantity</span><span class="delimiter">&quot;</span></span>, orderLine.getQuantity())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">totalPrice</span><span class="delimiter">&quot;</span></span>, orderLine.getTotalPrice())
+                .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">status</span><span class="delimiter">&quot;</span></span>, orderLine.getStatus().name())
             );
         }
 
-        return new OrderCreatedEvent(order.getId(), asJson);
+        <span class="keyword">return</span> <span class="keyword">new</span> OrderCreatedEvent(order.getId(), asJson);
     }
 
-    @Override
-    public String getAggregateId() {
-        return String.valueOf(id);
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAggregateId() {
+        <span class="keyword">return</span> <span class="predefined-type">String</span>.valueOf(id);
     }
 
-    @Override
-    public String getAggregateType() {
-        return "Order";
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAggregateType() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Order</span><span class="delimiter">&quot;</span></span>;
     }
 
-    @Override
-    public String getType() {
-        return "OrderCreated";
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getType() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">OrderCreated</span><span class="delimiter">&quot;</span></span>;
     }
 
-    @Override
-    public JsonNode getPayload() {
-        return order;
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> JsonNode getPayload() {
+        <span class="keyword">return</span> order;
     }
 }</code></pre>
 </div>
@@ -1252,14 +1252,14 @@ as an example, here&#8217;s the <code>OrderCreatedEvent</code> class:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class EventSender {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">EventSender</span> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    <span class="annotation">@PersistenceContext</span>
+    <span class="directive">private</span> EntityManager entityManager;
 
-    public void onExportedEvent(@Observes ExportedEvent event) {
-        OutboxEvent outboxEvent = new OutboxEvent(
+    <span class="directive">public</span> <span class="type">void</span> onExportedEvent(<span class="annotation">@Observes</span> ExportedEvent event) {
+        OutboxEvent outboxEvent = <span class="keyword">new</span> OutboxEvent(
                 event.getAggregateType(),
                 event.getAggregateId(),
                 event.getType(),
@@ -1293,7 +1293,7 @@ and also no separate house-keeping process is required to stop it from growing i
 </div>
 </div>
 <div class="sect2">
-<h3 id="registering-the-debezium-connector">Registering the Debezium Connector</h3>
+<h3 id="registering_the_debezium_connector">Registering the Debezium Connector</h3>
 <div class="paragraph">
 <p>With the outbox implementation in place, it&#8217;s time to register the Debezium Postgres connector,
 so it can capture any new events in the outbox table and relay them to Apache Kafka.
@@ -1301,22 +1301,22 @@ That can be done by POST-ing the following JSON request to the REST API of Kafka
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "name": "outbox-connector",
-    "config": {
-        "connector.class" : "io.debezium.connector.postgresql.PostgresConnector",
-        "tasks.max" : "1",
-        "database.hostname" : "order-db",
-        "database.port" : "5432",
-        "database.user" : "postgresuser",
-        "database.password" : "postgrespw",
-        "database.dbname" : "orderdb",
-        "database.server.name" : "dbserver1",
-        "schema.whitelist" : "inventory",
-        "table.whitelist" : "inventory.outboxevent",
-        "tombstones.on.delete" : "false",
-        "transforms" : "router",
-        "transforms.router.type" : "io.debezium.examples.outbox.routingsmt.EventRouter"
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">outbox-connector</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.postgresql.PostgresConnector</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.hostname</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">order-db</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.port</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">postgresuser</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.password</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">postgrespw</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.dbname</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">orderdb</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">schema.whitelist</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">table.whitelist</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory.outboxevent</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">tombstones.on.delete</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">router</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.router.type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.examples.outbox.routingsmt.EventRouter</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
@@ -1331,7 +1331,7 @@ It also applies a single message transform (SMT) named <code>EventRouter</code>.
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Deletion of Events from Kafka Topics</div>
@@ -1373,7 +1373,7 @@ Which approach to follow depends on the specific requirements, expected amount o
 </div>
 </div>
 <div class="sect2">
-<h3 id="topic-routing">Topic Routing</h3>
+<h3 id="topic_routing">Topic Routing</h3>
 <div class="paragraph">
 <p>By default, the Debezium connectors will send all change events originating from one given table to the same topic,
 i.e. we&#8217;d end up with a single Kafka topic named <code>dbserver1.inventory.outboxevent</code> which would contain all events,
@@ -1391,52 +1391,52 @@ Here is the code of its <code>apply()</code> method, which will be invoked by Ka
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Override
-public R apply(R record) {
-    // Ignoring tombstones just in case
-    if (record.value() == null) {
-        return record;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> R apply(R record) {
+    <span class="comment">// Ignoring tombstones just in case</span>
+    <span class="keyword">if</span> (record.value() == <span class="predefined-constant">null</span>) {
+        <span class="keyword">return</span> record;
     }
 
-    Struct struct = (Struct) record.value();
-    String op = struct.getString("op");
+    <span class="predefined-type">Struct</span> struct = (<span class="predefined-type">Struct</span>) record.value();
+    <span class="predefined-type">String</span> op = struct.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>);
 
-    // ignoring deletions in the outbox table
-    if (op.equals("d")) {
-        return null;
+    <span class="comment">// ignoring deletions in the outbox table</span>
+    <span class="keyword">if</span> (op.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">d</span><span class="delimiter">&quot;</span></span>)) {
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
     }
-    else if (op.equals("c")) {
-        Long timestamp = struct.getInt64("ts_ms");
-        Struct after = struct.getStruct("after");
+    <span class="keyword">else</span> <span class="keyword">if</span> (op.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">c</span><span class="delimiter">&quot;</span></span>)) {
+        <span class="predefined-type">Long</span> timestamp = struct.getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">Struct</span> after = struct.getStruct(<span class="string"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>);
 
-        String key = after.getString("aggregateid");
-        String topic = after.getString("aggregatetype") + "Events";
+        <span class="predefined-type">String</span> key = after.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">aggregateid</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">String</span> topic = after.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">aggregatetype</span><span class="delimiter">&quot;</span></span>) + <span class="string"><span class="delimiter">&quot;</span><span class="content">Events</span><span class="delimiter">&quot;</span></span>;
 
-        String eventId = after.getString("id");
-        String eventType = after.getString("type");
-        String payload = after.getString("payload");
+        <span class="predefined-type">String</span> eventId = after.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">String</span> eventType = after.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">String</span> payload = after.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>);
 
-        Schema valueSchema = SchemaBuilder.struct()
-            .field("eventType", after.schema().field("type").schema())
-            .field("ts_ms", struct.schema().field("ts_ms").schema())
-            .field("payload", after.schema().field("payload").schema())
+        <span class="predefined-type">Schema</span> valueSchema = SchemaBuilder.struct()
+            .field(<span class="string"><span class="delimiter">&quot;</span><span class="content">eventType</span><span class="delimiter">&quot;</span></span>, after.schema().field(<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>).schema())
+            .field(<span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>, struct.schema().field(<span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>).schema())
+            .field(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>, after.schema().field(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>).schema())
             .build();
 
-        Struct value = new Struct(valueSchema)
-            .put("eventType", eventType)
-            .put("ts_ms", timestamp)
-            .put("payload", payload);
+        <span class="predefined-type">Struct</span> value = <span class="keyword">new</span> <span class="predefined-type">Struct</span>(valueSchema)
+            .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">eventType</span><span class="delimiter">&quot;</span></span>, eventType)
+            .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>, timestamp)
+            .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>, payload);
 
         Headers headers = record.headers();
-        headers.addString("eventId", eventId);
+        headers.addString(<span class="string"><span class="delimiter">&quot;</span><span class="content">eventId</span><span class="delimiter">&quot;</span></span>, eventId);
 
-        return record.newRecord(topic, null, Schema.STRING_SCHEMA, key, valueSchema, value,
+        <span class="keyword">return</span> record.newRecord(topic, <span class="predefined-constant">null</span>, <span class="predefined-type">Schema</span>.STRING_SCHEMA, key, valueSchema, value,
                 record.timestamp(), headers);
     }
-    // not expecting update events, as the outbox table is "append only",
-    // i.e. event records will never be updated
-    else {
-        throw new IllegalArgumentException("Record of unexpected op type: " + record);
+    <span class="comment">// not expecting update events, as the outbox table is &quot;append only&quot;,</span>
+    <span class="comment">// i.e. event records will never be updated</span>
+    <span class="keyword">else</span> {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Record of unexpected op type: </span><span class="delimiter">&quot;</span></span> + record);
     }
 }</code></pre>
 </div>
@@ -1462,7 +1462,7 @@ This allows for efficient duplicate detection by consumers, without having to ex
 </div>
 </div>
 <div class="sect1">
-<h2 id="events-in-apache-kafka">Events in Apache Kafka</h2>
+<h2 id="events_in_apache_kafka">Events in Apache Kafka</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Now let&#8217;s take a look into the <code>OrderEvents</code> and <code>CustomerEvents</code> topics.</p>
@@ -1474,7 +1474,7 @@ you can place purchase orders via the order service&#8217;s REST API like so:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>cat resources/data/create-order-request.json | http POST http://localhost:8080/order-service/rest/orders</code></pre>
+<pre class="CodeRay highlight"><code>cat resources/data/create-order-request.json | http POST http://localhost:8080/order-service/rest/orders</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1482,7 +1482,7 @@ you can place purchase orders via the order service&#8217;s REST API like so:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>cat resources/data/cancel-order-line-request.json | http PUT http://localhost:8080/order-service/rest/orders/1/lines/2</code></pre>
+<pre class="CodeRay highlight"><code>cat resources/data/cancel-order-line-request.json | http PUT http://localhost:8080/order-service/rest/orders/1/lines/2</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1491,12 +1491,12 @@ you should now see messages like these in the <code>OrderEvents</code> topic:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>kafkacat -b kafka:9092 -C -o beginning -f 'Headers: %h\nKey: %k\nValue: %s\n' -q -t OrderEvents</code></pre>
+<pre class="CodeRay highlight"><code>kafkacat -b kafka:9092 -C -o beginning -f 'Headers: %h\nKey: %k\nValue: %s\n' -q -t OrderEvents</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Headers: eventId=d03dfb18-8af8-464d-890b-09eb8b2dbbdd
+<pre class="CodeRay highlight"><code>Headers: eventId=d03dfb18-8af8-464d-890b-09eb8b2dbbdd
 Key: "4"
 Value: {"eventType":"OrderCreated","ts_ms":1550307598558,"payload":"{\"id\": 4, \"lineItems\": [{\"id\": 7, \"item\": \"Debezium in Action\", \"status\": \"ENTERED\", \"quantity\": 2, \"totalPrice\": 39.98}, {\"id\": 8, \"item\": \"Debezium for Dummies\", \"status\": \"ENTERED\", \"quantity\": 1, \"totalPrice\": 29.99}], \"orderDate\": \"2019-01-31T12:13:01\", \"customerId\": 123}"}
 Headers: eventId=49f89ea0-b344-421f-b66f-c635d212f72c
@@ -1514,37 +1514,37 @@ its <code>fromjson</code> operator, come in handy for displaying the event paylo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>kafkacat -b kafka:9092 -C -o beginning -t Order | jq '.payload | fromjson'</code></pre>
+<pre class="CodeRay highlight"><code>kafkacat -b kafka:9092 -C -o beginning -t Order | jq '.payload | fromjson'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "id": 4,
-  "lineItems": [
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">4</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">lineItems</span><span class="delimiter">&quot;</span></span>: [
     {
-      "id": 7,
-      "item": "Debezium in Action",
-      "status": "ENTERED",
-      "quantity": 2,
-      "totalPrice": 39.98
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">7</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">item</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Debezium in Action</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">status</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ENTERED</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">quantity</span><span class="delimiter">&quot;</span></span>: <span class="integer">2</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">totalPrice</span><span class="delimiter">&quot;</span></span>: <span class="float">39.98</span>
     },
     {
-      "id": 8,
-      "item": "Debezium for Dummies",
-      "status": "ENTERED",
-      "quantity": 1,
-      "totalPrice": 29.99
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">8</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">item</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Debezium for Dummies</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">status</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ENTERED</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">quantity</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">totalPrice</span><span class="delimiter">&quot;</span></span>: <span class="float">29.99</span>
     }
   ],
-  "orderDate": "2019-01-31T12:13:01",
-  "customerId": 123
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">orderDate</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">2019-01-31T12:13:01</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">customerId</span><span class="delimiter">&quot;</span></span>: <span class="integer">123</span>
 }
 {
-  "orderId": 4,
-  "newStatus": "CANCELLED",
-  "oldStatus": "ENTERED",
-  "orderLineId": 7
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">orderId</span><span class="delimiter">&quot;</span></span>: <span class="integer">4</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">newStatus</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CANCELLED</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">oldStatus</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ENTERED</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">orderLineId</span><span class="delimiter">&quot;</span></span>: <span class="integer">7</span>
 }</code></pre>
 </div>
 </div>
@@ -1552,7 +1552,7 @@ its <code>fromjson</code> operator, come in handy for displaying the event paylo
 <p>You can also take a look at the <code>CustomerEvents</code> topic to inspect the events representing the creation of an invoice when a purchase order is added.</p>
 </div>
 <div class="sect2">
-<h3 id="duplicate-detection-in-the-consuming-service">Duplicate Detection in the Consuming Service</h3>
+<h3 id="duplicate_detection_in_the_consuming_service">Duplicate Detection in the Consuming Service</h3>
 <div class="paragraph">
 <p>At this point, our implementation of the outbox pattern is fully functional;
 when the order service receives a request to place an order
@@ -1571,42 +1571,42 @@ For each incoming message on the <code>Order</code> topic, the consumer calls th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class OrderEventHandler {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrderEventHandler</span> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderEventHandler.class);
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOGGER = LoggerFactory.getLogger(OrderEventHandler.class);
 
-    @Inject
-    private MessageLog log;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> MessageLog log;
 
-    @Inject
-    private ShipmentService shipmentService;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> ShipmentService shipmentService;
 
-    @Transactional
-    public void onOrderEvent(UUID eventId, String key, String event) {
-        if (log.alreadyProcessed(eventId)) {
-            LOGGER.info("Event with UUID {} was already retrieved, ignoring it", eventId);
-            return;
+    <span class="annotation">@Transactional</span>
+    <span class="directive">public</span> <span class="type">void</span> onOrderEvent(<span class="predefined-type">UUID</span> eventId, <span class="predefined-type">String</span> key, <span class="predefined-type">String</span> event) {
+        <span class="keyword">if</span> (log.alreadyProcessed(eventId)) {
+            LOGGER.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Event with UUID {} was already retrieved, ignoring it</span><span class="delimiter">&quot;</span></span>, eventId);
+            <span class="keyword">return</span>;
         }
 
-        JsonObject json = Json.createReader(new StringReader(event)).readObject();
-        JsonObject payload = json.containsKey("schema") ? json.getJsonObject("payload") :json;
+        JsonObject json = Json.createReader(<span class="keyword">new</span> <span class="predefined-type">StringReader</span>(event)).readObject();
+        JsonObject payload = json.containsKey(<span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>) ? json.getJsonObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>) :json;
 
-        String eventType = payload.getString("eventType");
-        Long ts = payload.getJsonNumber("ts_ms").longValue();
-        String eventPayload = payload.getString("payload");
+        <span class="predefined-type">String</span> eventType = payload.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">eventType</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">Long</span> ts = payload.getJsonNumber(<span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>).longValue();
+        <span class="predefined-type">String</span> eventPayload = payload.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">payload</span><span class="delimiter">&quot;</span></span>);
 
-        JsonReader payloadReader = Json.createReader(new StringReader(eventPayload));
+        JsonReader payloadReader = Json.createReader(<span class="keyword">new</span> <span class="predefined-type">StringReader</span>(eventPayload));
         JsonObject payloadObject = payloadReader.readObject();
 
-        if (eventType.equals("OrderCreated")) {
+        <span class="keyword">if</span> (eventType.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">OrderCreated</span><span class="delimiter">&quot;</span></span>)) {
             shipmentService.orderCreated(payloadObject);
         }
-        else if (eventType.equals("OrderLineUpdated")) {
+        <span class="keyword">else</span> <span class="keyword">if</span> (eventType.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">OrderLineUpdated</span><span class="delimiter">&quot;</span></span>)) {
             shipmentService.orderLineUpdated(payloadObject);
         }
-        else {
-            LOGGER.warn("Unkown event type");
+        <span class="keyword">else</span> {
+            LOGGER.warn(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unkown event type</span><span class="delimiter">&quot;</span></span>);
         }
 
         log.processed(eventId);
@@ -1633,20 +1633,20 @@ Finally, the message is marked as processed with the message log.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class MessageLog {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MessageLog</span> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    <span class="annotation">@PersistenceContext</span>
+    <span class="directive">private</span> EntityManager entityManager;
 
-    @Transactional(value=TxType.MANDATORY)
-    public void processed(UUID eventId) {
-        entityManager.persist(new ConsumedMessage(eventId, Instant.now()));
+    <span class="annotation">@Transactional</span>(value=TxType.MANDATORY)
+    <span class="directive">public</span> <span class="type">void</span> processed(<span class="predefined-type">UUID</span> eventId) {
+        entityManager.persist(<span class="keyword">new</span> ConsumedMessage(eventId, Instant.now()));
     }
 
-    @Transactional(value=TxType.MANDATORY)
-    public boolean alreadyProcessed(UUID eventId) {
-        return entityManager.find(ConsumedMessage.class, eventId) != null;
+    <span class="annotation">@Transactional</span>(value=TxType.MANDATORY)
+    <span class="directive">public</span> <span class="type">boolean</span> alreadyProcessed(<span class="predefined-type">UUID</span> eventId) {
+        <span class="keyword">return</span> entityManager.find(ConsumedMessage.class, eventId) != <span class="predefined-constant">null</span>;
     }
 }</code></pre>
 </div>

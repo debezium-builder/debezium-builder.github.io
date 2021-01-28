@@ -975,7 +975,7 @@ First of all we need to deploy all components:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">export DEBEZIUM_VERSION=0.7
+<pre class="CodeRay highlight"><code data-lang="bash">export DEBEZIUM_VERSION=0.7
 docker-compose up</code></pre>
 </div>
 </div>
@@ -985,8 +985,8 @@ We want to use the same key (primary id) in the source and both PostgreSQL and E
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -i -X POST -H "Accept:application/json" \
-    -H  "Content-Type:application/json" http://localhost:8083/connectors/ \
+<pre class="CodeRay highlight"><code data-lang="bash">curl -i -X POST -H &quot;Accept:application/json&quot; \
+    -H  &quot;Content-Type:application/json&quot; http://localhost:8083/connectors/ \
     -d @es-sink.json</code></pre>
 </div>
 </div>
@@ -995,21 +995,21 @@ We want to use the same key (primary id) in the source and both PostgreSQL and E
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
+<pre class="CodeRay highlight"><code data-lang="json">{
   {
-    "name": "elastic-sink",
-    "config": {
-      "connector.class":
-          "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
-      "tasks.max": "1",
-      "topics": "customers",
-      "connection.url": "http://elastic:9200",
-      "transforms": "unwrap,key",
-      "transforms.unwrap.type": "io.debezium.transforms.UnwrapFromEnvelope",        (1)
-      "transforms.key.type": "org.apache.kafka.connect.transforms.ExtractField$Key",(2)
-      "transforms.key.field": "id",                                                 (2)
-      "key.ignore": "false",                                                        (3)
-      "type.name": "customer"                                                       (4)
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">elastic-sink</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>:
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">io.confluent.connect.elasticsearch.ElasticsearchSinkConnector</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">topics</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">connection.url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://elastic:9200</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">unwrap,key</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.unwrap.type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.transforms.UnwrapFromEnvelope</span><span class="delimiter">&quot;</span></span>,        <span class="error">(</span><span class="integer">1</span><span class="error">)</span>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.key.type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.connect.transforms.ExtractField$Key</span><span class="delimiter">&quot;</span></span>,<span class="error">(</span><span class="integer">2</span><span class="error">)</span>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.key.field</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,                                                 <span class="error">(</span><span class="integer">2</span><span class="error">)</span>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">key.ignore</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,                                                        <span class="error">(</span><span class="integer">3</span><span class="error">)</span>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type.name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customer</span><span class="delimiter">&quot;</span></span>                                                       <span class="error">(</span><span class="integer">4</span><span class="error">)</span>
     }
   }
 }</code></pre>
@@ -1040,8 +1040,8 @@ This is to address the fact that the Elasticsearch connector only supports numer
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -i -X POST -H "Accept:application/json" \
-    -H  "Content-Type:application/json" http://localhost:8083/connectors/ \
+<pre class="CodeRay highlight"><code data-lang="bash">curl -i -X POST -H &quot;Accept:application/json&quot; \
+    -H  &quot;Content-Type:application/json&quot; http://localhost:8083/connectors/ \
     -d @jdbc-sink.json</code></pre>
 </div>
 </div>
@@ -1050,8 +1050,8 @@ This is to address the fact that the Elasticsearch connector only supports numer
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -i -X POST -H "Accept:application/json" \
-    -H  "Content-Type:application/json" http://localhost:8083/connectors/ \
+<pre class="CodeRay highlight"><code data-lang="bash">curl -i -X POST -H &quot;Accept:application/json&quot; \
+    -H  &quot;Content-Type:application/json&quot; http://localhost:8083/connectors/ \
     -d @source.json</code></pre>
 </div>
 </div>
@@ -1061,7 +1061,7 @@ All the rows of the <code>customers</code> table should be found in the source d
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory -e "select * from customers"'
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory -e &quot;select * from customers&quot;'
 +------+------------+-----------+-----------------------+
 | id   | first_name | last_name | email                 |
 +------+------------+-----------+-----------------------+
@@ -1074,7 +1074,7 @@ All the rows of the <code>customers</code> table should be found in the source d
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c &quot;select * from customers&quot;'
  last_name |  id  | first_name |         email
 -----------+------+------------+-----------------------
  Thomas    | 1001 | Sally      | sally.thomas@acme.com
@@ -1085,65 +1085,65 @@ All the rows of the <code>customers</code> table should be found in the source d
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl 'http://localhost:9200/customers/_search?pretty'
+<pre class="CodeRay highlight"><code data-lang="bash">curl 'http://localhost:9200/customers/_search?pretty'
 {
-  "took" : 42,
-  "timed_out" : false,
-  "_shards" : {
-    "total" : 5,
-    "successful" : 5,
-    "failed" : 0
+  &quot;took&quot; : 42,
+  &quot;timed_out&quot; : false,
+  &quot;_shards&quot; : {
+    &quot;total&quot; : 5,
+    &quot;successful&quot; : 5,
+    &quot;failed&quot; : 0
   },
-  "hits" : {
-    "total" : 4,
-    "max_score" : 1.0,
-    "hits" : [
+  &quot;hits&quot; : {
+    &quot;total&quot; : 4,
+    &quot;max_score&quot; : 1.0,
+    &quot;hits&quot; : [
       {
-        "_index" : "customers",
-        "_type" : "customer",
-        "_id" : "1001",
-        "_score" : 1.0,
-        "_source" : {
-          "id" : 1001,
-          "first_name" : "Sally",
-          "last_name" : "Thomas",
-          "email" : "sally.thomas@acme.com"
+        &quot;_index&quot; : &quot;customers&quot;,
+        &quot;_type&quot; : &quot;customer&quot;,
+        &quot;_id&quot; : &quot;1001&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;id&quot; : 1001,
+          &quot;first_name&quot; : &quot;Sally&quot;,
+          &quot;last_name&quot; : &quot;Thomas&quot;,
+          &quot;email&quot; : &quot;sally.thomas@acme.com&quot;
         }
       },
       {
-        "_index" : "customers",
-        "_type" : "customer",
-        "_id" : "1004",
-        "_score" : 1.0,
-        "_source" : {
-          "id" : 1004,
-          "first_name" : "Anne",
-          "last_name" : "Kretchmar",
-          "email" : "annek@noanswer.org"
+        &quot;_index&quot; : &quot;customers&quot;,
+        &quot;_type&quot; : &quot;customer&quot;,
+        &quot;_id&quot; : &quot;1004&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;id&quot; : 1004,
+          &quot;first_name&quot; : &quot;Anne&quot;,
+          &quot;last_name&quot; : &quot;Kretchmar&quot;,
+          &quot;email&quot; : &quot;annek@noanswer.org&quot;
         }
       },
       {
-        "_index" : "customers",
-        "_type" : "customer",
-        "_id" : "1002",
-        "_score" : 1.0,
-        "_source" : {
-          "id" : 1002,
-          "first_name" : "George",
-          "last_name" : "Bailey",
-          "email" : "gbailey@foobar.com"
+        &quot;_index&quot; : &quot;customers&quot;,
+        &quot;_type&quot; : &quot;customer&quot;,
+        &quot;_id&quot; : &quot;1002&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;id&quot; : 1002,
+          &quot;first_name&quot; : &quot;George&quot;,
+          &quot;last_name&quot; : &quot;Bailey&quot;,
+          &quot;email&quot; : &quot;gbailey@foobar.com&quot;
         }
       },
       {
-        "_index" : "customers",
-        "_type" : "customer",
-        "_id" : "1003",
-        "_score" : 1.0,
-        "_source" : {
-          "id" : 1003,
-          "first_name" : "Edward",
-          "last_name" : "Walker",
-          "email" : "ed@walker.com"
+        &quot;_index&quot; : &quot;customers&quot;,
+        &quot;_type&quot; : &quot;customer&quot;,
+        &quot;_id&quot; : &quot;1003&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;id&quot; : 1003,
+          &quot;first_name&quot; : &quot;Edward&quot;,
+          &quot;last_name&quot; : &quot;Walker&quot;,
+          &quot;email&quot; : &quot;ed@walker.com&quot;
         }
       }
     ]
@@ -1156,7 +1156,7 @@ All the rows of the <code>customers</code> table should be found in the source d
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory'
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory'
 
 mysql&gt; insert into customers values(default, 'John', 'Doe', 'john.doe@example.com');
 Query OK, 1 row affected (0.02 sec)</code></pre>
@@ -1164,7 +1164,7 @@ Query OK, 1 row affected (0.02 sec)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec -postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec -postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c &quot;select * from customers&quot;'
  last_name |  id  | first_name |         email
 -----------+------+------------+-----------------------
 ...
@@ -1174,18 +1174,18 @@ Doe        | 1005 | John       | john.doe@example.com
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl 'http://localhost:9200/customers/_search?pretty'
+<pre class="CodeRay highlight"><code data-lang="bash">curl 'http://localhost:9200/customers/_search?pretty'
 ...
 {
-  "_index" : "customers",
-  "_type" : "customer",
-  "_id" : "1005",
-  "_score" : 1.0,
-  "_source" : {
-    "id" : 1005,
-    "first_name" : "John",
-    "last_name" : "Doe",
-    "email" : "john.doe@example.com"
+  &quot;_index&quot; : &quot;customers&quot;,
+  &quot;_type&quot; : &quot;customer&quot;,
+  &quot;_id&quot; : &quot;1005&quot;,
+  &quot;_score&quot; : 1.0,
+  &quot;_source&quot; : {
+    &quot;id&quot; : 1005,
+    &quot;first_name&quot; : &quot;John&quot;,
+    &quot;last_name&quot; : &quot;Doe&quot;,
+    &quot;email&quot; : &quot;john.doe@example.com&quot;
   }
 }
 ...</code></pre>

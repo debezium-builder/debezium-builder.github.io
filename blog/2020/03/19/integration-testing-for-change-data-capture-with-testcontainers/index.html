@@ -884,7 +884,7 @@ It allows to set up all the required components (Apache Kafka, Kafka Connect etc
 <p>Let&#8217;s take a look at how it&#8217;s done.</p>
 </div>
 <div class="sect1">
-<h2 id="project-set-up">Project Set-Up</h2>
+<h2 id="project_set_up">Project Set-Up</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Assuming you&#8217;re working with Apache Maven for dependency management,
@@ -893,17 +893,17 @@ pulling in the Debezium Testcontainers integration and the Testcontainers <a hre
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-  &lt;groupId&gt;io.debezium&lt;/groupId&gt;
-  &lt;artifactId&gt;debezium-testing-testcontainers&lt;/artifactId&gt;
-  &lt;version&gt;1.1.0.CR1&lt;/version&gt;
-  &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
-  &lt;artifactId&gt;kafka&lt;/artifactId&gt;
-  &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.debezium<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>debezium-testing-testcontainers<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>1.1.0.CR1<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.testcontainers<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>kafka<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -911,11 +911,11 @@ pulling in the Debezium Testcontainers integration and the Testcontainers <a hre
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-  &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
-  &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
-  &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.testcontainers<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>postgresql<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -924,7 +924,7 @@ pulling in the Debezium Testcontainers integration and the Testcontainers <a hre
 </div>
 </div>
 <div class="sect1">
-<h2 id="initializing-testcontainers">Initializing Testcontainers</h2>
+<h2 id="initializing_testcontainers">Initializing Testcontainers</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Having declared all the required dependencies, it&#8217;s time to write a CDC integration test.
@@ -934,26 +934,26 @@ We can use this to fire up Apache Kafka, Kafka Connect and a Postgres database:<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public class CdcTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CdcTest</span> {
 
-  private static Network network = Network.newNetwork(); // <b class="conum">(1)</b>
+  <span class="directive">private</span> <span class="directive">static</span> Network network = Network.newNetwork(); <i class="conum" data-value="1"></i><b>(1)</b>
 
-  private static KafkaContainer kafkaContainer = new KafkaContainer()
-      .withNetwork(network); // <b class="conum">(2)</b>
+  <span class="directive">private</span> <span class="directive">static</span> KafkaContainer kafkaContainer = <span class="keyword">new</span> KafkaContainer()
+      .withNetwork(network); <i class="conum" data-value="2"></i><b>(2)</b>
 
-  public static PostgreSQLContainer&lt;?&gt; postgresContainer =
-      new PostgreSQLContainer&lt;&gt;("debezium/postgres:11")
+  <span class="directive">public</span> <span class="directive">static</span> PostgreSQLContainer&lt;?&gt; postgresContainer =
+      <span class="keyword">new</span> PostgreSQLContainer&lt;&gt;(<span class="string"><span class="delimiter">&quot;</span><span class="content">debezium/postgres:11</span><span class="delimiter">&quot;</span></span>)
           .withNetwork(network)
-          .withNetworkAliases("postgres"); // <b class="conum">(3)</b>
+          .withNetworkAliases(<span class="string"><span class="delimiter">&quot;</span><span class="content">postgres</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
 
-  public static DebeziumContainer debeziumContainer =
-      new DebeziumContainer("1.1.0.CR1")
+  <span class="directive">public</span> <span class="directive">static</span> DebeziumContainer debeziumContainer =
+      <span class="keyword">new</span> DebeziumContainer(<span class="string"><span class="delimiter">&quot;</span><span class="content">1.1.0.CR1</span><span class="delimiter">&quot;</span></span>)
           .withNetwork(network)
           .withKafka(kafkaContainer)
-          .dependsOn(kafkaContainer); // <b class="conum">(4)</b>
+          .dependsOn(kafkaContainer); <i class="conum" data-value="4"></i><b>(4)</b>
 
-  @BeforeClass
-  public static void startContainers() { // <b class="conum">(5)</b>
+  <span class="annotation">@BeforeClass</span>
+  <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> startContainers() { <i class="conum" data-value="5"></i><b>(5)</b>
     Startables.deepStart(Stream.of(
         kafkaContainer, postgresContainer, debeziumContainer))
             .join();
@@ -962,23 +962,28 @@ We can use this to fire up Apache Kafka, Kafka Connect and a Postgres database:<
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>Define a Docker network to be used by all the services</p>
-</li>
-<li>
-<p>Set up a container for Apache Kafka</p>
-</li>
-<li>
-<p>Set up a container for Postgres 11 (using Debezium&#8217;s Postgres container image)</p>
-</li>
-<li>
-<p>Set up a container for Kafka Connect with Debezium</p>
-</li>
-<li>
-<p>Start all three containers in a <code>@BeforeClass</code> method</p>
-</li>
-</ol>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Define a Docker network to be used by all the services</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Set up a container for Apache Kafka</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Set up a container for Postgres 11 (using Debezium&#8217;s Postgres container image)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Set up a container for Kafka Connect with Debezium</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Start all three containers in a <code>@BeforeClass</code> method</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Note that you need to have Docker installed in order to use Testcontainers.</p>
@@ -986,7 +991,7 @@ We can use this to fire up Apache Kafka, Kafka Connect and a Postgres database:<
 </div>
 </div>
 <div class="sect1">
-<h2 id="the-test-implementation">The Test Implementation</h2>
+<h2 id="the_test_implementation">The Test Implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>With the needed infrastructure in place, we can write a test for our CDC set-up.
@@ -1013,14 +1018,14 @@ The overall flow of the test is this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Test
-public void canObtainChangeEventsFromPostgres() throws Exception {
-  try (Connection connection = getConnection(postgresContainer);
-      Statement statement = connection.createStatement();
-      KafkaConsumer&lt;String, String&gt; consumer =
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> canObtainChangeEventsFromPostgres() <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="keyword">try</span> (<span class="predefined-type">Connection</span> connection = getConnection(postgresContainer);
+      <span class="predefined-type">Statement</span> statement = connection.createStatement();
+      KafkaConsumer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; consumer =
           getConsumer(kafkaContainer)) {
 
-      // TODO ...
+      <span class="comment">// TODO ...</span>
   }
 }</code></pre>
 </div>
@@ -1031,10 +1036,10 @@ nicely avoiding any redundancies:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">private Connection getConnection(PostgreSQLContainer&lt;?&gt; postgresContainer)
-    throws SQLException {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">Connection</span> getConnection(PostgreSQLContainer&lt;?&gt; postgresContainer)
+    <span class="directive">throws</span> <span class="exception">SQLException</span> {
 
-  return DriverManager.getConnection(postgresContainer.getJdbcUrl(),
+  <span class="keyword">return</span> <span class="predefined-type">DriverManager</span>.getConnection(postgresContainer.getJdbcUrl(),
       postgresContainer.getUsername(),
       postgresContainer.getPassword());
 }</code></pre>
@@ -1045,21 +1050,21 @@ nicely avoiding any redundancies:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">private KafkaConsumer&lt;String, String&gt; getConsumer(
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> KafkaConsumer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; getConsumer(
     KafkaContainer kafkaContainer) {
 
-  return new KafkaConsumer&lt;&gt;(
+  <span class="keyword">return</span> <span class="keyword">new</span> KafkaConsumer&lt;&gt;(
       ImmutableMap.of(
           ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
           kafkaContainer.getBootstrapServers(),
 
           ConsumerConfig.GROUP_ID_CONFIG,
-          "tc-" + UUID.randomUUID(),
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">tc-</span><span class="delimiter">&quot;</span></span> + <span class="predefined-type">UUID</span>.randomUUID(),
 
           ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,
-          "earliest"),
-      new StringDeserializer(),
-      new StringDeserializer());
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>),
+      <span class="keyword">new</span> StringDeserializer(),
+      <span class="keyword">new</span> StringDeserializer());
 }</code></pre>
 </div>
 </div>
@@ -1068,58 +1073,61 @@ nicely avoiding any redundancies:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">statement.execute("create schema todo"); // <b class="conum">(1)</b>
-statement.execute("create table todo.Todo (" +
-                    "id int8 not null, " +
-                    "title varchar(255), " +
-                    "primary key (id))");
-statement.execute("alter table todo.Todo replica identity full");
-statement.execute("insert into todo.Todo values (1, 'Learn CDC')");
-statement.execute("insert into todo.Todo values (2, 'Learn Debezium')");
+<pre class="CodeRay highlight"><code data-lang="java">statement.execute(<span class="string"><span class="delimiter">&quot;</span><span class="content">create schema todo</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+statement.execute(<span class="string"><span class="delimiter">&quot;</span><span class="content">create table todo.Todo (</span><span class="delimiter">&quot;</span></span> +
+                    <span class="string"><span class="delimiter">&quot;</span><span class="content">id int8 not null, </span><span class="delimiter">&quot;</span></span> +
+                    <span class="string"><span class="delimiter">&quot;</span><span class="content">title varchar(255), </span><span class="delimiter">&quot;</span></span> +
+                    <span class="string"><span class="delimiter">&quot;</span><span class="content">primary key (id))</span><span class="delimiter">&quot;</span></span>);
+statement.execute(<span class="string"><span class="delimiter">&quot;</span><span class="content">alter table todo.Todo replica identity full</span><span class="delimiter">&quot;</span></span>);
+statement.execute(<span class="string"><span class="delimiter">&quot;</span><span class="content">insert into todo.Todo values (1, 'Learn CDC')</span><span class="delimiter">&quot;</span></span>);
+statement.execute(<span class="string"><span class="delimiter">&quot;</span><span class="content">insert into todo.Todo values (2, 'Learn Debezium')</span><span class="delimiter">&quot;</span></span>);
 
 ConnectorConfiguration connector = ConnectorConfiguration
         .forJdbcContainer(postgresContainer)
-        .with("database.server.name", "dbserver1");
+        .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>);
 
-debeziumContainer.registerConnector("my-connector",
-        connector); // <b class="conum">(2)</b>
+debeziumContainer.registerConnector(<span class="string"><span class="delimiter">&quot;</span><span class="content">my-connector</span><span class="delimiter">&quot;</span></span>,
+        connector); <i class="conum" data-value="2"></i><b>(2)</b>
 
-consumer.subscribe(Arrays.asList("dbserver1.todo.todo"));
+consumer.subscribe(<span class="predefined-type">Arrays</span>.asList(<span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1.todo.todo</span><span class="delimiter">&quot;</span></span>));
 
-List&lt;ConsumerRecord&lt;String, String&gt;&gt; changeEvents =
-        drain(consumer, 2); // <b class="conum">(3)</b>
+<span class="predefined-type">List</span>&lt;ConsumerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt;&gt; changeEvents =
+        drain(consumer, <span class="integer">2</span>); <i class="conum" data-value="3"></i><b>(3)</b>
 
-ConsumerRecord&lt;String, String&gt; changeEvent = changeEvents.get(0);
-assertThat(JsonPath.&lt;Integer&gt; read(changeEvent.key(), "$.id"))
-  .isEqualTo(1);
-assertThat(JsonPath.&lt;String&gt; read(changeEvent.value(), "$.op"))
-  .isEqualTo("r");
-assertThat(JsonPath.&lt;String&gt; read(changeEvent.value(), "$.after.title"))
-  .isEqualTo("Learn CDC");
+ConsumerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; changeEvent = changeEvents.get(<span class="integer">0</span>);
+assertThat(JsonPath.&lt;<span class="predefined-type">Integer</span>&gt; read(changeEvent.key(), <span class="string"><span class="delimiter">&quot;</span><span class="content">$.id</span><span class="delimiter">&quot;</span></span>))
+  .isEqualTo(<span class="integer">1</span>);
+assertThat(JsonPath.&lt;<span class="predefined-type">String</span>&gt; read(changeEvent.value(), <span class="string"><span class="delimiter">&quot;</span><span class="content">$.op</span><span class="delimiter">&quot;</span></span>))
+  .isEqualTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">r</span><span class="delimiter">&quot;</span></span>);
+assertThat(JsonPath.&lt;<span class="predefined-type">String</span>&gt; read(changeEvent.value(), <span class="string"><span class="delimiter">&quot;</span><span class="content">$.after.title</span><span class="delimiter">&quot;</span></span>))
+  .isEqualTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">Learn CDC</span><span class="delimiter">&quot;</span></span>);
 
-changeEvent = changeEvents.get(1);
-assertThat(JsonPath.&lt;Integer&gt; read(changeEvent.key(), "$.id"))
-  .isEqualTo(2);
-assertThat(JsonPath.&lt;String&gt; read(changeEvent.value(), "$.op"))
-  .isEqualTo("r");
-assertThat(JsonPath.&lt;String&gt; read(changeEvent.value(), "$.after.title"))
-  .isEqualTo("Learn Debezium");
+changeEvent = changeEvents.get(<span class="integer">1</span>);
+assertThat(JsonPath.&lt;<span class="predefined-type">Integer</span>&gt; read(changeEvent.key(), <span class="string"><span class="delimiter">&quot;</span><span class="content">$.id</span><span class="delimiter">&quot;</span></span>))
+  .isEqualTo(<span class="integer">2</span>);
+assertThat(JsonPath.&lt;<span class="predefined-type">String</span>&gt; read(changeEvent.value(), <span class="string"><span class="delimiter">&quot;</span><span class="content">$.op</span><span class="delimiter">&quot;</span></span>))
+  .isEqualTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">r</span><span class="delimiter">&quot;</span></span>);
+assertThat(JsonPath.&lt;<span class="predefined-type">String</span>&gt; read(changeEvent.value(), <span class="string"><span class="delimiter">&quot;</span><span class="content">$.after.title</span><span class="delimiter">&quot;</span></span>))
+  .isEqualTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">Learn Debezium</span><span class="delimiter">&quot;</span></span>);
 
 consumer.unsubscribe();</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>Create a table in the Postgres database and insert two records</p>
-</li>
-<li>
-<p>Register an instance of the Debezium Postgres connector</p>
-</li>
-<li>
-<p>Read two records from the change event topic in Kafka and assert their attributes</p>
-</li>
-</ol>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Create a table in the Postgres database and insert two records</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Register an instance of the Debezium Postgres connector</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Read two records from the change event topic in Kafka and assert their attributes</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Note how Debezium&#8217;s Testcontainers support allows to seed the connector configuration from the database container,
@@ -1139,7 +1147,7 @@ When using Apache Avro instead of JSON as a serialization format, you&#8217;d ha
 </div>
 </div>
 <div class="sect1">
-<h2 id="wrap-up">Wrap-Up</h2>
+<h2 id="wrap_up">Wrap-Up</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Testcontainers and Debezium&#8217;s support for it make it fairly easy to write automated integration tests for your CDC set-up.</p>

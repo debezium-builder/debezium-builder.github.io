@@ -846,7 +846,7 @@
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="streaming-data-at-yelp">Streaming data at Yelp</h2>
+<h2 id="streaming_data_at_yelp">Streaming data at Yelp</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="http://engineeringblog.yelp.com/">Yelp Engineering Blog</a> recently began a series describing their real-time streaming data infrastructure. The <a href="http://engineeringblog.yelp.com/2016/07/billions-of-messages-a-day-yelps-real-time-data-pipeline.html">first post</a> provides a good introduction and explains how moving from a monolith to a service-oriented architecture increased productivity, but also made it more challenging to work with data spread across the 100 services that own it. It&#8217;s totally worth your time to read it right now.</p>
@@ -873,7 +873,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-yelp-captures-mysql-changes">How Yelp captures MySQL changes</h2>
+<h2 id="how_yelp_captures_mysql_changes">How Yelp captures MySQL changes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Perhaps most interesting for Debezium is how Yelp captures the committed changes in their MySQL databases and write them to Kafka topics. Their <a href="http://engineeringblog.yelp.com/2016/08/streaming-mysql-tables-in-real-time-to-kafka.html">second post in the series</a> goes into a lot more detail about their MySQLStreamer process that reads the MySQL binary log and continously processes the DDL statements and DML operations that appear in the log, generating the corresponding <em>insert</em>, <em>update</em>, <em>delete</em>, and <em>refresh</em> events, and writing these event messages to a separate Kafka topic for each MySQL table. We&#8217;ve <a href="/blog/2016/04/15/parsing-ddl/">mentioned before</a> that MySQL&#8217;s row-level binlog events that result from the DML operation don&#8217;t include the full definition of the columns, so knowing what the columns mean in each event requires process the DDL statements that also appear in the binlog. Yelp uses a separate MySQL instance it calls the <em>schema tracker database</em>, which behaves like a MySQL slave to which are applied only the DDL statements they read from the binlog. This technique lets Yelp&#8217;s MySQLStreamer system know the state of the database schema and the structure of its tables at the point in the binlog where they are processing events. This is pretty interesting, because it uses the MySQL engine to handle the DDL parsing.</p>
@@ -890,7 +890,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="similar-purpose-similar-approach">Similar purpose, similar approach</h2>
+<h2 id="similar_purpose_similar_approach">Similar purpose, similar approach</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Debezium is an open source project that is building a change data capture for a variety of DBMSes. Like Yelp&#8217;s MySQLStreamer, Debezium&#8217;s <a href="/docs/connectors/mysql/">MySQL Connector</a> can continously capture the committed changes to MySQL database rows and record these events in a separate Kafka topic for each table. When first started, Debezium&#8217;s MySQL Connector can perform an initial consistent snapshot and then begin reading the MySQL binlog. It uses both DDL and DML operations that appear in the binlog, directly <a href="/blog/2016/04/15/parsing-ddl/">parsing and using the DDL statements</a> to learn the changes to each table&#8217;s structure and the mapping of each insert, update, and delete binlog event. And each resulting change event written to Kafka includes information about the originating MySQL server and its binlog position, as well as the before and/or after states of the affected row.</p>
@@ -904,7 +904,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="capturing-changes-from-mysql-with-debezium">Capturing changes from MySQL with Debezium</h2>
+<h2 id="capturing_changes_from_mysql_with_debezium">Capturing changes from MySQL with Debezium</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you&#8217;re interested in change data capture with MySQL (or any other DBMSes), give Debezium a try by going through <a href="/docs/tutorial/">our tutorial</a> that walks you through starting Kafka, Kafka Connect, and Debezium&#8217;s MySQL Connector to see exactly what change data events look like and how they can be used. Best of all, it&#8217;s open source with a growing community of developers that has had the benefit of building on top of recently-created Kafka Connect framework. Our MySQL connector is ready now, but we&#8217;re working on <a href="/docs/connectors/">connectors for other DBMSes</a>. Specifically, our upcoming 0.3 release will include our <a href="/docs/connectors/mongodb/">MongoDB Connector</a>, with 0.4 including connectors for PostgreSQL and/or Oracle.</p>

@@ -873,7 +873,7 @@ If an entry has been evicted from the cache, Hibernate ORM will load the latest 
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="the-example-application">The Example Application</h2>
+<h2 id="the_example_application">The Example Application</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As an example, consider this simple model of two entities, <code>PurchaseOrder</code> and <code>Item</code>:</p>
@@ -888,7 +888,7 @@ If an entry has been evicted from the cache, Hibernate ORM will load the latest 
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Source Code</div>
@@ -906,21 +906,21 @@ clone the repo and follow the instructions in <a href="https://github.com/debezi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Entity
-public class PurchaseOrder {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Entity</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">PurchaseOrder</span> {
 
-    @Id
-    @GeneratedValue(generator = "sequence")
-    @SequenceGenerator(
-        name = "sequence", sequenceName = "seq_po", initialValue = 1001, allocationSize = 50
+    <span class="annotation">@Id</span>
+    <span class="annotation">@GeneratedValue</span>(generator = <span class="string"><span class="delimiter">&quot;</span><span class="content">sequence</span><span class="delimiter">&quot;</span></span>)
+    <span class="annotation">@SequenceGenerator</span>(
+        name = <span class="string"><span class="delimiter">&quot;</span><span class="content">sequence</span><span class="delimiter">&quot;</span></span>, sequenceName = <span class="string"><span class="delimiter">&quot;</span><span class="content">seq_po</span><span class="delimiter">&quot;</span></span>, initialValue = <span class="integer">1001</span>, allocationSize = <span class="integer">50</span>
     )
-    private long id;
-    private String customer;
-    @ManyToOne private Item item;
-    private int quantity;
-    private BigDecimal totalPrice;
+    <span class="directive">private</span> <span class="type">long</span> id;
+    <span class="directive">private</span> <span class="predefined-type">String</span> customer;
+    <span class="annotation">@ManyToOne</span> <span class="directive">private</span> Item item;
+    <span class="directive">private</span> <span class="type">int</span> quantity;
+    <span class="directive">private</span> <span class="predefined-type">BigDecimal</span> totalPrice;
 
-    // ...
+    <span class="comment">// ...</span>
 }</code></pre>
 </div>
 </div>
@@ -930,16 +930,16 @@ This can be done by simply specifying JPA&#8217;s <a href="https://docs.oracle.c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Entity
-@Cacheable
-public class Item {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Entity</span>
+<span class="annotation">@Cacheable</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Item</span> {
 
-    @Id
-    private long id;
-    private String description;
-    private BigDecimal price;
+    <span class="annotation">@Id</span>
+    <span class="directive">private</span> <span class="type">long</span> id;
+    <span class="directive">private</span> <span class="predefined-type">String</span> description;
+    <span class="directive">private</span> <span class="predefined-type">BigDecimal</span> price;
 
-    // ...
+    <span class="comment">// ...</span>
 }</code></pre>
 </div>
 </div>
@@ -952,26 +952,26 @@ That way you&#8217;ll be able to verify whether things work as expected by exami
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="..."
-    version="2.2"&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="tag">&lt;persistence</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://xmlns.jcp.org/xml/ns/persistence</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">...</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2.2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 
-    &lt;persistence-unit name="orders-PU-JTA" transaction-type="JTA"&gt;
-        &lt;jta-data-source&gt;java:jboss/datasources/OrderDS&lt;/jta-data-source&gt;
-        &lt;shared-cache-mode&gt;ENABLE_SELECTIVE&lt;/shared-cache-mode&gt;
-        &lt;properties&gt;
-            &lt;property name="hibernate.cache.use_second_level_cache" value="true" /&gt;
+    <span class="tag">&lt;persistence-unit</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">orders-PU-JTA</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">transaction-type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">JTA</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;jta-data-source&gt;</span>java:jboss/datasources/OrderDS<span class="tag">&lt;/jta-data-source&gt;</span>
+        <span class="tag">&lt;shared-cache-mode&gt;</span>ENABLE_SELECTIVE<span class="tag">&lt;/shared-cache-mode&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.cache.use_second_level_cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-            &lt;property name="hibernate.show_sql" value="true" /&gt;
-            &lt;property name="hibernate.format_sql" value="true" /&gt;
-            &lt;property name="hibernate.generate_statistics" value="true" /&gt;
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.show_sql</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.format_sql</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.generate_statistics</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
 
-            &lt;!-- dialect etc. ... --&gt;
-        &lt;/properties&gt;
-    &lt;/persistence-unit&gt;
-&lt;/persistence&gt;</code></pre>
+            <span class="comment">&lt;!-- dialect etc. ... --&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/persistence-unit&gt;</span>
+<span class="tag">&lt;/persistence&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -989,24 +989,24 @@ You then can place purchase orders using curl like this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">&gt; curl -H "Content-Type: application/json" \
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; curl -H &quot;Content-Type: application/json&quot; \
   -X POST \
-  --data '{ "customer" : "Billy-Bob", "itemId" : 10003, "quantity" : 2 }' \
+  --data '{ &quot;customer&quot; : &quot;Billy-Bob&quot;, &quot;itemId&quot; : 10003, &quot;quantity&quot; : 2 }' \
   http://localhost:8080/cache-invalidation/rest/orders</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">{
-    "id" : 1002,
-    "customer" : "Billy-Bob",
-    "item" : {
-        "id" :10003,
-        "description" : "North By Northwest",
-        "price" : 14.99
+<pre class="CodeRay highlight"><code data-lang="bash">{
+    &quot;id&quot; : 1002,
+    &quot;customer&quot; : &quot;Billy-Bob&quot;,
+    &quot;item&quot; : {
+        &quot;id&quot; :10003,
+        &quot;description&quot; : &quot;North By Northwest&quot;,
+        &quot;price&quot; : 14.99
     },
-    "quantity" : 2,
-    "totalPrice" : 29.98
+    &quot;quantity&quot; : 2,
+    &quot;totalPrice&quot; : 29.98
 }</code></pre>
 </div>
 </div>
@@ -1017,7 +1017,7 @@ The example uses Postgres, so you can use the <em>psql</em> CLI utility to do so
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">docker-compose exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "UPDATE item SET price = 20.99 where id = 10003"'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">docker-compose exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c &quot;UPDATE item SET price = 20.99 where id = 10003&quot;'</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1029,7 +1029,7 @@ But it&#8217;s not too surprising, given that the price update was applied compl
 </div>
 </div>
 <div class="sect1">
-<h2 id="the-change-event-handler">The Change Event Handler</h2>
+<h2 id="the_change_event_handler">The Change Event Handler</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Now let&#8217;s explore how to use Debezium and CDC to react to changes in the <code>item</code> table and invalidate corresponding cache entries.</p>
@@ -1056,7 +1056,7 @@ For the given use case it is enough to receive data change events while the appl
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Clustered Applications</div>
@@ -1075,56 +1075,56 @@ a class <code>DatabaseChangeEventListener</code> for listening to any changes in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class DatabaseChangeEventListener {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DatabaseChangeEventListener</span> {
 
-    @Resource
-    private ManagedExecutorService executorService;
+    <span class="annotation">@Resource</span>
+    <span class="directive">private</span> ManagedExecutorService executorService;
 
-    @PersistenceUnit private EntityManagerFactory emf;
+    <span class="annotation">@PersistenceUnit</span> <span class="directive">private</span> EntityManagerFactory emf;
 
-    @PersistenceContext
-    private EntityManager em;
+    <span class="annotation">@PersistenceContext</span>
+    <span class="directive">private</span> EntityManager em;
 
-    private EmbeddedEngine engine;
+    <span class="directive">private</span> EmbeddedEngine engine;
 
-    public void startEmbeddedEngine(@Observes @Initialized(ApplicationScoped.class) Object init) {
-        Configuration config = Configuration.empty()
+    <span class="directive">public</span> <span class="type">void</span> startEmbeddedEngine(<span class="annotation">@Observes</span> <span class="annotation">@Initialized</span>(ApplicationScoped.class) <span class="predefined-type">Object</span> init) {
+        <span class="predefined-type">Configuration</span> config = <span class="predefined-type">Configuration</span>.empty()
                 .withSystemProperties(Function.identity()).edit()
                 .with(EmbeddedEngine.CONNECTOR_CLASS, PostgresConnector.class)
-                .with(EmbeddedEngine.ENGINE_NAME, "cache-invalidation-engine")
+                .with(EmbeddedEngine.ENGINE_NAME, <span class="string"><span class="delimiter">&quot;</span><span class="content">cache-invalidation-engine</span><span class="delimiter">&quot;</span></span>)
                 .with(EmbeddedEngine.OFFSET_STORAGE, MemoryOffsetBackingStore.class)
-                .with("name", "cache-invalidation-connector")
-                .with("database.hostname", "postgres")
-                .with("database.port", 5432)
-                .with("database.user", "postgresuser")
-                .with("database.password", "postgrespw")
-                .with("database.server.name", "dbserver1")
-                .with("database.dbname", "inventory")
-                .with("database.whitelist", "public")
-                .with("snapshot.mode", "never")
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cache-invalidation-connector</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.hostname</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">postgres</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.port</span><span class="delimiter">&quot;</span></span>, <span class="integer">5432</span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">postgresuser</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.password</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">postgrespw</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.dbname</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">database.whitelist</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>)
+                .with(<span class="string"><span class="delimiter">&quot;</span><span class="content">snapshot.mode</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">never</span><span class="delimiter">&quot;</span></span>)
                 .build();
 
-        this.engine = EmbeddedEngine.create()
+        <span class="local-variable">this</span>.engine = EmbeddedEngine.create()
                 .using(config)
-                .notifying(this::handleDbChangeEvent)
+                .notifying(<span class="local-variable">this</span>::handleDbChangeEvent)
                 .build();
 
         executorService.execute(engine);
     }
 
-    @PreDestroy
-    public void shutdownEngine() {
+    <span class="annotation">@PreDestroy</span>
+    <span class="directive">public</span> <span class="type">void</span> shutdownEngine() {
         engine.stop();
     }
 
-    private void handleDbChangeEvent(SourceRecord record) {
-        if (record.topic().equals("dbserver1.public.item")) {
-            Long itemId = ((Struct) record.key()).getInt64("id");
-            Struct payload = (Struct) record.value();
-            Operation op = Operation.forCode(payload.getString("op"));
+    <span class="directive">private</span> <span class="type">void</span> handleDbChangeEvent(SourceRecord record) {
+        <span class="keyword">if</span> (record.topic().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1.public.item</span><span class="delimiter">&quot;</span></span>)) {
+            <span class="predefined-type">Long</span> itemId = ((<span class="predefined-type">Struct</span>) record.key()).getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>);
+            <span class="predefined-type">Struct</span> payload = (<span class="predefined-type">Struct</span>) record.value();
+            <span class="predefined-type">Operation</span> op = <span class="predefined-type">Operation</span>.forCode(payload.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>));
 
-            if (op == Operation.UPDATE || op == Operation.DELETE) {
+            <span class="keyword">if</span> (op == <span class="predefined-type">Operation</span>.UPDATE || op == <span class="predefined-type">Operation</span>.DELETE) {
                 emf.getCache().evict(Item.class, itemId);
             }
         }
@@ -1164,7 +1164,7 @@ Upon subsequent orders of that same item it will be obtained from the cache agai
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Eventual Consistency</div>
@@ -1180,7 +1180,7 @@ and the point in time where the change event is streamed from the log to the eve
 </div>
 </div>
 <div class="sect1">
-<h2 id="avoiding-cache-invalidations-after-application-triggered-data-changes">Avoiding Cache Invalidations After Application-triggered Data Changes</h2>
+<h2 id="avoiding_cache_invalidations_after_application_triggered_data_changes">Avoiding Cache Invalidations After Application-triggered Data Changes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The change event listener shown above satisfies the requirement of invalidating cached items after external data changes.
@@ -1206,36 +1206,36 @@ Keeping track of all transactions run by the application itself allows to trigge
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class KnownTransactions {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">KnownTransactions</span> {
 
-    private final DefaultCacheManager cacheManager;
-    private final Cache&lt;Long, Boolean&gt; applicationTransactions;
+    <span class="directive">private</span> <span class="directive">final</span> DefaultCacheManager cacheManager;
+    <span class="directive">private</span> <span class="directive">final</span> Cache&lt;<span class="predefined-type">Long</span>, <span class="predefined-type">Boolean</span>&gt; applicationTransactions;
 
-    public KnownTransactions() {
-        cacheManager = new DefaultCacheManager();
+    <span class="directive">public</span> KnownTransactions() {
+        cacheManager = <span class="keyword">new</span> DefaultCacheManager();
         cacheManager.defineConfiguration(
-                "tx-id-cache",
-                new ConfigurationBuilder()
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">tx-id-cache</span><span class="delimiter">&quot;</span></span>,
+                <span class="keyword">new</span> ConfigurationBuilder()
                     .expiration()
-                        .lifespan(60, TimeUnit.SECONDS)
+                        .lifespan(<span class="integer">60</span>, <span class="predefined-type">TimeUnit</span>.SECONDS)
                     .build()
                 );
 
-        applicationTransactions = cacheManager.getCache("tx-id-cache");
+        applicationTransactions = cacheManager.getCache(<span class="string"><span class="delimiter">&quot;</span><span class="content">tx-id-cache</span><span class="delimiter">&quot;</span></span>);
     }
 
-    @PreDestroy
-    public void stopCacheManager() {
+    <span class="annotation">@PreDestroy</span>
+    <span class="directive">public</span> <span class="type">void</span> stopCacheManager() {
         cacheManager.stop();
     }
 
-    public void register(long txId) {
-        applicationTransactions.put(txId, true);
+    <span class="directive">public</span> <span class="type">void</span> register(<span class="type">long</span> txId) {
+        applicationTransactions.put(txId, <span class="predefined-constant">true</span>);
     }
 
-    public boolean isKnown(long txId) {
-        return Boolean.TRUE.equals(applicationTransactions.get(txId));
+    <span class="directive">public</span> <span class="type">boolean</span> isKnown(<span class="type">long</span> txId) {
+        <span class="keyword">return</span> <span class="predefined-type">Boolean</span>.TRUE.equals(applicationTransactions.get(txId));
     }
 }</code></pre>
 </div>
@@ -1252,17 +1252,17 @@ There are multiple ways for implementing this logic; in the following a Hibernat
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">class TransactionRegistrationListener implements FlushEventListener {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">TransactionRegistrationListener</span> <span class="directive">implements</span> FlushEventListener {
 
-    private volatile KnownTransactions knownTransactions;
+    <span class="directive">private</span> <span class="directive">volatile</span> KnownTransactions knownTransactions;
 
-    public TransactionRegistrationListener() {
+    <span class="directive">public</span> TransactionRegistrationListener() {
     }
 
-    @Override
-    public void onFlush(FlushEvent event) throws HibernateException {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onFlush(FlushEvent event) <span class="directive">throws</span> HibernateException {
         event.getSession().getActionQueue().registerProcess( session -&gt; {
-            Number txId = (Number) event.getSession().createNativeQuery("SELECT txid_current()")
+            <span class="predefined-type">Number</span> txId = (<span class="predefined-type">Number</span>) event.getSession().createNativeQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT txid_current()</span><span class="delimiter">&quot;</span></span>)
                     .setFlushMode(FlushMode.MANUAL)
                     .getSingleResult();
 
@@ -1270,14 +1270,14 @@ There are multiple ways for implementing this logic; in the following a Hibernat
         } );
     }
 
-    private  KnownTransactions getKnownTransactions() {
+    <span class="directive">private</span>  KnownTransactions getKnownTransactions() {
         KnownTransactions value = knownTransactions;
 
-        if (value == null) {
+        <span class="keyword">if</span> (value == <span class="predefined-constant">null</span>) {
             knownTransactions = value = CDI.current().select(KnownTransactions.class).get();
         }
 
-        return value;
+        <span class="keyword">return</span> value;
     }
 }</code></pre>
 </div>
@@ -1296,7 +1296,7 @@ which usually happens exactly once when the transaction is committed.</p>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Manual Flushes</div>
@@ -1314,17 +1314,17 @@ The actual code in the example repo contains a slightly extended version of this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public class TransactionRegistrationIntegrator implements Integrator {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">TransactionRegistrationIntegrator</span> <span class="directive">implements</span> Integrator {
 
-    @Override
-    public void integrate(Metadata metadata, SessionFactoryImplementor sessionFactory,
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> integrate(Metadata metadata, SessionFactoryImplementor sessionFactory,
             SessionFactoryServiceRegistry serviceRegistry) {
         serviceRegistry.getService(EventListenerRegistry.class)
-            .appendListeners(EventType.FLUSH, new TransactionRegistrationListener());
+            .appendListeners(EventType.FLUSH, <span class="keyword">new</span> TransactionRegistrationListener());
     }
 
-    @Override
-    public void disintegrate(SessionFactoryImplementor sessionFactory,
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> disintegrate(SessionFactoryImplementor sessionFactory,
             SessionFactoryServiceRegistry serviceRegistry) {
     }
 }</code></pre>
@@ -1332,7 +1332,7 @@ The actual code in the example repo contains a slightly extended version of this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>io.debezium.examples.cacheinvalidation.persistence.TransactionRegistrationIntegrator</code></pre>
+<pre class="CodeRay highlight"><code>io.debezium.examples.cacheinvalidation.persistence.TransactionRegistrationIntegrator</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1344,23 +1344,23 @@ invoke its <code>integrate()</code> method which in turn will register the liste
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class DatabaseChangeEventListener {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">DatabaseChangeEventListener</span> {
 
-    // ...
+    <span class="comment">// ...</span>
 
-    @Inject
-    private KnownTransactions knownTransactions;
+    <span class="annotation">@Inject</span>
+    <span class="directive">private</span> KnownTransactions knownTransactions;
 
-    private void handleDbChangeEvent(SourceRecord record) {
-        if (record.topic().equals("dbserver1.public.item")) {
-            Long itemId = ((Struct) record.key()).getInt64("id");
-            Struct payload = (Struct) record.value();
-            Operation op = Operation.forCode(payload.getString("op"));
-            Long txId = ((Struct) payload.get("source")).getInt64("txId");
+    <span class="directive">private</span> <span class="type">void</span> handleDbChangeEvent(SourceRecord record) {
+        <span class="keyword">if</span> (record.topic().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1.public.item</span><span class="delimiter">&quot;</span></span>)) {
+            <span class="predefined-type">Long</span> itemId = ((<span class="predefined-type">Struct</span>) record.key()).getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>);
+            <span class="predefined-type">Struct</span> payload = (<span class="predefined-type">Struct</span>) record.value();
+            <span class="predefined-type">Operation</span> op = <span class="predefined-type">Operation</span>.forCode(payload.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>));
+            <span class="predefined-type">Long</span> txId = ((<span class="predefined-type">Struct</span>) payload.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>)).getInt64(<span class="string"><span class="delimiter">&quot;</span><span class="content">txId</span><span class="delimiter">&quot;</span></span>);
 
-            if (!knownTransactions.isKnown(txId) &amp;&amp;
-                    (op == Operation.UPDATE || op == Operation.DELETE)) {
+            <span class="keyword">if</span> (!knownTransactions.isKnown(txId) &amp;&amp;
+                    (op == <span class="predefined-type">Operation</span>.UPDATE || op == <span class="predefined-type">Operation</span>.DELETE)) {
                 emf.getCache().evict(Item.class, itemId);
             }
         }
@@ -1374,9 +1374,9 @@ To confirm, you can invoke the example&#8217;s <code>items</code> resource using
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">&gt; curl -H "Content-Type: application/json" \
+<pre class="CodeRay highlight"><code data-lang="bash">&gt; curl -H &quot;Content-Type: application/json&quot; \
   -X PUT \
-  --data '{ "description" : "North by Northwest", "price" : 20.99}' \
+  --data '{ &quot;description&quot; : &quot;North by Northwest&quot;, &quot;price&quot; : 20.99}' \
   http://localhost:8080/cache-invalidation/rest/items/10003</code></pre>
 </div>
 </div>

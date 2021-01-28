@@ -897,7 +897,7 @@ We also upgraded the Debezium container images for Apache Kafka and Kafka Connec
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="schema-change-topics">Schema Change Topics</h2>
+<h2 id="schema_change_topics">Schema Change Topics</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Similarly to the MySQL connector, also the Debezium connectors for SQL Server, Db2 and Oracle optionally expose a public topic with schema change information now.
@@ -911,88 +911,88 @@ as produced by the SQL Server connector and using the JSON message converter:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "source": {
-    "version": "1.2.0.Beta1",
-    "connector": "sqlserver",
-    "name": "server1",
-    "ts_ms": 1588252618953,
-    "snapshot": "true",
-    "db": "testDB",
-    "schema": "dbo",
-    "table": "customers",
-    "change_lsn": null,
-    "commit_lsn": "00000025:00000d98:00a2",
-    "event_serial_no": null
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.2.0.Beta1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">connector</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sqlserver</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">server1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1588252618953</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">snapshot</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">db</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">testDB</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbo</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">customers</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">change_lsn</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">commit_lsn</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">00000025:00000d98:00a2</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">event_serial_no</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
   },
-  "databaseName": "testDB",
-  "schemaName": "dbo",
-  "ddl": null,
-  "tableChanges": [
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">databaseName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">testDB</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">schemaName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbo</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">ddl</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">tableChanges</span><span class="delimiter">&quot;</span></span>: [
     {
-      "type": "CREATE",
-      "id": "\"testDB\".\"dbo\".\"customers\"",
-      "table": {
-        "defaultCharsetName": null,
-        "primaryKeyColumnNames": [
-          "id"
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CREATE</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="char">\&quot;</span><span class="content">testDB</span><span class="char">\&quot;</span><span class="content">.</span><span class="char">\&quot;</span><span class="content">dbo</span><span class="char">\&quot;</span><span class="content">.</span><span class="char">\&quot;</span><span class="content">customers</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">defaultCharsetName</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">primaryKeyColumnNames</span><span class="delimiter">&quot;</span></span>: [
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>
         ],
-        "columns": [
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">columns</span><span class="delimiter">&quot;</span></span>: [
           {
-            "name": "id",
-            "jdbcType": 4,
-            "nativeType": null,
-            "typeName": "int identity",
-            "typeExpression": "int identity",
-            "charsetName": null,
-            "length": 10,
-            "scale": 0,
-            "position": 1,
-            "optional": false,
-            "autoIncremented": false,
-            "generated": false
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">jdbcType</span><span class="delimiter">&quot;</span></span>: <span class="integer">4</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">nativeType</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">int identity</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeExpression</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">int identity</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">charsetName</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">length</span><span class="delimiter">&quot;</span></span>: <span class="integer">10</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">scale</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">position</span><span class="delimiter">&quot;</span></span>: <span class="integer">1</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">autoIncremented</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">generated</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>
           },
           {
-            "name": "first_name",
-            "jdbcType": 12,
-            "nativeType": null,
-            "typeName": "varchar",
-            "typeExpression": "varchar",
-            "charsetName": null,
-            "length": 255,
-            "scale": null,
-            "position": 2,
-            "optional": false,
-            "autoIncremented": false,
-            "generated": false
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">jdbcType</span><span class="delimiter">&quot;</span></span>: <span class="integer">12</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">nativeType</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">varchar</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeExpression</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">varchar</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">charsetName</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">length</span><span class="delimiter">&quot;</span></span>: <span class="integer">255</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">scale</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">position</span><span class="delimiter">&quot;</span></span>: <span class="integer">2</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">autoIncremented</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">generated</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>
           },
           {
-            "name": "last_name",
-            "jdbcType": 12,
-            "nativeType": null,
-            "typeName": "varchar",
-            "typeExpression": "varchar",
-            "charsetName": null,
-            "length": 255,
-            "scale": null,
-            "position": 3,
-            "optional": false,
-            "autoIncremented": false,
-            "generated": false
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">jdbcType</span><span class="delimiter">&quot;</span></span>: <span class="integer">12</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">nativeType</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">varchar</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeExpression</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">varchar</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">charsetName</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">length</span><span class="delimiter">&quot;</span></span>: <span class="integer">255</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">scale</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">position</span><span class="delimiter">&quot;</span></span>: <span class="integer">3</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">autoIncremented</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">generated</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>
           },
           {
-            "name": "email",
-            "jdbcType": 12,
-            "nativeType": null,
-            "typeName": "varchar",
-            "typeExpression": "varchar",
-            "charsetName": null,
-            "length": 255,
-            "scale": null,
-            "position": 4,
-            "optional": false,
-            "autoIncremented": false,
-            "generated": false
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">jdbcType</span><span class="delimiter">&quot;</span></span>: <span class="integer">12</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">nativeType</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">varchar</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">typeExpression</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">varchar</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">charsetName</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">length</span><span class="delimiter">&quot;</span></span>: <span class="integer">255</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">scale</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">position</span><span class="delimiter">&quot;</span></span>: <span class="integer">4</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">optional</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">autoIncremented</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">generated</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>
           }
         ]
       }
@@ -1011,7 +1011,7 @@ based on the feedback we receive from the community.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="content-based-topic-routing">Content-Based Topic Routing</h2>
+<h2 id="content_based_topic_routing">Content-Based Topic Routing</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Using the new single message transformation (SMT) for <a href="/documentation/reference/configuration/content-based-routing.html">content-based topic routing</a> you can control the topics specific change events get sent to based on their column values.
@@ -1021,7 +1021,7 @@ For that, simple script expressions in languages such as JavaScript or Groovy ca
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>...
+<pre class="CodeRay highlight"><code>...
 transforms=route
 transforms.route.type=io.debezium.transforms.Filter
 transforms.route.language=jsr223.graal.js
@@ -1032,7 +1032,7 @@ transforms.route.topic.expression=value.after.ordertype == 'B2C' ? 'b2c_orders' 
 </div>
 </div>
 <div class="sect1">
-<h2 id="further-changes-and-bugfixes">Further Changes and Bugfixes</h2>
+<h2 id="further_changes_and_bugfixes">Further Changes and Bugfixes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Some other features and fixes of this release include:</p>

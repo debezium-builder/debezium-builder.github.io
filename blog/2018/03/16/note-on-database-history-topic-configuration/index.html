@@ -848,7 +848,7 @@ Please continue reading if you&#8217;re using the Debezium MySQL connector in ve
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="what-is-the-issue-about">What is the issue about?</h2>
+<h2 id="what_is_the_issue_about">What is the issue about?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In Debezium 0.7.3 we rolled out a feature for creating the database history automatically if it doesn&#8217;t exist yet (<a href="https://issues.redhat.com/browse/DBZ-278">DBZ-278</a>).
@@ -878,7 +878,7 @@ This may cause parts of the history topic to be deleted in case all of the follo
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-to-prevent-the-issue">How to prevent the issue?</h2>
+<h2 id="how_to_prevent_the_issue">How to prevent the issue?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You should either create the database history topic yourself with an infinite retention
@@ -886,7 +886,7 @@ or alternatively override the "retention.bytes" configuration for the history to
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">&lt;KAFKA_DIR&gt;/bin/kafka-configs.sh \
+<pre class="CodeRay highlight"><code data-lang="shell">&lt;KAFKA_DIR&gt;/bin/kafka-configs.sh \
   --zookeeper zookeeper:2181 \
   --entity-type topics \
   --entity-name &lt;DB_HISTORY_TOPIC&gt; \
@@ -902,7 +902,7 @@ Alternatively, a complete new snapshot should be taken, e.g. by setting up a new
 </div>
 </div>
 <div class="sect1">
-<h2 id="next-steps">Next steps</h2>
+<h2 id="next_steps">Next steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;ll release Debezium 0.7.5 with a fix for this issue early next week.

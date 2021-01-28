@@ -872,7 +872,7 @@ Kafka Connect there are already some internal Kafka Connect related topics creat
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>$ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --list
+<pre class="CodeRay highlight nowrap"><code>$ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --list
 
 connect_configs
 connect_offsets
@@ -890,7 +890,7 @@ broker based on a default, maybe customized, configuration in the broker if
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>auto.create.topics.enable = true
+<pre class="CodeRay highlight nowrap"><code>auto.create.topics.enable = true
 default.replication.factor = 1
 num.partitions = 1
 compression.type = producer
@@ -911,14 +911,14 @@ is implemented to enable customizable topic creation with Kafka Connect.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="kafka-connect">Kafka Connect</h2>
+<h2 id="kafka_connect">Kafka Connect</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Kafka Connect since Kafka 2.6.0 comes with topic creation enabled:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>topic.creation.enable = true</code></pre>
+<pre class="CodeRay highlight nowrap"><code>topic.creation.enable = true</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -929,7 +929,7 @@ in the Kafka Connect config (<em>connect-distributed.properties</em> file or via
 </div>
 </div>
 <div class="sect1">
-<h2 id="updating-connector-configuration">Updating Connector Configuration</h2>
+<h2 id="updating_connector_configuration">Updating Connector Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Kafka Connect topic creation works with groups. There&#8217;s always a <code>default</code> group which is used when
@@ -948,7 +948,7 @@ to customize how the matched topics of the group will be created.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>{
+<pre class="CodeRay highlight nowrap"><code>{
     "name": "inventory-connector",
     "config": {
         "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
@@ -965,7 +965,7 @@ to customize how the matched topics of the group will be created.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="default-config">Default Config</h3>
+<h3 id="default_config">Default Config</h3>
 <div class="paragraph">
 <p>All topics not matching other <code>topic.creation</code> groups will apply the <code>default</code> group
 config.<br>
@@ -976,7 +976,7 @@ So we configure for the default group:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>{
+<pre class="CodeRay highlight nowrap"><code>{
     "name": "inventory-connector",
     "config": {
         "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
@@ -999,7 +999,7 @@ So we configure for the default group:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="productlog-config">Productlog Config</h3>
+<h3 id="productlog_config">Productlog Config</h3>
 <div class="paragraph">
 <p>In the databases <code>inventory</code> schema there are tables starting with <code>product</code> as table name.<br>
 As default the fully qualified table names are captured to the topic with the same name with Debezium,
@@ -1021,7 +1021,7 @@ of our group like we did with the <code>default</code> group:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>{
+<pre class="CodeRay highlight nowrap"><code>{
     "name": "inventory-connector",
     "config": {
         "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
@@ -1038,9 +1038,9 @@ of our group like we did with the <code>default</code> group:</p>
         "topic.creation.default.cleanup.policy": "compact",
         "topic.creation.default.compression.type": "lz4",
 
-        "topic.creation.groups": "productlog",  //<b class="conum">(1)</b>
+        "topic.creation.groups": "productlog",  <i class="conum" data-value="1"></i><b>(1)</b>
 
-        "topic.creation.productlog.include": "dbserver1\\.inventory\\.product.*",  //<b class="conum">(2)</b>
+        "topic.creation.productlog.include": "dbserver1\\.inventory\\.product.*",  <i class="conum" data-value="2"></i><b>(2)</b>
         "topic.creation.productlog.replication.factor": 1,
         "topic.creation.productlog.partitions": 20,
         "topic.creation.productlog.cleanup.policy": "delete",
@@ -1078,14 +1078,14 @@ group matches all topics starting with <code>dbserver1.inventory.product</code>.
 </table>
 </div>
 <div class="sect2">
-<h3 id="exploring-the-results">Exploring the Results</h3>
+<h3 id="exploring_the_results">Exploring the Results</h3>
 <div class="paragraph">
 <p>When we now start our connector and use <code>kafka-topics.sh</code> to see how the topics were created, we can
 see that all worked as defined:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>## the `dbserver1.inventory.products` topic has the config from the `productlog` group:
+<pre class="CodeRay highlight nowrap"><code>## the `dbserver1.inventory.products` topic has the config from the `productlog` group:
 $ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --describe --topic dbserver1.inventory.products
 
 Topic: dbserver1.inventory.products     PartitionCount: 20      ReplicationFactor: 1

@@ -874,7 +874,7 @@ Let&#8217;s take a closer look at some of the changes.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="postgresql-connector">PostgreSQL Connector</h2>
+<h2 id="postgresql_connector">PostgreSQL Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The big news for the Postgres connector is that Debezium now runs against <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-424">PostgreSQL 10</a> thanks to a contribution from <a href="https://github.com/ScofieldXu">Scofield Xu</a>.
@@ -888,7 +888,7 @@ thanks to the work by <a href="https://github.com/QazerLab">Danila Kiver</a>, it
 </div>
 </div>
 <div class="sect1">
-<h2 id="mysql-connector">MySQL Connector</h2>
+<h2 id="mysql_connector">MySQL Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;ve received multiple reports related to parsing MySQL DDL statements, e.g. there were a few specific invocations of the <code>ALTER TABLE</code> statement which weren&#8217;t handled correctly.
@@ -911,7 +911,7 @@ But you now also have the option to just log the event and its position and cont
 </div>
 </div>
 <div class="sect1">
-<h2 id="mongodb-connector">MongoDB Connector</h2>
+<h2 id="mongodb_connector">MongoDB Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This connector received an important fix applying when more than one thread is used to performing the initial snapshot (<a href="https://issues.redhat.com/browse/DBZ-438">DBZ-438</a>).
@@ -920,7 +920,7 @@ Before, it could happen that single messages got lost during snapshotting which 
 </div>
 </div>
 <div class="sect1">
-<h2 id="examples-and-docker-images">Examples and Docker Images</h2>
+<h2 id="examples_and_docker_images">Examples and Docker Images</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We have expanded our examples repository with <a href="https://github.com/debezium/debezium-examples/tree/master/tutorial#using-mysql-and-the-avro-message-format">an Avro example</a>,
@@ -936,7 +936,7 @@ While tags in the format <code>x.y.z</code> are fixed in time, tags in the forma
 </div>
 </div>
 <div class="sect1">
-<h2 id="whats-next">What&#8217;s next?</h2>
+<h2 id="whats_next">What&#8217;s next?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Debezium 0.7 release is planned to be out in two to three weeks from now.</p>

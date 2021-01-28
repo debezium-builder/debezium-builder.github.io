@@ -882,7 +882,7 @@
 <p>The remainder of this post will focus on Debezium (the DBZ boxes in the diagram above), and how we configure and operate it. Debezium works by connecting to MySQL and pretending to be a replica. MySQL sends its replication data to Debezium, thinking it&#8217;s actually funneling data to another downstream MySQL instance. Debezium then takes the data, converts the schemas from MySQL schemas to <a href="https://kafka.apache.org/0100/javadoc/org/apache/kafka/connect/data/Struct.html">Kafka connect structures</a>, and forwards them to Kafka.</p>
 </div>
 <div class="sect2">
-<h3 id="adding-new-databases">Adding new databases</h3>
+<h3 id="adding_new_databases">Adding new databases</h3>
 <div class="paragraph">
 <p>When a new microservice with a CloudSQL database comes online, we want to get that data into Kafka. The first step in the process is to load the data into the Debezium MySQL cluster. This involves several steps:</p>
 </div>
@@ -916,7 +916,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-bash" data-lang="bash"># (1) Take a dump of the database we wish to add.
+<pre class="CodeRay highlight nowrap"><code data-lang="bash"># (1) Take a dump of the database we wish to add.
 $ mydumper  --host=123.123.123.123 --port=3306 --user=foo --password=*********  -B log --trx-consistency-only  --triggers --routines -o /mysqldata/new_db/ -c -L mydumper.log
 
 # (2) Stop all replication on the secondary Debezium cluster.
@@ -934,7 +934,7 @@ $ myloader -d /mysqldata/new_db/ -s new_db
 $ mysql&gt; reset master;
 
 # Set the new GTID_PURGED value, including the GTID_PURGED value from the MySQL dump file.
-$ mysql&gt; set global GTID_PURGED="f3a44d1a-11e6-44ba-bf12-040bab830af0:1-10752,c627b2bc-b36a-11e6-a886-42010af00790:1-9052,01261abc3-6ade-11e6-9647-42010af0044a:1-375342";
+$ mysql&gt; set global GTID_PURGED=&quot;f3a44d1a-11e6-44ba-bf12-040bab830af0:1-10752,c627b2bc-b36a-11e6-a886-42010af00790:1-9052,01261abc3-6ade-11e6-9647-42010af0044a:1-375342&quot;;
 
 # (5) Start replication for the new DB.
 $ mysql&gt; CHANGE MASTER TO MASTER_HOST='123.123.123.123', MASTER_USER='REPLICATION_USER', MASTER_PASSWORD='REPLICATION_PASSWORD',MASTER_AUTO_POSITION=1 for CHANNEL 'new_db';
@@ -953,34 +953,34 @@ $ mysql&gt; START SLAVE for channel 'baz';
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-   "name": "debezium-connector-microservice1",
-   "config": {
-       "name": "debezium-connector-microservice1",
-       "connector.class": "io.debezium.connector.mysql.MySqlConnector",
-       "tasks.max": "1",
-       "database.hostname": "dbz-mysql01",
-       "database.port": "3306",
-       "database.user": "user",
-       "database.password": "*******",
-       "database.server.id": "101",
-       "database.server.name": "db.debezium.microservice1",
-       "gtid.source.includes": "c34aeb9e-89ad-11e6-877b-42010a93af2d",
-       "database.whitelist": "microservice1_db",
-       "poll.interval.ms": "2",
-       "table.whitelist": "microservice1_db.table1,microservice1_db.table2",
-       "column.truncate.to.1024.chars" : "microservice1_db.table1.text_col",
-       "database.history.kafka.bootstrap.servers": "kafka01:9093,kafka02:9093,kafka03:9093",
-       "database.history.kafka.topic": "debezium.history.microservice1",
-       "database.ssl.truststore": "/certs/truststore",
-       "database.ssl.truststore.password": "*******",
-       "database.ssl.mode": "required",
-       "database.history.producer.security.protocol": "SSL",
-       "database.history.producer.ssl.truststore.location": "/certs/truststore",
-       "database.history.producer.ssl.truststore.password": "*******",
-       "database.history.consumer.security.protocol": "SSL",
-       "database.history.consumer.ssl.truststore.location": "/certs/truststore",
-       "database.history.consumer.ssl.truststore.password": "*******",
+<pre class="CodeRay highlight nowrap"><code data-lang="json">{
+   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">debezium-connector-microservice1</span><span class="delimiter">&quot;</span></span>,
+   <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">debezium-connector-microservice1</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.mysql.MySqlConnector</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.hostname</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbz-mysql01</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3306</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">*******</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">101</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">db.debezium.microservice1</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">gtid.source.includes</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">c34aeb9e-89ad-11e6-877b-42010a93af2d</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.whitelist</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">microservice1_db</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">poll.interval.ms</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">table.whitelist</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">microservice1_db.table1,microservice1_db.table2</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">column.truncate.to.1024.chars</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">microservice1_db.table1.text_col</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.kafka.bootstrap.servers</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">kafka01:9093,kafka02:9093,kafka03:9093</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.kafka.topic</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">debezium.history.microservice1</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.ssl.truststore</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/certs/truststore</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.ssl.truststore.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">*******</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.ssl.mode</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.producer.security.protocol</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">SSL</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.producer.ssl.truststore.location</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/certs/truststore</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.producer.ssl.truststore.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">*******</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.consumer.security.protocol</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">SSL</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.consumer.ssl.truststore.location</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/certs/truststore</span><span class="delimiter">&quot;</span></span>,
+       <span class="key"><span class="delimiter">&quot;</span><span class="content">database.history.consumer.ssl.truststore.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">*******</span><span class="delimiter">&quot;</span></span>,
    }
 }</code></pre>
 </div>
@@ -999,7 +999,7 @@ $ mysql&gt; START SLAVE for channel 'baz';
 </div>
 </div>
 <div class="sect2">
-<h3 id="high-availability">High availability</h3>
+<h3 id="high_availability">High availability</h3>
 <div class="paragraph">
 <p>One of the difficulties we faced when we first began using Debezium was how to make it tolerant to machine failures (both the upstream MySQL server, and Debezium, itself). MySQL prior to version 5.6 modeled a replica&#8217;s location in its parent&#8217;s binlogs using a (binlog filename, file offset) tuple. The problem with this approach is that the binlog filenames are not the same between MySQL machines. This means that a replica reading from upstream MySQL machine 1 can&#8217;t easily fail over to MySQL machine 2. There is an entire ecosystem of tools (including <a href="https://code.google.com/p/mysql-master-ha/">MHA</a>) to try and address this problem.</p>
 </div>
@@ -1020,31 +1020,31 @@ $ mysql&gt; START SLAVE for channel 'baz';
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "before": {
-    "id": 1004,
-    "first_name": "Anne",
-    "last_name": "Kretchmar",
-    "email": "annek@noanswer.org"
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">before</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1004</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Anne</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kretchmar</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">annek@noanswer.org</span><span class="delimiter">&quot;</span></span>
   },
-  "after": {
-    "id": 1004,
-    "first_name": "Anne Marie",
-    "last_name": "Kretchmar",
-    "email": "annek@noanswer.org"
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">1004</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">first_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Anne Marie</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">last_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Kretchmar</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">annek@noanswer.org</span><span class="delimiter">&quot;</span></span>
   },
-  "source": {
-    "name": "mysql-server-1",
-    "server_id": 223344,
-    "ts_sec": 1465581,
-    "gtid": null,
-    "file": "mysql-bin.000003",
-    "pos": 484,
-    "row": 0,
-    "snapshot": null
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql-server-1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">server_id</span><span class="delimiter">&quot;</span></span>: <span class="integer">223344</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_sec</span><span class="delimiter">&quot;</span></span>: <span class="integer">1465581</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">gtid</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">file</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql-bin.000003</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">pos</span><span class="delimiter">&quot;</span></span>: <span class="integer">484</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">row</span><span class="delimiter">&quot;</span></span>: <span class="integer">0</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">snapshot</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
   },
-  "op": "u",
-  "ts_ms": 1465581029523
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">u</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1465581029523</span>
 }</code></pre>
 </div>
 </div>
@@ -1061,40 +1061,40 @@ $ mysql&gt; START SLAVE for channel 'baz';
 </div>
 </div>
 <div class="sect1">
-<h2 id="future-work">Future work</h2>
+<h2 id="future_work">Future work</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="monolithic-database">Monolithic database</h3>
+<h3 id="monolithic_database">Monolithic database</h3>
 <div class="paragraph">
 <p>In addition to our microservices, we have a legacy monolithic database that&#8217;s much larger than our microservice databases. We&#8217;re in the process of upgrading this cluster to run with GTIDs enabled. Once this is done, we plan to replicate this cluster into Kafka with Debezium as well.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="large-table-snapshots">Large table snapshots</h3>
+<h3 id="large_table_snapshots">Large table snapshots</h3>
 <div class="paragraph">
 <p>We&#8217;re lucky that all of our microservice databases are of relatively manageable size. Our monolithic database has some tables that are much larger. We have yet to test Debezium with very large tables, so it&#8217;s unclear if any tuning or patches will be required in order to snapshot these tables on the initial Debezium load. We have heard community reports that larger tables (6 billion+ rows) do work, provided that the configuration exposed in <a href="https://issues.redhat.com/browse/DBZ-152">DBZ-152</a> is set. This is work we&#8217;re planning to do shortly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="more-monitoring">More monitoring</h3>
+<h3 id="more_monitoring">More monitoring</h3>
 <div class="paragraph">
 <p>Kafka connect doesn&#8217;t currently make it easy to expose metrics through the Kafka metrics framework. As a result, there are very few metrics available from the Kafka connect framework. Debezium does expose metrics via JMX (see <a href="https://issues.redhat.com/browse/DBZ-134">DBZ-134</a>), but we aren&#8217;t exposing them to our metrics system currently. We do monitor the system, but when things go wrong, it can be difficult to determine what&#8217;s going on. <a href="https://issues.apache.org/jira/browse/KAFKA-2376">KAFKA-2376</a> is the open JIRA that&#8217;s meant to address the underlying Kafka connect issue.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="more-databases">More databases</h3>
+<h3 id="more_databases">More databases</h3>
 <div class="paragraph">
 <p>As we add more microservice databases, we&#8217;ll begin to put pressure on the two Debezium MySQL servers that we have. Eventually, we plan to split the single Debezium cluster that we have into more than one, with some microservices replicating only to one cluster, and the rest replicating to others.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unify-compatibility-checks">Unify compatibility checks</h3>
+<h3 id="unify_compatibility_checks">Unify compatibility checks</h3>
 <div class="paragraph">
 <p>As I mentioned in the schema section, above, the Confluent schema registry runs schema compatibility checks out of the box right now. This makes it very easy for us to prevent backward and forward incompatible changes from making their way into Kafka. We don&#8217;t currently have an equivalent check at the MySQL layer. This is a problem because it means it&#8217;s possible for a DBA to make incompatible changes at the MySQL layer. Debezium will then fail when trying to produce the new messages into Kafka. We need to make sure this can&#8217;t happen by adding equivalent checks at the MySQL layer. <a href="https://issues.redhat.com/browse/DBZ-70">DBZ-70</a> discusses this more.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="automatic-topic-configuration">Automatic topic configuration</h3>
+<h3 id="automatic_topic_configuration">Automatic topic configuration</h3>
 <div class="paragraph">
 <p>We currently run Kafka with topic auto-create enabled with a default of 6 partitions, and time-based/size-based retention. This configuration doesn&#8217;t make much sense for Debezium topics. At the very least, they should be using log-compaction as their retention. We plan to write a script that looks for mis-configured Debezium topics, and updates them to appropriate retention settings.</p>
 </div>

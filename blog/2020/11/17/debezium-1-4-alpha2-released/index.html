@@ -911,7 +911,7 @@
 Let&#8217;s take a closer look at some of the highlights.</p>
 </div>
 <div class="sect1">
-<h2 id="postgresql-snapshotter-completion-hook">PostgreSQL Snapshotter completion hook</h2>
+<h2 id="postgresql_snapshotter_completion_hook">PostgreSQL Snapshotter completion hook</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The PostgreSQL <code>Snapshotter</code> API is a contract that allows for the customization of the snapshot process.
@@ -922,7 +922,7 @@ This API was introduced in 0.9.3.Final and has continued to evolve in the releas
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>void snapshotCompleted()</code></pre>
+<pre class="CodeRay highlight"><code>void snapshotCompleted()</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -932,7 +932,7 @@ allowing implementations to clean-up any resources it may have allocated prior s
 </div>
 </div>
 <div class="sect1">
-<h2 id="extractnewrecordstate-smt-field-renaming-support">ExtractNewRecordState SMT field renaming support</h2>
+<h2 id="extractnewrecordstate_smt_field_renaming_support">ExtractNewRecordState SMT field renaming support</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>One of the features of the <code>ExtractNewRecordState</code> SMT is that the transformation can retain parts of the original message in the transformed message&#8217;s header or payload.
@@ -943,7 +943,7 @@ This release extends this feature to allow specifying a new name to be used for 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>transforms=unwrap
+<pre class="CodeRay highlight"><code>transforms=unwrap
 transforms.unwrap.type=io.debezium.transforms.ExtractNewRecordState
 transforms.unwrap.add.headers=source.ts_ms:timestamp</code></pre>
 </div>

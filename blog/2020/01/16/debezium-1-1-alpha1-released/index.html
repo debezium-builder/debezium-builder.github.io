@@ -872,7 +872,7 @@ Let&#8217;s take a closer look.</p>
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="quarkus-outbox-pattern-extension">Quarkus Outbox Pattern Extension</h2>
+<h2 id="quarkus_outbox_pattern_extension">Quarkus Outbox Pattern Extension</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">outbox pattern</a> is a great way for letting services update their own database
@@ -891,20 +891,20 @@ Using this extension it becomes as simple as firing plain CDI events to produce 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class OrderService {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrderService</span> {
 
-    @Inject
-    Event&lt;ExportedEvent&lt;?, ?&gt;&gt; event;
+    <span class="annotation">@Inject</span>
+    <span class="predefined-type">Event</span>&lt;ExportedEvent&lt;?, ?&gt;&gt; event;
 
-    @Transactional
-    public PurchaseOrder addOrder(PurchaseOrder order) {
-        // process and persist the order...
+    <span class="annotation">@Transactional</span>
+    <span class="directive">public</span> PurchaseOrder addOrder(PurchaseOrder order) {
+        <span class="comment">// process and persist the order...</span>
 
-        // create a corresponding outbox event to notify other services
+        <span class="comment">// create a corresponding outbox event to notify other services</span>
         event.fire(OrderCreatedEvent.of(order));
 
-        return order;
+        <span class="keyword">return</span> order;
     }
 }</code></pre>
 </div>
@@ -920,7 +920,7 @@ To read up on the outbox pattern in the meantime, please refer to the blog post 
 </div>
 </div>
 <div class="sect1">
-<h2 id="cloudevents-support">CloudEvents Support</h2>
+<h2 id="cloudevents_support">CloudEvents Support</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://cloudevents.io/">CloudEvents</a> is a "specification for describing event data in a common way", aiming at providing "interoperability across services, platforms and systems".
@@ -928,30 +928,30 @@ By means of a new Kafka Connect message converter (<code>io.debezium.converters.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">{
-  "id" : "name:test_server;lsn:29274832;txId:565",
-  "source" : "/debezium/postgresql/test_server",
-  "specversion" : "1.0",
-  "type" : "io.debezium.postgresql.datachangeevent",
-  "time" : "2020-01-13T13:55:39.738Z",
-  "datacontenttype" : "application/json",
-  "iodebeziumop" : "r",
-  "iodebeziumversion" : "1.1.0.Alpha1",
-  "iodebeziumconnector" : "postgresql",
-  "iodebeziumname" : "test_server",
-  "iodebeziumtsms" : "1578923739738",
-  "iodebeziumsnapshot" : "true",
-  "iodebeziumdb" : "postgres",
-  "iodebeziumschema" : "s1",
-  "iodebeziumtable" : "a",
-  "iodebeziumtxId" : "565",
-  "iodebeziumlsn" : "29274832",
-  "iodebeziumxmin" : null,
-  "data" : {
-    "before" : null,
-    "after" : {
-      "pk" : 1,
-      "name" : "Bob"
+<pre class="CodeRay highlight"><code data-lang="java">{
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">name:test_server;lsn:29274832;txId:565</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">/debezium/postgresql/test_server</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">specversion</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.postgresql.datachangeevent</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">time</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">2020-01-13T13:55:39.738Z</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">datacontenttype</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">application/json</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumop</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">r</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumversion</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">1.1.0.Alpha1</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumconnector</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">postgresql</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumname</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">test_server</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumtsms</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">1578923739738</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumsnapshot</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumdb</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">postgres</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumschema</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">s1</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumtable</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumtxId</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">565</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumlsn</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">29274832</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">iodebeziumxmin</span><span class="delimiter">&quot;</span></span> : <span class="predefined-constant">null</span>,
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">data</span><span class="delimiter">&quot;</span></span> : {
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">before</span><span class="delimiter">&quot;</span></span> : <span class="predefined-constant">null</span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span> : {
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">pk</span><span class="delimiter">&quot;</span></span> : <span class="integer">1</span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Bob</span><span class="delimiter">&quot;</span></span>
     }
   }
 }</code></pre>
@@ -975,7 +975,7 @@ We&#8217;d love to get your feedback on this and learn from your insights and ex
 </div>
 </div>
 <div class="sect1">
-<h2 id="further-changes">Further Changes</h2>
+<h2 id="further_changes">Further Changes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Besides these two larger features, a number of smaller improvements and fixes has been done for Debezium 1.1 Alpha1:</p>

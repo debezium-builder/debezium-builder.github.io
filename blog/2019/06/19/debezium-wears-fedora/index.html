@@ -904,7 +904,7 @@ Of course, that&#8217;s not a requirement and the same steps apply for any other
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ vagrant init fedora/30-cloud-base
+<pre class="CodeRay highlight"><code>$ vagrant init fedora/30-cloud-base
 
 A `Vagrantfile` has been placed in this directory. You are now
 ready to `vagrant up` your first virtual environment! Please read
@@ -925,7 +925,7 @@ Bringing machine 'default' up with 'virtualbox' provider...
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ vagrant ssh</code></pre>
+<pre class="CodeRay highlight"><code>$ vagrant ssh</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -933,7 +933,7 @@ Bringing machine 'default' up with 'virtualbox' provider...
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ sudo dnf -y install postgresql postgres-decoderbufs
+<pre class="CodeRay highlight"><code>$ sudo dnf -y install postgresql postgres-decoderbufs
 .
 .
 .
@@ -987,7 +987,7 @@ Complete!</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ sudo /usr/bin/postgresql-setup --initdb</code></pre>
+<pre class="CodeRay highlight"><code>$ sudo /usr/bin/postgresql-setup --initdb</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -995,7 +995,7 @@ Complete!</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># MODULES
+<pre class="CodeRay highlight"><code># MODULES
 shared_preload_libraries = 'decoderbufs'
 
 # REPLICATION
@@ -1011,7 +1011,7 @@ max_replication_slots = 4       # max number of replication slots (change requir
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>local   replication     debezium                          trust
+<pre class="CodeRay highlight"><code>local   replication     debezium                          trust
 host    replication     debezium  127.0.0.1/32            trust
 host    replication     debezium  ::1/128                 trust</code></pre>
 </div>
@@ -1021,7 +1021,7 @@ host    replication     debezium  ::1/128                 trust</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ sudo systemctl restart postgresql</code></pre>
+<pre class="CodeRay highlight"><code>$ sudo systemctl restart postgresql</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1033,7 +1033,7 @@ just by installing the RPM package and setting up the config and security files 
 </div>
 </div>
 <div class="sect1">
-<h2 id="outlook-pgoutput">Outlook: pgoutput</h2>
+<h2 id="outlook_pgoutput">Outlook: pgoutput</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>While the decoderbufs plug-in is our recommended choice for a logical decoding plug-in,

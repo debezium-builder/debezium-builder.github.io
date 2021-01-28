@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-01-27T08:20:35+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.4.0.Final Released</title><link href="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Final Released" /><published>2021-01-07T00:00:00+00:00</published><updated>2021-01-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/07/debezium-1-4-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-01-28T08:51:40+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.4.0.Final Released</title><link href="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Final Released" /><published>2021-01-07T00:00:00+00:00</published><updated>2021-01-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/07/debezium-1-4-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I am pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Final&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -335,7 +335,7 @@ This is one of the tools in the box we can use, but it still can be crude and it
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;distributed-tracing&quot;&gt;Distributed Tracing&lt;/h2&gt;
+&lt;h2 id=&quot;distributed_tracing&quot;&gt;Distributed Tracing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;.
@@ -362,7 +362,7 @@ OpenTracing is an incubating project of &lt;a href=&quot;https://www.cncf.io/&qu
 &lt;table&gt;
 &lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;Note&lt;/div&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -391,7 +391,7 @@ The Jaeger &lt;a href=&quot;https://www.jaegertracing.io/docs/1.21/getting-start
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;debezium-and-opentracing&quot;&gt;Debezium and OpenTracing&lt;/h2&gt;
+&lt;h2 id=&quot;debezium_and_opentracing&quot;&gt;Debezium and OpenTracing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The Debezium integration with OpenTracing consists of three distinct components:&lt;/p&gt;
@@ -414,7 +414,7 @@ The Jaeger &lt;a href=&quot;https://www.jaegertracing.io/docs/1.21/getting-start
 The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;outbox-distributed-tracing&quot;&gt;Outbox Distributed Tracing&lt;/h3&gt;
+&lt;h3 id=&quot;outbox_distributed_tracing&quot;&gt;Outbox Distributed Tracing&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing.
 The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes.&lt;/p&gt;
@@ -467,7 +467,7 @@ This example contains two rudimentary microservices: an order service which expo
 &lt;table&gt;
 &lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;Note&lt;/div&gt;
+&lt;i class=&quot;fa icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -609,7 +609,7 @@ as well as the time of processing the event by the Debezium connector.&lt;/p&gt;
 Your feedback on this new functionality is highly welcomed!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="tracing" /><category term="jaeger" /><summary type="html">The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&amp;#8217;s runtime state. This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes. You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path. This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context. Distributed Tracing comes here to the rescue. Distributed Tracing Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;. SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs. And this is where Debezium becomes part of the picture. Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into. How long does it take for change events to flow from source database to sink systems? Where is the most time spent in the pipeline? Are there any anomalies like spikes in end-to-end lags? The integration of distributed tracing with Debezium can help to answer these questions. OpenTracing There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the OpenTracing specification. OpenTracing is an incubating project of Cloud Native Computing Foundation which guarantees that the user will be free of any vendor lock-in by adhering to an open standard. Note The OpenTracing project is in the process of being merged with OpenCensus to the improved OpenTelemetry standard. Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus), but it will use and support OpenTelemetry in the future, too. A distributed trace in OpenTracing consists of a set of spans. Each span represents a logical unit of work executed. The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span. OpenTracing is only the specification and the instrumentation API. To use it you need to have an implementation, too. While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the Jaeger distributed tracing platform. Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application. The Jaeger All-In-One container image will be used to simplify the deployment. Debezium and OpenTracing The Debezium integration with OpenTracing consists of three distinct components: ActivateTracingSpan SMT EventDispatcher in the Debezium outbox extension for Quarkus applications EventRouter SMT The first one is intended for general use. The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced. Outbox Distributed Tracing The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing. The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes. In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created: When an event arrives at EventDispatcher a new span outbox-write is created. It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available. The span metadata is exported into a distinct field of the outbox event. The outbox event is written to the outbox table. The Event Router SMT receives the event and imports the span metadata from the field Two new spans are created db-log-write with its start timestamp set to database write timestamp. The fields from the source block are added to the span as tags. debezium-read with its start time set to the processing timestamp. Fields from the envelope are added to the span as tags. Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata. Demo The outbox example was extended with distributed tracing support to demonstrate the functionality. This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern. Note This demo uses the Strimzi container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level. To try it yourself you need to: check out the repository and switch to the outbox directory build the services $ mvn clean install deploy the application export DEBEZIUM_VERSION=1.4 docker-compose up --build register a Debezium connector to listen on the outbox table $ http PUT http://localhost:8083/connectors/outbox-connector/config &amp;lt; register-postgres.json HTTP/1.1 201 Created execute multiple business requests $ http POST http://localhost:8080/orders &amp;lt; resources/data/create-order-request.json $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel-order-line-request.json check the Jaeger UI After all the steps above were completed you should see an introduction screen of the Jaeger UI: Filter on order-service as a service and click on Find Traces. Two traces should be available: Click on the addOrder service. A tree will open that displays how the initial request incoming via REST API was written to the database by the outbox extension read by Debezium and processed by outbox SMT written to a Kafka topic read from a Kafka topic by shipment-service processed in the different shipment-service business methods Click on the db-log-write and debezium-read spans. The tags of each of them contain extracted Debezium-related metadata like operation or source fields: Conclusion In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it. We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration. While this example was focused on the specific use case of microservices data exchange via the outbox pattern, Debezium integrates with distributed tracing also independently of this particular pattern. By means of the ActivateTracingSpan SMT, Debezium can produce spans representing the time of the change in the source database itself, as well as the time of processing the event by the Debezium connector. Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases. Your feedback on this new functionality is highly welcomed!</summary></entry><entry><title type="html">Debezium 1.4.0.Beta1 Released</title><link href="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Beta1 Released" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="tracing" /><category term="jaeger" /><summary type="html">The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&amp;#8217;s runtime state. This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes. You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path. This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context. Distributed Tracing comes here to the rescue. Distributed Tracing Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;. SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs. And this is where Debezium becomes part of the picture. Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into. How long does it take for change events to flow from source database to sink systems? Where is the most time spent in the pipeline? Are there any anomalies like spikes in end-to-end lags? The integration of distributed tracing with Debezium can help to answer these questions. OpenTracing There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the OpenTracing specification. OpenTracing is an incubating project of Cloud Native Computing Foundation which guarantees that the user will be free of any vendor lock-in by adhering to an open standard. The OpenTracing project is in the process of being merged with OpenCensus to the improved OpenTelemetry standard. Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus), but it will use and support OpenTelemetry in the future, too. A distributed trace in OpenTracing consists of a set of spans. Each span represents a logical unit of work executed. The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span. OpenTracing is only the specification and the instrumentation API. To use it you need to have an implementation, too. While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the Jaeger distributed tracing platform. Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application. The Jaeger All-In-One container image will be used to simplify the deployment. Debezium and OpenTracing The Debezium integration with OpenTracing consists of three distinct components: ActivateTracingSpan SMT EventDispatcher in the Debezium outbox extension for Quarkus applications EventRouter SMT The first one is intended for general use. The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced. Outbox Distributed Tracing The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing. The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes. In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created: When an event arrives at EventDispatcher a new span outbox-write is created. It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available. The span metadata is exported into a distinct field of the outbox event. The outbox event is written to the outbox table. The Event Router SMT receives the event and imports the span metadata from the field Two new spans are created db-log-write with its start timestamp set to database write timestamp. The fields from the source block are added to the span as tags. debezium-read with its start time set to the processing timestamp. Fields from the envelope are added to the span as tags. Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata. Demo The outbox example was extended with distributed tracing support to demonstrate the functionality. This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern. This demo uses the Strimzi container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level. To try it yourself you need to: check out the repository and switch to the outbox directory build the services $ mvn clean install deploy the application export DEBEZIUM_VERSION=1.4 docker-compose up --build register a Debezium connector to listen on the outbox table $ http PUT http://localhost:8083/connectors/outbox-connector/config &amp;lt; register-postgres.json HTTP/1.1 201 Created execute multiple business requests $ http POST http://localhost:8080/orders &amp;lt; resources/data/create-order-request.json $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel-order-line-request.json check the Jaeger UI After all the steps above were completed you should see an introduction screen of the Jaeger UI: Filter on order-service as a service and click on Find Traces. Two traces should be available: Click on the addOrder service. A tree will open that displays how the initial request incoming via REST API was written to the database by the outbox extension read by Debezium and processed by outbox SMT written to a Kafka topic read from a Kafka topic by shipment-service processed in the different shipment-service business methods Click on the db-log-write and debezium-read spans. The tags of each of them contain extracted Debezium-related metadata like operation or source fields: Conclusion In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it. We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration. While this example was focused on the specific use case of microservices data exchange via the outbox pattern, Debezium integrates with distributed tracing also independently of this particular pattern. By means of the ActivateTracingSpan SMT, Debezium can produce spans representing the time of the change in the source database itself, as well as the time of processing the event by the Debezium connector. Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases. Your feedback on this new functionality is highly welcomed!</summary></entry><entry><title type="html">Debezium 1.4.0.Beta1 Released</title><link href="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Beta1 Released" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -626,7 +626,7 @@ and enhancements to Vitess for nullable and primary key columns.&lt;/p&gt;
 Let&amp;#8217;s take a closer look at some of the highlights.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;distributed-tracing&quot;&gt;Distributed Tracing&lt;/h2&gt;
+&lt;h2 id=&quot;distributed_tracing&quot;&gt;Distributed Tracing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;In a nutshell, distributed tracing is a pattern used to profile and monitor applications to allow quick identification of failures or performance concerns.
@@ -639,7 +639,7 @@ Typically a full distributed trace consists of a sequence of multiple spans.&lt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;transforms&quot;: &quot;tracing&quot;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;&quot;transforms&quot;: &quot;tracing&quot;
 &quot;transforms.tracing.type&quot;: &quot;io.debezium.transforms.tracing.ActivateTracingSpan&quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -733,7 +733,7 @@ Typically a full distributed trace consists of a sequence of multiple spans.&lt;
 Let&amp;#8217;s take a closer look at some of the highlights.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;postgresql-snapshotter-completion-hook&quot;&gt;PostgreSQL Snapshotter completion hook&lt;/h2&gt;
+&lt;h2 id=&quot;postgresql_snapshotter_completion_hook&quot;&gt;PostgreSQL Snapshotter completion hook&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The PostgreSQL &lt;code&gt;Snapshotter&lt;/code&gt; API is a contract that allows for the customization of the snapshot process.
@@ -744,7 +744,7 @@ This API was introduced in 0.9.3.Final and has continued to evolve in the releas
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void snapshotCompleted()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;void snapshotCompleted()&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -754,7 +754,7 @@ allowing implementations to clean-up any resources it may have allocated prior s
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;extractnewrecordstate-smt-field-renaming-support&quot;&gt;ExtractNewRecordState SMT field renaming support&lt;/h2&gt;
+&lt;h2 id=&quot;extractnewrecordstate_smt_field_renaming_support&quot;&gt;ExtractNewRecordState SMT field renaming support&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;One of the features of the &lt;code&gt;ExtractNewRecordState&lt;/code&gt; SMT is that the transformation can retain parts of the original message in the transformed message&amp;#8217;s header or payload.
@@ -765,7 +765,7 @@ This release extends this feature to allow specifying a new name to be used for 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;transforms=unwrap
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;transforms=unwrap
 transforms.unwrap.type=io.debezium.transforms.ExtractNewRecordState
 transforms.unwrap.add.headers=source.ts_ms:timestamp&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -930,7 +930,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;vitess-at-bolt&quot;&gt;Vitess at Bolt&lt;/h2&gt;
+&lt;h2 id=&quot;vitess_at_bolt&quot;&gt;Vitess at Bolt&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Bolt has grown considerably over the past few years, and so did the volume of data written to MySQL. Manual database sharding has become quite an expensive and long-lasting process prone to errors. So we started to evaluate more scalable databases, one of which is &lt;a href=&quot;https://vitess.io/&quot;&gt;Vitess&lt;/a&gt;. Vitess is an open-source database clustering system that is based on MySQL and provides horizontal scalability for it. Originated and battle-tested at YouTube, it was later open-sourced and is used by companies like Slack, Github, JD.com to power their backend storage. It combines important MySQL features with the scalability of a NoSQL database.&lt;/p&gt;
@@ -980,13 +980,13 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;streaming-vitess-options&quot;&gt;Streaming Vitess Options&lt;/h2&gt;
+&lt;h2 id=&quot;streaming_vitess_options&quot;&gt;Streaming Vitess Options&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The ability to capture data changes and publish them to Apache Kafka was one of the requirements for adopting Vitess at Bolt. There were several different options we’ve considered.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;option-1-using-debezium-mysql-connector&quot;&gt;Option 1: Using Debezium MySQL Connector&lt;/h3&gt;
+&lt;h3 id=&quot;option_1_using_debezium_mysql_connector&quot;&gt;Option 1: Using Debezium MySQL Connector&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Applications connect to Vitess VTGate to send queries. VTGate supports the MySQL protocol and has a SQL parser. You can use any MySQL client (e.g. JDBC) to connect to VTGate, which redirects your query to the correct shard and returns the result to your client.&lt;/p&gt;
 &lt;/div&gt;
@@ -1004,7 +1004,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;option-2-using-jdbc-source-connector&quot;&gt;Option 2: Using JDBC Source Connector&lt;/h3&gt;
+&lt;h3 id=&quot;option_2_using_jdbc_source_connector&quot;&gt;Option 2: Using JDBC Source Connector&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;We&amp;#8217;ve also considered using the &lt;a href=&quot;https://docs.confluent.io/current/connect/kafka-connect-jdbc/source-connector/index.html&quot;&gt;JDBC Source Connector&lt;/a&gt;. It allows sourcing data from any relational databases that support the JDBC driver into Kafka. Therefore, it is compatible with Vitess VTGate. It has its advantages and disadvantages as well.&lt;/p&gt;
 &lt;/div&gt;
@@ -1045,7 +1045,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;option-3-using-vstream-grpc&quot;&gt;Option 3: Using VStream gRPC&lt;/h3&gt;
+&lt;h3 id=&quot;option_3_using_vstream_grpc&quot;&gt;Option 3: Using VStream gRPC&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;VTGate exposes a gRPC service called VStream. It is a server-side streaming service. Any gRPC client can subscribe to the &lt;a href=&quot;https://vitess.io/docs/concepts/vstream/&quot;&gt;VStream&lt;/a&gt; service to get a continuous stream of change events from the underlying MySQL instances. The change events that VStream emits have similar information to the MySQL binary logs of the underlying MySQL instances. A single VStream can even subscribe to multiple shards for a given keyspace, making it quite a convenient API to build CDC tools.&lt;/p&gt;
 &lt;/div&gt;
@@ -1111,7 +1111,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;vitess-connector-deep-dive-and-open-source&quot;&gt;Vitess Connector Deep Dive and Open Source&lt;/h2&gt;
+&lt;h2 id=&quot;vitess_connector_deep_dive_and_open_source&quot;&gt;Vitess Connector Deep Dive and Open Source&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;After we’ve decided to implement our Vitess Connector, we started looking into the implementation details of various Debezium source connectors (MySQL, Postgres, SQLServer), to borrow some ideas. Almost all of them are implemented using a common Connector development framework. So it was clear we should develop the Vitess connector on top of it. Given we are very active users of the MySql Connector and we benefit from it being open-sourced, as it allows us to contribute to it things we were missing ourselves. So we decided we want to give back to community and open-source the Vitess source connector code-base under the Debezium umbrella. Please feel free to learn more at &lt;a href=&quot;https://github.com/debezium/debezium-connector-vitess/&quot;&gt;Debezium Connector Vitess&lt;/a&gt;. We welcome and value any contributions.&lt;/p&gt;
@@ -1159,12 +1159,12 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;replication-challenges&quot;&gt;Replication Challenges&lt;/h3&gt;
+&lt;h3 id=&quot;replication_challenges&quot;&gt;Replication Challenges&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;While we were implementing the Vitess Connector and digging deeper into Vitess, we’ve also realized a few challenges.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;vitess-reshard&quot;&gt;Vitess Reshard&lt;/h4&gt;
+&lt;h4 id=&quot;vitess_reshard&quot;&gt;Vitess Reshard&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The Vitess connector supports the Vitess Reshard operation when the connector is configured to subscribe to all shards of a given keyspace. VStream sends a VGTID that contains the shard GTID for all shards. Vitess Resharding is transparent to users. Once it’s completed, Vitess will send the VGTID of the new shards. Therefore, the connector will use the new VGTID after reshard. However, you need to make sure that the connector is up and running when the reshard operation takes place. Especially please check that the offset topic of the connector has the new VGTID before deleting the old shards. This is because in case the old shards are deleted, VStream will not be able to recognize the VGTID from the old shards.&lt;/p&gt;
 &lt;/div&gt;
@@ -1173,7 +1173,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;offset-management&quot;&gt;Offset Management&lt;/h4&gt;
+&lt;h4 id=&quot;offset_management&quot;&gt;Offset Management&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;VStream includes a VGTID event in its response. We save the VGTID as the offset in the Kafka offset topic, so when the connector restarts, we can start from the saved VGTID. However, in rare cases when a transaction includes a huge amount of rows, VStream batches the change events into multiple responses, and only the last response has the VGTID. In such cases, we don’t have the VGTID for every change event we receive. We have a few options to solve this particular issue:&lt;/p&gt;
 &lt;/div&gt;
@@ -1189,7 +1189,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect3&quot;&gt;
-&lt;h4 id=&quot;schema-management&quot;&gt;Schema Management&lt;/h4&gt;
+&lt;h4 id=&quot;schema_management&quot;&gt;Schema Management&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;VStream’s response also includes a &lt;code&gt;FIELD&lt;/code&gt; event. It’s a special event that contains the schemas of the tables of which the rows are affected. For example, let&amp;#8217;s assume we have 2 tables, &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;B&lt;/code&gt;. If we insert a few rows into table &lt;code&gt;A&lt;/code&gt;, the &lt;code&gt;FIELD&lt;/code&gt; event will only contain table &lt;code&gt;A&lt;/code&gt;’s schema. The VStream is smart enough to only include the &lt;code&gt;FIELD&lt;/code&gt; event whenever necessary. For example, when a VStream client reconnects, or when a table’s schema is changed.&lt;/p&gt;
 &lt;/div&gt;
@@ -1204,7 +1204,7 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;future-development-work&quot;&gt;Future Development Work&lt;/h2&gt;
+&lt;h2 id=&quot;future_development_work&quot;&gt;Future Development Work&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
@@ -1276,7 +1276,7 @@ Let&amp;#8217;s take a closer look at some of the highlights.
 &lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;vitess-connector&quot;&gt;Vitess Connector&lt;/h2&gt;
+&lt;h2 id=&quot;vitess_connector&quot;&gt;Vitess Connector&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.vitess.io&quot;&gt;Vitess&lt;/a&gt; is a database solution for deploying, scaling, and managing large clusters of MySQL.
@@ -1290,7 +1290,7 @@ in the mean time please refer to the connector &lt;a href=&quot;https://debezium
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;fine-grained-selection-of-snapshotted-tables&quot;&gt;Fine-grained Selection of Snapshotted Tables&lt;/h2&gt;
+&lt;h2 id=&quot;fine_grained_selection_of_snapshotted_tables&quot;&gt;Fine-grained Selection of Snapshotted Tables&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;One of the major focus points for Debezium 1.4 is to explore more flexible snapshot options,
@@ -1312,7 +1312,7 @@ then it would take a snapshot of the given tables, and finally continue to read 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;other-features&quot;&gt;Other Features&lt;/h2&gt;
+&lt;h2 id=&quot;other_features&quot;&gt;Other Features&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Besides these key features, there&amp;#8217;s a few other features coming with the 1.4.0.Alpha1 release:&lt;/p&gt;
@@ -1461,7 +1461,7 @@ We&amp;#8217;ve provided a short survey with these and a few other questions:&lt
 Answering these questions should take just a few minutes; your participation would be very helpful for us in order to decide whether and how we should move forward with this effort.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;trying-it-out-yourself&quot;&gt;Trying It Out Yourself&lt;/h2&gt;
+&lt;h2 id=&quot;trying_it_out_yourself&quot;&gt;Trying It Out Yourself&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;As everything in Debezium, the UI PoC is fully open source (Apache License Version 2.0);
@@ -1815,7 +1815,7 @@ overall, not less than &lt;a href=&quot;https://issues.redhat.com/issues/?jql=pr
 &lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;bytebufferconverter-improvements&quot;&gt;ByteBufferConverter improvements&lt;/h2&gt;
+&lt;h2 id=&quot;bytebufferconverter_improvements&quot;&gt;ByteBufferConverter improvements&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The &lt;code&gt;ByteBufferConverter&lt;/code&gt; is a converter that is used with the Outbox event router SMT to serialize an existing Avro payload column.
@@ -1835,7 +1835,7 @@ the following configuration would need to be included in the connector:&lt;/p&gt
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;value.converter=io.debezium.converters.ByteBufferConverter
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;value.converter=io.debezium.converters.ByteBufferConverter
 value.converter.delegate.converter.type=org.apache.kafka.connect.json.JsonConverter
 value.converter.delegate.converter.type.schemas.enable=false&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1847,7 +1847,7 @@ please see the &lt;a href=&quot;https://debezium.io/documentation/reference/conf
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;scripting-module&quot;&gt;Scripting module&lt;/h2&gt;
+&lt;h2 id=&quot;scripting_module&quot;&gt;Scripting module&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;In this release, the SMTs for content-based routing and filtering that both use JSR 223 scripting engines have been moved out of &lt;code&gt;debezium-core&lt;/code&gt; and into a separate artifact &lt;code&gt;debezium-scripting&lt;/code&gt; (&lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2549&quot;&gt;DBZ-2549&lt;/a&gt;).
@@ -1860,7 +1860,7 @@ This change is done to allow the scripting functionality to be available only in
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;misc-features-and-bug-fixes&quot;&gt;Misc. Features and Bug Fixes&lt;/h2&gt;
+&lt;h2 id=&quot;misc_features_and_bug_fixes&quot;&gt;Misc. Features and Bug Fixes&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;In addition, the community has completed the work on some other features and fixes, too:&lt;/p&gt;
@@ -1910,7 +1910,7 @@ overall, not less than &lt;a href=&quot;https://issues.redhat.com/issues/?jql=pr
 &lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;column-filtering-improvements&quot;&gt;Column Filtering Improvements&lt;/h2&gt;
+&lt;h2 id=&quot;column_filtering_improvements&quot;&gt;Column Filtering Improvements&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Addressing a long standing feature request (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-1068&quot;&gt;DBZ-1068&lt;/a&gt;),
@@ -1932,7 +1932,7 @@ also all the incubating connectors (Oracle, Db2, Cassandra) use the new terms li
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;logminer-based-ingestion-engine-for-oracle&quot;&gt;LogMiner-based Ingestion Engine for Oracle&lt;/h2&gt;
+&lt;h2 id=&quot;logminer_based_ingestion_engine_for_oracle&quot;&gt;LogMiner-based Ingestion Engine for Oracle&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The Debezium Oracle connector can now use the LogMiner package to ingest change events.
@@ -1958,7 +1958,7 @@ as well as everyone else commenting and providing feedback on the PR and Jira is
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;misc-features-and-bug-fixes&quot;&gt;Misc. Features and Bug Fixes&lt;/h2&gt;
+&lt;h2 id=&quot;misc_features_and_bug_fixes&quot;&gt;Misc. Features and Bug Fixes&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;In addition to these key features, the community has completed the work on some other features and fixes, too:&lt;/p&gt;
@@ -2024,7 +2024,7 @@ Kafka Connect there are already some internal Kafka Connect related topics creat
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;$ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --list
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;$ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --list
 
 connect_configs
 connect_offsets
@@ -2042,7 +2042,7 @@ broker based on a default, maybe customized, configuration in the broker if
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;auto.create.topics.enable = true
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;auto.create.topics.enable = true
 default.replication.factor = 1
 num.partitions = 1
 compression.type = producer
@@ -2063,14 +2063,14 @@ is implemented to enable customizable topic creation with Kafka Connect.&lt;/p&g
 &lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;kafka-connect&quot;&gt;Kafka Connect&lt;/h2&gt;
+&lt;h2 id=&quot;kafka_connect&quot;&gt;Kafka Connect&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Kafka Connect since Kafka 2.6.0 comes with topic creation enabled:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;topic.creation.enable = true&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;topic.creation.enable = true&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2081,7 +2081,7 @@ in the Kafka Connect config (&lt;em&gt;connect-distributed.properties&lt;/em&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;updating-connector-configuration&quot;&gt;Updating Connector Configuration&lt;/h2&gt;
+&lt;h2 id=&quot;updating_connector_configuration&quot;&gt;Updating Connector Configuration&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Kafka Connect topic creation works with groups. There&amp;#8217;s always a &lt;code&gt;default&lt;/code&gt; group which is used when
@@ -2100,7 +2100,7 @@ to customize how the matched topics of the group will be created.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;{
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;{
     &quot;name&quot;: &quot;inventory-connector&quot;,
     &quot;config&quot;: {
         &quot;connector.class&quot;: &quot;io.debezium.connector.postgresql.PostgresConnector&quot;,
@@ -2117,7 +2117,7 @@ to customize how the matched topics of the group will be created.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;default-config&quot;&gt;Default Config&lt;/h3&gt;
+&lt;h3 id=&quot;default_config&quot;&gt;Default Config&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;All topics not matching other &lt;code&gt;topic.creation&lt;/code&gt; groups will apply the &lt;code&gt;default&lt;/code&gt; group
 config.&lt;br&gt;
@@ -2128,7 +2128,7 @@ So we configure for the default group:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;{
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;{
     &quot;name&quot;: &quot;inventory-connector&quot;,
     &quot;config&quot;: {
         &quot;connector.class&quot;: &quot;io.debezium.connector.postgresql.PostgresConnector&quot;,
@@ -2151,7 +2151,7 @@ So we configure for the default group:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;productlog-config&quot;&gt;Productlog Config&lt;/h3&gt;
+&lt;h3 id=&quot;productlog_config&quot;&gt;Productlog Config&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;In the databases &lt;code&gt;inventory&lt;/code&gt; schema there are tables starting with &lt;code&gt;product&lt;/code&gt; as table name.&lt;br&gt;
 As default the fully qualified table names are captured to the topic with the same name with Debezium,
@@ -2173,7 +2173,7 @@ of our group like we did with the &lt;code&gt;default&lt;/code&gt; group:&lt;/p&
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;{
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;{
     &quot;name&quot;: &quot;inventory-connector&quot;,
     &quot;config&quot;: {
         &quot;connector.class&quot;: &quot;io.debezium.connector.postgresql.PostgresConnector&quot;,
@@ -2190,9 +2190,9 @@ of our group like we did with the &lt;code&gt;default&lt;/code&gt; group:&lt;/p&
         &quot;topic.creation.default.cleanup.policy&quot;: &quot;compact&quot;,
         &quot;topic.creation.default.compression.type&quot;: &quot;lz4&quot;,
 
-        &quot;topic.creation.groups&quot;: &quot;productlog&quot;,  //&lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+        &quot;topic.creation.groups&quot;: &quot;productlog&quot;,  &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
 
-        &quot;topic.creation.productlog.include&quot;: &quot;dbserver1\\.inventory\\.product.*&quot;,  //&lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
+        &quot;topic.creation.productlog.include&quot;: &quot;dbserver1\\.inventory\\.product.*&quot;,  &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
         &quot;topic.creation.productlog.replication.factor&quot;: 1,
         &quot;topic.creation.productlog.partitions&quot;: 20,
         &quot;topic.creation.productlog.cleanup.policy&quot;: &quot;delete&quot;,
@@ -2230,14 +2230,14 @@ group matches all topics starting with &lt;code&gt;dbserver1.inventory.product&l
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;exploring-the-results&quot;&gt;Exploring the Results&lt;/h3&gt;
+&lt;h3 id=&quot;exploring_the_results&quot;&gt;Exploring the Results&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;When we now start our connector and use &lt;code&gt;kafka-topics.sh&lt;/code&gt; to see how the topics were created, we can
 see that all worked as defined:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code&gt;## the `dbserver1.inventory.products` topic has the config from the `productlog` group:
+&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;## the `dbserver1.inventory.products` topic has the config from the `productlog` group:
 $ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --describe --topic dbserver1.inventory.products
 
 Topic: dbserver1.inventory.products     PartitionCount: 20      ReplicationFactor: 1
@@ -2282,7 +2282,7 @@ We&amp;#8217;ve also released Debezium 1.2.2.Final, which is a drop-in replaceme
 &lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;revised-filter-options-and-documentation-wording&quot;&gt;Revised Filter Options and Documentation Wording&lt;/h2&gt;
+&lt;h2 id=&quot;revised_filter_options_and_documentation_wording&quot;&gt;Revised Filter Options and Documentation Wording&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Since the beginning of the Debezium project, there was support for specifying the tables and columns to capture.
@@ -2360,7 +2360,7 @@ and we&amp;#8217;re very happy that we can contribute our share for making the w
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;bug-fixes&quot;&gt;Bug Fixes&lt;/h2&gt;
+&lt;h2 id=&quot;bug_fixes&quot;&gt;Bug Fixes&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This release fixes a number of critical bugs:&lt;/p&gt;
@@ -2436,7 +2436,7 @@ Let&amp;#8217;s take a closer look at some of them in the remainder of this post
 &lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;azure-event-hubs-sink-adapter&quot;&gt;Azure Event Hubs sink adapter&lt;/h2&gt;
+&lt;h2 id=&quot;azure_event_hubs_sink_adapter&quot;&gt;Azure Event Hubs sink adapter&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Debezium&amp;#8217;s &lt;a href=&quot;/documentation/reference/1.3/operations/debezium-server.html&quot;&gt;standalone server&lt;/a&gt; is one of the newest features in the Debezium ecosystem.
@@ -2449,7 +2449,7 @@ This now enables the Debezium Server to stream change events to Amazon Kinesis, 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;additional-mongodb-connection-options&quot;&gt;Additional MongoDB connection options&lt;/h2&gt;
+&lt;h2 id=&quot;additional_mongodb_connection_options&quot;&gt;Additional MongoDB connection options&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The Debezium MongoDB connector has traditionally used the driver default connection options and timeouts.
@@ -2477,7 +2477,7 @@ Defaults to &lt;code&gt;0&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;other-features&quot;&gt;Other Features&lt;/h2&gt;
+&lt;h2 id=&quot;other_features&quot;&gt;Other Features&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Besides these key features, there&amp;#8217;s a number of other new features coming with the 1.3.0.Alpha1 release:&lt;/p&gt;

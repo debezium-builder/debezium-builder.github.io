@@ -881,7 +881,7 @@ With GraalVM it is possible to compile the application into a native binary and 
 <p>To learn more about Quarkus itself, we recommend to take a look at its excellent <a href="https://quarkus.io/get-started/">Getting Started</a> guide.</p>
 </div>
 <div class="sect1">
-<h2 id="consuming-kafka-messages-with-quarkus">Consuming Kafka Messages with Quarkus</h2>
+<h2 id="consuming_kafka_messages_with_quarkus">Consuming Kafka Messages with Quarkus</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In the original <a href="https://github.com/debezium/debezium-examples/tree/master/outbox">example application</a> demonstrating the outbox pattern,
@@ -919,15 +919,15 @@ and it will automatically be invoked when a new message arrives:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class KafkaEventConsumer {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">KafkaEventConsumer</span> {
 
-    @Incoming("orders")
-    public CompletionStage&lt;Void&gt; onMessage(KafkaMessage&lt;String, String&gt; message)
-            throws IOException {
-        // handle message...
+    <span class="annotation">@Incoming</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">orders</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">public</span> CompletionStage&lt;<span class="predefined-type">Void</span>&gt; onMessage(KafkaMessage&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; message)
+            <span class="directive">throws</span> <span class="exception">IOException</span> {
+        <span class="comment">// handle message...</span>
 
-        return message.ack();
+        <span class="keyword">return</span> message.ack();
     }
 }</code></pre>
 </div>
@@ -939,7 +939,7 @@ which resolves it to the "OrderEvents" topic already known from the original out
 </div>
 </div>
 <div class="sect1">
-<h2 id="build-process">Build Process</h2>
+<h2 id="build_process">Build Process</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The build process is mostly the same as it was before.
@@ -982,48 +982,48 @@ Instead of using the Thorntail Maven plug-in, the Quarkus Maven plug-in is used 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">  &lt;build&gt;
-    &lt;finalName&gt;shipment&lt;/finalName&gt;
-    &lt;plugins&gt;
+<pre class="CodeRay highlight"><code data-lang="xml">  <span class="tag">&lt;build&gt;</span>
+    <span class="tag">&lt;finalName&gt;</span>shipment<span class="tag">&lt;/finalName&gt;</span>
+    <span class="tag">&lt;plugins&gt;</span>
       ...
-      &lt;plugin&gt;
-        &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
-        &lt;artifactId&gt;quarkus-maven-plugin&lt;/artifactId&gt;
-        &lt;version&gt;${version.quarkus}&lt;/version&gt;
-        &lt;executions&gt;
-          &lt;execution&gt;
-            &lt;goals&gt;
-              &lt;goal&gt;build&lt;/goal&gt;
-            &lt;/goals&gt;
-          &lt;/execution&gt;
-        &lt;/executions&gt;
-      &lt;/plugin&gt;
-    &lt;/plugins&gt;
-  &lt;/build&gt;
+      <span class="tag">&lt;plugin&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>io.quarkus<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>quarkus-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>${version.quarkus}<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;executions&gt;</span>
+          <span class="tag">&lt;execution&gt;</span>
+            <span class="tag">&lt;goals&gt;</span>
+              <span class="tag">&lt;goal&gt;</span>build<span class="tag">&lt;/goal&gt;</span>
+            <span class="tag">&lt;/goals&gt;</span>
+          <span class="tag">&lt;/execution&gt;</span>
+        <span class="tag">&lt;/executions&gt;</span>
+      <span class="tag">&lt;/plugin&gt;</span>
+    <span class="tag">&lt;/plugins&gt;</span>
+  <span class="tag">&lt;/build&gt;</span>
   ...
-    &lt;profile&gt;
-      &lt;id&gt;native&lt;/id&gt;
-      &lt;build&gt;
-        &lt;plugins&gt;
-          &lt;plugin&gt;
-            &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
-            &lt;artifactId&gt;quarkus-maven-plugin&lt;/artifactId&gt;
-            &lt;version&gt;${version.quarkus}&lt;/version&gt;
-            &lt;executions&gt;
-              &lt;execution&gt;
-                &lt;goals&gt;
-                  &lt;goal&gt;native-image&lt;/goal&gt;
-                &lt;/goals&gt;
-                &lt;configuration&gt;
-                  &lt;enableHttpUrlHandler&gt;true&lt;/enableHttpUrlHandler&gt;
-                  &lt;autoServiceLoaderRegistration&gt;false&lt;/autoServiceLoaderRegistration&gt;
-                &lt;/configuration&gt;
-              &lt;/execution&gt;
-            &lt;/executions&gt;
-          &lt;/plugin&gt;
-        &lt;/plugins&gt;
-      &lt;/build&gt;
-    &lt;/profile&gt;</code></pre>
+    <span class="tag">&lt;profile&gt;</span>
+      <span class="tag">&lt;id&gt;</span>native<span class="tag">&lt;/id&gt;</span>
+      <span class="tag">&lt;build&gt;</span>
+        <span class="tag">&lt;plugins&gt;</span>
+          <span class="tag">&lt;plugin&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>io.quarkus<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>quarkus-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;version&gt;</span>${version.quarkus}<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;executions&gt;</span>
+              <span class="tag">&lt;execution&gt;</span>
+                <span class="tag">&lt;goals&gt;</span>
+                  <span class="tag">&lt;goal&gt;</span>native-image<span class="tag">&lt;/goal&gt;</span>
+                <span class="tag">&lt;/goals&gt;</span>
+                <span class="tag">&lt;configuration&gt;</span>
+                  <span class="tag">&lt;enableHttpUrlHandler&gt;</span>true<span class="tag">&lt;/enableHttpUrlHandler&gt;</span>
+                  <span class="tag">&lt;autoServiceLoaderRegistration&gt;</span>false<span class="tag">&lt;/autoServiceLoaderRegistration&gt;</span>
+                <span class="tag">&lt;/configuration&gt;</span>
+              <span class="tag">&lt;/execution&gt;</span>
+            <span class="tag">&lt;/executions&gt;</span>
+          <span class="tag">&lt;/plugin&gt;</span>
+        <span class="tag">&lt;/plugins&gt;</span>
+      <span class="tag">&lt;/build&gt;</span>
+    <span class="tag">&lt;/profile&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -1036,7 +1036,7 @@ Instead of using the Thorntail Maven plug-in, the Quarkus Maven plug-in is used 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">quarkus.datasource.url: jdbc:mariadb://shipment-db-quarkus:3306/shipmentdb
+<pre class="CodeRay highlight"><code data-lang="xml">quarkus.datasource.url: jdbc:mariadb://shipment-db-quarkus:3306/shipmentdb
 quarkus.datasource.driver: org.mariadb.jdbc.Driver
 quarkus.datasource.username: mariadbuser
 quarkus.datasource.password: mariadbpw
@@ -1078,7 +1078,7 @@ that message is processed by both shipment services, as they are using distinct 
 </div>
 </div>
 <div class="sect1">
-<h2 id="performance-numbers">Performance Numbers</h2>
+<h2 id="performance_numbers">Performance Numbers</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The numbers are definitely not scientific, but provide a good indication of the order-of-magnitude difference between the native Quarkus-based application and the Thorntail service running on the JVM:</p>

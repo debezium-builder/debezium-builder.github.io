@@ -894,7 +894,7 @@ the SMT for extracting the <code>after</code> state of change events have been r
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="testcontainers-support">Testcontainers Support</h2>
+<h2 id="testcontainers_support">Testcontainers Support</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When setting up CDC pipelines, you should test your configuration thoroughly:
@@ -913,7 +913,7 @@ in the mean time refer to to the <a href="/documentation/reference/1.1/integrati
 </div>
 </div>
 <div class="sect1">
-<h2 id="more-configuration-options-for-the-quarkus-outbox-pattern-extension">More Configuration Options for the Quarkus Outbox Pattern Extension</h2>
+<h2 id="more_configuration_options_for_the_quarkus_outbox_pattern_extension">More Configuration Options for the Quarkus Outbox Pattern Extension</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="https://debezium.io/documentation/reference/1.1/integrations/outbox.html">Quarkus extension</a> for implementing the <a href="//blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">outbox pattern</a> comes in handy if a service needs to update its own database as well as send events to external consumers:
@@ -928,14 +928,14 @@ in order to use a Postgres <code>JSONB</code> column for the outbox table&#8217;
 </div>
 </div>
 <div class="sect1">
-<h2 id="more-flexible-after-state-extraction">More Flexible <code>After</code> State Extraction</h2>
+<h2 id="more_flexible_after_state_extraction">More Flexible <code>After</code> State Extraction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The SMT for <a href="https://debezium.io/documentation/reference/1.1/configuration/event-flattening.html">extracting the <code>after</code> state of change events</a> allows for a more flexible propagation of specific event attributes now: using the new <code>add.fields</code> and <code>add.headers</code> options, any top-level attribute (<code>op</code>, <code>ts_ms</code>) as well as <code>source</code> and <code>transaction</code> attributes can be propagated into the outgoing record and/or as header of the Kafka record:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>transforms=unwrap,...
+<pre class="CodeRay highlight"><code>transforms=unwrap,...
 transforms.unwrap.type=io.debezium.transforms.ExtractNewRecordState
 transforms.unwrap.add.fields=table,lsn
 transforms.unwrap.add.headers=op,source.ts_ms</code></pre>
@@ -947,7 +947,7 @@ transforms.unwrap.add.headers=op,source.ts_ms</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="further-changes-and-bugfixes">Further Changes and Bugfixes</h2>
+<h2 id="further_changes_and_bugfixes">Further Changes and Bugfixes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Overall <a href="https://debezium.io/releases/1.1/release-notes/#release-1.1.0-beta2">13 issues</a> have been addressed for the Debezium 1.1 Beta2 release.</p>

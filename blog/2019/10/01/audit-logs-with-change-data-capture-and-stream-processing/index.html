@@ -904,7 +904,7 @@ On the downside, there&#8217;s still is the problem of increased latency when ex
 Also, a process must be in place for installing and updating the triggers for each table.</p>
 </div>
 <div class="sect1">
-<h2 id="audit-logs-based-on-change-data-capture">Audit Logs Based on Change Data Capture</h2>
+<h2 id="audit_logs_based_on_change_data_capture">Audit Logs Based on Change Data Capture</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The aforementioned problems don&#8217;t exist when leveraging the transaction log as the source for an audit trail and using change data capture for retrieving the change information and sending it into a message broker or log such as Apache Kafka.</p>
@@ -936,7 +936,7 @@ the data change events and the metadata records can be correlated.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="solution-overview">Solution Overview</h2>
+<h2 id="solution_overview">Solution Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following image shows the overall solution design, based on the example of a microservice for managing vegetable data:</p>
@@ -967,7 +967,7 @@ which enriches the messages from the CDC topic containing the vegetable change e
 </div>
 </div>
 <div class="sect1">
-<h2 id="providing-auditing-metadata">Providing Auditing Metadata</h2>
+<h2 id="providing_auditing_metadata">Providing Auditing Metadata</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Let&#8217;s first discuss how an application such as the vegetable service can provide the required auditing metadata.
@@ -991,30 +991,30 @@ As an example, the following metadata should be made available for auditing purp
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Path("/vegetables")
-@RequestScoped
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
-public class VegetableResource {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Path</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/vegetables</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@RequestScoped</span>
+<span class="annotation">@Produces</span>(MediaType.APPLICATION_JSON)
+<span class="annotation">@Consumes</span>(MediaType.APPLICATION_JSON)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">VegetableResource</span> {
 
-    @Inject
+    <span class="annotation">@Inject</span>
     VegetableService vegetableService;
 
-    @POST
-    @RolesAllowed({"farmers"})
-    @Transactional
-    @Audited(useCase="CREATE VEGETABLE")
-    public Response createVegetable(Vegetable vegetable) {
-        if (vegetable.getId() != null) {
-            return Response.status(Status.BAD_REQUEST.getStatusCode()).build();
+    <span class="annotation">@POST</span>
+    <span class="annotation">@RolesAllowed</span>({<span class="string"><span class="delimiter">&quot;</span><span class="content">farmers</span><span class="delimiter">&quot;</span></span>})
+    <span class="annotation">@Transactional</span>
+    <span class="annotation">@Audited</span>(useCase=<span class="string"><span class="delimiter">&quot;</span><span class="content">CREATE VEGETABLE</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">public</span> Response createVegetable(Vegetable vegetable) {
+        <span class="keyword">if</span> (vegetable.getId() != <span class="predefined-constant">null</span>) {
+            <span class="keyword">return</span> Response.status(Status.BAD_REQUEST.getStatusCode()).build();
         }
 
         vegetable = vegetableService.createVegetable(vegetable);
 
-        return Response.ok(vegetable).status(Status.CREATED).build();
+        <span class="keyword">return</span> Response.ok(vegetable).status(Status.CREATED).build();
     }
 
-    // update, delete ...
+    <span class="comment">// update, delete ...</span>
 }</code></pre>
 </div>
 </div>
@@ -1040,62 +1040,65 @@ It looks like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Interceptor // <b class="conum">(1)</b>
-@Audited(useCase = "")
-@Priority(value = Interceptor.Priority.APPLICATION + 100) // <b class="conum">(2)</b>
-public class TransactionInterceptor {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Interceptor</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="annotation">@Audited</span>(useCase = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)
+<span class="annotation">@Priority</span>(value = Interceptor.Priority.APPLICATION + <span class="integer">100</span>) <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">TransactionInterceptor</span> {
 
-    @Inject
-    JsonWebToken jwt; // <b class="conum">(3)</b>
+    <span class="annotation">@Inject</span>
+    JsonWebToken jwt; <i class="conum" data-value="3"></i><b>(3)</b>
 
-    @Inject
+    <span class="annotation">@Inject</span>
     EntityManager entityManager;
 
-    @Inject
+    <span class="annotation">@Inject</span>
     HttpServletRequest request;
 
-    @AroundInvoke
-    public Object manageTransaction(InvocationContext ctx) throws Exception {
-        BigInteger txtId = (BigInteger) entityManager // <b class="conum">(4)</b>
-            .createNativeQuery("SELECT txid_current()")
+    <span class="annotation">@AroundInvoke</span>
+    <span class="directive">public</span> <span class="predefined-type">Object</span> manageTransaction(InvocationContext ctx) <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="predefined-type">BigInteger</span> txtId = (<span class="predefined-type">BigInteger</span>) entityManager <i class="conum" data-value="4"></i><b>(4)</b>
+            .createNativeQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT txid_current()</span><span class="delimiter">&quot;</span></span>)
             .getSingleResult();
-        String useCase = ctx.getMethod().getAnnotation(Audited.class).useCase();
+        <span class="predefined-type">String</span> useCase = ctx.getMethod().getAnnotation(Audited.class).useCase();
 
-        TransactionContextData context = new TransactionContextData(); // <b class="conum">(5)</b>
+        TransactionContextData context = <span class="keyword">new</span> TransactionContextData(); <i class="conum" data-value="5"></i><b>(5)</b>
 
         context.transactionId = txtId.longValueExact();
-        context.userName = jwt.&lt;String&gt;claim("sub").orElse("anonymous");
+        context.userName = jwt.&lt;<span class="predefined-type">String</span>&gt;claim(<span class="string"><span class="delimiter">&quot;</span><span class="content">sub</span><span class="delimiter">&quot;</span></span>).orElse(<span class="string"><span class="delimiter">&quot;</span><span class="content">anonymous</span><span class="delimiter">&quot;</span></span>);
         context.clientDate = getRequestDate();
         context.useCase = useCase;
 
         entityManager.persist(context);
 
-        return ctx.proceed(); // <b class="conum">(6)</b>
+        <span class="keyword">return</span> ctx.proceed(); <i class="conum" data-value="6"></i><b>(6)</b>
     }
 
-    private ZonedDateTime getRequestDate() {
-        String requestDate = request.getHeader(HttpHeaders.DATE);
-        return requestDate != null ?
+    <span class="directive">private</span> ZonedDateTime getRequestDate() {
+        <span class="predefined-type">String</span> requestDate = request.getHeader(HttpHeaders.DATE);
+        <span class="keyword">return</span> requestDate != <span class="predefined-constant">null</span> ?
             ZonedDateTime.parse(requestDate, DateTimeFormatter.RFC_1123_DATE_TIME) :
-            null;
+            <span class="predefined-constant">null</span>;
     }
 }</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p><code>@Interceptor</code> and <code>@Audited</code> mark this as an interceptor bound to our custom <code>@Audited</code> annotion.</p>
-</li>
-<li>
-<p>The <code>@Priority</code> annotation controls at which point in the interceptor stack the auditing interceptor should be invoked.
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>@Interceptor</code> and <code>@Audited</code> mark this as an interceptor bound to our custom <code>@Audited</code> annotion.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>@Priority</code> annotation controls at which point in the interceptor stack the auditing interceptor should be invoked.
 Any application-provided interceptors should have a priority larger than <code>Priority.APPLICATION</code> (2000);
-in particular, this ensures that a transaction will have been started before by means of the <code>@Transactional</code> annotation and its accompanying interceptor which run in the <code>Priority.PLATFORM_BEFORE</code> range (&lt; 1000).</p>
-</li>
-<li>
-<p>The caller&#8217;s JWT token injected via the <a href="https://microprofile.io/project/eclipse/microprofile-jwt-auth">MicroProfile JWT RBAC</a> API</p>
-</li>
-</ol>
+in particular, this ensures that a transaction will have been started before by means of the <code>@Transactional</code> annotation and its accompanying interceptor which run in the <code>Priority.PLATFORM_BEFORE</code> range (&lt; 1000).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The caller&#8217;s JWT token injected via the <a href="https://microprofile.io/project/eclipse/microprofile-jwt-auth">MicroProfile JWT RBAC</a> API</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>For each audited method the interceptor fires and will</p>
@@ -1121,32 +1124,32 @@ the following records should be created in the database
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">vegetablesdb&gt; select * from inventory.vegetable;
-+------+---------------+---------+
+<pre class="CodeRay highlight"><code data-lang="sql">vegetablesdb&gt; <span class="class">select</span> * <span class="keyword">from</span> inventory.vegetable;
++<span class="comment">------+---------------+---------+</span>
 | id   | description   | name    |
-|------+---------------+---------|
-| 1    | Spicy!        | Potato  |
-| 11   | Delicious!    | Pumpkin |
-| 10   | Tasty!        | Tomato  |
-+------+---------------+---------+</code></pre>
+|<span class="comment">------+---------------+---------|</span>
+| <span class="integer">1</span>    | Spicy!        | Potato  |
+| <span class="integer">11</span>   | Delicious!    | Pumpkin |
+| <span class="integer">10</span>   | Tasty!        | Tomato  |
++<span class="comment">------+---------------+---------+</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">vegetablesdb&gt; select * from inventory.transaction_context_data;
-+------------------+---------------------+------------------+----------------+
+<pre class="CodeRay highlight"><code data-lang="sql">vegetablesdb&gt; <span class="class">select</span> * <span class="keyword">from</span> inventory.transaction_context_data;
++<span class="comment">------------------+---------------------+------------------+----------------+</span>
 | transaction_id   | client_date         | usecase          | user_name      |
-|------------------+---------------------+------------------+----------------|
-| 608              | 2019-08-22 08:12:31 | CREATE VEGETABLE | farmerbob      |
-| 609              | 2019-08-22 08:12:31 | CREATE VEGETABLE | farmerbob      |
-| 610              | 2019-08-22 08:12:31 | UPDATE VEGETABLE | farmermargaret |
-+------------------+---------------------+------------------+----------------+</code></pre>
+|<span class="comment">------------------+---------------------+------------------+----------------|</span>
+| <span class="integer">608</span>              | <span class="integer">2019</span><span class="integer">-08</span><span class="integer">-22</span> <span class="integer">08</span>:<span class="integer">12</span>:<span class="integer">31</span> | <span class="class">CREATE</span> VEGETABLE | farmerbob      |
+| <span class="integer">609</span>              | <span class="integer">2019</span><span class="integer">-08</span><span class="integer">-22</span> <span class="integer">08</span>:<span class="integer">12</span>:<span class="integer">31</span> | <span class="class">CREATE</span> VEGETABLE | farmerbob      |
+| <span class="integer">610</span>              | <span class="integer">2019</span><span class="integer">-08</span><span class="integer">-22</span> <span class="integer">08</span>:<span class="integer">12</span>:<span class="integer">31</span> | <span class="class">UPDATE</span> VEGETABLE | farmermargaret |
++<span class="comment">------------------+---------------------+------------------+----------------+</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="enriching-change-events-with-auditing-metadata">Enriching Change Events with Auditing Metadata</h2>
+<h2 id="enriching_change_events_with_auditing_metadata">Enriching Change Events with Auditing Metadata</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>With the business data (vegetables) and the transaction-scoped metadata being stored in the database,
@@ -1160,7 +1163,7 @@ Again refer to the example README file for the details of <a href="https://githu
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Topic Retention</div>
@@ -1202,7 +1205,7 @@ which is "a Kubernetes Native Java stack tailored for GraalVM &amp; OpenJDK HotS
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">Building Kafka Streams Applications with Quarkus</div>
@@ -1223,7 +1226,7 @@ allowing for very fast turnaround cycles during development.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="the-joining-logic">The Joining Logic</h3>
+<h3 id="the_joining_logic">The Joining Logic</h3>
 <div class="paragraph">
 <p>When thinking about the actual implementation of the enrichment logic,
 a <a href="https://kafka.apache.org/23/documentation/streams/developer-guide/dsl-api.html#kstream-kstream-join">stream-to-stream</a> join might appear as a suitable solution.
@@ -1264,7 +1267,7 @@ Both outcomes are not desirable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="customized-joins-with-buffering">Customized Joins With Buffering</h3>
+<h3 id="customized_joins_with_buffering">Customized Joins With Buffering</h3>
 <div class="paragraph">
 <p>The combination of <code>KStream</code> and <code>GlobalKTable</code> still hints into the right direction.
 Only that instead of relying on the built-in join operators we&#8217;ll have to implement a custom joining logic.
@@ -1278,66 +1281,69 @@ a CDI producer method returning the <code>Topology</code> object is all that&#82
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class TopologyProducer {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">TopologyProducer</span> {
 
-    static final String STREAM_BUFFER_NAME = "stream-buffer-state-store";
-    static final String STORE_NAME = "transaction-meta-data";
+    <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> STREAM_BUFFER_NAME = <span class="string"><span class="delimiter">&quot;</span><span class="content">stream-buffer-state-store</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> STORE_NAME = <span class="string"><span class="delimiter">&quot;</span><span class="content">transaction-meta-data</span><span class="delimiter">&quot;</span></span>;
 
-    @ConfigProperty(name = "audit.context.data.topic")
-    String txContextDataTopic;
+    <span class="annotation">@ConfigProperty</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">audit.context.data.topic</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> txContextDataTopic;
 
-    @ConfigProperty(name = "audit.vegetables.topic")
-    String vegetablesTopic;
+    <span class="annotation">@ConfigProperty</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">audit.vegetables.topic</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> vegetablesTopic;
 
-    @ConfigProperty(name = "audit.vegetables.enriched.topic")
-    String vegetablesEnrichedTopic;
+    <span class="annotation">@ConfigProperty</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">audit.vegetables.enriched.topic</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">String</span> vegetablesEnrichedTopic;
 
-    @Produces
-    public Topology buildTopology() {
-        StreamsBuilder builder = new StreamsBuilder();
+    <span class="annotation">@Produces</span>
+    <span class="directive">public</span> Topology buildTopology() {
+        StreamsBuilder builder = <span class="keyword">new</span> StreamsBuilder();
 
-        StoreBuilder&lt;KeyValueStore&lt;Long, JsonObject&gt;&gt; streamBufferStateStore =
+        StoreBuilder&lt;KeyValueStore&lt;<span class="predefined-type">Long</span>, JsonObject&gt;&gt; streamBufferStateStore =
                 Stores
                     .keyValueStoreBuilder(
                         Stores.persistentKeyValueStore(STREAM_BUFFER_NAME),
-                        new Serdes.LongSerde(),
-                        new JsonObjectSerde()
+                        <span class="keyword">new</span> Serdes.LongSerde(),
+                        <span class="keyword">new</span> JsonObjectSerde()
                     )
                     .withCachingDisabled();
-            builder.addStateStore(streamBufferStateStore); // <b class="conum">(1)</b>
+            builder.addStateStore(streamBufferStateStore); <i class="conum" data-value="1"></i><b>(1)</b>
 
-        builder.globalTable(txContextDataTopic, Materialized.as(STORE_NAME)); // <b class="conum">(2)</b>
+        builder.globalTable(txContextDataTopic, Materialized.as(STORE_NAME)); <i class="conum" data-value="2"></i><b>(2)</b>
 
-        builder.&lt;JsonObject, JsonObject&gt;stream(vegetablesTopic) // <b class="conum">(3)</b>
-                .filter((id, changeEvent) -&gt; changeEvent != null)
-                .filter((id, changeEvent) -&gt; !changeEvent.getString("op").equals("r"))
-                .transform(() -&gt; new ChangeEventEnricher(), STREAM_BUFFER_NAME)
+        builder.&lt;JsonObject, JsonObject&gt;stream(vegetablesTopic) <i class="conum" data-value="3"></i><b>(3)</b>
+                .filter((id, changeEvent) -&gt; changeEvent != <span class="predefined-constant">null</span>)
+                .filter((id, changeEvent) -&gt; !changeEvent.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>).equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">r</span><span class="delimiter">&quot;</span></span>))
+                .transform(() -&gt; <span class="keyword">new</span> ChangeEventEnricher(), STREAM_BUFFER_NAME)
                 .to(vegetablesEnrichedTopic);
 
-        return builder.build();
+        <span class="keyword">return</span> builder.build();
     }
 }</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>State store which will serve as the buffer for change events that cannot be processed yet</p>
-</li>
-<li>
-<p><code>GlobalKTable</code> based on the transaction metadata topic</p>
-</li>
-<li>
-<p><code>KStream</code> based on the vegetables topic; on this stream, any incoming tombstone markers are filtered, the reasoning being that the retention policy for an audit trail topic typically should be time-based than based on log compaction;</p>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>State store which will serve as the buffer for change events that cannot be processed yet</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>GlobalKTable</code> based on the transaction metadata topic</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>KStream</code> based on the vegetables topic; on this stream, any incoming tombstone markers are filtered, the reasoning being that the retention policy for an audit trail topic typically should be time-based than based on log compaction;
 <div class="paragraph">
 <p>similarly, snapshot events are filtered, assuming they are not relevant for an audit trail and there wouldn&#8217;t be any corresponding metadata provided by the application for the snapshot transaction initiated by the Debezium connector</p>
 </div>
 <div class="paragraph">
 <p>Any other messages are enriched with the corresponding transaction metadata via a custom <code>Transformer</code> (see below) and finally are written to an output topic</p>
-</div>
-</li>
-</ol>
+</div></td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The topic names are injected using the <a href="https://microprofile.io/project/eclipse/microprofile-config">MicroProfile Config API</a>, with the values being provided in Quarkus <em>application.properties</em> configuration file.
@@ -1345,7 +1351,7 @@ Besides the topic names, this file also has the information about the Kafka boot
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>audit.context.data.topic=dbserver1.inventory.transaction_context_data
+<pre class="CodeRay highlight"><code>audit.context.data.topic=dbserver1.inventory.transaction_context_data
 audit.vegetables.topic=dbserver1.inventory.vegetable
 audit.vegetables.enriched.topic=dbserver1.inventory.vegetable.enriched
 
@@ -1375,22 +1381,22 @@ but of course it could be done equally well using other formats such as Avro or 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">class ChangeEventEnricher implements Transformer
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">ChangeEventEnricher</span> <span class="directive">implements</span> <span class="predefined-type">Transformer</span>
         &lt;JsonObject, JsonObject, KeyValue&lt;JsonObject, JsonObject&gt;&gt; {
 
-    private static final Long BUFFER_OFFSETS_KEY = -1L;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Long</span> BUFFER_OFFSETS_KEY = -<span class="integer">1L</span>;
 
-    private static final Logger LOG = LoggerFactory.getLogger(ChangeEventEnricher.class);
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOG = LoggerFactory.getLogger(ChangeEventEnricher.class);
 
-    private ProcessorContext context;
-    private KeyValueStore&lt;JsonObject, JsonObject&gt; txMetaDataStore;
-    private KeyValueStore&lt;Long, JsonObject&gt; streamBuffer; // <b class="conum">(5)</b>
+    <span class="directive">private</span> ProcessorContext context;
+    <span class="directive">private</span> KeyValueStore&lt;JsonObject, JsonObject&gt; txMetaDataStore;
+    <span class="directive">private</span> KeyValueStore&lt;<span class="predefined-type">Long</span>, JsonObject&gt; streamBuffer; <i class="conum" data-value="5"></i><b>(5)</b>
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public void init(ProcessorContext context) {
-        this.context = context;
-        streamBuffer = (KeyValueStore&lt;Long, JsonObject&gt;) context.getStateStore(
+    <span class="annotation">@Override</span>
+    <span class="annotation">@SuppressWarnings</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">unchecked</span><span class="delimiter">&quot;</span></span>)
+    <span class="directive">public</span> <span class="type">void</span> init(ProcessorContext context) {
+        <span class="local-variable">this</span>.context = context;
+        streamBuffer = (KeyValueStore&lt;<span class="predefined-type">Long</span>, JsonObject&gt;) context.getStateStore(
             TopologyProducer.STREAM_BUFFER_NAME
         );
         txMetaDataStore = (KeyValueStore&lt;JsonObject, JsonObject&gt;) context.getStateStore(
@@ -1398,57 +1404,57 @@ but of course it could be done equally well using other formats such as Avro or 
         );
 
         context.schedule(
-            Duration.ofSeconds(1),
+            <span class="predefined-type">Duration</span>.ofSeconds(<span class="integer">1</span>),
             PunctuationType.WALL_CLOCK_TIME, ts -&gt; enrichAndEmitBufferedEvents()
-        ); // <b class="conum">(4)</b>
+        ); <i class="conum" data-value="4"></i><b>(4)</b>
     }
 
-    @Override
-    public KeyValue&lt;JsonObject, JsonObject&gt; transform(JsonObject key, JsonObject value) {
-        boolean enrichedAllBufferedEvents = enrichAndEmitBufferedEvents(); // <b class="conum">(3)</b>
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> KeyValue&lt;JsonObject, JsonObject&gt; transform(JsonObject key, JsonObject value) {
+        <span class="type">boolean</span> enrichedAllBufferedEvents = enrichAndEmitBufferedEvents(); <i class="conum" data-value="3"></i><b>(3)</b>
 
-        if (!enrichedAllBufferedEvents) {
+        <span class="keyword">if</span> (!enrichedAllBufferedEvents) {
             bufferChangeEvent(key, value);
-            return null;
+            <span class="keyword">return</span> <span class="predefined-constant">null</span>;
         }
 
-        KeyValue&lt;JsonObject, JsonObject&gt; enriched = enrichWithTxMetaData(key, value); // <b class="conum">(1)</b>
-        if (enriched == null) { // <b class="conum">(2)</b>
+        KeyValue&lt;JsonObject, JsonObject&gt; enriched = enrichWithTxMetaData(key, value); <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="keyword">if</span> (enriched == <span class="predefined-constant">null</span>) { <i class="conum" data-value="2"></i><b>(2)</b>
             bufferChangeEvent(key, value);
         }
 
-        return enriched;
+        <span class="keyword">return</span> enriched;
     }
 
-    /**
+    <span class="comment">/**
      * Enriches the buffered change event(s) with the metadata from the associated
      * transactions and forwards them.
      *
      * @return {@code true}, if all buffered events were enriched and forwarded,
      *         {@code false} otherwise.
-     */
-    private boolean enrichAndEmitBufferedEvents() { // <b class="conum">(3)</b>
+     */</span>
+    <span class="directive">private</span> <span class="type">boolean</span> enrichAndEmitBufferedEvents() { <i class="conum" data-value="3"></i><b>(3)</b>
         Optional&lt;BufferOffsets&gt; seq = bufferOffsets();
 
-        if (!seq.isPresent()) {
-            return true;
+        <span class="keyword">if</span> (!seq.isPresent()) {
+            <span class="keyword">return</span> <span class="predefined-constant">true</span>;
         }
 
         BufferOffsets sequence = seq.get();
 
-        boolean enrichedAllBuffered = true;
+        <span class="type">boolean</span> enrichedAllBuffered = <span class="predefined-constant">true</span>;
 
-        for(long i = sequence.getFirstValue(); i &lt; sequence.getNextValue(); i++) {
+        <span class="keyword">for</span>(<span class="type">long</span> i = sequence.getFirstValue(); i &lt; sequence.getNextValue(); i++) {
             JsonObject buffered = streamBuffer.get(i);
 
-            LOG.info("Processing buffered change event for key {}",
-                    buffered.getJsonObject("key"));
+            LOG.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Processing buffered change event for key {}</span><span class="delimiter">&quot;</span></span>,
+                    buffered.getJsonObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>));
 
             KeyValue&lt;JsonObject, JsonObject&gt; enriched = enrichWithTxMetaData(
-                    buffered.getJsonObject("key"), buffered.getJsonObject("changeEvent"));
-            if (enriched == null) {
-                enrichedAllBuffered = false;
-                break;
+                    buffered.getJsonObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>), buffered.getJsonObject(<span class="string"><span class="delimiter">&quot;</span><span class="content">changeEvent</span><span class="delimiter">&quot;</span></span>));
+            <span class="keyword">if</span> (enriched == <span class="predefined-constant">null</span>) {
+                enrichedAllBuffered = <span class="predefined-constant">false</span>;
+                <span class="keyword">break</span>;
             }
 
             context.forward(enriched.key, enriched.value);
@@ -1456,106 +1462,111 @@ but of course it could be done equally well using other formats such as Avro or 
             sequence.incrementFirstValue();
         }
 
-        if (sequence.isModified()) {
+        <span class="keyword">if</span> (sequence.isModified()) {
             streamBuffer.put(BUFFER_OFFSETS_KEY, sequence.toJson());
         }
 
-        return enrichedAllBuffered;
+        <span class="keyword">return</span> enrichedAllBuffered;
     }
 
-    /**
+    <span class="comment">/**
      * Adds the given change event to the stream-side buffer.
-     */
-    private void bufferChangeEvent(JsonObject key, JsonObject changeEvent) { // <b class="conum">(2)</b>
-        LOG.info("Buffering change event for key {}", key);
+     */</span>
+    <span class="directive">private</span> <span class="type">void</span> bufferChangeEvent(JsonObject key, JsonObject changeEvent) { <i class="conum" data-value="2"></i><b>(2)</b>
+        LOG.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Buffering change event for key {}</span><span class="delimiter">&quot;</span></span>, key);
 
         BufferOffsets sequence = bufferOffsets().orElseGet(BufferOffsets::initial);
 
         JsonObject wrapper = Json.createObjectBuilder()
-                .add("key", key)
-                .add("changeEvent", changeEvent)
+                .add(<span class="string"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>, key)
+                .add(<span class="string"><span class="delimiter">&quot;</span><span class="content">changeEvent</span><span class="delimiter">&quot;</span></span>, changeEvent)
                 .build();
 
-        streamBuffer.putAll(Arrays.asList(
+        streamBuffer.putAll(<span class="predefined-type">Arrays</span>.asList(
                 KeyValue.pair(sequence.getNextValueAndIncrement(), wrapper),
                 KeyValue.pair(BUFFER_OFFSETS_KEY, sequence.toJson())
         ));
     }
 
-    /**
+    <span class="comment">/**
      * Enriches the given change event with the metadata from the associated
      * transaction.
      *
      * @return The enriched change event or {@code null} if no metadata for the
      *         associated transaction was found.
-     */
-    private KeyValue&lt;JsonObject, JsonObject&gt; enrichWithTxMetaData(JsonObject key,
-            JsonObject changeEvent) { // <b class="conum">(1)</b>
+     */</span>
+    <span class="directive">private</span> KeyValue&lt;JsonObject, JsonObject&gt; enrichWithTxMetaData(JsonObject key,
+            JsonObject changeEvent) { <i class="conum" data-value="1"></i><b>(1)</b>
         JsonObject txId = Json.createObjectBuilder()
-                .add("transaction_id", changeEvent.get("source").asJsonObject()
-                        .getJsonNumber("txId").longValue())
+                .add(<span class="string"><span class="delimiter">&quot;</span><span class="content">transaction_id</span><span class="delimiter">&quot;</span></span>, changeEvent.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>).asJsonObject()
+                        .getJsonNumber(<span class="string"><span class="delimiter">&quot;</span><span class="content">txId</span><span class="delimiter">&quot;</span></span>).longValue())
                 .build();
 
         JsonObject metaData = txMetaDataStore.get(txId);
 
-        if (metaData != null) {
-            LOG.info("Enriched change event for key {}", key);
+        <span class="keyword">if</span> (metaData != <span class="predefined-constant">null</span>) {
+            LOG.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">Enriched change event for key {}</span><span class="delimiter">&quot;</span></span>, key);
 
-            metaData = Json.createObjectBuilder(metaData.get("after").asJsonObject())
-                    .remove("transaction_id")
+            metaData = Json.createObjectBuilder(metaData.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>).asJsonObject())
+                    .remove(<span class="string"><span class="delimiter">&quot;</span><span class="content">transaction_id</span><span class="delimiter">&quot;</span></span>)
                     .build();
 
-            return KeyValue.pair(
+            <span class="keyword">return</span> KeyValue.pair(
                     key,
                     Json.createObjectBuilder(changeEvent)
-                        .add("audit", metaData)
+                        .add(<span class="string"><span class="delimiter">&quot;</span><span class="content">audit</span><span class="delimiter">&quot;</span></span>, metaData)
                         .build()
             );
         }
 
-        LOG.warn("No metadata found for transaction {}", txId);
-        return null;
+        LOG.warn(<span class="string"><span class="delimiter">&quot;</span><span class="content">No metadata found for transaction {}</span><span class="delimiter">&quot;</span></span>, txId);
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
     }
 
-    private Optional&lt;BufferOffsets&gt; bufferOffsets() {
+    <span class="directive">private</span> Optional&lt;BufferOffsets&gt; bufferOffsets() {
         JsonObject bufferOffsets = streamBuffer.get(BUFFER_OFFSETS_KEY);
-        if (bufferOffsets == null) {
-            return Optional.empty();
+        <span class="keyword">if</span> (bufferOffsets == <span class="predefined-constant">null</span>) {
+            <span class="keyword">return</span> Optional.empty();
         }
-        else {
-            return Optional.of(BufferOffsets.fromJson(bufferOffsets));
+        <span class="keyword">else</span> {
+            <span class="keyword">return</span> Optional.of(BufferOffsets.fromJson(bufferOffsets));
         }
     }
 
-    @Override
-    public void close() {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> close() {
     }
 }</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>When a vegetables change event arrives, look up the corresponding metadata in the state store of the
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>When a vegetables change event arrives, look up the corresponding metadata in the state store of the
 transaction topic&#8217;s <code>GlobalKTable</code>, using the transaction id from the <code>source</code> block of the change event as the key;
-if the metadata could be found, add the metadata to change event (under the <code>audit</code> field) and return that enriched event</p>
-</li>
-<li>
-<p>If the metadata could not be found, add the incoming event into the buffer of change events and return</p>
-</li>
-<li>
-<p>Before actually getting to the incoming event, all buffered events are processed;
+if the metadata could be found, add the metadata to change event (under the <code>audit</code> field) and return that enriched event</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>If the metadata could not be found, add the incoming event into the buffer of change events and return</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Before actually getting to the incoming event, all buffered events are processed;
 this is required to make sure that the original change events is retained;
-only if all could be enriched, the incoming event will be processed, too</p>
-</li>
-<li>
-<p>In order to emit buffered events also if no new change event is coming in,
-a punctuation is scheduled that periodically processes the buffer</p>
-</li>
-<li>
-<p>A buffer for vegetable events whose corresponding metadata hasn&#8217;t arrived yet</p>
-</li>
-</ol>
+only if all could be enriched, the incoming event will be processed, too</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>In order to emit buffered events also if no new change event is coming in,
+a punctuation is scheduled that periodically processes the buffer</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>A buffer for vegetable events whose corresponding metadata hasn&#8217;t arrived yet</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The key piece is the buffer for unprocessable change events.
@@ -1574,7 +1585,7 @@ Ultimately, it could also be useful if Kafka Streams came with built-in means of
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="title">If Things Go Wrong</div>
@@ -1601,37 +1612,37 @@ You should see messages like this in the <code>dbserver1.inventory.vegetable.enr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">{"id":10}
+<pre class="CodeRay highlight"><code data-lang="java">{<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>:<span class="integer">10</span>}
 {
-    "before": {
-        "id": 10,
-        "description": "Yummy!",
-        "name": "Tomato"
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">before</span><span class="delimiter">&quot;</span></span>: {
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">10</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Yummy!</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tomato</span><span class="delimiter">&quot;</span></span>
     },
-    "after": {
-        "id": 10,
-        "description": "Tasty!",
-        "name": "Tomato"
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">after</span><span class="delimiter">&quot;</span></span>: {
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="integer">10</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tasty!</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tomato</span><span class="delimiter">&quot;</span></span>
     },
-    "source": {
-        "version": "0.10.0-SNAPSHOT",
-        "connector": "postgresql",
-        "name": "dbserver1",
-        "ts_ms": 1569700445392,
-        "snapshot": "false",
-        "db": "vegetablesdb",
-        "schema": "inventory",
-        "table": "vegetable",
-        "txId": 610,
-        "lsn": 34204240,
-        "xmin": null
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">source</span><span class="delimiter">&quot;</span></span>: {
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.10.0-SNAPSHOT</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">connector</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">postgresql</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1569700445392</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">snapshot</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">db</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">vegetablesdb</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">vegetable</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">txId</span><span class="delimiter">&quot;</span></span>: <span class="integer">610</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">lsn</span><span class="delimiter">&quot;</span></span>: <span class="integer">34204240</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">xmin</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">null</span>
     },
-    "op": "u",
-    "ts_ms": 1569700445537,
-    "audit": {
-        "client_date": 1566461551000000,
-        "usecase": "UPDATE VEGETABLE",
-        "user_name": "farmermargaret"
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">op</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">u</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">ts_ms</span><span class="delimiter">&quot;</span></span>: <span class="integer">1569700445537</span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">audit</span><span class="delimiter">&quot;</span></span>: {
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">client_date</span><span class="delimiter">&quot;</span></span>: <span class="integer">1566461551000000</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">usecase</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">UPDATE VEGETABLE</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user_name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">farmermargaret</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>

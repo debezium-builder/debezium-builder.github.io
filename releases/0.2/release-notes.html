@@ -76,7 +76,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility"><a class="anchor" href="#kafka-compatibility"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility"><a class="anchor" href="#kafka_compatibility"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.9.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.10.0 due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details.</p>
 </div>
@@ -109,19 +109,19 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12330932">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-2"><a class="anchor" href="#kafka-compatibility-2"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.9.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.10.0 due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-2"><a class="anchor" href="#upgrading-2"></a>Upgrading</h3>
+<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
 <div class="paragraph">
 <p>There are no backward-incompatible changes when upgrading to 0.2.3 from 0.2.2. Gracefully stop the running 0.2.2 connector, remove the 0.2.2 plugin files, install the 0.2.3 plugin files, and restart the connector using the same configuration. Upon restart, the 0.2.3 connector will continue where the previous connector left off. As one might expect, all change events previously written to Kafka by the old connector will not be modified.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-2"><a class="anchor" href="#fixes-2"></a>Fixes</h3>
+<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes all of the fixes from the <a href="release-0-2-2">0.2.2</a> release plus the following fixes:</p>
 </div>
@@ -151,13 +151,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12330862">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-3"><a class="anchor" href="#kafka-compatibility-3"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_3"><a class="anchor" href="#kafka_compatibility_3"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release can be used with Kafka Connect 0.9.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.10.0 due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-3"><a class="anchor" href="#upgrading-3"></a>Upgrading</h3>
+<h3 id="upgrading_3"><a class="anchor" href="#upgrading_3"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Check the backward-incompatible changes when upgrading to 0.2.2 from 0.2.1 or 0.2.0.</p>
 </div>
@@ -166,7 +166,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="backwards-incompatible-changes"><a class="anchor" href="#backwards-incompatible-changes"></a>Backwards-incompatible changes</h3>
+<h3 id="backwards_incompatible_changes"><a class="anchor" href="#backwards_incompatible_changes"></a>Backwards-incompatible changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -179,7 +179,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-3"><a class="anchor" href="#fixes-3"></a>Fixes</h3>
+<h3 id="fixes_3"><a class="anchor" href="#fixes_3"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes all of the fixes from the <a href="release-0-2-1">0.2.1</a> release plus the following fixes:</p>
 </div>
@@ -203,13 +203,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12330752">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-4"><a class="anchor" href="#kafka-compatibility-4"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_4"><a class="anchor" href="#kafka_compatibility_4"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release can be used with Kafka Connect 0.9.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.10.0 due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-4"><a class="anchor" href="#upgrading-4"></a>Upgrading</h3>
+<h3 id="upgrading_4"><a class="anchor" href="#upgrading_4"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Check the backward-incompatible changes when upgrading to 0.2.1 from 0.2.0.</p>
 </div>
@@ -218,7 +218,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="backwards-incompatible-changes-2"><a class="anchor" href="#backwards-incompatible-changes-2"></a>Backwards-incompatible changes</h3>
+<h3 id="backwards_incompatible_changes_2"><a class="anchor" href="#backwards_incompatible_changes_2"></a>Backwards-incompatible changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -228,7 +228,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-4"><a class="anchor" href="#fixes-4"></a>Fixes</h3>
+<h3 id="fixes_4"><a class="anchor" href="#fixes_4"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes all of the fixes from the <a href="release-0-2-0">0.2.0</a> release plus the following fixes:</p>
 </div>
@@ -263,7 +263,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="backwards-incompatible-changes-3"><a class="anchor" href="#backwards-incompatible-changes-3"></a>Backwards-incompatible changes</h3>
+<h3 id="backwards_incompatible_changes_3"><a class="anchor" href="#backwards_incompatible_changes_3"></a>Backwards-incompatible changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -279,7 +279,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features"><a class="anchor" href="#new-features"></a>New features</h3>
+<h3 id="new_features"><a class="anchor" href="#new_features"></a>New features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -311,7 +311,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes"><a class="anchor" href="#bug-fixes"></a>Bug fixes</h3>
+<h3 id="bug_fixes"><a class="anchor" href="#bug_fixes"></a>Bug fixes</h3>
 <div class="ulist">
 <ul>
 <li>

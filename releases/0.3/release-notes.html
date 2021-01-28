@@ -69,7 +69,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12332775">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility"><a class="anchor" href="#kafka-compatibility"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility"><a class="anchor" href="#kafka_compatibility"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
@@ -84,13 +84,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes"><a class="anchor" href="#breaking-changes"></a>Breaking changes</h3>
+<h3 id="breaking_changes"><a class="anchor" href="#breaking_changes"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release has no breaking changes since the <a href="release-0-3-5">previous</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features"><a class="anchor" href="#new-features"></a>New Features</h3>
+<h3 id="new_features"><a class="anchor" href="#new_features"></a>New Features</h3>
 <div class="paragraph">
 <p>There are no new features in this release.</p>
 </div>
@@ -153,13 +153,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12332052">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-2"><a class="anchor" href="#kafka-compatibility-2"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-2"><a class="anchor" href="#upgrading-2"></a>Upgrading</h3>
+<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
 <div class="paragraph">
 <p><strong>We strongly urge all users to upgrade to this release from earlier versions.</strong> In prior versions, the MySQL connector may stop without completing all updates in a transaction, and when the connector restarts it starts with the <em>next</em> transaction and therefore might fail to capture some of the change events in the earlier transaction. This release fixes this issue so that when restarting it will always pick up where it left off, even if that point is in the middle of a transaction. Note that this fix only takes affect once a connector is upgraded and restarted. Also, this fix does not affect or alter the content of change events produced by the connector. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-144">the issue</a> for more details.</p>
 </div>
@@ -171,13 +171,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes-2"><a class="anchor" href="#breaking-changes-2"></a>Breaking changes</h3>
+<h3 id="breaking_changes_2"><a class="anchor" href="#breaking_changes_2"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release has no backward-incompatible changes since the <a href="release-0-3-4">0.3.4</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features-2"><a class="anchor" href="#new-features-2"></a>New Features</h3>
+<h3 id="new_features_2"><a class="anchor" href="#new_features_2"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -187,7 +187,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-2"><a class="anchor" href="#fixes-2"></a>Fixes</h3>
+<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes the following fixes to the <a href="release-0-3-4">0.3.4</a> release:</p>
 </div>
@@ -226,13 +226,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12331604">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-3"><a class="anchor" href="#kafka-compatibility-3"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_3"><a class="anchor" href="#kafka_compatibility_3"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-3"><a class="anchor" href="#upgrading-3"></a>Upgrading</h3>
+<h3 id="upgrading_3"><a class="anchor" href="#upgrading_3"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading the MySQL connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -241,7 +241,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes-3"><a class="anchor" href="#breaking-changes-3"></a>Breaking changes</h3>
+<h3 id="breaking_changes_3"><a class="anchor" href="#breaking_changes_3"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release has one breaking changes since the <a href="release-0-3-3">0.3.3</a> release:</p>
 </div>
@@ -254,7 +254,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features-3"><a class="anchor" href="#new-features-3"></a>New Features</h3>
+<h3 id="new_features_3"><a class="anchor" href="#new_features_3"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -270,7 +270,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-3"><a class="anchor" href="#fixes-3"></a>Fixes</h3>
+<h3 id="fixes_3"><a class="anchor" href="#fixes_3"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes no other fixes.</p>
 </div>
@@ -284,13 +284,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12331604">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-4"><a class="anchor" href="#kafka-compatibility-4"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_4"><a class="anchor" href="#kafka_compatibility_4"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-4"><a class="anchor" href="#upgrading-4"></a>Upgrading</h3>
+<h3 id="upgrading_4"><a class="anchor" href="#upgrading_4"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading the MySQL connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -299,19 +299,19 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes-4"><a class="anchor" href="#breaking-changes-4"></a>Breaking changes</h3>
+<h3 id="breaking_changes_4"><a class="anchor" href="#breaking_changes_4"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release includes no breaking changes since the <a href="release-0-3-2">0.3.2</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features-4"><a class="anchor" href="#new-features-4"></a>New Features</h3>
+<h3 id="new_features_4"><a class="anchor" href="#new_features_4"></a>New Features</h3>
 <div class="paragraph">
 <p>This release includes no new features since the <a href="release-0-3-2">0.3.2</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-4"><a class="anchor" href="#fixes-4"></a>Fixes</h3>
+<h3 id="fixes_4"><a class="anchor" href="#fixes_4"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes the following fixes to the <a href="release-0-3-2">0.3.2</a> release:</p>
 </div>
@@ -347,13 +347,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12331401">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-5"><a class="anchor" href="#kafka-compatibility-5"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_5"><a class="anchor" href="#kafka_compatibility_5"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-5"><a class="anchor" href="#upgrading-5"></a>Upgrading</h3>
+<h3 id="upgrading_5"><a class="anchor" href="#upgrading_5"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading the MySQL connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -362,19 +362,19 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes-5"><a class="anchor" href="#breaking-changes-5"></a>Breaking changes</h3>
+<h3 id="breaking_changes_5"><a class="anchor" href="#breaking_changes_5"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release includes no breaking changes since the <a href="release-0-3-1">0.3.1</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features-5"><a class="anchor" href="#new-features-5"></a>New Features</h3>
+<h3 id="new_features_5"><a class="anchor" href="#new_features_5"></a>New Features</h3>
 <div class="paragraph">
 <p>This release includes no new features since the <a href="release-0-3-1">0.3.1</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-5"><a class="anchor" href="#fixes-5"></a>Fixes</h3>
+<h3 id="fixes_5"><a class="anchor" href="#fixes_5"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes the following fixes to the <a href="release-0-3-1">0.3.1</a> release:</p>
 </div>
@@ -413,13 +413,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12331359">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-6"><a class="anchor" href="#kafka-compatibility-6"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_6"><a class="anchor" href="#kafka_compatibility_6"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-6"><a class="anchor" href="#upgrading-6"></a>Upgrading</h3>
+<h3 id="upgrading_6"><a class="anchor" href="#upgrading_6"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading the MySQL connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -428,13 +428,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes-6"><a class="anchor" href="#breaking-changes-6"></a>Breaking changes</h3>
+<h3 id="breaking_changes_6"><a class="anchor" href="#breaking_changes_6"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release includes no breaking changes compared to the <a href="release-0-3-0">0.3.0</a> release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features-6"><a class="anchor" href="#new-features-6"></a>New Features</h3>
+<h3 id="new_features_6"><a class="anchor" href="#new_features_6"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -444,7 +444,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-6"><a class="anchor" href="#fixes-6"></a>Fixes</h3>
+<h3 id="fixes_6"><a class="anchor" href="#fixes_6"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes the following fixes to the <a href="release-0-3-0">0.3.0</a> release:</p>
 </div>
@@ -480,13 +480,13 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12329661">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka-compatibility-7"><a class="anchor" href="#kafka-compatibility-7"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_7"><a class="anchor" href="#kafka_compatibility_7"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release requires Kafka Connect 0.10.0.1 (or a subsequent API-compatible release), and is known to be <em>incompatible</em> with Kafka Connect 0.9.0.x due to <a href="https://issues.apache.org/jira/browse/KAFKA-3006">binary incompatible changes in the Kafka 0.10.0 API</a>. See <a href="https://issues.redhat.com/projects/DBZ/issues/DBZ-80">DBZ-80</a> for details, and Kafka documentation for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading-7"><a class="anchor" href="#upgrading-7"></a>Upgrading</h3>
+<h3 id="upgrading_7"><a class="anchor" href="#upgrading_7"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading the MySQL connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -495,7 +495,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking-changes-7"><a class="anchor" href="#breaking-changes-7"></a>Breaking changes</h3>
+<h3 id="breaking_changes_7"><a class="anchor" href="#breaking_changes_7"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>This release includes one potentially breaking changes from the <a href="release-0-2-4">0.2.4</a> release:</p>
 </div>
@@ -508,7 +508,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new-features-7"><a class="anchor" href="#new-features-7"></a>New Features</h3>
+<h3 id="new_features_7"><a class="anchor" href="#new_features_7"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -518,7 +518,7 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes-7"><a class="anchor" href="#fixes-7"></a>Fixes</h3>
+<h3 id="fixes_7"><a class="anchor" href="#fixes_7"></a>Fixes</h3>
 <div class="paragraph">
 <p>This release includes all of the fixes from the <a href="release-0-2-4">0.2.4</a> release, and also includes the following fixes:</p>
 </div>

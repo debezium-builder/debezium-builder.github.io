@@ -881,7 +881,7 @@ Right now we&#8217;re working with the maintainers of the Postgres driver to get
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="more-flexible-propagation-of-deletes">More Flexible Propagation of DELETEs</h2>
+<h2 id="more_flexible_propagation_of_deletes">More Flexible Propagation of DELETEs</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Besides those bug fixes we decided to also merge one new feature from the 0.9.x branch into the 0.8.3.Final release,
@@ -898,11 +898,11 @@ Therefore the SMT can now optionally rewrite delete events into updates of a spe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">...
-"transforms" : "unwrap",
-"transforms.unwrap.type": "io.debezium.transforms.UnwrapFromEnvelope",
-"transforms.unwrap.delete.handling.mode" : "rewrite",
-...</code></pre>
+<pre class="CodeRay highlight"><code data-lang="json"><span class="error">.</span><span class="error">.</span><span class="error">.</span>
+<span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">unwrap</span><span class="delimiter">&quot;</span></span>,
+<span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.unwrap.type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.transforms.UnwrapFromEnvelope</span><span class="delimiter">&quot;</span></span>,
+<span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.unwrap.delete.handling.mode</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">rewrite</span><span class="delimiter">&quot;</span></span>,
+<span class="error">.</span><span class="error">.</span><span class="error">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -911,7 +911,7 @@ So when for instance consuming the events with the JDBC sink connector, you&#821
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>__deleted | last_name |  id  | first_name |         email
+<pre class="CodeRay highlight"><code>__deleted | last_name |  id  | first_name |         email
 -----------+-----------+------+------------+-----------------------
 false     | Thomas    | 1001 | Sally      | sally.thomas@acme.com
 false     | Bailey    | 1002 | George     | gbailey@foobar.com
@@ -925,7 +925,7 @@ true      | Walker    | 1003 | Edward     | ed@walker.com</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="whats-next">What&#8217;s next?</h2>
+<h2 id="whats_next">What&#8217;s next?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;re continuing the work on Debezium 0.9, which will mostly be about improvements to the SQL Server and Oracle connectors.

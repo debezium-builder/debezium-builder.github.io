@@ -888,7 +888,7 @@ overall, not less than <a href="https://issues.redhat.com/issues/?jql=project%20
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="bytebufferconverter-improvements">ByteBufferConverter improvements</h2>
+<h2 id="bytebufferconverter_improvements">ByteBufferConverter improvements</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>ByteBufferConverter</code> is a converter that is used with the Outbox event router SMT to serialize an existing Avro payload column.
@@ -908,7 +908,7 @@ the following configuration would need to be included in the connector:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>value.converter=io.debezium.converters.ByteBufferConverter
+<pre class="CodeRay highlight"><code>value.converter=io.debezium.converters.ByteBufferConverter
 value.converter.delegate.converter.type=org.apache.kafka.connect.json.JsonConverter
 value.converter.delegate.converter.type.schemas.enable=false</code></pre>
 </div>
@@ -920,7 +920,7 @@ please see the <a href="https://debezium.io/documentation/reference/configuratio
 </div>
 </div>
 <div class="sect1">
-<h2 id="scripting-module">Scripting module</h2>
+<h2 id="scripting_module">Scripting module</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this release, the SMTs for content-based routing and filtering that both use JSR 223 scripting engines have been moved out of <code>debezium-core</code> and into a separate artifact <code>debezium-scripting</code> (<a href="https://issues.jboss.org/browse/DBZ-2549">DBZ-2549</a>).
@@ -933,7 +933,7 @@ This change is done to allow the scripting functionality to be available only in
 </div>
 </div>
 <div class="sect1">
-<h2 id="misc-features-and-bug-fixes">Misc. Features and Bug Fixes</h2>
+<h2 id="misc_features_and_bug_fixes">Misc. Features and Bug Fixes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In addition, the community has completed the work on some other features and fixes, too:</p>

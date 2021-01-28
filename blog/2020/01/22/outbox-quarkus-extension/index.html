@@ -878,7 +878,7 @@ Please see the <a href="https://debezium.io/documentation/reference/1.1/configur
 <p><!-- more --></p>
 </div>
 <div class="sect1">
-<h2 id="going-supersonic-with-quarkus">Going Supersonic with Quarkus!</h2>
+<h2 id="going_supersonic_with_quarkus">Going Supersonic with Quarkus!</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="http://www.quarkus.io">Quarkus</a> is a Kubernetes Native Java framework that is tailored for GraalVM and HotSpot using the <em>best-of-breed</em> Java technologies and standards.
@@ -892,25 +892,25 @@ Quarkus aims to offer developers a unified reactive and imperative programming m
 The Debezium Outbox extension for Quarkus can be used in both JVM or Native image modes in Quarkus.</p>
 </div>
 <div class="sect2">
-<h3 id="how-to-get-it">How to get it?</h3>
+<h3 id="how_to_get_it">How to get it?</h3>
 <div class="paragraph">
 <p>Currently the dependency must be manually added to your Quarkus application&#8217;s <code>pom.xml</code> as shown below.
 There are plans to make this extension available in the Quarkus extension catalogue as well as via Quarkus' Maven plugin in a future release.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-  &lt;groupId&gt;io.debezium.quarkus&lt;/groupId&gt;
-  &lt;artifactId&gt;debezium-quarkus-outbox&lt;/artifactId&gt;
-  &lt;version&gt;1.1.0.Alpha1&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.debezium.quarkus<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>debezium-quarkus-outbox<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>1.1.0.Alpha1<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -923,7 +923,7 @@ A newer version of the extension may be available, see <a href="/releases/">Rele
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-the-extension">Using the extension</h3>
+<h3 id="using_the_extension">Using the extension</h3>
 <div class="paragraph">
 <p>The Debezium Outbox extension uses the Observer pattern to monitor when the user application emits an object that implements the <code>io.debezium.outbox.quarkus.ExportedEvent</code> interface.
 This allows the Quarkus application behavior to be completely decoupled from that of the extension.</p>
@@ -937,40 +937,40 @@ This event is used to signal when an <code>Order</code> has been saved by the <c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">public class OrderCreatedEvent implements ExportedEvent&lt;String, JsonNode&gt; {
-    private final long orderId;
-    private final JsonNode payload;
-    private final Instant created;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">OrderCreatedEvent</span> <span class="directive">implements</span> ExportedEvent&lt;<span class="predefined-type">String</span>, JsonNode&gt; {
+    <span class="directive">private</span> <span class="directive">final</span> <span class="type">long</span> orderId;
+    <span class="directive">private</span> <span class="directive">final</span> JsonNode payload;
+    <span class="directive">private</span> <span class="directive">final</span> Instant created;
 
-    public OrderCreatedEvent(Instant createdAt, Order order) {
-        this.orderId = order.getId();
-        this.payload = convertOrderToJsonNode(order);
-        this.created = createdAt;
+    <span class="directive">public</span> OrderCreatedEvent(Instant createdAt, Order order) {
+        <span class="local-variable">this</span>.orderId = order.getId();
+        <span class="local-variable">this</span>.payload = convertOrderToJsonNode(order);
+        <span class="local-variable">this</span>.created = createdAt;
     }
 
-    @Override
-    public String getAggregateId() {
-        return String.valueOf(orderId);
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAggregateId() {
+        <span class="keyword">return</span> <span class="predefined-type">String</span>.valueOf(orderId);
     }
 
-    @Override
-    public String getAggregateType() {
-        return "Order";
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getAggregateType() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Order</span><span class="delimiter">&quot;</span></span>;
     }
 
-    @Override
-    public JsonNode getPayload() {
-        return payload;
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> JsonNode getPayload() {
+        <span class="keyword">return</span> payload;
     }
 
-    @Override
-    public String getType() {
-        return "OrderCreated";
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> getType() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">OrderCreated</span><span class="delimiter">&quot;</span></span>;
     }
 
-    @Override
-    public Instant getTimestamp() {
-        return created;
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> Instant getTimestamp() {
+        <span class="keyword">return</span> created;
     }
 }</code></pre>
 </div>
@@ -980,7 +980,7 @@ This event is used to signal when an <code>Order</code> has been saved by the <c
 This contract exposes several different values discussed below:</p>
 </div>
 <div class="sect3">
-<h4 id="aggregate-id">Aggregate Id</h4>
+<h4 id="aggregate_id">Aggregate Id</h4>
 <div class="paragraph">
 <p>The aggregate id is used when emitting messages to Kafka as the message key to preserve message order.
 In this example, the <code>OrderCreatedEvent</code> returns the order identifier.</p>
@@ -989,7 +989,7 @@ In this example, the <code>OrderCreatedEvent</code> returns the order identifier
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1002,7 +1002,7 @@ While this example uses a <code>String</code>, the value returned can be any per
 </div>
 </div>
 <div class="sect3">
-<h4 id="aggregate-type">Aggregate Type</h4>
+<h4 id="aggregate_type">Aggregate Type</h4>
 <div class="paragraph">
 <p>The aggregate type is a string-based value that is used to append to the Kafka topic name and also assists in routing of the given message inside the Outbox Event Router SMT.
 In this example, we use <code>Order</code> and when using the default configuration of the SMT, messages would be found in the <code>outbox.event.Order</code> topic.
@@ -1032,7 +1032,7 @@ This field allows the source application to specify an <code>Instant</code> that
 <table>
 <tr>
 <td class="icon">
-<div class="title">Tip</div>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1047,7 +1047,7 @@ While this example uses a <code>JsonNode</code> to store a JSON representation o
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1068,19 +1068,19 @@ The <code>OrderService</code> class below uses JPA to persist the <code>Order</c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@ApplicationScoped
-public class OrderService {
-    @Inject
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ApplicationScoped</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OrderService</span> {
+    <span class="annotation">@Inject</span>
     EntityManager entityManager;
 
-    @Inject
-    Event&lt;ExportedEvent&lt;String, JsonNode&gt;&gt; event;
+    <span class="annotation">@Inject</span>
+    <span class="predefined-type">Event</span>&lt;ExportedEvent&lt;<span class="predefined-type">String</span>, JsonNode&gt;&gt; event;
 
-    @Transactional
-    public Order addOrder(Order order) {
+    <span class="annotation">@Transactional</span>
+    <span class="directive">public</span> Order addOrder(Order order) {
         entityManager.persist(order);
-        event.fire(new OrderCreatedEvent(Instant.now(), order));
-        return order;
+        event.fire(<span class="keyword">new</span> OrderCreatedEvent(Instant.now(), order));
+        <span class="keyword">return</span> order;
     }
 }</code></pre>
 </div>
@@ -1091,7 +1091,7 @@ An example configuration might look like the following where we specify the data
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-properties" data-lang="properties">quarkus.datasource.driver=org.postgresql.Driver
+<pre class="CodeRay highlight"><code data-lang="properties">quarkus.datasource.driver=org.postgresql.Driver
 quarkus.datasource.url=jdbc:postgresql://order-db:5432/orderdb?currentSchema=orders
 quarkus.datasource.username=user
 quarkus.datasource.password=password
@@ -1105,25 +1105,25 @@ quarkus.hibernate-orm.log.sql=true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">orderdb=# \d orders.outboxevent
-                        Table "orders.outboxevent"
-    Column     |            Type             | Collation | Nullable | Default
----------------+-----------------------------+-----------+----------+---------
- id            | uuid                        |           | not null |
- aggregatetype | character varying(255)      |           | not null |
- aggregateid   | character varying(255)      |           | not null |
- type          | character varying(255)      |           | not null |
- timestamp     | timestamp without time zone |           | not null |
- payload       | character varying(8000)     |           |          |
+<pre class="CodeRay highlight"><code data-lang="sql">orderdb=<span class="comment"># \d orders.outboxevent</span>
+                        <span class="type">Table</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">orders.outboxevent</span><span class="delimiter">&quot;</span></span>
+    <span class="type">Column</span>     |            Type             | Collation | Nullable | <span class="directive">Default</span>
+<span class="comment">---------------+-----------------------------+-----------+----------+---------</span>
+ id            | uuid                        |           | <span class="keyword">not</span> <span class="predefined-constant">null</span> |
+ aggregatetype | character varying(<span class="integer">255</span>)      |           | <span class="keyword">not</span> <span class="predefined-constant">null</span> |
+ aggregateid   | character varying(<span class="integer">255</span>)      |           | <span class="keyword">not</span> <span class="predefined-constant">null</span> |
+ type          | character varying(<span class="integer">255</span>)      |           | <span class="keyword">not</span> <span class="predefined-constant">null</span> |
+ <span class="predefined-type">timestamp</span>     | <span class="predefined-type">timestamp</span> without <span class="predefined-type">time</span> zone |           | <span class="keyword">not</span> <span class="predefined-constant">null</span> |
+ payload       | character varying(<span class="integer">8000</span>)     |           |          |
 Indexes:
-    "outboxevent_pkey" PRIMARY KEY, btree (id)</code></pre>
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">outboxevent_pkey</span><span class="delimiter">&quot;</span></span> <span class="directive">PRIMARY</span> <span class="type">KEY</span>, btree (id)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1139,7 +1139,7 @@ For example, if you wanted the table to be named <code>outbox</code> rather than
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-properties" data-lang="properties">quarkus.debezium-outbox.table-name=outbox</code></pre>
+<pre class="CodeRay highlight"><code data-lang="properties">quarkus.debezium-outbox.table-name=outbox</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1152,13 +1152,13 @@ In order to enable row retention, add the following configuration to the <code>a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-properties" data-lang="properties">quarkus.debezium-outbox.remove-after-insert=false</code></pre>
+<pre class="CodeRay highlight"><code data-lang="properties">quarkus.debezium-outbox.remove-after-insert=false</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-connector">Setting up the connector</h3>
+<h3 id="setting_up_the_connector">Setting up the connector</h3>
 <div class="paragraph">
 <p>Up to this point we&#8217;ve covered how to configure and use the extension in a Quarkus application to save events into the outbox database table.
 The last step is to configure the Debezium connector to monitor the outbox and emit those records to Kafka.</p>
@@ -1168,23 +1168,23 @@ The last step is to configure the Debezium connector to monitor the outbox and e
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
-  "tasks.max": "1",
-  "database.hostname": "order-db",
-  "database.port": "5432",
-  "database.user": "user",
-  "database.password": "password",
-  "database.dbname": "orderdb",
-  "database.server.name": "dbserver1",
-  "schema.whitelist" : "orders",
-  "table.whitelist": "orders.outboxevent",
-  "tombstones.on.delete": "false",
-  "transforms": "outbox",
-  "transforms.outbox.type" : "io.debezium.transforms.outbox.EventRouter",
-  "transforms.outbox.route.topic.replacement": "${routedByValue}.events",
-  "transforms.outbox.table.field.event.timestamp": "timestamp",
-  "transforms.outbox.table.fields.additional.placement": "type:header:eventType"
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.postgresql.PostgresConnector</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">tasks.max</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">database.hostname</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">order-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">database.port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">database.password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">database.dbname</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">orderdb</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">database.server.name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dbserver1</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">schema.whitelist</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">orders</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">table.whitelist</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">orders.outboxevent</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">tombstones.on.delete</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">outbox</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.outbox.type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.transforms.outbox.EventRouter</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.outbox.route.topic.replacement</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${routedByValue}.events</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.outbox.table.field.event.timestamp</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">timestamp</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">transforms.outbox.table.fields.additional.placement</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">type:header:eventType</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
@@ -1196,7 +1196,7 @@ These are configuration options that are used by Kafka Connect to configure and 
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1220,19 +1220,19 @@ The following JSON example represents an <code>Order</code> which gets saved by 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "customerId" : "123",
-    "orderDate" : "2019-01-31T12:13:01",
-    "lineItems" : [
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">customerId</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">123</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">orderDate</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">2019-01-31T12:13:01</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">lineItems</span><span class="delimiter">&quot;</span></span> : [
         {
-            "item" : "Debezium in Action",
-            "quantity" : 2,
-            "totalPrice" : 39.98
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">item</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Debezium in Action</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">quantity</span><span class="delimiter">&quot;</span></span> : <span class="integer">2</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">totalPrice</span><span class="delimiter">&quot;</span></span> : <span class="float">39.98</span>
         },
         {
-            "item" : "Debezium for Dummies",
-            "quantity" : 1,
-            "totalPrice" : 29.99
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">item</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">Debezium for Dummies</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">quantity</span><span class="delimiter">&quot;</span></span> : <span class="integer">1</span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">totalPrice</span><span class="delimiter">&quot;</span></span> : <span class="float">29.99</span>
         }
     ]
 }</code></pre>
@@ -1243,16 +1243,16 @@ The following JSON example represents an <code>Order</code> which gets saved by 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-  "key": "1",
-  "headers": "id=cc74eac7-176b-44e7-8bda-413a5088ca66,eventType=OrderCreated"
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">headers</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id=cc74eac7-176b-44e7-8bda-413a5088ca66,eventType=OrderCreated</span><span class="delimiter">&quot;</span></span>
 }
-"{\"id\":1,\"customerId\":123,\"orderDate\":\"2019-01-31T12:13:01\",\"lineItems\":[{\"id\":1,\"item\":\"Debezium in Action\",\"quantity\":2,\"totalPrice\":39.98,\"status\":\"ENTERED\"},{\"id\":2,\"item\":\"Debezium for Dummies\",\"quantity\":1,\"totalPrice\":29.99,\"status\":\"ENTERED\"}]}"</code></pre>
+<span class="string"><span class="delimiter">&quot;</span><span class="content">{</span><span class="char">\&quot;</span><span class="content">id</span><span class="char">\&quot;</span><span class="content">:1,</span><span class="char">\&quot;</span><span class="content">customerId</span><span class="char">\&quot;</span><span class="content">:123,</span><span class="char">\&quot;</span><span class="content">orderDate</span><span class="char">\&quot;</span><span class="content">:</span><span class="char">\&quot;</span><span class="content">2019-01-31T12:13:01</span><span class="char">\&quot;</span><span class="content">,</span><span class="char">\&quot;</span><span class="content">lineItems</span><span class="char">\&quot;</span><span class="content">:[{</span><span class="char">\&quot;</span><span class="content">id</span><span class="char">\&quot;</span><span class="content">:1,</span><span class="char">\&quot;</span><span class="content">item</span><span class="char">\&quot;</span><span class="content">:</span><span class="char">\&quot;</span><span class="content">Debezium in Action</span><span class="char">\&quot;</span><span class="content">,</span><span class="char">\&quot;</span><span class="content">quantity</span><span class="char">\&quot;</span><span class="content">:2,</span><span class="char">\&quot;</span><span class="content">totalPrice</span><span class="char">\&quot;</span><span class="content">:39.98,</span><span class="char">\&quot;</span><span class="content">status</span><span class="char">\&quot;</span><span class="content">:</span><span class="char">\&quot;</span><span class="content">ENTERED</span><span class="char">\&quot;</span><span class="content">},{</span><span class="char">\&quot;</span><span class="content">id</span><span class="char">\&quot;</span><span class="content">:2,</span><span class="char">\&quot;</span><span class="content">item</span><span class="char">\&quot;</span><span class="content">:</span><span class="char">\&quot;</span><span class="content">Debezium for Dummies</span><span class="char">\&quot;</span><span class="content">,</span><span class="char">\&quot;</span><span class="content">quantity</span><span class="char">\&quot;</span><span class="content">:1,</span><span class="char">\&quot;</span><span class="content">totalPrice</span><span class="char">\&quot;</span><span class="content">:29.99,</span><span class="char">\&quot;</span><span class="content">status</span><span class="char">\&quot;</span><span class="content">:</span><span class="char">\&quot;</span><span class="content">ENTERED</span><span class="char">\&quot;</span><span class="content">}]}</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="wrapping-up">Wrapping up</h3>
+<h3 id="wrapping_up">Wrapping up</h3>
 <div class="paragraph">
 <p>It is really simple and easy to setup and use the Debezium Outbox extension.</p>
 </div>
@@ -1262,7 +1262,7 @@ For more details on the extension, refer to the <a href="https://debezium.io/doc
 </div>
 </div>
 <div class="sect2">
-<h3 id="future-plans">Future Plans</h3>
+<h3 id="future_plans">Future Plans</h3>
 <div class="paragraph">
 <p>The current implementation of the Debezium Outbox extension works quite well, but we acknowledge there is still room for improvement.
 Some of the things we&#8217;ve already identified and have plans to include in future iterations of the extension are:</p>
