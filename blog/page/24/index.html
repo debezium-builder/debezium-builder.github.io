@@ -147,6 +147,8 @@
             
           
             
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -559,7 +561,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 102%">
+            <a href="/tag/examples/" style="font-size: 104%">
               examples
             </a>
           </span>
@@ -597,6 +599,12 @@
           <span class="site-tag">
             <a href="/tag/kafka/" style="font-size: 86%">
               kafka
+            </a>
+          </span>
+          
+          <span class="site-tag">
+            <a href="/tag/kafka-streams/" style="font-size: 82%">
+              kafka streams
             </a>
           </span>
           
@@ -685,7 +693,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 90%">
+            <a href="/tag/quarkus/" style="font-size: 92%">
               quarkus
             </a>
           </span>
@@ -789,6 +797,62 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/rhauch.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2016/10/25/Debezium-0-3-4-Released/">Debezium 0.3.4 Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2016/10/25/Debezium-0-3-4-Released/">Debezium 0.3.4 Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> October 25, 2016 by </em>
+                    <em> Randall Hauch </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>We&#8217;re happy to announce that <strong>Debezium 0.3.4</strong> is now available for use with Kafka Connect 0.10.0.1. This release contains several new features for the MySQL connector: support for MySQL&#8217;s <a href="/docs/connectors/mysql/#data-types"><code>JSON</code></a> datatype, a new snapshot mode called <a href="/docs/connectors/mysql/#snapshots"><code>schema_only</code></a>, and <a href="/docs/monitoring">JMX metrics</a>. Also, the Debezium Docker images for Zookeeper, Kafka, and Kafka Connect have all been updated to allow optionally <a href="/docs/monitoring">expose JMX metrics</a> in these services. And, one backward-incompatible fix was made to the change event&#8217;s <code>ts_sec</code> field. See the <a href="/docs/releases/">release notes</a> for specifics.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve also updated the <a href="https://hub.docker.com/r/debezium/">Debezium Docker images</a> labelled <code>0.3</code> and <code>latest</code>, which we use in our <a href="/docs/tutorial/">tutorial</a>.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to Akshath, Chris, Vitalii, Dennis, Prannoy, and others for their help with the release, issues, discussions, contributions, and questions!</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2016/10/25/Debezium-0-3-4-Released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -1013,64 +1077,6 @@
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/rhauch.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2016/08/30/Debezium-0-3-1-Released/">Debezium 0.3.1 Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2016/08/30/Debezium-0-3-1-Released/">Debezium 0.3.1 Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> August 30, 2016 by </em>
-                    <em> Randall Hauch </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>We&#8217;re happy to announce that <strong>Debezium 0.3.1</strong> is now available for use with Kafka Connect 0.10.0.1. This release contains an updated <a href="/docs/connectors/mysql/">MySQL connector</a> with a handful of bug fixes and two significant but backward-compatible changes. First, the MySQL connector now supports using secure connections to MySQL, adding to the existing ability to connect securely to Kafka. Second, the MySQL connector is able to capture MySQL string values using the proper character sets so that any values stored in the database can be captured correctly in events. See our <a href="/docs/releases/#release-0-3-1">release notes</a> for details of these changes and for upgrading recommendations.</p>
-</div>
-<div class="paragraph">
-<p>We&#8217;ve also updated the <a href="https://hub.docker.com/r/debezium/">Debezium Docker images</a> labelled <code>0.3</code> and <code>latest</code>, which we use in our <a href="/docs/tutorial/">tutorial</a>.</p>
-</div>
-<div class="paragraph">
-<p>Thanks to Chris, Akshath, barten, and and others for their help with the release, issues, discussions, contributions, and questions!</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2016/08/30/Debezium-0-3-1-Released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
 
     <ul class="pager">
       
@@ -1081,7 +1087,7 @@
       
 
       <li class="pages ">
-        Page: 24 of 26
+        Page: 24 of 27
       </li>
       
       

@@ -11,8 +11,38 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation/streams/&quot;&gt;Kafka Streams&lt;/a&gt; is a library for developing applications for processing records from topics in Apache Kafka.
+A Kafka Streams application processes record streams through a topology in real-time processing of data continuously, concurrently, and in a record-by-record manner.
+The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;non_key_joins_in_kafka_streams&quot;&gt;Non-Key Joins in Kafka Streams&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org&quot;&gt;Apache Kafka&lt;/a&gt; 2.4 introduced the foreign key join (&lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable&quot;&gt;KIP-213&lt;/a&gt;) feature to close the gap between the semantics of KTables in streams and tables in relational databases.
+It makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
+This resolved the problem of out-of-order processing due to foreign key changes in tables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A join operation merges two or more input streams and/or tables based on the keys of their data records, and generates a distinct stream/table.
+The join operations available in the Kafka Streams DSL differ based on which kinds of streams or tables that are being joined; for example, KStream-KStream joins, KTable-KTable joins or KTable-KStream joins, etc.
+Joining streams often involves defining input streams that are read from Kafka topics, delivering transformations on the joined streams to produce results, and finally writing the results back to Kafka topics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium 1.4.0.Final Released</title>
@@ -794,45 +824,6 @@ to focus on OSS projects.&lt;/p&gt;
 				<pubDate>Tue, 28 Jul 2020 16:19:59 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/07/28/hello-debezium/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/07/28/hello-debezium/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.2.1.Final Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I am happy to announce the release of Debezium &lt;strong&gt;1.2.1.Final&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release includes several bug fixes to different Debezium connectors, and we highly recommend the upgrade from 1.2.0.Final and earlier versions:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The Debezium Postgres connector may have missed events from concurrent transactions when transitioning from snapshotting to streaming events from the WAL (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2288&quot;&gt;DBZ-2288&lt;/a&gt;);
-this is fixed now when using the &lt;a href=&quot;/documentation/reference/connectors/postgresql.html#postgresql-property-snapshot-mode&quot;&gt;exported snapshotting mode&lt;/a&gt;;
-this mode should preferably be used, and for Debezium 1.3 we&amp;#8217;re planning for this to be the basis for all the existing snapshotting modes&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Postgres JDBC driver got upgraded to 42.2.14 (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2317&quot;&gt;DBZ-2317&lt;/a&gt;),
-which fixes a CVE in the driver related to processing XML column values sourced from untrusted XML input&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Debezium MySQL connector MariaDB&amp;#8217;s supports &lt;code&gt;ALTER TABLE&lt;/code&gt; statements with &lt;code&gt;IF EXISTS&lt;/code&gt; (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2219&quot;&gt;DBZ-2219&lt;/a&gt;);
-it also handles single dimension &lt;code&gt;DECIMAL&lt;/code&gt; columns in &lt;code&gt;CAST&lt;/code&gt; expressions (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2305&quot;&gt;DBZ-2305&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The MySQL connector automatically filters out specific DML binlog entries from internal tables when using it with Amazon RDS (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2275&quot;&gt;DBZ-2275&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Debezium MongoDB connector got more resilient against connection losses (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2141&quot;&gt;DBZ-2141&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Thu, 16 Jul 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/07/16/debezium-1-2-1-final-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/07/16/debezium-1-2-1-final-released/</guid>
 			</item>
 		
 	</channel>

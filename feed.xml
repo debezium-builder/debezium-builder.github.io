@@ -1,4 +1,381 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-02-09T16:36:21+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.4.0.Final Released</title><link href="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Final Released" /><published>2021-01-07T00:00:00+00:00</published><updated>2021-01-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/07/debezium-1-4-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-02-10T17:25:55+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</title><link href="https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/" rel="alternate" type="text/html" title="Understanding Non-Key Joins With the Quarkus Kafka Streams Extension" /><published>2021-02-09T00:00:00+00:00</published><updated>2021-02-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams</id><content type="html" xml:base="https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation/streams/&quot;&gt;Kafka Streams&lt;/a&gt; is a library for developing applications for processing records from topics in Apache Kafka.
+A Kafka Streams application processes record streams through a topology in real-time processing of data continuously, concurrently, and in a record-by-record manner.
+The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;non_key_joins_in_kafka_streams&quot;&gt;Non-Key Joins in Kafka Streams&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org&quot;&gt;Apache Kafka&lt;/a&gt; 2.4 introduced the foreign key join (&lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable&quot;&gt;KIP-213&lt;/a&gt;) feature to close the gap between the semantics of KTables in streams and tables in relational databases.
+It makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
+This resolved the problem of out-of-order processing due to foreign key changes in tables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A join operation merges two or more input streams and/or tables based on the keys of their data records, and generates a distinct stream/table.
+The join operations available in the Kafka Streams DSL differ based on which kinds of streams or tables that are being joined; for example, KStream-KStream joins, KTable-KTable joins or KTable-KStream joins, etc.
+Joining streams often involves defining input streams that are read from Kafka topics, delivering transformations on the joined streams to produce results, and finally writing the results back to Kafka topics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Non-key joins or rather &lt;a href=&quot;https://kafka.apache.org/27/documentation/streams/developer-guide/dsl-api.html#ktable-ktable-fk-join&quot;&gt;foreign-key joins&lt;/a&gt; are analogous to joins in SQL. For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;class&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; CUSTOMER &lt;span class=&quot;keyword&quot;&gt;JOIN&lt;/span&gt; ADDRESS &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; CUSTOMER.ID = ADDRESS.CUSTOMER_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The output of the join is a new KTable containing the join result.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;database_overview&quot;&gt;Database Overview&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;imageblock centered-image&quot;&gt;
+    &lt;img src=&quot;/assets/images/kstreams_db_diagram.jpeg class=&quot;responsive-image&quot; alt=&quot;Database Overview&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The picture above shows the ER diagram of the database used in our application. We are going to focus on two entities:
+ * customer : the list of customers
+ * address : the list of addresses&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;They share a foreign key relationship from address to customer i.e. a customer can have multiple addresses.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Using Kafka Streams, the change event topics for both tables will be loaded into two KTables, which are joined on the customer id.
+The KStreams application is going to process data from the two Kafka topics. These topics receive CDC events based on the customers and addresses, each of which has its corresponding Jackson-annotated POJO (Customer and Address), enriched by a field holding the CDC event type (i.e. UPSERT/DELETE).
+Each insertion, update, or deletion of a record on either side will re-trigger the join.
+Debezium&amp;#8217;s CDC allows to it emits events for each table(s) on distinct topics, and consumers often are interested in a view of such aggregate spanning multiple tables as a single document.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this article, we are going to explore foreign key join using two Debezium change data topics joined via Kafka Streams and running the stream processing application using &lt;a href=&quot;https://quarkus.io/guides/kafka-streams&quot;&gt;Quarkus Kafka Streams Extension&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;creating_an_application_using_quarkus_kafka_streams_extension&quot;&gt;Creating an Application using Quarkus Kafka Streams Extension&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To create a new Quarkus project with this extension, run the following:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn io.quarkus:quarkus-maven-plugin:1.11.1.Final:create \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=kafka-streams-quickstart-aggregator \
+    -Dextensions=&quot;kafka-streams&quot; \
+     &amp;amp;&amp;amp; mv kafka-streams-quickstart-aggregator aggregator&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;understanding_stream_processing_topology&quot;&gt;Understanding Stream Processing Topology&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We have an aggregator that will read from the two Kafka topics and processes them in a streaming pipeline:
+ * the two topics are joined on customer id
+ * each customer is mapped with its addresses depending upon upsert/delete
+ * this aggregated data is written out to a third topic (customersWithAddressesTopic)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When using the Quarkus extension for Kafka Streams all we need to do for that is to declare a CDI producer method.
+A CDI producer method must be always annotated with &lt;code&gt;@Produces&lt;/code&gt;, and it must return a &lt;code&gt;Topology&lt;/code&gt; instance.
+The Quarkus extension will take care of configuring, starting and stopping the actual Kafka Streams engine.
+Now let&amp;#8217;s take a look at the actual streaming query implementation itself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@ApplicationScoped&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;TopologyProducer&lt;/span&gt; {
+
+    &lt;span class=&quot;annotation&quot;&gt;@ConfigProperty&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;customers.topic&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;) &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; customersTopic;
+
+    &lt;span class=&quot;annotation&quot;&gt;@ConfigProperty&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;addresses.topic&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; addressesTopic;
+
+    &lt;span class=&quot;annotation&quot;&gt;@ConfigProperty&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;customers.with.addresses.topic&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; customersWithAddressesTopic;
+
+    &lt;span class=&quot;annotation&quot;&gt;@Produces&lt;/span&gt;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Topology buildTopology() {
+        StreamsBuilder builder = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StreamsBuilder(); &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
+
+        Serde&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Long&lt;/span&gt;&amp;gt; adressKeySerde = DebeziumSerdes.payloadJson(&lt;span class=&quot;predefined-type&quot;&gt;Long&lt;/span&gt;.class);
+        adressKeySerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.emptyMap(), &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
+        Serde&amp;lt;Address&amp;gt; addressSerde = DebeziumSerdes.payloadJson(Address.class);
+        addressSerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.singletonMap(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;from.field&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;), &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;);
+
+        Serde&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;&amp;gt; customersKeySerde = DebeziumSerdes.payloadJson(&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;.class);
+        customersKeySerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.emptyMap(), &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
+        Serde&amp;lt;Customer&amp;gt; customersSerde = DebeziumSerdes.payloadJson(Customer.class);
+        customersSerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.singletonMap(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;from.field&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;), &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;);
+
+        JsonbSerde&amp;lt;AddressAndCustomer&amp;gt; addressAndCustomerSerde = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; JsonbSerde&amp;lt;&amp;gt;(AddressAndCustomer.class); &lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;(3)&lt;/b&gt;
+        JsonbSerde&amp;lt;CustomerWithAddresses&amp;gt; customerWithAddressesSerde = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; JsonbSerde&amp;lt;&amp;gt;(CustomerWithAddresses.class);
+
+        KTable&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Long&lt;/span&gt;, Address&amp;gt; addresses = builder.table( &lt;i class=&quot;conum&quot; data-value=&quot;4&quot;&gt;&lt;/i&gt;&lt;b&gt;(4)&lt;/b&gt;
+                addressesTopic,
+                Consumed.with(adressKeySerde, addressSerde)
+        );
+
+        KTable&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;, Customer&amp;gt; customers = builder.table(
+                customersTopic,
+                Consumed.with(customersKeySerde, customersSerde)
+        );
+
+        KTable&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;, CustomerWithAddresses&amp;gt; customersWithAddresses = addresses.join( &lt;i class=&quot;conum&quot; data-value=&quot;5&quot;&gt;&lt;/i&gt;&lt;b&gt;(5)&lt;/b&gt;
+                customers,
+                address -&amp;gt; address.customer_id,
+                AddressAndCustomer::&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;,
+                Materialized.with(Serdes.Long(), addressAndCustomerSerde)
+            )
+            .groupBy( &lt;i class=&quot;conum&quot; data-value=&quot;6&quot;&gt;&lt;/i&gt;&lt;b&gt;(6)&lt;/b&gt;
+                (addressId, addressAndCustomer) -&amp;gt; KeyValue.pair(addressAndCustomer.customer.id, addressAndCustomer),
+                Grouped.with(Serdes.Integer(), addressAndCustomerSerde)
+            )
+            .aggregate( &lt;i class=&quot;conum&quot; data-value=&quot;7&quot;&gt;&lt;/i&gt;&lt;b&gt;(7)&lt;/b&gt;
+                CustomerWithAddresses::&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;,
+                (customerId, addressAndCustomer, aggregate) -&amp;gt; aggregate.addAddress(addressAndCustomer),
+                (customerId, addressAndCustomer, aggregate) -&amp;gt; aggregate.removeAddress(addressAndCustomer),
+                Materialized.with(Serdes.Integer(), customerWithAddressesSerde)
+            );
+
+        customersWithAddresses.toStream() &lt;i class=&quot;conum&quot; data-value=&quot;8&quot;&gt;&lt;/i&gt;&lt;b&gt;(8)&lt;/b&gt;
+        .to(
+                customersWithAddressesTopic,
+                Produced.with(Serdes.Integer(), customerWithAddressesSerde)
+        );
+
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; builder.build();
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The topic names are injected using the &lt;a href=&quot;https://microprofile.io/project/eclipse/microprofile-config&quot;&gt;MicroProfile Config API&lt;/a&gt;, with the values being provided in the Quarkus &lt;code&gt;application.properties&lt;/code&gt; configuration file.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;2&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Create an instance of &lt;code&gt;StreamsBuilder&lt;/code&gt;, which is the helper object that lets us build our topology.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;3&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;For serializing and deserializing Java types used in the streaming pipeline into/from JSON, Kafka provides the &lt;code&gt;class io.quarkus.kafka.client.serialization.JsonbSerde&lt;/code&gt;.
+The Serde implementation based on JSON-B.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;4&quot;&gt;&lt;/i&gt;&lt;b&gt;4&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;KTable-KTable foreign-key join functionality is used to extract the &lt;code&gt;customer#id&lt;/code&gt; and perform the join.
+&lt;code&gt;StreamsBuilder#table()&lt;/code&gt; to read a Kafka topic into a KTable i.e. &lt;code&gt;addresses&lt;/code&gt; and &lt;code&gt;customers&lt;/code&gt; respectively.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;5&quot;&gt;&lt;/i&gt;&lt;b&gt;5&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The message from the &lt;code&gt;addresses&lt;/code&gt; topic is joined with the corresponding &lt;code&gt;customers&lt;/code&gt; topic, using the topic’s key; the join result contains the data of the customer with its addresses.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;6&quot;&gt;&lt;/i&gt;&lt;b&gt;6&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;groupBy()&lt;/code&gt; operation will have the records to be grouped by &lt;code&gt;customer#id&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;7&quot;&gt;&lt;/i&gt;&lt;b&gt;7&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The first characteristic of aggregations in Kafka is that all aggregations are computed per key.
+That’s why we must group a KTable prior to the actual aggregation step in Kafka Streams via &lt;code&gt;groupBy()&lt;/code&gt;.
+The aggregation operation is applied to records of the same key. It is possible to store the aggregation results in a local state store.
+&lt;code&gt;aggregate()&lt;/code&gt; operation will modify addresses per &lt;code&gt;customer#id&lt;/code&gt; depending upon the &lt;code&gt;upsert&lt;/code&gt; or &lt;code&gt;delete&lt;/code&gt; i.e. &lt;code&gt;addAddress()&lt;/code&gt; or &lt;code&gt;removeAddress()&lt;/code&gt; operation.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;8&quot;&gt;&lt;/i&gt;&lt;b&gt;8&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The results of the pipeline are written out to the &lt;code&gt;customersWithAddressesTopic&lt;/code&gt; topic.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;CustomerWithAddresses&lt;/code&gt; class performs and keeps track of the aggregated values while the events are processed in the streaming pipeline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CustomerWithAddresses&lt;/span&gt; {
+
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Customer customer;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;Address&amp;gt; addresses = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;ArrayList&lt;/span&gt;&amp;lt;&amp;gt;();
+
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; CustomerWithAddresses addAddress(AddressAndCustomer addressAndCustomer) {
+        LOGGER.info(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Adding: &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + addressAndCustomer);
+
+        customer = addressAndCustomer.customer;
+        addresses.add(addressAndCustomer.address);
+
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; CustomerWithAddresses removeAddress(AddressAndCustomer addressAndCustomer) {
+        LOGGER.info(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Removing: &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + addressAndCustomer);
+
+        &lt;span class=&quot;predefined-type&quot;&gt;Iterator&lt;/span&gt;&amp;lt;Address&amp;gt; it = addresses.iterator();
+        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (it.hasNext()) {
+            Address a = it.next();
+            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (a.id == addressAndCustomer.address.id) {
+                it.remove();
+                &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
+            }
+        }
+
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Kafka Streams extension is configured via the Quarkus configuration file &lt;code&gt;application.properties&lt;/code&gt;.
+Along with the topic names, this file also has the information about the Kafka bootstrap server, stream options as follows:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;properties&quot;&gt;customers.topic=dbserver1.inventory.customers
+addresses.topic=dbserver1.inventory.addresses
+customers.with.addresses.topic=customers-with-addresses
+
+quarkus.kafka-streams.bootstrap-servers=localhost:9092
+quarkus.kafka-streams.application-id=kstreams-fkjoin-aggregator
+quarkus.kafka-streams.application-server=${hostname}:8080
+quarkus.kafka-streams.topics=${customers.topic},${addresses.topic}
+
+# streams options
+kafka-streams.cache.max.bytes.buffering=10240
+kafka-streams.commit.interval.ms=1000
+kafka-streams.metadata.max.age.ms=500
+kafka-streams.auto.offset.reset=earliest
+kafka-streams.metrics.recording.level=DEBUG
+kafka-streams.consumer.session.timeout.ms=150
+kafka-streams.consumer.heartbeat.interval.ms=100&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;building_and_running_the_application&quot;&gt;Building and Running the Application&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can now build the aggregator application using:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn clean package -f aggregator/pom.xml&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Setup the necessary environment variables:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;export DEBEZIUM_VERSION=1.4
+export QUARKUS_BUILD=jvm&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To launch all the containers and building aggregator container images run the &lt;a href=&quot;https://github.com/debezium/debezium-examples/blob/master/kstreams-fk-join/docker-compose.yaml&quot;&gt;docker-compose.yaml&lt;/a&gt; as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;docker-compose up --build&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Configure the Debezium Connector:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;http PUT http://localhost:8083/connectors/inventory-connector/config &amp;lt; register-postgres.json&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now run an instance of the &lt;code&gt;debezium/tooling&lt;/code&gt; image, attaching to the same network all the other containers run in:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;docker run --tty --rm \
+    --network kstreams-fk-join-network \
+    debezium/tooling:1.1 \&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This image provides several useful tools such as kafkacat. Within the tooling container, run kafkacat to examine the results of the streaming pipeline:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;kafkacat -b kafka:9092 -C -o beginning -q \
+    -t customers-with-addresses | jq .&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;running_natively&quot;&gt;Running Natively&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Kafka Streams applications can easily be scaled out i.e. the load will be shared amongst multiple instances of the application, each processing just a subset of the partitions of the input topic(s).
+Running Quarkus applications in native code via GraalVM has a very fast start-up time, the applications use significantly less memory when compiled to native code. This allows you to start as many instances of a Kafka Streams pipeline in parallel in a very memory-efficient way.
+If you want to run this application in &lt;code&gt;native&lt;/code&gt; mode, set the &lt;code&gt;QUARKUS_MODE&lt;/code&gt; as &lt;code&gt;native&lt;/code&gt; and run:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn clean package -f aggregator/pom.xml -Pnative&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here is a &lt;a href=&quot;https://quarkus.io/guides/kafka-streams#running-natively&quot;&gt;detailed guide&lt;/a&gt; for you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;more_insights_on_kafka_streams_extension&quot;&gt;More Insights on Kafka Streams Extension&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This extension can help you address some of the common requirements when building microservices.
+For running your Kafka Streams application in production, you can also add health checks and metrics for the data pipeline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://quarkus.io/guides/microprofile-metrics&quot;&gt;Metrics&lt;/a&gt; allow applications to gather various metrics and statistics that provide insights into what is happening inside the application.
+Using the MicroProfile Metrics API, these metrics can be exposed via HTTP using JSON format or the OpenMetrics format.
+From there they can be scraped by tools such as Prometheus and stored for analysis and visualization.
+Apart from application-specific metrics, you can utilize built-in metrics exposed by various Quarkus extensions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;On the other hand, we have &lt;a href=&quot;https://quarkus.io/guides/microprofile-health&quot;&gt;MicroProfile Health&lt;/a&gt;, which provides information about the liveness of the application i.e. states whether your application is running or not and whether your application is able to process requests.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Along with Kafka Streams &lt;a href=&quot;https://quarkus.io/guides/kafka-streams#interactive-queries&quot;&gt;Interactive Queries&lt;/a&gt;, you can directly query the underlying state store of the pipeline for the value associated with a given key.
+By exposing a simple REST endpoint that queries the state store, the latest aggregation result can be retrieved without having to subscribe to any Kafka topic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Quarkus extension for Kafka Streams comes with everything needed to run stream processing pipelines on the JVM as well as in Native mode, along with additional bonuses of performing health checks, metrics and interactive queries.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this article we have discussed stream processing topology of foreign key joins in Kafka Streams and how to use the Quarkus Kafka Streams extension for running and building your application in JVM mode.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can find the complete &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/kstreams-fk-join&quot;&gt;source code&lt;/a&gt; of the implementation in the Debezium examples repo.
+If you got any questions or feedback, please let us know in the comments below.
+We&amp;#8217;re looking forward to your suggestions!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;Thanks a lot &lt;a href=&quot;https://twitter.com/gunnarmorling/&quot;&gt;Gunnar Morling&lt;/a&gt; for your feedback while working on this post!&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Anisha Mohanty</name></author><category term="kafka streams" /><category term="quarkus" /><category term="examples" /><summary type="html">Kafka Streams is a library for developing applications for processing records from topics in Apache Kafka. A Kafka Streams application processes record streams through a topology in real-time processing of data continuously, concurrently, and in a record-by-record manner. The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate. Non-Key Joins in Kafka Streams Apache Kafka 2.4 introduced the foreign key join (KIP-213) feature to close the gap between the semantics of KTables in streams and tables in relational databases. It makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services. This resolved the problem of out-of-order processing due to foreign key changes in tables. A join operation merges two or more input streams and/or tables based on the keys of their data records, and generates a distinct stream/table. The join operations available in the Kafka Streams DSL differ based on which kinds of streams or tables that are being joined; for example, KStream-KStream joins, KTable-KTable joins or KTable-KStream joins, etc. Joining streams often involves defining input streams that are read from Kafka topics, delivering transformations on the joined streams to produce results, and finally writing the results back to Kafka topics.</summary></entry><entry><title type="html">Debezium 1.4.0.Final Released</title><link href="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Final Released" /><published>2021-01-07T00:00:00+00:00</published><updated>2021-01-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/07/debezium-1-4-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I am pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Final&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2606,57 +2983,4 @@ my work to support Debezium and the Debezium community now!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;--René&lt;/p&gt;
-&lt;/div&gt;</content><author><name>René Kerner</name></author><category term="community" /><category term="news" /><summary type="html">Hello everyone, my name is René Kerner and I recently joined Red Hat and the Debezium team. I was working at trivago since 2011, and in 2016 we started using Debezium at version 0.4/0.5 for capturing clickstreams in the offshore datacenters into Kafka and aggregate them in the central cluster. We really intensified Debezium usage within one year and in 2017 we also used it for trivago&amp;#8217;s main data. In 2014 I did my first OSS contributions to Composer, PHP&amp;#8217;s dependency management and gave my first talk on it at the Developer Conference (called code.talks for many years now). Then in 2017 I did my first contributions to Debezium with work on the MySQL snapshot process and fixing a MySQL TIME data type issue. In 2018 I left trivago and started working at Codecentric as a consultant for software architecture and development (mainly JVM focus) and Apache Kafka, doing many trainings and workshops at German &quot;Fortune 500&quot; companies (insurances, industrial sector, media). I was doing lots of networking at that time, where I learned how awesome the community around Kafka is. I was always quite sad I didn&amp;#8217;t have more time to focus on OSS projects.</summary></entry><entry><title type="html">Debezium 1.2.1.Final Released</title><link href="https://debezium.io/blog/2020/07/16/debezium-1-2-1-final-released/" rel="alternate" type="text/html" title="Debezium 1.2.1.Final Released" /><published>2020-07-16T16:19:59+00:00</published><updated>2020-07-16T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/07/16/debezium-1-2-1-final-released</id><content type="html" xml:base="https://debezium.io/blog/2020/07/16/debezium-1-2-1-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I am happy to announce the release of Debezium &lt;strong&gt;1.2.1.Final&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release includes several bug fixes to different Debezium connectors, and we highly recommend the upgrade from 1.2.0.Final and earlier versions:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The Debezium Postgres connector may have missed events from concurrent transactions when transitioning from snapshotting to streaming events from the WAL (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2288&quot;&gt;DBZ-2288&lt;/a&gt;);
-this is fixed now when using the &lt;a href=&quot;/documentation/reference/connectors/postgresql.html#postgresql-property-snapshot-mode&quot;&gt;exported snapshotting mode&lt;/a&gt;;
-this mode should preferably be used, and for Debezium 1.3 we&amp;#8217;re planning for this to be the basis for all the existing snapshotting modes&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Postgres JDBC driver got upgraded to 42.2.14 (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2317&quot;&gt;DBZ-2317&lt;/a&gt;),
-which fixes a CVE in the driver related to processing XML column values sourced from untrusted XML input&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Debezium MySQL connector MariaDB&amp;#8217;s supports &lt;code&gt;ALTER TABLE&lt;/code&gt; statements with &lt;code&gt;IF EXISTS&lt;/code&gt; (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2219&quot;&gt;DBZ-2219&lt;/a&gt;);
-it also handles single dimension &lt;code&gt;DECIMAL&lt;/code&gt; columns in &lt;code&gt;CAST&lt;/code&gt; expressions (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2305&quot;&gt;DBZ-2305&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The MySQL connector automatically filters out specific DML binlog entries from internal tables when using it with Amazon RDS (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2275&quot;&gt;DBZ-2275&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;The Debezium MongoDB connector got more resilient against connection losses (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2141&quot;&gt;DBZ-2141&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If you&amp;#8217;re using the &lt;a href=&quot;https://www.apicur.io/registry/&quot;&gt;Apicurio&lt;/a&gt; open-source API and schema registry for &lt;a href=&quot;/documentation/reference/configuration/avro.html&quot;&gt;managing the JSON and Avro schemas&lt;/a&gt; of your Debezium connectors,
-then things got a bit simpler for you:
-the Debezium container image for Kafka Connect comes with the required converters out of the box now
-(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2083&quot;&gt;DBZ-2083&lt;/a&gt;).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, 34 issues were fixed for this release; please refer to the &lt;a href=&quot;/releases/1.2/release-notes/#release-1.2.1-final&quot;&gt;release notes&lt;/a&gt; for the full list of addressed issues, upgrade procedures, and notes on any backward compatibility changes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Many thanks to all the members from the Debezium community contributing to this release:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/frankkoornstra&quot;&gt;Frank Koornstra&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jgraf50&quot;&gt;John Graf&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jhuiting&quot;&gt;Jos Huiting&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jhiza&quot;&gt;Justin Hiza&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/michaelwang&quot;&gt;Michael Wang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/omarsmak&quot;&gt;Omar Al-Safi&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/rhauch&quot;&gt;Randall Hauch&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="testcontainers" /><category term="debezium-server" /><summary type="html">I am happy to announce the release of Debezium 1.2.1.Final! This release includes several bug fixes to different Debezium connectors, and we highly recommend the upgrade from 1.2.0.Final and earlier versions: The Debezium Postgres connector may have missed events from concurrent transactions when transitioning from snapshotting to streaming events from the WAL (DBZ-2288); this is fixed now when using the exported snapshotting mode; this mode should preferably be used, and for Debezium 1.3 we&amp;#8217;re planning for this to be the basis for all the existing snapshotting modes The Postgres JDBC driver got upgraded to 42.2.14 (DBZ-2317), which fixes a CVE in the driver related to processing XML column values sourced from untrusted XML input The Debezium MySQL connector MariaDB&amp;#8217;s supports ALTER TABLE statements with IF EXISTS (DBZ-2219); it also handles single dimension DECIMAL columns in CAST expressions (DBZ-2305) The MySQL connector automatically filters out specific DML binlog entries from internal tables when using it with Amazon RDS (DBZ-2275) The Debezium MongoDB connector got more resilient against connection losses (DBZ-2141)</summary></entry></feed>
+&lt;/div&gt;</content><author><name>René Kerner</name></author><category term="community" /><category term="news" /><summary type="html">Hello everyone, my name is René Kerner and I recently joined Red Hat and the Debezium team. I was working at trivago since 2011, and in 2016 we started using Debezium at version 0.4/0.5 for capturing clickstreams in the offshore datacenters into Kafka and aggregate them in the central cluster. We really intensified Debezium usage within one year and in 2017 we also used it for trivago&amp;#8217;s main data. In 2014 I did my first OSS contributions to Composer, PHP&amp;#8217;s dependency management and gave my first talk on it at the Developer Conference (called code.talks for many years now). Then in 2017 I did my first contributions to Debezium with work on the MySQL snapshot process and fixing a MySQL TIME data type issue. In 2018 I left trivago and started working at Codecentric as a consultant for software architecture and development (mainly JVM focus) and Apache Kafka, doing many trainings and workshops at German &quot;Fortune 500&quot; companies (insurances, industrial sector, media). I was doing lots of networking at that time, where I learned how awesome the community around Kafka is. I was always quite sad I didn&amp;#8217;t have more time to focus on OSS projects.</summary></entry></feed>

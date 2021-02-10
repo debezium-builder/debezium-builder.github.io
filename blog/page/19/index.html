@@ -147,6 +147,8 @@
             
           
             
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -559,7 +561,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 102%">
+            <a href="/tag/examples/" style="font-size: 104%">
               examples
             </a>
           </span>
@@ -597,6 +599,12 @@
           <span class="site-tag">
             <a href="/tag/kafka/" style="font-size: 86%">
               kafka
+            </a>
+          </span>
+          
+          <span class="site-tag">
+            <a href="/tag/kafka-streams/" style="font-size: 82%">
+              kafka streams
             </a>
           </span>
           
@@ -685,7 +693,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 90%">
+            <a href="/tag/quarkus/" style="font-size: 92%">
               quarkus
             </a>
           </span>
@@ -789,6 +797,71 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2018/03/20/debezium-0-7-5-released/">Debezium 0.7.5 Is Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2018/03/20/debezium-0-7-5-released/">Debezium 0.7.5 Is Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> March 20, 2018 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.7.5</strong>!</p>
+</div>
+<div class="paragraph">
+<p>This is a bugfix release to the 0.7 release line, which we decided to do while working towards Debezium 0.8.
+Most notably it fixes an unfortunate bug introduced in 0.7.3 (<a href="https://issues.redhat.com/browse/DBZ-663">DBZ-663</a>),
+where the internal database history topic of the Debezium MySQL connector could be partly deleted under some specific conditions.
+Please see the <a href="/2018/03/16/note-on-database-history-topic-configuration/">dedicated blog post</a> on this issue to find out whether this affects you and what you should do to prevent this issue.</p>
+</div>
+<div class="paragraph">
+<p>Together with this, we released a couple of other fixes and improvements.
+Thanks to <a href="https://github.com/maver1ck">Maciej Brynski</a>, the performance of the <a href="/docs/configuration/topic-routing/">logical table routing SMT</a> has been improved significantly (<a href="https://issues.redhat.com/browse/DBZ-655">DBZ-655</a>).
+Another fix contributed by Maciej is for <a href="https://issues.redhat.com/browse/DBZ-646">DBZ-646</a> which lets the MySQL connector handle <code>CREATE TABLE</code> statements for the TokuDB storage engine now.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2018/03/20/debezium-0-7-5-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -1018,83 +1091,6 @@ please check out the <a href="/docs/releases/">release notes</a> of all versions
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/01/25/debezium-0-7-2-released/">Debezium 0.7.2 Is Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/01/25/debezium-0-7-2-released/">Debezium 0.7.2 Is Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> January 25, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.7.2</strong>!</p>
-</div>
-<div class="paragraph">
-<p>Amongst the new features there&#8217;s support for geo-spatial types,
-a new snapshotting mode for recovering a lost DB history topic for the MySQL connector,
-and a message transformation for converting MongoDB change events into a structure which can be consumed by many more sink connectors.
-And of course we fixed a whole lot of bugs, too.</p>
-</div>
-<div class="paragraph">
-<p>Debezium 0.7.2 is a drop-in replacement for previous 0.7.x versions.
-When upgrading from versions earlier than 0.7.0,
-please check out the <a href="/docs/releases/">release notes</a> of all 0.7.x releases to learn about any steps potentially required for upgrading.</p>
-</div>
-<div class="paragraph">
-<p>A big thank you goes out to our fantastic community members for their hard work on this release:
-<a href="https://github.com/jchipmunk">Andrey Pustovetov</a>,
-<a href="https://github.com/notxcain">Denis Mikhaylov</a>,
-<a href="https://github.com/pgoranss">Peter Goransson</a>,
-<a href="https://github.com/rcoup">Robert Coup</a>,
-<a href="https://github.com/sairam881990">Sairam Polavarapu</a> and
-<a href="https://github.com/tombentley">Tom Bentley</a>.</p>
-</div>
-<div class="paragraph">
-<p>Now let&#8217;s take a closer look at some of new features.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/01/25/debezium-0-7-2-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
 
     <ul class="pager">
       
@@ -1105,7 +1101,7 @@ please check out the <a href="/docs/releases/">release notes</a> of all 0.7.x re
       
 
       <li class="pages ">
-        Page: 19 of 26
+        Page: 19 of 27
       </li>
       
       
