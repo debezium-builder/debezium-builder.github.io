@@ -147,6 +147,8 @@
             
           
             
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -559,7 +561,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 102%">
+            <a href="/tag/examples/" style="font-size: 104%">
               examples
             </a>
           </span>
@@ -597,6 +599,12 @@
           <span class="site-tag">
             <a href="/tag/kafka/" style="font-size: 86%">
               kafka
+            </a>
+          </span>
+          
+          <span class="site-tag">
+            <a href="/tag/kafka-streams/" style="font-size: 82%">
+              kafka streams
             </a>
           </span>
           
@@ -685,7 +693,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 90%">
+            <a href="/tag/quarkus/" style="font-size: 92%">
               quarkus
             </a>
           </span>
@@ -789,6 +797,73 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/anmohant.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2021/02/09/non-key-joins-in-kstreams/">Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2021/02/09/non-key-joins-in-kstreams/">Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> February 9, 2021 by </em>
+                    <em> Anisha Mohanty </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/kafka streams/">kafka streams</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/quarkus/">quarkus</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/examples/">examples</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p><a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> is a library for developing applications for processing records from topics in Apache Kafka.
+A Kafka Streams application processes record streams through a topology in real-time processing of data continuously, concurrently, and in a record-by-record manner.
+The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.</p>
+</div>
+<div class="sect1">
+<h2 id="non_key_joins_in_kafka_streams">Non-Key Joins in Kafka Streams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://kafka.apache.org">Apache Kafka</a> 2.4 introduced the foreign key join (<a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable">KIP-213</a>) feature to close the gap between the semantics of KTables in streams and tables in relational databases.
+It makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
+This resolved the problem of out-of-order processing due to foreign key changes in tables.</p>
+</div>
+<div class="paragraph">
+<p>A join operation merges two or more input streams and/or tables based on the keys of their data records, and generates a distinct stream/table.
+The join operations available in the Kafka Streams DSL differ based on which kinds of streams or tables that are being joined; for example, KStream-KStream joins, KTable-KTable joins or KTable-KStream joins, etc.
+Joining streams often involves defining input streams that are read from Kafka topics, delivering transformations on the joined streams to produce results, and finally writing the results back to Kafka topics.</p>
+</div>
+</div>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2021/02/09/non-key-joins-in-kstreams/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -1048,74 +1123,6 @@ With 2020 in the books, I thought it&#8217;d be nice to take a look back and do 
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/ccranfor.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/12/09/debezium-1-4-beta1-released/">Debezium 1.4.0.Beta1 Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/12/09/debezium-1-4-beta1-released/">Debezium 1.4.0.Beta1 Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> December 9, 2020 by </em>
-                    <em> Chris Cranford </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/vitess/">vitess</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>I&#8217;m pleased to announce the release of Debezium <strong>1.4.0.Beta1</strong>!</p>
-</div>
-<div class="paragraph">
-<p>This release includes support for distributed tracing,
-lowercase table and schema naming for Db2,
-specifying MySQL snapshot records as create or read operations,
-and enhancements to Vitess for nullable and primary key columns.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/12/09/debezium-1-4-beta1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
 
     <ul class="pager">
       
@@ -1126,7 +1133,7 @@ and enhancements to Vitess for nullable and primary key columns.</p>
       
 
       <li class="pages ">
-        Page: 1 of 26
+        Page: 1 of 27
       </li>
       
       
