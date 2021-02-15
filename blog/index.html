@@ -836,21 +836,30 @@
           
             <p><div class="paragraph">
 <p><a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> is a library for developing applications for processing records from topics in Apache Kafka.
-A Kafka Streams application processes record streams through a topology in real-time processing of data continuously, concurrently, and in a record-by-record manner.
+A Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner.
 The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.</p>
 </div>
 <div class="sect1">
 <h2 id="non_key_joins_in_kafka_streams">Non-Key Joins in Kafka Streams</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://kafka.apache.org">Apache Kafka</a> 2.4 introduced the foreign key join (<a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable">KIP-213</a>) feature to close the gap between the semantics of KTables in streams and tables in relational databases.
-It makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
-This resolved the problem of out-of-order processing due to foreign key changes in tables.</p>
+<p><a href="https://kafka.apache.org">Apache Kafka</a> 2.4 introduced the foreign key join (<a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable">KIP-213</a>) feature, in order "to close the gap between the semantics of KTables in streams and tables in relational databases".
+Before KIP-213, in order to join messages from two Debezium change event topics, you&#8217;d have to manually re-key the topic(s); so to make sure the same key is used on both sides of the join.
+Thanks to KIP-213, this isn&#8217;t needed any longer, as it makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
+This resolved the problem of out-of-order processing due to foreign key changes in tables.
+Here is an interesting <a href="https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/">post</a> by Hans-Peter Grahsl and Gunnar Morling on creating aggregated events from Debezium’s CDC events.</p>
 </div>
 <div class="paragraph">
-<p>A join operation merges two or more input streams and/or tables based on the keys of their data records, and generates a distinct stream/table.
-The join operations available in the Kafka Streams DSL differ based on which kinds of streams or tables that are being joined; for example, KStream-KStream joins, KTable-KTable joins or KTable-KStream joins, etc.
-Joining streams often involves defining input streams that are read from Kafka topics, delivering transformations on the joined streams to produce results, and finally writing the results back to Kafka topics.</p>
+<p>Debezium’s CDC source connectors makes it easy to capture data changes in databases and push them towards Elasticsearch in near real-time.
+This results in a 1:1 relationship between tables in the source database and a corresponding search index in Elasticsearch.
+Incase of 1:many relationship, say two tables with different primary keys and a foreign key relationship, Debezium provides a <code>message.key.columns</code> option.
+By choosing that foreign key column as the message key for change events, the two table streams could be joined without the need for re-keying the topic manually.
+The <code>message.key.columns</code> option can be used as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>message.key.columns=dbserver1.inventory.customerdetails:CustomerId</pre>
+</div>
 </div>
 </div>
 </div></p>
