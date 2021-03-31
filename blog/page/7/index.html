@@ -149,6 +149,16 @@
             
           
             
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -495,7 +505,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/cassandra/" style="font-size: 134%">
+            <a href="/tag/cassandra/" style="font-size: 144%">
               cassandra
             </a>
           </span>
@@ -513,13 +523,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/db2/" style="font-size: 114%">
+            <a href="/tag/db2/" style="font-size: 124%">
               db2
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/debezium-server/" style="font-size: 86%">
+            <a href="/tag/debezium-server/" style="font-size: 88%">
               debezium server
             </a>
           </span>
@@ -639,13 +649,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mongodb/" style="font-size: 186%">
+            <a href="/tag/mongodb/" style="font-size: 188%">
               mongodb
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mysql/" style="font-size: 252%">
+            <a href="/tag/mysql/" style="font-size: 262%">
               mysql
             </a>
           </span>
@@ -663,19 +673,19 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/oracle/" style="font-size: 150%">
+            <a href="/tag/oracle/" style="font-size: 160%">
               oracle
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/outbox/" style="font-size: 100%">
+            <a href="/tag/outbox/" style="font-size: 110%">
               outbox
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/postgres/" style="font-size: 222%">
+            <a href="/tag/postgres/" style="font-size: 232%">
               postgres
             </a>
           </span>
@@ -705,7 +715,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/releases/" style="font-size: 236%">
+            <a href="/tag/releases/" style="font-size: 246%">
               releases
             </a>
           </span>
@@ -747,7 +757,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/sqlserver/" style="font-size: 170%">
+            <a href="/tag/sqlserver/" style="font-size: 180%">
               sqlserver
             </a>
           </span>
@@ -777,7 +787,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/vitess/" style="font-size: 96%">
+            <a href="/tag/vitess/" style="font-size: 106%">
               vitess
             </a>
           </span>
@@ -810,13 +820,13 @@
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/03/13/debezium-1-1-c1-released/">Debezium 1.1.0.CR1 Released</a> 
+                    <a href="/blog/2020/04/16/debezium-1-2-alpha1-released/">Debezium 1.2.0.Alpha1 Released</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/03/13/debezium-1-1-c1-released/">Debezium 1.1.0.CR1 Released</a> 
+                    <a href="/blog/2020/04/16/debezium-1-2-alpha1-released/">Debezium 1.2.0.Alpha1 Released</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> March 13, 2020 by </em>
+                    <em> April 16, 2020 by </em>
                     <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -828,11 +838,9 @@
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
-                      
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
                       
                     </div> 
                   </div> 
@@ -843,119 +851,35 @@
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>1.1.0.CR1</strong>!</p>
+<p>I&#8217;m very happy to announce the release of Debezium <strong>1.2.0.Alpha1</strong>!</p>
 </div>
 <div class="paragraph">
-<p>This release brings a brand-new API module, including a facility for overriding the schema and value conversion of specific columns.
-The Postgres connector gained the ability to reconnect to the database after a connection loss, and the MongoDB connector supports the metrics known from other connectors now.</p>
+<p>This first drop of the 1.2 release line provides a number of useful new features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Support for message transformations (SMTs) and converters in the Debezium embedded engine API</p>
+</li>
+<li>
+<p>A new SMT for filtering out change events using scripting languages</p>
+</li>
+<li>
+<p>Automatic reconnects for the SQL Server connector</p>
+</li>
+<li>
+<p>A new column masking mode using consistent hash values</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Overall, the community fixed not less than <a href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.2.0.Alpha1%20ORDER%20BY%20issuetype%20DESC">41 issues</a> for this release.
+Let&#8217;s take a closer look at some of them in the remainder of this post.</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/03/13/debezium-1-1-c1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                
-                  <img src="/assets/images/color_debezium_64px.png" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/03/05/db2-cdc-approaches/">Approaches to Running Change Data Capture for Db2</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/03/05/db2-cdc-approaches/">Approaches to Running Change Data Capture for Db2</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> March 5, 2020 by </em>
-                    <em> Luis Garcés-Erice, Sean Rooney, Peter Urbanetz </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/discussion/">discussion</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>We have developed a Debezium connector for usage with <a href="https://www.ibm.com/analytics/db2">Db2</a> which
-is now available as part of the Debezium incubator.
-Here we describe the use case we have for Change Data Capture (CDC),
-the various approaches that already exist in the Db2 ecology,
-and how we came to Debezium. In addition, we motivate the approach
-we took to implementing the Db2 Debezium connector.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/03/05/db2-cdc-approaches/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/hashhar.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/02/25/lessons-learned-running-debezium-with-postgresql-on-rds/">Lessons Learned from Running Debezium with PostgreSQL on Amazon RDS</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/02/25/lessons-learned-running-debezium-with-postgresql-on-rds/">Lessons Learned from Running Debezium with PostgreSQL on Amazon RDS</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> February 25, 2020 by </em>
-                    <em> Ashhar Hasan </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/aws/">aws</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/rds/">rds</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>In this blog post, we are going to discuss how <a href="https://www.delhivery.com/">Delhivery</a>, the leading supply chain services company in India, is using Debezium to power a lot of different business use-cases ranging from driving event driven microservices, providing data integration and moving operational data to a data warehouse for real-time analytics and reporting. We will also take a look at the early mistakes we made when integrating Debezium and how we solved them so that any future users can avoid them, discuss one of the more challenging production incidents we faced and how Debezium helped ensure we could recover without any data loss. In closing, we discuss what value Debezium has provided us, areas where we believe there is a scope for improvement and how Debezium fits into our future goals.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/02/25/lessons-learned-running-debezium-with-postgresql-on-rds/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2020/04/16/debezium-1-2-alpha1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -975,21 +899,21 @@ we took to implementing the Db2 Debezium connector.</p>
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/02/19/debezium-camel-integration/">Integration Scenarios with Debezium and Apache Camel</a> 
+                    <a href="/blog/2020/04/09/using-debezium-with-apicurio-api-schema-registry/">Using Debezium With the Apicurio API and Schema Registry</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/02/19/debezium-camel-integration/">Integration Scenarios with Debezium and Apache Camel</a> 
+                    <a href="/blog/2020/04/09/using-debezium-with-apicurio-api-schema-registry/">Using Debezium With the Apicurio API and Schema Registry</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> February 19, 2020 by </em>
+                    <em> April 9, 2020 by </em>
                     <em> Jiri Pechanec </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/camel/">camel</a> 
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/schema/">schema</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/integration/">integration</a> 
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/avro/">avro</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/quarkus/">quarkus</a> 
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/apicurio/">apicurio</a> 
                       
                     </div> 
                   </div> 
@@ -1000,29 +924,68 @@ we took to implementing the Db2 Debezium connector.</p>
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>One of the typical Debezium uses cases is to use change data capture to integrate a legacy system with other systems in the organization.
-There are multiple ways how to achieve this goal</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Write data to Kafka using Debezium and follow with a combination of Kafka Streams pipelines and Kafka Connect connectors to deliver the changes to other systems</p>
-</li>
-<li>
-<p>Use <a href="https://debezium.io/documentation/reference/1.1/operations/embedded.html">Debezium Embedded engine</a> in a Java standalone application and write the integration code using plain Java; that&#8217;s often used to send change events to alternative messaging infrastructure such as Amazon Kinesis, Google Pub/Sub etc.</p>
-</li>
-<li>
-<p>Use an existing integration framework or service bus to express the pipeline logic</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This article is focusing on the third option - a dedicated integration framework.</p>
+<p>Change events streamed from a database by Debezium are (in developer parlance) strongly typed.
+This means that event consumers should be aware of the types of data conveyed in the events.
+This problem of passing along message type data can be solved in multiple ways:</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/02/19/debezium-camel-integration/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2020/04/09/using-debezium-with-apicurio-api-schema-registry/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/ccranfor.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2020/03/31/debezium-newsletter-01-2020/">Debezium's Newsletter 01/2020</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2020/03/31/debezium-newsletter-01-2020/">Debezium's Newsletter 01/2020</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> March 31, 2020 by </em>
+                    <em> Chris Cranford </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/community/">community</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/news/">news</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/newsletter/">newsletter</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>Welcome to the latest edition of the Debezium community newsletter, in which we share all things CDC related including blog posts, group discussions, as well as StackOverflow
+questions that are relevant to our user community.</p>
+</div>
+<div class="paragraph">
+<p>In case you missed our last edition, you can check it out <a href="/blog/2019/10/17/debezium-newsletter-02-2019/">here</a>.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2020/03/31/debezium-newsletter-01-2020/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1042,17 +1005,19 @@ There are multiple ways how to achieve this goal</p>
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/02/13/debezium-1-1-beta2-released/">Debezium 1.1.0.Beta2 Released</a> 
+                    <a href="/blog/2020/03/24/debezium-1-1-final-released/">Debezium 1.1.0.Final Released</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/02/13/debezium-1-1-beta2-released/">Debezium 1.1.0.Beta2 Released</a> 
+                    <a href="/blog/2020/03/24/debezium-1-1-final-released/">Debezium 1.1.0.Final Released</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> February 13, 2020 by </em>
+                    <em> March 24, 2020 by </em>
                     <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
                       
@@ -1064,9 +1029,7 @@ There are multiple ways how to achieve this goal</p>
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/outbox/">outbox</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/quarkus/">quarkus</a> 
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
                       
                     </div> 
                   </div> 
@@ -1077,18 +1040,106 @@ There are multiple ways how to achieve this goal</p>
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>Release early, release often!
-After the 1.1 Beta1 and 1.0.1 Final releases earlier this week, I&#8217;m today happy to share the news about the release of Debezium <strong>1.1.0.Beta2</strong>!</p>
+<p>It&#8217;s with great excitement that I&#8217;m announcing the release of Debezium <strong>1.1.0.Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>The main addition in Beta2 is support for integration tests of your change data capture (CDC) set-up using Testcontainers.
-In addition, the Quarkus extension for implementing the outbox pattern as well as
-the SMT for extracting the <code>after</code> state of change events have been re-worked and offer more configuration flexibility now.</p>
+<p>About three months after the 1.0 release, this new version comes with many exciting new features such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <a href="/documentation/reference/1.1/integrations/outbox.html">Quarkus</a> extension facilitating the outbox pattern</p>
+</li>
+<li>
+<p>support for the <a href="/documentation/reference/1.1/integrations/cloudevents.html">CloudEvents</a> specification</p>
+</li>
+<li>
+<p>an incubating <a href="/documentation/reference/1.1/connectors/db2.html">connector for the IBM Db2 database</a></p>
+</li>
+<li>
+<p>transaction marker events</p>
+</li>
+<li>
+<p>support for <a href="/documentation/reference/1.1/integrations/testcontainers.html">CDC integration testing</a> via Testcontainers</p>
+</li>
+<li>
+<p>a brand-new API Debezium module containing a reworked <a href="/documentation/reference/1.1/development/engine.html">embedded engine API</a> as well as an SPI for <a href="/documentation/reference/1.1/development/converters.html">customizing schema and values of change events</a></p>
+</li>
+</ul>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/02/13/debezium-1-1-beta2-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2020/03/24/debezium-1-1-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2020/03/19/integration-testing-for-change-data-capture-with-testcontainers/">Integration Testing for Change Data Capture with Testcontainers</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2020/03/19/integration-testing-for-change-data-capture-with-testcontainers/">Integration Testing for Change Data Capture with Testcontainers</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> March 19, 2020 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/discussion/">discussion</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/testcontainers/">testcontainers</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>Setting up change data capture (CDC) pipelines with Debezium typically is a matter of configuration,
+without any programming being involved.
+It&#8217;s still a very good idea to have automated tests for your CDC set-up,
+making sure that everything is configured correctly
+and that your Debezium connectors are set up as intended.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s two main components involved whose configuration need consideration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>The source database:</strong> it must be set up so that Debezium can connect to it and retrieve change events; details depend on the specific database, e.g. for MySQL the binlog must be in "row" mode,
+for Postgres, one of the supported logical decoding plug-ins must be installed, etc.</p>
+</li>
+<li>
+<p><strong>The Debezium connector:</strong> it must be configured using the right database host and credentials,
+possibly using SSL, applying table and column filters, potentially one or more single message transformations (SMTs), etc.</p>
+</li>
+</ul>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2020/03/19/integration-testing-for-change-data-capture-with-testcontainers/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1106,7 +1157,7 @@ the SMT for extracting the <code>after</code> state of change events have been r
       
 
       <li class="pages ">
-        Page: 7 of 27
+        Page: 7 of 28
       </li>
       
       
@@ -1209,50 +1260,12 @@ the SMT for extracting the <code>after</code> state of change events have been r
     </a>
   </div>
 </div>
-<div class="text-center">env: staging</div>
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
-  <script type="text/javascript" src="/assets/javascript/jquery.cookies.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
-  <script type="application/x-social-share-privacy-settings">
-    {
-      "path_prefix":"/assets/socialshare/",
-      "layout":"line",
-      "services": {
-        "buffer": {
-            "status": false
-        },
-        "delicious": {
-            "status": false
-        },
-        "disqus": {
-            "status": false
-        },
-        "facebook": {
-          "status": false
-        },
-        "flattr": {
-            "status": false
-        },
-        "gplus": {
-            "status": false
-        },
-        "hackernews": {
-            "status": false
-        },
-        "pinterest": {
-            "status": false
-        },
-        "xing": {
-            "status": false
-        }
-      }
-    }
-  </script>
   <script>
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();

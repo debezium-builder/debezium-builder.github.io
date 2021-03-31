@@ -149,6 +149,16 @@
             
           
             
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -495,7 +505,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/cassandra/" style="font-size: 134%">
+            <a href="/tag/cassandra/" style="font-size: 144%">
               cassandra
             </a>
           </span>
@@ -513,13 +523,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/db2/" style="font-size: 114%">
+            <a href="/tag/db2/" style="font-size: 124%">
               db2
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/debezium-server/" style="font-size: 86%">
+            <a href="/tag/debezium-server/" style="font-size: 88%">
               debezium server
             </a>
           </span>
@@ -639,13 +649,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mongodb/" style="font-size: 186%">
+            <a href="/tag/mongodb/" style="font-size: 188%">
               mongodb
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mysql/" style="font-size: 252%">
+            <a href="/tag/mysql/" style="font-size: 262%">
               mysql
             </a>
           </span>
@@ -663,19 +673,19 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/oracle/" style="font-size: 150%">
+            <a href="/tag/oracle/" style="font-size: 160%">
               oracle
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/outbox/" style="font-size: 100%">
+            <a href="/tag/outbox/" style="font-size: 110%">
               outbox
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/postgres/" style="font-size: 222%">
+            <a href="/tag/postgres/" style="font-size: 232%">
               postgres
             </a>
           </span>
@@ -705,7 +715,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/releases/" style="font-size: 236%">
+            <a href="/tag/releases/" style="font-size: 246%">
               releases
             </a>
           </span>
@@ -747,7 +757,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/sqlserver/" style="font-size: 170%">
+            <a href="/tag/sqlserver/" style="font-size: 180%">
               sqlserver
             </a>
           </span>
@@ -777,7 +787,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/vitess/" style="font-size: 96%">
+            <a href="/tag/vitess/" style="font-size: 106%">
               vitess
             </a>
           </span>
@@ -810,13 +820,13 @@
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/12/09/debezium-1-4-beta1-released/">Debezium 1.4.0.Beta1 Released</a> 
+                    <a href="/blog/2021/01/28/debezium-1-4-1-final-released/">Debezium 1.4.1.Final Released</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/12/09/debezium-1-4-beta1-released/">Debezium 1.4.0.Beta1 Released</a> 
+                    <a href="/blog/2021/01/28/debezium-1-4-1-final-released/">Debezium 1.4.1.Final Released</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> December 9, 2020 by </em>
+                    <em> January 28, 2021 by </em>
                     <em> Chris Cranford </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -832,11 +842,15 @@
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
-                      
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
                       
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
+                      
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/vitess/">vitess</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/debezium-server/">debezium-server</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/outbox/">outbox</a> 
                       
                     </div> 
                   </div> 
@@ -847,18 +861,15 @@
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>I&#8217;m pleased to announce the release of Debezium <strong>1.4.0.Beta1</strong>!</p>
+<p>I&#8217;m pleased to announce the release of Debezium <strong>1.4.1.Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>This release includes support for distributed tracing,
-lowercase table and schema naming for Db2,
-specifying MySQL snapshot records as create or read operations,
-and enhancements to Vitess for nullable and primary key columns.</p>
+<p>We highly recommend upgrading from 1.4.0.Final and earlier versions as this release includes bug fixes and enhancements to several Debezium connectors which includes some of the following:</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/12/09/debezium-1-4-beta1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2021/01/28/debezium-1-4-1-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -878,88 +889,13 @@ and enhancements to Vitess for nullable and primary key columns.</p>
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/11/17/debezium-1-4-alpha2-released/">Debezium 1.4.0.Alpha2 Released</a> 
+                    <a href="/blog/2021/01/07/debezium-1-4-final-released/">Debezium 1.4.0.Final Released</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/11/17/debezium-1-4-alpha2-released/">Debezium 1.4.0.Alpha2 Released</a> 
+                    <a href="/blog/2021/01/07/debezium-1-4-final-released/">Debezium 1.4.0.Final Released</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> November 17, 2020 by </em>
-                    <em> Chris Cranford </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/vitess/">vitess</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>I&#8217;m excited to announce the release of Debezium <strong>1.4.0.Alpha2</strong>!</p>
-</div>
-<div class="paragraph">
-<p>This second pass of the 1.4 release line provides a few useful new features:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>New API hook for the PostgreSQL <code>Snapshotter</code> interface</p>
-</li>
-<li>
-<p>Field renaming using <code>ExtractNewRecordState</code> SMT&#8217;s <code>add.fields</code> and <code>add.headers</code> configurations</p>
-</li>
-</ul>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/11/17/debezium-1-4-alpha2-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/ccranfor.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/11/12/debezium-1-3-1-final-released/">Debezium 1.3.1.Final Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/11/12/debezium-1-3-1-final-released/">Debezium 1.3.1.Final Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> November 12, 2020 by </em>
+                    <em> January 7, 2021 by </em>
                     <em> Chris Cranford </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -990,78 +926,44 @@ and enhancements to Vitess for nullable and primary key columns.</p>
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>I&#8217;m excited to announce the release of Debezium <strong>1.3.1.Final</strong>!</p>
+<p>I am pleased to announce the release of Debezium <strong>1.4.0.Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>This release primarily focuses on bugs that were reported after the 1.3 release.
-Most importantly, the following bugs were fixed related to the <a href="/docs/connectors/oracle">Debezium connector for Oracle</a> LogMiner adapter thanks to the continued feedback by the Debezium community.</p>
+<p>This release concludes the major work put into Debezium over the last three months.
+Overall, the community fixed <a href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.4.0.Final%2C%201.4.0.Alpha1%2C%201.4.0.Beta1%2C%201.4.0.CR1)%20ORDER%20BY%20issuetype%20DESC%2C%20updated%20DESC%2C%20priority%20DESC">117 issues</a> during that time, including the following key features and changes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>SQLExceptions thrown when using Oracle LogMiner (<a href="https://issues.redhat.com/browse/DBZ-2624">DBZ-2624</a>)</p>
+<p>New <a href="/documentation/reference/connectors/vitess.html">Vitess</a> connector, featured in an in-depth <a href="/blog/2020/11/04/streaming-vitess-at-bolt/">blog post</a> by Kewei Shang</p>
 </li>
 <li>
-<p>LogMiner mining session stopped due to WorkerTask killed (<a href="https://issues.redhat.com/browse/DBZ-2629">DBZ-2629</a>)</p>
+<p>Fine-grained selection of snapshotted tables</p>
+</li>
+<li>
+<p>PostgreSQL <code>Snapshotter</code> completion hook</p>
+</li>
+<li>
+<p>Distributed <a href="/blog/2020/12/16/distributed-tracing-with-debezium/">Tracing</a></p>
+</li>
+<li>
+<p>MySQL support for <em>create</em> or <em>read</em> records emitted during snapshot</p>
+</li>
+<li>
+<p>Many Oracle <a href="/documentation/reference/connectors/oracle.html#_logminer">Logminer adapter</a> improvements</p>
+</li>
+<li>
+<p>Full support for Oracle JDBC connection strings</p>
+</li>
+<li>
+<p>Improved reporting of DDL errors</p>
 </li>
 </ul>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/11/12/debezium-1-3-1-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                
-                  <img src="/assets/images/color_debezium_64px.png" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/11/04/streaming-vitess-at-bolt/">Streaming Vitess at Bolt</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/11/04/streaming-vitess-at-bolt/">Streaming Vitess at Bolt</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> November 4, 2020 by </em>
-                    <em> Kewei Shang, Ruslan Gibaiev </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/vitess/">vitess</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p><strong><em>This post originally appeared on the <a href="https://medium.com/bolt-labs/streaming-vitess-at-bolt-f8ea93211c3f">Bolt Labs Engineering blog</a>.</em></strong></p>
-</div>
-<div class="paragraph">
-<p>Traditionally, MySQL has been used to power most of the backend services at <a href="https://bolt.eu/en/">Bolt</a>. We&#8217;ve designed our schemas in a way that they&#8217;re sharded into different MySQL clusters. Each MySQL cluster contains a subset of data and consists of one primary and multiple replication nodes.</p>
-</div>
-<div class="paragraph">
-<p>Once data is persisted to the database, we use the <a href="https://debezium.io/documentation/reference/connectors/mysql.html">Debezium MySQL Connector</a> to <a href="https://www.confluent.io/blog/how-bolt-adopted-cdc-with-confluent-for-real-time-data-and-analytics/">capture data change events</a> and send them to Kafka. This gives us an easy and reliable way to communicate changes between back-end microservices.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/11/04/streaming-vitess-at-bolt/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2021/01/07/debezium-1-4-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1076,24 +978,22 @@ Most importantly, the following bugs were fixed related to the <a href="/docs/co
             <div style="display: table-cell; vertical-align: top;"> 
               <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
                  
-                  <img src="/assets/images/anmohant.jpg" style="width: 64px;"> 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
                 
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2020/10/27/hello-debezium/">Hello Debezium!</a> 
+                    <a href="/blog/2021/01/06/debezium-2020-recap/">Debezium in 2020 -- The Recap!</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2020/10/27/hello-debezium/">Hello Debezium!</a> 
+                    <a href="/blog/2021/01/06/debezium-2020-recap/">Debezium in 2020 -- The Recap!</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> October 27, 2020 by </em>
-                    <em> Anisha Mohanty </em>
+                    <em> January 6, 2021 by </em>
+                    <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/community/">community</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/news/">news</a> 
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/discussion/">discussion</a> 
                       
                     </div> 
                   </div> 
@@ -1104,21 +1004,130 @@ Most importantly, the following bugs were fixed related to the <a href="/docs/co
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>Hello everyone, my name is Anisha Mohanty and I recently joined Red Hat and the Debezium team.</p>
+<p>A Happy New Year to the Debezium Community!</p>
 </div>
 <div class="paragraph">
-<p>I started my journey with Red Hat in April 2020 after completing my graduation. I was introduced to open source in my early college days, but I wasn&#8217;t aware of how organizations work and wanted to get the essence of open source ethics and values. That is something that I am fascinated to learn as I joined Red Hat.</p>
+<p>May all your endavours be successful, your data be consistent, and most importantly, everyone stay safe and healthy.
+With 2020 in the books, I thought it&#8217;d be nice to take a look back and do a quick recap of what has happened around Debezium over the last year.</p>
 </div>
 <div class="paragraph">
-<p>My work started under the Data Virtualization team with Teiid and then under the <a href="https://graphqlcrud.org/">GRAPHQLCRUD</a> project which is a standard for a generic query interface on top of GraphQL. The project has started well and is in great shape right now. We have successfully added CRUD capabilities, paging, and filtering specifications.</p>
-</div>
-<div class="paragraph">
-<p>Coming to Debezium, I first heard about it as some DV members started contributing here, well back then it was a completely new thing for me. I started exploring more, and it was not long when I had my first interaction with Gunnar and Jiri. With a warm welcome and great team here, I am really excited to work with the Debezium Community.</p>
+<p>First, some facts and numbers for you stats lovers out there:</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2020/10/27/hello-debezium/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2021/01/06/debezium-2020-recap/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/ccranfor.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2020/12/17/debezium-1-4-cr1-released/">Debezium 1.4.0.CR1 Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2020/12/17/debezium-1-4-cr1-released/">Debezium 1.4.0.CR1 Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> December 17, 2020 by </em>
+                    <em> Chris Cranford </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/vitess/">vitess</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>I&#8217;m pleased to announce the release of Debezium <strong>1.4.0.CR1</strong>!</p>
+</div>
+<div class="paragraph">
+<p>This release focuses primarily on polishing the 1.4 release.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2020/12/17/debezium-1-4-cr1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/jpechane.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2020/12/16/distributed-tracing-with-debezium/">Distributed Tracing with Debezium</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2020/12/16/distributed-tracing-with-debezium/">Distributed Tracing with Debezium</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> December 16, 2020 by </em>
+                    <em> Jiri Pechanec </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/tracing/">tracing</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/jaeger/">jaeger</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p>The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&#8217;s runtime state. This is more challenging with microservice architectures, as a single business transaction...</p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2020/12/16/distributed-tracing-with-debezium/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1136,7 +1145,7 @@ Most importantly, the following bugs were fixed related to the <a href="/docs/co
       
 
       <li class="pages ">
-        Page: 2 of 27
+        Page: 2 of 28
       </li>
       
       
@@ -1239,50 +1248,12 @@ Most importantly, the following bugs were fixed related to the <a href="/docs/co
     </a>
   </div>
 </div>
-<div class="text-center">env: staging</div>
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
-  <script type="text/javascript" src="/assets/javascript/jquery.cookies.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
-  <script type="application/x-social-share-privacy-settings">
-    {
-      "path_prefix":"/assets/socialshare/",
-      "layout":"line",
-      "services": {
-        "buffer": {
-            "status": false
-        },
-        "delicious": {
-            "status": false
-        },
-        "disqus": {
-            "status": false
-        },
-        "facebook": {
-          "status": false
-        },
-        "flattr": {
-            "status": false
-        },
-        "gplus": {
-            "status": false
-        },
-        "hackernews": {
-            "status": false
-        },
-        "pinterest": {
-            "status": false
-        },
-        "xing": {
-            "status": false
-        }
-      }
-    }
-  </script>
   <script>
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();

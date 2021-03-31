@@ -11,46 +11,140 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate>
 		
 		
 			<item>
-				<title>Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</title>
+				<title>Debezium 1.5.0.CR1 Released</title>
 				
 				
 					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation/streams/&quot;&gt;Kafka Streams&lt;/a&gt; is a library for developing applications for processing records from topics in Apache Kafka.
-A Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner.
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.5.0.CR1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As we begin moving toward finalizing the Debezium 1.5 release stream,
+the Oracle connector has been promoted to stable and there were some TLS improvements for the Cassandra connector, as well as numerous bugfixes.
+Overall, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.5.0.CR1%20ORDER%20BY%20issuetype%20DESC&amp;amp;startIndex=20&quot;&gt;50 issues&lt;/a&gt; have been addressed for this release.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/03/24/debezium-1-5-cr1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/03/24/debezium-1-5-cr1-released/</guid>
+			</item>
+		
+			<item>
+				<title>Understanding Non-Key Joins With the Quarkus Extension for Kafka Streams</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation/streams/&quot;&gt;Kafka Streams&lt;/a&gt; is a library for developing stream processing applications based on Apache Kafka.
+Quoting its docs, &quot;a Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner&quot;.
 The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;non_key_joins_in_kafka_streams&quot;&gt;Non-Key Joins in Kafka Streams&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org&quot;&gt;Apache Kafka&lt;/a&gt; 2.4 introduced the foreign key join (&lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable&quot;&gt;KIP-213&lt;/a&gt;) feature, in order &quot;to close the gap between the semantics of KTables in streams and tables in relational databases&quot;.
-Before KIP-213, in order to join messages from two Debezium change event topics, you&amp;#8217;d have to manually re-key the topic(s); so to make sure the same key is used on both sides of the join.
-Thanks to KIP-213, this isn&amp;#8217;t needed any longer, as it makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
-This resolved the problem of out-of-order processing due to foreign key changes in tables.
-Here is an interesting &lt;a href=&quot;https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/&quot;&gt;post&lt;/a&gt; by Hans-Peter Grahsl and Gunnar Morling on creating aggregated events from Debezium’s CDC events.&lt;/p&gt;
+&lt;p&gt;Debezium’s CDC source connectors make it easy to capture data changes in databases and push them towards sink systems such as Elasticsearch in near real-time.
+By default, this results in a 1:1 relationship between tables in the source database, the corresponding Kafka topics,
+and a representation of the data at the sink side, such as a search index in Elasticsearch.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Debezium’s CDC source connectors makes it easy to capture data changes in databases and push them towards Elasticsearch in near real-time.
-This results in a 1:1 relationship between tables in the source database and a corresponding search index in Elasticsearch.
-Incase of 1:many relationship, say two tables with different primary keys and a foreign key relationship, Debezium provides a &lt;code&gt;message.key.columns&lt;/code&gt; option.
-By choosing that foreign key column as the message key for change events, the two table streams could be joined without the need for re-keying the topic manually.
-The &lt;code&gt;message.key.columns&lt;/code&gt; option can be used as:&lt;/p&gt;
+&lt;p&gt;In case of 1:n relationships, say between a table of customers and a table of addresses,
+consumers often are interested  in a view of the data that is a single, nested data structure, e.g. a single Elasticsearch document representing a customer and all their addresses.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;message.key.columns=dbserver1.inventory.customerdetails:CustomerId&lt;/pre&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is where &lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable&quot;&gt;KIP-213&lt;/a&gt; (&quot;Kafka Improvement Proposal&quot;) and its foreign key joining capabilities come in:
+it was introduced in &lt;a href=&quot;https://kafka.apache.org&quot;&gt;Apache Kafka&lt;/a&gt; 2.4 &quot;to close the gap between the semantics of KTables in streams and tables in relational databases&quot;.
+Before KIP-213, in order to join messages from two Debezium change event topics, you&amp;#8217;d typically have to manually re-key at least one of the topics, so to make sure the same key is used on both sides of the join.&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Thanks to KIP-213, this isn&amp;#8217;t needed any longer, as it allows to join two Kafka topics on fields extracted from the Kafka message value,
+taking care of the required re-keying automatically, in a fully transparent way.
+Comparing to &lt;a href=&quot;/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/&quot;&gt;previous approaches&lt;/a&gt;,
+this drastically reduces the effort for creating aggregated events from Debezium’s CDC events.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
 				
-				<pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
-				<link>https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/</guid>
+				<pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/03/18/understanding-non-key-joins-with-quarkus-extension-for-kafka-streams/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/03/18/understanding-non-key-joins-with-quarkus-extension-for-kafka-streams/</guid>
+			</item>
+		
+			<item>
+				<title>Debezium 1.5.0.Beta2 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We are very happy to announce the release of Debezium &lt;strong&gt;1.5.0.Beta2&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The main features of this release is the new Debezium Signaling Table support,
+Vitess SET type support, and
+a continued focus to minor improvements, bugfixes, and polish as we sprint to the finish line for the 1.5 release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.5.0.Beta2%20ORDER%20BY%20issuetype%20DESC&quot;&gt;54 issues&lt;/a&gt; since the Beta1 release,
+some of which we&amp;#8217;ll explore more in-depth below.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/03/15/debezium-1-5-beta2-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/03/15/debezium-1-5-beta2-released/</guid>
+			</item>
+		
+			<item>
+				<title>Debezium 1.5.0.Beta1 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m very happy to announce the release of Debezium &lt;strong&gt;1.5.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release adds a brand-new component&amp;#8201;&amp;#8212;&amp;#8201;the web-based Debezium UI --, transaction metadata support for the MySQL connector,
+a large number of improvements to the LogMiner-based capture implementation for the Debezium Oracle connector,
+support for Vitess 9.0, and much more.
+Let&amp;#8217;s explore some of the new features in the following.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/02/24/debezium-1-5-beta1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/02/24/debezium-1-5-beta1-released/</guid>
+			</item>
+		
+			<item>
+				<title>Debezium 1.5.0.Alpha1 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.5 series, &lt;strong&gt;1.5.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release brings many improvements to the LogMiner-based capture implementation for the Debezium Oracle connector,
+a large overhaul of the MySQL connector,
+as well as a wide range of bug fixes and other small feature additions.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/02/08/debezium-1-5-alpha1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/02/08/debezium-1-5-alpha1-released/</guid>
+			</item>
+		
+			<item>
+				<title>Debezium 1.4.1.Final Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.1.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We highly recommend upgrading from 1.4.0.Final and earlier versions as this release includes bug fixes and enhancements to several Debezium connectors which includes some of the following:&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/01/28/debezium-1-4-1-final-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/01/28/debezium-1-4-1-final-released/</guid>
 			</item>
 		
 			<item>
@@ -678,161 +772,6 @@ overall, not less than &lt;a href=&quot;https://issues.redhat.com/issues/?jql=pr
 				<pubDate>Thu, 24 Sep 2020 16:19:59 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/09/24/debezium-1-3-cr1-released/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/09/24/debezium-1-3-cr1-released/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.3.0.Beta2 Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m very happy to announce the release of Debezium &lt;strong&gt;1.3.0.Beta2&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In this release we&amp;#8217;ve improved support for column filtering for the MySQL and SQL Server connectors,
-and there&amp;#8217;s a brand-new implementation for ingesting change events from Oracle, using the LogMiner package.
-As we&amp;#8217;re on the home stretch towards Debezium 1.3 Final,
-there&amp;#8217;s also a wide range of smaller improvements, bug fixes and documentation clarifications;
-overall, not less than &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.3.0.Beta2%20ORDER%20BY%20issuetype%20DESC&amp;amp;startIndex=20&quot;&gt;44 issues&lt;/a&gt; have been resolved for this release.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Wed, 16 Sep 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/09/16/debezium-1-3-beta2-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/09/16/debezium-1-3-beta2-released/</guid>
-			</item>
-		
-			<item>
-				<title>Auto-creating Debezium Change Data Topics</title>
-				
-				
-					<description>&lt;div class=&quot;imageblock centered-image&quot;&gt;
-    &lt;img src=&quot;/assets/images/new_pipes.jpg&quot; class=&quot;responsive-image&quot; alt=&quot;Create new topics / pipes&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When you are working with Kafka Connect Distributed then you might have realized that once you start
-Kafka Connect there are already some internal Kafka Connect related topics created for you:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;$ kafka-topics.sh --bootstrap-server $HOSTNAME:9092 --list
-
-connect_configs
-connect_offsets
-connect_statuses&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is done automatically for you by Kafka Connect with a sane, customized default topic configuration
-that fits the needs of these internal topics.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When you start a Debezium connector the topics for the captured events are created by the Kafka
-broker based on a default, maybe customized, configuration in the broker if
-&lt;code&gt;auto.create.topics.enable = true&lt;/code&gt; is enabled in the broker config:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight nowrap&quot;&gt;&lt;code&gt;auto.create.topics.enable = true
-default.replication.factor = 1
-num.partitions = 1
-compression.type = producer
-log.cleanup.policy = delete
-log.retention.ms = 604800000  ## 7 days&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;But often, when you use Debezium and Kafka in a production environment you might choose to disable
-Kafka&amp;#8217;s topic auto creation capability with &lt;code&gt;auto.create.topics.enable = false&lt;/code&gt;, or you want the
-connector topics to be configured differently from the default. In this case you have to create
-topics for Debezium&amp;#8217;s captured data sources upfront.&lt;br&gt;
-But there&amp;#8217;s good news! Beginning with Kafka Connect version 2.6.0, this can be automated since
-&lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-158%3A+Kafka+Connect+should+allow+source+connectors+to+set+topic-specific+settings+for+new+topics&quot;&gt;KIP-158&lt;/a&gt;
-is implemented to enable customizable topic creation with Kafka Connect.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Tue, 15 Sep 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/09/15/debezium-auto-create-topics/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/09/15/debezium-auto-create-topics/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.3.0.Beta1 Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.3.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release upgrades to the recently released Apache Kafka version 2.6.0, fixes several critical bugs and comes with a renaming of the connector configuration options for selecting the tables to be captured.
-We&amp;#8217;ve also released Debezium 1.2.2.Final, which is a drop-in replacement for all users of earlier 1.2.x releases.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Thu, 03 Sep 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/09/03/debezium-1-3-beta1-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/09/03/debezium-1-3-beta1-released/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.3.0.Alpha1 Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m excited to announce the release of Debezium &lt;strong&gt;1.3.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This initial pass in the 1.3 release line provides a number of useful new features:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;A new Debezium Server sink adapter for Azure Event Hubs&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;A new SQL Server connector snapshot mode, &lt;code&gt;initial_only&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Additional connection timeout options for the MongoDB Connector&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, the community fixed not less than &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.3.0.Alpha1%20ORDER%20BY%20issuetype%20DESC&quot;&gt;31 issues&lt;/a&gt; for this release.
-Let&amp;#8217;s take a closer look at some of them in the remainder of this post.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Thu, 06 Aug 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/08/06/debezium-1-3-alpha1-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/08/06/debezium-1-3-alpha1-released/</guid>
-			</item>
-		
-			<item>
-				<title>Hello Debezium Team!</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Hello everyone, my name is René Kerner and I recently joined Red Hat and the Debezium team.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I was working at trivago since 2011, and in 2016 we started using Debezium at version 0.4/0.5 for
-capturing clickstreams in the offshore datacenters into Kafka and aggregate them in the central cluster.
-We really intensified Debezium usage within one year and in 2017 we also used it for trivago&amp;#8217;s main data.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In 2014 I did my first OSS contributions to Composer, PHP&amp;#8217;s dependency management and gave my first talk
-on it at the Developer Conference (called code.talks for many years now).
-Then in 2017 I did my first contributions to Debezium with work on the MySQL snapshot process
-and fixing a MySQL TIME data type issue.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In 2018 I left trivago and started working at Codecentric as a consultant for software architecture and
-development (mainly JVM focus) and Apache Kafka, doing many trainings and workshops at German &quot;Fortune 500&quot;
-companies (insurances, industrial sector, media). I was doing lots of networking at that time, where I
-learned how awesome the community around Kafka is. I was always quite sad I didn&amp;#8217;t have more time
-to focus on OSS projects.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Tue, 28 Jul 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/07/28/hello-debezium/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/07/28/hello-debezium/</guid>
 			</item>
 		
 	</channel>

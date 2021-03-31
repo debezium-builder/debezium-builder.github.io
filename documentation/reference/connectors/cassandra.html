@@ -102,6 +102,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../configuration/topic-auto-create-config.html">Customizing Topic Auto-Creation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../configuration/signalling.html">Sending Signals to Debezium</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -209,6 +212,9 @@
           <a href="../index.html">master</a>
         </li>
         <li class="version">
+          <a href="../1.5/index.html">1.5</a>
+        </li>
+        <li class="version">
           <a href="../1.4/index.html">1.4</a>
         </li>
         <li class="version">
@@ -254,6 +260,7 @@
         <!--<button class="version-menu-toggle versions-menu-select" title="Select other versions">Select</button>-->
         <div class="version-menu">
                 <a class="version is-current" href="cassandra.html">master</a>
+                <a class="version" href="../1.5/connectors/cassandra.html">1.5</a>
                 <a class="version" href="../1.4/connectors/cassandra.html">1.4</a>
                 <a class="version" href="../1.3/connectors/cassandra.html">1.3</a>
                 <a class="version" href="../1.2/connectors/cassandra.html">1.2</a>
@@ -273,7 +280,7 @@
             <div class="version-banner version-banner-development">
     You are viewing documentation for the current development version of Debezium.
     <br/>
-            If you want to view the latest stable version of this page, please go <a href="../1.3/connectors/cassandra.html">here</a>.
+            If you want to view the latest stable version of this page, please go <a href="../1.4/connectors/cassandra.html">here</a>.
             
 </div>            <h1 class="page">Debezium Connector for Cassandra</h1>
         <div id="preamble">
@@ -1821,7 +1828,7 @@ latest.commit.log.only=true</code></pre>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The SSL config file path required for storage node.</p>
+<p>The SSL config file path required for storage node. An example of config file can be found at the bottom of the page.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1995,7 +2002,7 @@ refreshing the cached Cassandra table schemas.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div id="cassandra-property-field-exclude-list" class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="cassandra-property-field-exclude-list"></a><a href="#cassandra-property-field-exclude-list"><code>field.exclude.list</code></a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
@@ -2017,6 +2024,39 @@ See <a href="../configuration/avro.html#avro-naming" class="page">Avro naming</a
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>If the Cassandra agent use SSL to connect to Cassandra node, an SSL config file is required.
+The following example shows how to write the SSL config file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">keyStore.location=/var/private/ssl/cassandra.keystore.jks
+keyStore.password=cassandra
+keyStore.type=JKS
+trustStore.location=/var/private/ssl/cassandra.truststore.jks
+trustStore.password=cassandra
+trustStore.type=JKS
+keyManager.algorithm=SunX509
+trustManager.algorithm=SunX509
+cipherSuites=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The cipherSuites field is not mandatory, it simply allows you to add one (or more) ciphers that are not present.
+The default value of trustStore.type and keyStore.type is JKS.
+The default value of keyManager.algorithm and trustManager.algorithm is SunX509.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The connector also supports pass-through configuration properties that are used when creating the Kafka producer. Specifically, all connector configuration properties that begin with the <code>kafka.producer.</code> prefix are used (without the prefix) when creating the Kafka producer that writes events to Kafka.</p>
 </div>
@@ -2064,7 +2104,7 @@ com.blueapron.connect.protobuf.ProtobufConverter</code></pre>
 
 <div id="toc-rightbar"></div>    <footer class="footer">
         <div class="wrapper">
-            <div class="copyright">Copyright &copy; 2020 Debezium Community</div>
+            <div class="copyright">Copyright &copy; 2021 Debezium Community</div>
         </div>
     </footer>
 </main>

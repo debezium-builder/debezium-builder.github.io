@@ -149,6 +149,16 @@
             
           
             
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -495,7 +505,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/cassandra/" style="font-size: 134%">
+            <a href="/tag/cassandra/" style="font-size: 144%">
               cassandra
             </a>
           </span>
@@ -513,13 +523,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/db2/" style="font-size: 114%">
+            <a href="/tag/db2/" style="font-size: 124%">
               db2
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/debezium-server/" style="font-size: 86%">
+            <a href="/tag/debezium-server/" style="font-size: 88%">
               debezium server
             </a>
           </span>
@@ -639,13 +649,13 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mongodb/" style="font-size: 186%">
+            <a href="/tag/mongodb/" style="font-size: 188%">
               mongodb
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mysql/" style="font-size: 252%">
+            <a href="/tag/mysql/" style="font-size: 262%">
               mysql
             </a>
           </span>
@@ -663,19 +673,19 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/oracle/" style="font-size: 150%">
+            <a href="/tag/oracle/" style="font-size: 160%">
               oracle
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/outbox/" style="font-size: 100%">
+            <a href="/tag/outbox/" style="font-size: 110%">
               outbox
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/postgres/" style="font-size: 222%">
+            <a href="/tag/postgres/" style="font-size: 232%">
               postgres
             </a>
           </span>
@@ -705,7 +715,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/releases/" style="font-size: 236%">
+            <a href="/tag/releases/" style="font-size: 246%">
               releases
             </a>
           </span>
@@ -747,7 +757,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/sqlserver/" style="font-size: 170%">
+            <a href="/tag/sqlserver/" style="font-size: 180%">
               sqlserver
             </a>
           </span>
@@ -777,7 +787,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/vitess/" style="font-size: 96%">
+            <a href="/tag/vitess/" style="font-size: 106%">
               vitess
             </a>
           </span>
@@ -810,13 +820,13 @@
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2019/01/28/debezium-0-9-0-cr1-released/">Debezium 0.9.0.CR1 Released</a> 
+                    <a href="/blog/2019/02/25/debezium-0-9-2-final-released/">Debezium 0.9.2.Final Released</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2019/01/28/debezium-0-9-0-cr1-released/">Debezium 0.9.0.CR1 Released</a> 
+                    <a href="/blog/2019/02/25/debezium-0-9-2-final-released/">Debezium 0.9.2.Final Released</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> January 28, 2019 by </em>
+                    <em> February 25, 2019 by </em>
                     <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -830,8 +840,6 @@
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
                       
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
-                      
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
                       
                     </div> 
@@ -843,21 +851,19 @@
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>Reaching the home stretch towards Debezium 0.9, it&#8217;s with great pleasure that I&#8217;m announcing the first release of Debezium in 2019, <strong>0.9.0.CR1</strong>!</p>
+<p>The Debezium team is happy to announce the release of Debezium <strong>0.9.2.Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>For this release we&#8217;ve mainly focused on sorting out remaining issues in the Debezium <a href="/docs/connectors/sqlserver/">connector for SQL Server</a>;
-the connector comes with greatly improved performance and has received a fair number of bug fixes.</p>
+<p>This is mostly a bug-fix release and a drop-in replacement for earlier Debezium 0.9.x versions.
+Overall, <a href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%200.9.2.Final">18 issues</a> were resolved.</p>
 </div>
 <div class="paragraph">
-<p>Other changes include a new interface for event handlers of Debezium&#8217;s <a href="/docs/embedded/">embedded engine</a>,
-which allows for bulk handling of change events, an option to export the scale of numeric columns as schema parameter,
-as well as a wide range of bug fixes for the Debezium connectors for MySQL, Postgres and Oracle.</p>
+<p>A couple of fixes relate to the <a href="/docs/connectors/postgresql/">Debezium Postgres connector</a>:</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2019/01/28/debezium-0-9-0-cr1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2019/02/25/debezium-0-9-2-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -877,89 +883,13 @@ as well as a wide range of bug fixes for the Debezium connectors for MySQL, Post
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/12/19/debezium-0-9-0-beta2-released/">Debezium 0.9.0.Beta2 Released</a> 
+                    <a href="/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">Reliable Microservices Data Exchange With the Outbox Pattern</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/12/19/debezium-0-9-0-beta2-released/">Debezium 0.9.0.Beta2 Released</a> 
+                    <a href="/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">Reliable Microservices Data Exchange With the Outbox Pattern</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> December 19, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>With only a few days left for the year, it&#8217;s about time for another Debezium release;
-so it&#8217;s with great pleasure that I&#8217;m announcing Debezium <strong>0.9.0.Beta2</strong>!</p>
-</div>
-<div class="paragraph">
-<p>This release comes with support for MySQL 8 and Oracle 11g;
-it includes a first cut of metrics for monitoring the SQL Server and Oracle connectors,
-several improvements to the MongoDB event flattening SMT as well as a wide range of bug fixes.
-Overall, not less than <a href="/docs/releases/#release-0-9-0-beta2">42 issues</a> were addressed;
-very clearly, there has to be <a href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Answer_to_the_Ultimate_Question_of_Life%2C_the_Universe%2C_and_Everything_%2842%29">some deeper sense</a> in that ;)</p>
-</div>
-<div class="paragraph">
-<p>A big shout out goes to the following members Debezium&#8217;s amazing community, who contributed to this release:
-<a href="https://github.com/pimpelsang">Eero Koplimets</a>, <a href="https://github.com/grzegorz8">Grzegorz Kołakowski</a>,
-<a href="https://github.com/ooooorz">Hanlin Liu</a>, <a href="https://github.com/sweat123">Lao Mei</a>,
-<a href="https://github.com/renatomefi">Renato Mefi</a>, <a href="https://github.com/tautautau">Tautvydas Januskevicius</a>,
-<a href="https://github.com/wscheep">Wout Scheepers</a> and <a href="https://github.com/wangzheng422">Zheng Wang</a>!</p>
-</div>
-<div class="paragraph">
-<p>In the following, let&#8217;s take a closer look at some of the changes coming with the 0.9 Beta2 release.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/12/19/debezium-0-9-0-beta2-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/12/05/automating-cache-invalidation-with-change-data-capture/">Automating Cache Invalidation With Change Data Capture</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/12/05/automating-cache-invalidation-with-change-data-capture/">Automating Cache Invalidation With Change Data Capture</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> December 5, 2018 by </em>
+                    <em> February 19, 2019 by </em>
                     <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -967,6 +897,10 @@ very clearly, there has to be <a href="https://en.wikipedia.org/wiki/Phrases_fro
                       
                         <a class="label label-info hidden-sm hidden-xs" href="/tag/examples/">examples</a> 
                       
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/microservices/">microservices</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/apache-kafka/">apache-kafka</a> 
+                      
                     </div> 
                   </div> 
                 </div> 
@@ -976,33 +910,16 @@ very clearly, there has to be <a href="https://en.wikipedia.org/wiki/Phrases_fro
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>The <a href="https://docs.jboss.org/hibernate/stable/orm/userguide/html_single/Hibernate_User_Guide.html#caching-config">second-level cache</a> of Hibernate ORM / JPA is a proven and efficient way to increase application performance:
-caching read-only or rarely modified entities avoids roundtrips to the database,
-resulting in improved response times of the application.</p>
-</div>
-<div class="paragraph">
-<p>Unlike the first-level cache, the second-level cache is associated with the session factory (or entity manager factory in JPA terms),
-so its contents are shared across transactions and concurrent sessions.
-Naturally, if a cached entity gets modified, the corresponding cache entry must be updated (or purged from the cache), too.
-As long as the data changes are done through Hibernate ORM, this is nothing to worry about: the ORM will update the cache automatically.</p>
-</div>
-<div class="paragraph">
-<p>Things get tricky, though, when bypassing the application, e.g. when modifying records directly in the database.
-Hibernate ORM then has no way of knowing that the cached data has become stale, and it&#8217;s necessary to invalidate the affected items explicitly.
-A common way for doing so is to foresee some admin functionality that allows to clear  an application&#8217;s caches.
-For this to work, it&#8217;s vital to not forget about calling that invalidation functionality, or the application will keep working with outdated cached data.</p>
-</div>
-<div class="paragraph">
-<p>In the following we&#8217;re going to explore an alternative approach for cache invalidation, which works in a reliable and fully automated way:
-by employing Debezium and its <a href="/blog/2018/07/19/advantages-of-log-based-change-data-capture/">change data capture</a> (CDC) capabilities, you can track data changes in the database itself and react to any applied change.
-This allows to invalidate affected cache entries in near-realtime,
-without the risk of stale data due to missed changes.
-If an entry has been evicted from the cache, Hibernate ORM will load the latest version of the entity from the database the next time is requested.</p>
+<p>As part of their business logic, microservices often do not only have to update their own local data store,
+but they also need to notify other services about data changes that happened.
+The outbox pattern describes an approach for letting services execute these two tasks in a safe and consistent manner;
+it provides source services with instant "read your own writes" semantics,
+while offering reliable, eventually consistent data exchange across service boundaries.</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/12/05/automating-cache-invalidation-with-change-data-capture/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1022,13 +939,70 @@ If an entry has been evicted from the cache, Hibernate ORM will load the latest 
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/11/22/debezium-0-9-0-beta1-released/">Debezium 0.9.0.Beta1 Released</a> 
+                    <a href="/blog/2019/02/13/debezium-webinar-at-devnation-live/">Debezium at DevNation Live</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/11/22/debezium-0-9-0-beta1-released/">Debezium 0.9.0.Beta1 Released</a> 
+                    <a href="/blog/2019/02/13/debezium-webinar-at-devnation-live/">Debezium at DevNation Live</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> November 22, 2018 by </em>
+                    <em> February 13, 2019 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/introduction/">introduction</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/presentation/">presentation</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>Last week I had the pleasure to do a <a href="https://developers.redhat.com/videos/youtube/QYbXDp4Vu-8/">webinar on change data streaming patterns for microservices</a> with the fabulous Burr Sutter at DevNation Live.</p>
+</div>
+<div class="paragraph">
+<p>The recording of that 30 min session is available on YouTube now.
+It also contains a demo that shows how to set-up a data streaming pipeline with Debezium and Apache Kafka,
+running on OpenShift.
+The demo begins at 12 min 40 into the recording.</p>
+</div>
+<div class="paragraph">
+<p>Enjoy!</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2019/02/13/debezium-webinar-at-devnation-live/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2019/02/13/debezium-0-9-1-final-released/">Debezium 0.9.1.Final Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2019/02/13/debezium-0-9-1-final-released/">Debezium 0.9.1.Final Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> February 13, 2019 by </em>
                     <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -1055,29 +1029,23 @@ If an entry has been evicted from the cache, Hibernate ORM will load the latest 
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.9.0.Beta1</strong>!
-Oh, and to those of you who are celebrating it&#8201;&#8212;&#8201;Happy Thanksgiving!</p>
+<p>Quickly following up to last week&#8217;s release of Debezium 0.9, it&#8217;s my pleasure today to announce the release of Debezium <strong>0.9.1.Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>This new Debezium release comes with several great improvements to our work-in-progress SQL Server connector:</p>
+<p>This release fixes a couple of bugs which were reported after the 0.9 release.
+Most importantly, there are two fixes to the new <a href="/docs/connectors/sqlserver/">Debezium connector for SQL Server</a>,
+which deal with correct handling of LSNs after connector restarts (<a href="https://issues.redhat.com/browse/DBZ-1128">DBZ-1128</a>, <a href="https://issues.redhat.com/browse/DBZ-1131">DBZ-1131</a>).
+The connector also uses more reasonable defaults for the <code>selectMethod</code> and <code>fetchSize</code> options of the SQL Server JDBC driver (<a href="https://issues.redhat.com/browse/DBZ-1065">DBZ-1065</a>),
+which can help to significantly increase through-put and reduce memory consumption of the connector.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Initial snapshots can be done using the <code>snapshot</code> isolation level if enabled in the DB (<a href="https://issues.redhat.com/browse/DBZ-941">DBZ-941</a>)</p>
-</li>
-<li>
-<p>Changes to the structures of captured tables after the connector has been set up are supported now (<a href="https://issues.redhat.com/browse/DBZ-812">DBZ-812</a>)</p>
-</li>
-<li>
-<p>New connector option <code>decimal.handling.mode</code> (<a href="https://issues.redhat.com/browse/DBZ-953">DBZ-953</a>) and pass-through of any <code>database.*</code> option to the JDBC driver (<a href="https://issues.redhat.com/browse/DBZ-964">DBZ-964</a>)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The MySQL connector supports <code>GENERATED</code> columns now with the new Antlr-based DDL parser (<a href="https://issues.redhat.com/browse/DBZ-1123">DBZ-1123</a>),
+and for the Postgres connector the handling of primary key column definition changes was improved (<a href="https://issues.redhat.com/browse/DBZ-997">DBZ-997</a>).</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/11/22/debezium-0-9-0-beta1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2019/02/13/debezium-0-9-1-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1097,13 +1065,13 @@ Oh, and to those of you who are celebrating it&#8201;&#8212;&#8201;Happy Thanksg
               </div> </div> <div style="display: table-cell; vertical-align: top;"> 
                 <div style="margin-left: 8px;"> 
                   <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/10/04/debezium-0-9-0-alpha2-released/">Debezium 0.9.0.Alpha2 Released</a> 
+                    <a href="/blog/2019/02/05/debezium-0-9-0-final-released/">Debezium 0.9.0.Final Released</a> 
                   </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/10/04/debezium-0-9-0-alpha2-released/">Debezium 0.9.0.Alpha2 Released</a> 
+                    <a href="/blog/2019/02/05/debezium-0-9-0-final-released/">Debezium 0.9.0.Final Released</a> 
                   </span> <div class="byline" style="line-height: 1;"> 
                     
                     
-                    <em> October 4, 2018 by </em>
+                    <em> February 5, 2019 by </em>
                     <em> Gunnar Morling </em>
                     <div class="hidden-xs" style="margin-top: 5px;"> 
                       
@@ -1130,40 +1098,25 @@ Oh, and to those of you who are celebrating it&#8201;&#8212;&#8201;Happy Thanksg
         <div class="grid__item width-12-12">
           
             <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.9.0.Alpha2</strong>!</p>
+<p>I&#8217;m delighted to announce the release of Debezium <strong>0.9 Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>While the work on the connectors for SQL Server and Oracle continues, we decided to do another Alpha release,
-as lots of fixes and new features - many of them contributed by community members - have piled up,
-which we wanted to get into your hands as quickly as possible.</p>
+<p>This release only adds a small number of changes since last week&#8217;s CR1 release;
+most prominently there&#8217;s some more metrics for the SQL Server connector
+(lag behind master, number of transactions etc.)
+and two bug fixes related to the handling of partitioned tables in MySQL (<a href="https://issues.redhat.com/browse/DBZ-1113">DBZ-1113</a>) and Postgres (<a href="https://issues.redhat.com/browse/DBZ-1118">DBZ-1118</a>).</p>
 </div>
 <div class="paragraph">
-<p>This release supports Apache Kafka 2.0, comes with support for Postgres' HSTORE column type, allows to rename and filter fields from change data messages for MongoDB
-and contains multiple bug fixes and performance improvements.
-Overall, this release contains <a href="/docs/releases/#release-0-9-0-alpha2">55 fixes</a>
-(note that a few of these have been merged back to 0.8.x and are contained in earlier 0.8 releases, too).</p>
-</div>
-<div class="paragraph">
-<p>A big "Thank You" is in order to community members
-<a href="https://github.com/jchipmunk">Andrey Pustovetov</a>,
-<a href="https://github.com/artiship">Artiship Artiship</a>,
-<a href="https://github.com/CliffWheadon">Cliff Wheadon</a>,
-<a href="https://github.com/deepakbarr">Deepak Barr</a>,
-<a href="https://github.com/ian-axelrod">Ian Axelrod</a>,
-<a href="https://github.com/ooooorz">Liu Hanlin</a>,
-<a href="https://github.com/maver1ck">Maciej Bryński</a>,
-<a href="https://github.com/oripwk">Ori Popowski</a>,
-<a href="https://github.com/PengLyu">Peng Lyu</a>,
-<a href="https://github.com/PSanetra">Philip Sanetra</a>,
-<a href="https://github.com/sagarrao">Sagar Rao</a> and
-<a href="https://github.com/SyedMuhammadSufyian">Syed Muhammad Sufyian</a>
-for their contributions to this release.
-We salute you!</p>
+<p>Having been in the works for six months after the initial Alpha release,
+Debezium 0.9 comes with a brand new <a href="/docs/connectors/sqlserver/">connector for SQL Server</a>,
+lots of new features and improvements for the existing connectors,
+updates to the latest versions of Apache Kafka and the supported databases
+as well as a wide range of bug fixes.</p>
 </div></p>
           
         </div>
         <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/10/04/debezium-0-9-0-alpha2-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class="read-more" href="/blog/2019/02/05/debezium-0-9-0-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
             <span class="icon-arrow-right"></span> 
           </a> 
         </div>
@@ -1181,7 +1134,7 @@ We salute you!</p>
       
 
       <li class="pages ">
-        Page: 16 of 27
+        Page: 16 of 28
       </li>
       
       
@@ -1284,50 +1237,12 @@ We salute you!</p>
     </a>
   </div>
 </div>
-<div class="text-center">env: staging</div>
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
-  <script type="text/javascript" src="/assets/javascript/jquery.cookies.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
-  <script type="application/x-social-share-privacy-settings">
-    {
-      "path_prefix":"/assets/socialshare/",
-      "layout":"line",
-      "services": {
-        "buffer": {
-            "status": false
-        },
-        "delicious": {
-            "status": false
-        },
-        "disqus": {
-            "status": false
-        },
-        "facebook": {
-          "status": false
-        },
-        "flattr": {
-            "status": false
-        },
-        "gplus": {
-            "status": false
-        },
-        "hackernews": {
-            "status": false
-        },
-        "pinterest": {
-            "status": false
-        },
-        "xing": {
-            "status": false
-        }
-      }
-    }
-  </script>
   <script>
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
