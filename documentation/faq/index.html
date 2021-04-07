@@ -415,6 +415,7 @@
 <li><a href="#why_debezium_mysql_connector_fails_to_consume_data_from_a_rds_mysql_read_replica">Why Debezium MySQL connector fails to consume data from a RDS MySQL read replica?</a></li>
 <li><a href="#why_debezium_postgresql_connector_causes_abnormal_consumption_of_wal_database_disk_space">Why Debezium PostgreSQL connector causes abnormal consumption of WAL database disk space?</a></li>
 <li><a href="#why_is_no_new_schema_version_created_when_the_content_of_two_columns_in_a_table_is_swapped">Why is no new schema version created when the content of two columns in a table is swapped?</a></li>
+<li><a href="#how_to_enlarge_the_maximum_size_of_the_message_delivered_to_kafka">How to enlarge the maximum size of the message delivered to Kafka?</a></li>
 </ul>
 </div>
 <div class="sect1">
@@ -961,6 +962,27 @@ An example of such operation could be:</p>
 </div>
 <div class="paragraph">
 <p>The schema registry creates a new version of schema only if the schema logically changes, but in this case the schema is the same after the change for an external observer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how_to_enlarge_the_maximum_size_of_the_message_delivered_to_kafka">How to enlarge the maximum size of the message delivered to Kafka?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For large transactions it is possible that Kafka Connect emits message that is larger then the pre-set maximum.
+The log usually contains an exception similar to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>org.apache.kafka.common.errors.RecordTooLargeException: The message is 1740572 bytes when serialized which is larger than 1048576, which is the value of the max.request.size configuration.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To solve the issue the configuration option <code>producer.max.request.size</code> must be set in Kafka Connect worker config file <code>connect-distributed.properties</code>.
+If the global change is not desirable then the connector can override the default setting using configuration option <code>producer.override.max.request.size</code> set to a larger value.</p>
+</div>
+<div class="paragraph">
+<p>In the latter case it is also necessary to configure <code>connector.client.config.override.policy=ALL</code> option in Kafka Connect worker config file <code>connect-distributed.properties</code>. For Debezium <code>connect</code> Docker image the environment variable <code>CONNECT_CONNECTOR_CLIENT_CONFIG_OVERRIDE_POLICY</code> can be used to configure the option.</p>
 </div>
 </div>
 </div>
