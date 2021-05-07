@@ -11,8 +11,26 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Thu, 06 May 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Debezium 1.6.0.Alpha1 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.6 series, &lt;strong&gt;1.6.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release brings the brand new feature called incremental snapshots for MySQL and PostgreSQL connectors,
+a Kafka sink for Debezium Server,
+as well as a wide range of bug fixes and other small feature additions.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/05/06/debezium-1-6-alpha1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/05/06/debezium-1-6-alpha1-released/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium 1.5.0.Final Released</title>
@@ -730,51 +748,6 @@ In today&amp;#8217;s edition it&amp;#8217;s my pleasure to talk to &lt;a href=&q
 				<pubDate>Thu, 08 Oct 2020 16:19:59 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/10/08/debezium-community-stories-with-renato-mefi/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/10/08/debezium-community-stories-with-renato-mefi/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.3.0.Final Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It&amp;#8217;s with great please that I&amp;#8217;m announcing the release of Debezium &lt;strong&gt;1.3.0.Final&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As per Debezium&amp;#8217;s quarterly release cadence, this wraps up the work of the last three months.
-Overall, the community has fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.3.0.Final%2C%201.3.0.Alpha1%2C%201.3.0.Beta1%2C%201.3.0.Beta2%2C%201.3.0.CR1)%20ORDER%20BY%20issuetype%20DESC%2C%20updated%20DESC%2C%20priority%20DESC&quot;&gt;138 issues&lt;/a&gt; during that time, including the following key features and changes:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;A new incubating &lt;a href=&quot;/documentation/reference/connectors/oracle.html#_logminer&quot;&gt;LogMiner-based implementation&lt;/a&gt; for ingesting change events from Oracle&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Support for Azure Event Hubs in &lt;a href=&quot;/documentation/reference/operations/debezium-server.html&quot;&gt;Debezium Server&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Upgrade to Apache Kafka 2.6&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Revised &lt;a href=&quot;https://debezium.io/blog/2020/09/03/debezium-1-3-beta1-released/&quot;&gt;filter option names&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;A new SQL Server connector snapshot mode, &lt;code&gt;initial_only&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Support for database-filtered columns for SQL Server&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Additional connection options for the MongoDB connector&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Improvements to &lt;code&gt;ByteBufferConverter&lt;/code&gt; for implementing the &lt;a href=&quot;/documentation/reference/configuration/outbox-event-router.html&quot;&gt;outbox pattern&lt;/a&gt; with Avro as the payload format&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Thu, 01 Oct 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/10/01/debezium-1-3-final-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/10/01/debezium-1-3-final-released/</guid>
 			</item>
 		
 	</channel>
