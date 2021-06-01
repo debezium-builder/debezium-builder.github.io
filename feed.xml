@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-05-27T09:06:17+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.Beta1 Released</title><link href="https://debezium.io/blog/2021/05/20/debezium-1-6-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.Beta1 Released" /><published>2021-05-20T00:00:00+00:00</published><updated>2021-05-20T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/05/20/debezium-1-6-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/05/20/debezium-1-6-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-06-01T06:38:24+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.5.2.Final Released</title><link href="https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/" rel="alternate" type="text/html" title="Debezium 1.5.2.Final Released" /><published>2021-05-28T00:00:00+00:00</published><updated>2021-05-28T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let me announce the bugfix release of Debezium 1.5, &lt;strong&gt;1.5.2.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release is a rebuild of 1.5.1.Final using Java 8.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Debezium 1.5.1.Final was incorrectly built using Java 11.
+That would prevent it running in environments still using Java 8.
+This version is rebuilt using Java 8.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Overall, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20and%20fixVersion%20%3D%201.5.2.Final&quot;&gt;2 issues&lt;/a&gt; were fixed for this release.
+Thanks a lot to all contributors!&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">Let me announce the bugfix release of Debezium 1.5, 1.5.2.Final! This release is a rebuild of 1.5.1.Final using Java 8.</summary></entry><entry><title type="html">Debezium 1.5.1.Final Released</title><link href="https://debezium.io/blog/2021/05/27/debezium-1-5-1-final-released/" rel="alternate" type="text/html" title="Debezium 1.5.1.Final Released" /><published>2021-05-27T00:00:00+00:00</published><updated>2021-05-27T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/05/27/debezium-1-5-1-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/05/27/debezium-1-5-1-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let me announce the bugfix release of Debezium 1.5, &lt;strong&gt;1.5.1.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release fixes a small set of issues discovered since the original release and few improvements into the documentation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The two most important fixes in this release are related to the MySQL database history that can get potentially corrupted under an unfavorable set of conditions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If you execute a &lt;code&gt;DROP TABLE&lt;/code&gt; command and the affected table&amp;#8217;s name contains dashes, then the resulting statement cannot be parsed (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3485&quot;&gt;DBZ-3485&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RENAME TABLE&lt;/code&gt; statements that contains more than one table can be stored incompletely (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3399&quot;&gt;DBZ-3399&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Both issues were introduced during the rewrite of MySQL connector and were not covered by integration tests.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We strongly recommend upgrading to 1.5.1.Final before you hit these issues.
+If you are already affected, then the easiest way to recover from the error situation is using a new topic (or dropping the old one) for the database history and execute a &lt;code&gt;schema_only_recovery&lt;/code&gt; snapshot.
+We apologize for the potential inconvenience.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Overall, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3549?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.5.1.Final&quot;&gt;31 issues&lt;/a&gt; were fixed for this release.
+Thanks a lot to all contributors!&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">Let me announce the bugfix release of Debezium 1.5, 1.5.1.Final! This release fixes a small set of issues discovered since the original release and few improvements into the documentation.</summary></entry><entry><title type="html">Debezium 1.6.0.Beta1 Released</title><link href="https://debezium.io/blog/2021/05/20/debezium-1-6-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.Beta1 Released" /><published>2021-05-20T00:00:00+00:00</published><updated>2021-05-20T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/05/20/debezium-1-6-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/05/20/debezium-1-6-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.6.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2819,237 +2869,4 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;--Anisha&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Anisha Mohanty</name></author><category term="community" /><category term="news" /><summary type="html">Hello everyone, my name is Anisha Mohanty and I recently joined Red Hat and the Debezium team. I started my journey with Red Hat in April 2020 after completing my graduation. I was introduced to open source in my early college days, but I wasn&amp;#8217;t aware of how organizations work and wanted to get the essence of open source ethics and values. That is something that I am fascinated to learn as I joined Red Hat. My work started under the Data Virtualization team with Teiid and then under the GRAPHQLCRUD project which is a standard for a generic query interface on top of GraphQL. The project has started well and is in great shape right now. We have successfully added CRUD capabilities, paging, and filtering specifications. Coming to Debezium, I first heard about it as some DV members started contributing here, well back then it was a completely new thing for me. I started exploring more, and it was not long when I had my first interaction with Gunnar and Jiri. With a warm welcome and great team here, I am really excited to work with the Debezium Community.</summary></entry><entry><title type="html">Debezium 1.4.0.Alpha1 Released</title><link href="https://debezium.io/blog/2020/10/23/debezium-1-4-alpha1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Alpha1 Released" /><published>2020-10-23T16:19:59+00:00</published><updated>2020-10-23T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/10/23/debezium-1-4-alpha1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/10/23/debezium-1-4-alpha1-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I am excited to announce the release of Debezium &lt;strong&gt;1.4.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This first pass of the 1.4 release line provides a few useful new features:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;New Vitess connector&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Allow fine-grained selection of snapshotted tables&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.Alpha1%20ORDER%20BY%20issuetype%20DESC&quot;&gt;41 issues&lt;/a&gt; for this release.
-Let&amp;#8217;s take a closer look at some of the highlights.
-&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;vitess_connector&quot;&gt;Vitess Connector&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.vitess.io&quot;&gt;Vitess&lt;/a&gt; is a database solution for deploying, scaling, and managing large clusters of MySQL.
-We are very happy that the development team around Ruslan Gibaiev and Kewei Shang of &lt;a href=&quot;https://bolt.eu/en/&quot;&gt;Bolt Technology OÜ&lt;/a&gt; decided to build a CDC solution based on Debezium and to &lt;a href=&quot;https://www.github.com/debezium/debezium-connector-vitess&quot;&gt;open-source it&lt;/a&gt; under the Debezium umbrella.
-This connector is released in &lt;strong&gt;incubating&lt;/strong&gt; state in Debezium 1.4.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Ruslan and Kewei will follow up with a blog post with more details around this connector very soon;
-in the mean time please refer to the connector &lt;a href=&quot;https://debezium.io/documentation/reference/1.4/connectors/vitess.html&quot;&gt;reference documentation&lt;/a&gt; to learn more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;fine_grained_selection_of_snapshotted_tables&quot;&gt;Fine-grained Selection of Snapshotted Tables&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One of the major focus points for Debezium 1.4 is to explore more flexible snapshot options,
-e.g. to re-snapshot chosen tables or parallelizing long-running snapshot operations.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A first improvement related to snapshotting is the new connector configuration &lt;code&gt;snapshot.include.collection.list&lt;/code&gt;,
-which allows to snapshot only a subset of all the tables which the connector will capture later on during log reading.
-This comes in handy if for instance you&amp;#8217;re interested in capturing changes to all your tables, but only need an initial snasphot of the data for some of them.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For the Postgres connector, by creating a custom implementation of the &lt;code&gt;Snapshotter&lt;/code&gt; SPI contract, this also allows for a selective re-snapshot of specific tables.
-After restarting the connector, such &lt;code&gt;Snapshotter&lt;/code&gt; would continue to read the log from the point where it left off previously until &quot;now&quot;,
-then it would take a snapshot of the given tables, and finally continue to read the log for &lt;em&gt;all&lt;/em&gt; captured tables.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For more information on this option, please see the connector-specific &lt;a href=&quot;https://debezium.io/documentation/reference/connectors/index.html&quot;&gt;documentation&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;other_features&quot;&gt;Other Features&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Besides these key features, there&amp;#8217;s a few other features coming with the 1.4.0.Alpha1 release:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Implement snapshot select override behavior for MongoDB &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2496&quot;&gt;DBZ-2496&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;SqlServer - Skip processing of LSNs not associated with change table entries &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2582&quot;&gt;DBZ-2582&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Also a number of bugs were fixed, e.g.:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Cant override environment variables &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2559&quot;&gt;DBZ-2559&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ConcurrentModificationException during exporting data for a mongodb collection in a sharded cluster &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2597&quot;&gt;DBZ-2597&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Mysql connector didn&amp;#8217;t pass the default db charset to the column definition &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2604&quot;&gt;DBZ-2604&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Doc] &quot;registry.redhat.io/amq7/amq-streams-kafka-25: unknown: Not Found&quot; error occurs &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2609&quot;&gt;DBZ-2609&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Doc] &quot;Error: no context directory and no Containerfile specified&quot; error occurs &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2610&quot;&gt;DBZ-2610&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;SqlExceptions using dbz with Oracle on RDS online logs and LogMiner &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2624&quot;&gt;DBZ-2624&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Mining session stopped - task killed/SQL operation cancelled - Oracle LogMiner &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2629&quot;&gt;DBZ-2629&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Unparseable DDL: Using 'trigger' as table alias in view creation &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2639&quot;&gt;DBZ-2639&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Antlr DDL parser fails to interpret BLOB([size]) &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2641&quot;&gt;DBZ-2641&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MySQL Connector keeps stale offset metadata after snapshot.new.tables is changed &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2643&quot;&gt;DBZ-2643&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;WAL logs are not flushed in Postgres Connector &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2653&quot;&gt;DBZ-2653&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Debezium Server Event Hubs plugin support in v1.3 &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2660&quot;&gt;DBZ-2660&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Cassandra Connector doesn&amp;#8217;t use log4j for logging correctly &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2661&quot;&gt;DBZ-2661&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Should Allow NonAsciiCharacter in SQL &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2670&quot;&gt;DBZ-2670&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MariaDB nextval function is not supported in grammar &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2671&quot;&gt;DBZ-2671&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Sanitize field name do not sanitize sub struct field &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2680&quot;&gt;DBZ-2680&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Debezium fails if a non-existing view with the same name as existing table is dropped &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2688&quot;&gt;DBZ-2688&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A big thank you to all the contributors from the community who worked on this release:
-&lt;a href=&quot;https://github.com/Faizan&quot;&gt;Faizan&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/michaelwang&quot;&gt;Michael Wang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/creactiviti&quot;&gt;Arik Cohen&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jgormley6&quot;&gt;James Gormley&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jinguangyang&quot;&gt;jinguangyang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/KaushikIyer16&quot;&gt;Kaushik Iyer&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/johnjmartin&quot;&gt;John Martin&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/telnicky&quot;&gt;Travis Elnicky&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/yimingl17&quot;&gt;Yiming Liu&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I am excited to announce the release of Debezium 1.4.0.Alpha1! This first pass of the 1.4 release line provides a few useful new features: New Vitess connector Allow fine-grained selection of snapshotted tables Overall, the community fixed 41 issues for this release. Let&amp;#8217;s take a closer look at some of the highlights.</summary></entry><entry><title type="html">Towards a Graphical Debezium User Interface</title><link href="https://debezium.io/blog/2020/10/22/towards-debezium-ui/" rel="alternate" type="text/html" title="Towards a Graphical Debezium User Interface" /><published>2020-10-22T16:19:59+00:00</published><updated>2020-10-22T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/10/22/towards-debezium-ui</id><content type="html" xml:base="https://debezium.io/blog/2020/10/22/towards-debezium-ui/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Over the last five years, Debezium has become a leading open-source solution for change data capture for a variety of databases.
-Users from all kinds of industries work with Debezium for use cases like replication of data from operational databases into data warehouses, updating caches and search indexes, driving streaming queries via Kafka Streams or Apache Flink, synchronizing data between microservices, and many more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When talking to Debezium users, we generally receive very good feedback on the range of applications enabled by Debezium and its flexibility: e.g. each connector can be configured and fine-tuned in many ways, depending on your specific requirements. A large number of metrics provide deep insight into the state of running Debezium connectors,
-allowing to safely operate CDC pipelines also in huge installations with thousands of connectors.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;All this comes at the cost of a learning curve, though: users new to Debezium need to understand the different options and settings as well as learn about best practices for running Debezium in production.
-We&amp;#8217;re therefore constantly exploring how the user experience of Debezium can be further improved, allowing people to set up and operate its connectors more easily.
-&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Today it&amp;#8217;s my great pleasure to introduce you to a proof-of-concept for a potential future &lt;strong&gt;Debezium graphical user interface&lt;/strong&gt;.
-The goal for this PoC is to explore how a graphical UI could facilitate the getting started and operational experience of Debezium users.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The scope of the PoC is the set-up flow for configuring and instantiating a Debezium Postgres connector.
-The user is guided through the required configuration steps in a wizard interface,
-starting from mandatory information (e.g. database credentials), over selecting the tables to be captured, up to optional settings like different data mapping options.
-After reviewing the final configuration, the UI will instantiate the connector in Kafka Connect.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can see a short demo of how this looks like in this video:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;responsive-video&quot;&gt;
-&lt;iframe width=&quot;1600&quot; height=&quot;900&quot; src=&quot;https://www.youtube.com/embed/RZ_3DF7Ndnk&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We focused on some core interaction patterns, e.g. the preview functionality for the selecting the captured tables.
-Instead of solely taking key/value pairs of configuration parameters,
-the UI should guide the user through the process, provide context and help, e.g. by showing the allowed options for settings in drop-downs, validating the provided settings after each step, and more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now this is just the beginning, there&amp;#8217;s many more things that could be done in such Debezium UI,
-e.g. in the connection configuration step, we could validate whether the given user has all the required database permissions, whether the right WAL level is set in the database, etc.
-There could be views for monitoring and trouble-shooting connectors.
-When running on Kubernetes, the UI could produce resource definitions processed by a Kafka (Connector) operator like Strimzi (instead of calling the Kafka Connect REST API), and much more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;But before further progressing with this, we&amp;#8217;d like to gather your feedback and opinions:
-Do you consider a graphical UI for Debezium useful in general, and is it something you would use in your projects?
-What is your feedback on the functionality currently implemented in the PoC?
-Which other functionality besides connector configuration would you like to see in a Debezium UI?
-We&amp;#8217;ve provided a short survey with these and a few other questions:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph text-center&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.google.com/forms/d/e/1FAIpQLSfEEqslTWSLX89gzIDmSE_4v8hH0mYg0YBRaXhfDrrBbCUJgQ/viewform?usp=sf_link&quot;&gt;Go to survey&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Before taking the questionnaire, please watch the video or run the PoC yourself (see below).
-Answering these questions should take just a few minutes; your participation would be very helpful for us in order to decide whether and how we should move forward with this effort.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;trying_it_out_yourself&quot;&gt;Trying It Out Yourself&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As everything in Debezium, the UI PoC is fully open source (Apache License Version 2.0);
-you can find its &lt;a href=&quot;https://github.com/debezium/debezium-ui-poc/&quot;&gt;source code&lt;/a&gt; under the Debezium organization on Git Hub.
-The PoC is implemented as a &lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus&lt;/a&gt;-based web application,
-using &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; as the frontend technology.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The Quarkus backend is configured with the URL(s) of one more Kafka Connect clusters.
-Note that there&amp;#8217;s currently no means of authentication or authorization implemented in the PoC,
-so don&amp;#8217;t use it with your production Connect clusters just yet.
-After starting the application, you can choose the cluster to work with from the drop-down to the top right.
-Different from what&amp;#8217;s shown in the video recording, the &quot;Delete&quot; button is working in the PoC now, too ;)
-There&amp;#8217;s an example &lt;a href=&quot;https://github.com/debezium/debezium-ui-poc/blob/master/docker-compose.yml&quot;&gt;Docker Compose file&lt;/a&gt;, which starts up all required components for getting started quickly.
-Alternatively, you can obtain a &lt;a href=&quot;https://hub.docker.com/r/debezium/debezium-ui-poc&quot;&gt;pre-built container image&lt;/a&gt; with the Debezium UI PoC from Docker Hub.
-Please refer to the &lt;a href=&quot;https://github.com/debezium/debezium-ui-poc/#debezium-ui-poc&quot;&gt;README file&lt;/a&gt; for more details on building and running the Debezium UI PoC.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We&amp;#8217;re looking forward very much to learning about your feedback on the Debezium UI PoC.
-Try it out yourself and let us know about your thoughts in the comments below and by participating in the quick survey linked above.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;em&gt;A big thank you to the team working on this PoC: Ashique Ansari, Indra Shukla, June Zhang, Mark Drilling, Na Ding, and René Kerner!&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="community" /><category term="discussion" /><summary type="html">Over the last five years, Debezium has become a leading open-source solution for change data capture for a variety of databases. Users from all kinds of industries work with Debezium for use cases like replication of data from operational databases into data warehouses, updating caches and search indexes, driving streaming queries via Kafka Streams or Apache Flink, synchronizing data between microservices, and many more. When talking to Debezium users, we generally receive very good feedback on the range of applications enabled by Debezium and its flexibility: e.g. each connector can be configured and fine-tuned in many ways, depending on your specific requirements. A large number of metrics provide deep insight into the state of running Debezium connectors, allowing to safely operate CDC pipelines also in huge installations with thousands of connectors. All this comes at the cost of a learning curve, though: users new to Debezium need to understand the different options and settings as well as learn about best practices for running Debezium in production. We&amp;#8217;re therefore constantly exploring how the user experience of Debezium can be further improved, allowing people to set up and operate its connectors more easily.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>Anisha Mohanty</name></author><category term="community" /><category term="news" /><summary type="html">Hello everyone, my name is Anisha Mohanty and I recently joined Red Hat and the Debezium team. I started my journey with Red Hat in April 2020 after completing my graduation. I was introduced to open source in my early college days, but I wasn&amp;#8217;t aware of how organizations work and wanted to get the essence of open source ethics and values. That is something that I am fascinated to learn as I joined Red Hat. My work started under the Data Virtualization team with Teiid and then under the GRAPHQLCRUD project which is a standard for a generic query interface on top of GraphQL. The project has started well and is in great shape right now. We have successfully added CRUD capabilities, paging, and filtering specifications. Coming to Debezium, I first heard about it as some DV members started contributing here, well back then it was a completely new thing for me. I started exploring more, and it was not long when I had my first interaction with Gunnar and Jiri. With a warm welcome and great team here, I am really excited to work with the Debezium Community.</summary></entry></feed>

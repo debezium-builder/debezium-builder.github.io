@@ -165,6 +165,10 @@
             
           
             
+          
+            
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -511,7 +515,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/cassandra/" style="font-size: 150%">
+            <a href="/tag/cassandra/" style="font-size: 154%">
               cassandra
             </a>
           </span>
@@ -529,7 +533,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/db2/" style="font-size: 130%">
+            <a href="/tag/db2/" style="font-size: 134%">
               db2
             </a>
           </span>
@@ -661,7 +665,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mysql/" style="font-size: 268%">
+            <a href="/tag/mysql/" style="font-size: 272%">
               mysql
             </a>
           </span>
@@ -679,19 +683,19 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/oracle/" style="font-size: 166%">
+            <a href="/tag/oracle/" style="font-size: 170%">
               oracle
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/outbox/" style="font-size: 116%">
+            <a href="/tag/outbox/" style="font-size: 120%">
               outbox
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/postgres/" style="font-size: 238%">
+            <a href="/tag/postgres/" style="font-size: 242%">
               postgres
             </a>
           </span>
@@ -721,7 +725,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/releases/" style="font-size: 252%">
+            <a href="/tag/releases/" style="font-size: 256%">
               releases
             </a>
           </span>
@@ -763,7 +767,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/sqlserver/" style="font-size: 186%">
+            <a href="/tag/sqlserver/" style="font-size: 190%">
               sqlserver
             </a>
           </span>
@@ -793,7 +797,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/vitess/" style="font-size: 112%">
+            <a href="/tag/vitess/" style="font-size: 116%">
               vitess
             </a>
           </span>
@@ -813,6 +817,139 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2018/07/19/advantages-of-log-based-change-data-capture/">Five Advantages of Log-Based Change Data Capture</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2018/07/19/advantages-of-log-based-change-data-capture/">Five Advantages of Log-Based Change Data Capture</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> July 19, 2018 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/discussion/">discussion</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>Yesterday I had the opportunity to present Debezium and the idea of change data capture (CDC) to the <a href="https://twitter.com/JUG_DA/status/1019634941020332032">Darmstadt Java User Group</a>.
+It was a great evening with lots of interesting discussions and questions.
+One of the questions being the following: what is the advantage of using a log-based change data capturing tool such as Debezium over simply polling for updated records?</p>
+</div>
+<div class="paragraph">
+<p>So first of all, what&#8217;s the difference between the two approaches?
+With polling-based (or query-based) CDC you repeatedly run queries (e.g. via JDBC) for retrieving any newly inserted or updated rows from the tables to be captured.
+Log-based CDC in contrast works by reacting to any changes to the database&#8217;s log files (e.g. MySQL&#8217;s binlog or MongoDB&#8217;s op log).</p>
+</div>
+<div class="paragraph">
+<p>As this wasn&#8217;t the first time this question came up, I thought I could provide a more extensive answer also here on the blog.
+That way I&#8217;ll be able to refer to this post in the future, should the question come up again :)</p>
+</div>
+<div class="paragraph">
+<p>So without further ado, here&#8217;s my list of five advantages of log-based CDC over polling-based approaches.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2018/07/19/advantages-of-log-based-change-data-capture/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2018/07/12/debezium-0-8-0-final-released/">Debezium 0.8 Final Is Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2018/07/12/debezium-0-8-0-final-released/">Debezium 0.8 Final Is Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> July 12, 2018 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>I&#8217;m very happy to announce the release of Debezium <strong>0.8.0.Final</strong>!</p>
+</div>
+<div class="paragraph">
+<p>The key features of Debezium 0.8 are the first work-in-progress version of our <a href="/docs/connectors/oracle/">Oracle connector</a>
+(based on the XStream API) and a brand-new parser for MySQL DDL statements.
+Besides that, there are plenty of smaller new features (e.g. propagation of default values to corresponding Connect schemas,
+optional propagation of source queries in CDC messages and a largely improved SMT for sinking changes from MongoDB into RDBMS)
+as well as lots of bug fixes (e.g. around temporal and numeric column types, large transactions with Postgres).</p>
+</div>
+<div class="paragraph">
+<p>Please see the previous announcements (<a href="/blog/2018/06/21/debezium-0-8-0-beta1-released/">Beta 1</a>, <a href="/blog/2018/07/04/debezium-0-8-0-cr1-released/">CR 1</a>)
+to learn about all the changes in more depth.
+The Final release largely resembles CR1;
+apart from further improvements to the Oracle connector (<a href="https://issues.redhat.com/browse/DBZ-762">DBZ-792</a>) there&#8217;s one nice addition to the MySQL connector contributed by <a href="https://github.com/pgoranss">Peter Goransson</a>:
+when doing a snapshot, it will now expose information about the processed rows via JMX (<a href="https://issues.redhat.com/browse/DBZ-789">DBZ-789</a>), which is very handy when snapshotting larger tables.</p>
+</div>
+<div class="paragraph">
+<p>Please take a look at the <a href="/docs/releases/#release-0-8-0-final">change log</a> for the complete list of changes in 0.8.0.Final and general upgrade notes.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2018/07/12/debezium-0-8-0-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -1013,119 +1150,6 @@ The result of this exercise should be similar to the recent <a href="/blog/2018/
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/03/20/debezium-0-7-5-released/">Debezium 0.7.5 Is Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/03/20/debezium-0-7-5-released/">Debezium 0.7.5 Is Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> March 20, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.7.5</strong>!</p>
-</div>
-<div class="paragraph">
-<p>This is a bugfix release to the 0.7 release line, which we decided to do while working towards Debezium 0.8.
-Most notably it fixes an unfortunate bug introduced in 0.7.3 (<a href="https://issues.redhat.com/browse/DBZ-663">DBZ-663</a>),
-where the internal database history topic of the Debezium MySQL connector could be partly deleted under some specific conditions.
-Please see the <a href="/2018/03/16/note-on-database-history-topic-configuration/">dedicated blog post</a> on this issue to find out whether this affects you and what you should do to prevent this issue.</p>
-</div>
-<div class="paragraph">
-<p>Together with this, we released a couple of other fixes and improvements.
-Thanks to <a href="https://github.com/maver1ck">Maciej Brynski</a>, the performance of the <a href="/docs/configuration/topic-routing/">logical table routing SMT</a> has been improved significantly (<a href="https://issues.redhat.com/browse/DBZ-655">DBZ-655</a>).
-Another fix contributed by Maciej is for <a href="https://issues.redhat.com/browse/DBZ-646">DBZ-646</a> which lets the MySQL connector handle <code>CREATE TABLE</code> statements for the TokuDB storage engine now.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/03/20/debezium-0-7-5-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/03/16/note-on-database-history-topic-configuration/">A Note On Database History Topic Configuration</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/03/16/note-on-database-history-topic-configuration/">A Note On Database History Topic Configuration</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> March 16, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>A user of the Debezium connector for MySQL informed us about a potential issue with the configuration of the connector&#8217;s internal database history topic,
-which may cause the deletion of parts of that topic (<a href="https://issues.redhat.com/browse/DBZ-663">DBZ-663</a>).
-Please continue reading if you&#8217;re using the Debezium MySQL connector in versions 0.7.3 or 0.7.4.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/03/16/note-on-database-history-topic-configuration/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
 
     <ul class="pager">
       
@@ -1136,7 +1160,7 @@ Please continue reading if you&#8217;re using the Debezium MySQL connector in ve
       
 
       <li class="pages ">
-        Page: 20 of 28
+        Page: 20 of 29
       </li>
       
       

@@ -11,8 +11,40 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Thu, 20 May 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Debezium 1.5.2.Final Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let me announce the bugfix release of Debezium 1.5, &lt;strong&gt;1.5.2.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release is a rebuild of 1.5.1.Final using Java 8.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/</guid>
+			</item>
+		
+			<item>
+				<title>Debezium 1.5.1.Final Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let me announce the bugfix release of Debezium 1.5, &lt;strong&gt;1.5.1.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release fixes a small set of issues discovered since the original release and few improvements into the documentation.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/05/27/debezium-1-5-1-final-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/05/27/debezium-1-5-1-final-released/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium 1.6.0.Beta1 Released</title>
@@ -699,58 +731,6 @@ Most importantly, the following bugs were fixed related to the &lt;a href=&quot;
 				<pubDate>Tue, 27 Oct 2020 16:19:59 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/10/27/hello-debezium/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/10/27/hello-debezium/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.4.0.Alpha1 Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I am excited to announce the release of Debezium &lt;strong&gt;1.4.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This first pass of the 1.4 release line provides a few useful new features:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;New Vitess connector&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Allow fine-grained selection of snapshotted tables&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.Alpha1%20ORDER%20BY%20issuetype%20DESC&quot;&gt;41 issues&lt;/a&gt; for this release.
-Let&amp;#8217;s take a closer look at some of the highlights.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Fri, 23 Oct 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/10/23/debezium-1-4-alpha1-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/10/23/debezium-1-4-alpha1-released/</guid>
-			</item>
-		
-			<item>
-				<title>Towards a Graphical Debezium User Interface</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Over the last five years, Debezium has become a leading open-source solution for change data capture for a variety of databases.
-Users from all kinds of industries work with Debezium for use cases like replication of data from operational databases into data warehouses, updating caches and search indexes, driving streaming queries via Kafka Streams or Apache Flink, synchronizing data between microservices, and many more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When talking to Debezium users, we generally receive very good feedback on the range of applications enabled by Debezium and its flexibility: e.g. each connector can be configured and fine-tuned in many ways, depending on your specific requirements. A large number of metrics provide deep insight into the state of running Debezium connectors,
-allowing to safely operate CDC pipelines also in huge installations with thousands of connectors.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;All this comes at the cost of a learning curve, though: users new to Debezium need to understand the different options and settings as well as learn about best practices for running Debezium in production.
-We&amp;#8217;re therefore constantly exploring how the user experience of Debezium can be further improved, allowing people to set up and operate its connectors more easily.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Thu, 22 Oct 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/10/22/towards-debezium-ui/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/10/22/towards-debezium-ui/</guid>
 			</item>
 		
 	</channel>
