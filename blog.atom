@@ -11,8 +11,25 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Debezium 1.6.0.Beta2 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.6.0.Beta2&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release adds support for Pravega to Debezium Server, expands the snapshotting options of the Debezium Oracle connector,
+and provides a range of bug fixes and other improvements across different Debezium connectors.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/06/10/debezium-1-6-beta2-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/06/10/debezium-1-6-beta2-released/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium 1.5.2.Final Released</title>
@@ -709,28 +726,6 @@ Most importantly, the following bugs were fixed related to the &lt;a href=&quot;
 				<pubDate>Wed, 04 Nov 2020 16:19:59 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/11/04/streaming-vitess-at-bolt/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/11/04/streaming-vitess-at-bolt/</guid>
-			</item>
-		
-			<item>
-				<title>Hello Debezium!</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Hello everyone, my name is Anisha Mohanty and I recently joined Red Hat and the Debezium team.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I started my journey with Red Hat in April 2020 after completing my graduation. I was introduced to open source in my early college days, but I wasn&amp;#8217;t aware of how organizations work and wanted to get the essence of open source ethics and values. That is something that I am fascinated to learn as I joined Red Hat.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;My work started under the Data Virtualization team with Teiid and then under the &lt;a href=&quot;https://graphqlcrud.org/&quot;&gt;GRAPHQLCRUD&lt;/a&gt; project which is a standard for a generic query interface on top of GraphQL. The project has started well and is in great shape right now. We have successfully added CRUD capabilities, paging, and filtering specifications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Coming to Debezium, I first heard about it as some DV members started contributing here, well back then it was a completely new thing for me. I started exploring more, and it was not long when I had my first interaction with Gunnar and Jiri. With a warm welcome and great team here, I am really excited to work with the Debezium Community.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Tue, 27 Oct 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/10/27/hello-debezium/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/10/27/hello-debezium/</guid>
 			</item>
 		
 	</channel>

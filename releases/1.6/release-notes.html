@@ -551,15 +551,16 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#release-1.6.0-beta2"><strong>Release 1.6.0.Beta2</strong> <em>(June 10th, 2021)</em></a></li>
 <li><a href="#release-1.6.0-beta1"><strong>Release 1.6.0.Beta1</strong> <em>(May 20th, 2021)</em></a></li>
 <li><a href="#release-1.6.0-alpha1"><strong>Release 1.6.0.Alpha1</strong> <em>(May 6th, 2021)</em></a></li>
 </ul>
 </div>
 <div class="sect1">
-<h2 id="release-1.6.0-beta1"><a class="anchor" href="#release-1.6.0-beta1"></a><strong>Release 1.6.0.Beta1</strong> <em>(May 20th, 2021)</em></h2>
+<h2 id="release-1.6.0-beta2"><a class="anchor" href="#release-1.6.0-beta2"></a><strong>Release 1.6.0.Beta2</strong> <em>(June 10th, 2021)</em></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12357565">complete list of issues</a>.</p>
+<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12358021">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="kafka_compatibility"><a class="anchor" href="#kafka_compatibility"></a>Kafka compatibility</h3>
@@ -570,6 +571,208 @@ See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka document
 </div>
 <div class="sect2">
 <h3 id="upgrading"><a class="anchor" href="#upgrading"></a>Upgrading</h3>
+<div class="paragraph">
+<p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
+</div>
+<div class="paragraph">
+<p>When you decide to upgrade one of these connectors to 1.6.0.Beta2 from any earlier versions,
+first check the migration notes for the version you&#8217;re using.
+Gracefully stop the running connector, remove the old plugin files, install the 1.6.0.Beta2 plugin files, and restart the connector using the same configuration.
+Upon restart, the 1.6.0.Beta2 connectors will continue where the previous connector left off.
+As one might expect, all change events previously written to Kafka by the old connector will not be modified.</p>
+</div>
+<div class="paragraph">
+<p>If you are using our docker images then do not forget to pull them fresh from Docker registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="breaking_changes"><a class="anchor" href="#breaking_changes"></a>Breaking changes</h3>
+<div class="paragraph">
+<p>There are no breaking changes in the release.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new_features"><a class="anchor" href="#new_features"></a>New Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Clarification on MySQL vs MariaDb Usage <a href="https://issues.jboss.org/browse/DBZ-1145">DBZ-1145</a></p>
+</li>
+<li>
+<p>Pravega sink for Debezium Server <a href="https://issues.jboss.org/browse/DBZ-3546">DBZ-3546</a></p>
+</li>
+<li>
+<p>Postgres - Column default values are not extracted <a href="https://issues.jboss.org/browse/DBZ-2790">DBZ-2790</a></p>
+</li>
+<li>
+<p>Add support for snapshot.include.collection.list <a href="https://issues.jboss.org/browse/DBZ-3062">DBZ-3062</a></p>
+</li>
+<li>
+<p>Apply filters with empty filter changes 'Exclude' selection to 'Include' <a href="https://issues.jboss.org/browse/DBZ-3102">DBZ-3102</a></p>
+</li>
+<li>
+<p>Adjust OpenShift tests to support new version of Strimzi CRDs <a href="https://issues.jboss.org/browse/DBZ-3475">DBZ-3475</a></p>
+</li>
+<li>
+<p>Remove SchemaProcessor From Cassandra Connector <a href="https://issues.jboss.org/browse/DBZ-3506">DBZ-3506</a></p>
+</li>
+<li>
+<p>Provide a <code>snapshot.locking.mode</code> option for Oracle <a href="https://issues.jboss.org/browse/DBZ-3557">DBZ-3557</a></p>
+</li>
+<li>
+<p>Implement support for JSON function in MySQL parser <a href="https://issues.jboss.org/browse/DBZ-3559">DBZ-3559</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fixes"><a class="anchor" href="#fixes"></a>Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>AbstractConnectorTest should work in environment with longer latency <a href="https://issues.jboss.org/browse/DBZ-400">DBZ-400</a></p>
+</li>
+<li>
+<p>PostgreSQL connector task fails to resume streaming because replication slot is active <a href="https://issues.jboss.org/browse/DBZ-3068">DBZ-3068</a></p>
+</li>
+<li>
+<p>SQL Server connector buffers all CDC events in memory if more than one table is captured <a href="https://issues.jboss.org/browse/DBZ-3486">DBZ-3486</a></p>
+</li>
+<li>
+<p>SQLServer low throughput tables increase usage of TempDB <a href="https://issues.jboss.org/browse/DBZ-3515">DBZ-3515</a></p>
+</li>
+<li>
+<p>Incorrectly identifies primary member of replica set <a href="https://issues.jboss.org/browse/DBZ-3522">DBZ-3522</a></p>
+</li>
+<li>
+<p>Cannot enable binlog streaming when INITIAL_ONLY snapshot mode configured <a href="https://issues.jboss.org/browse/DBZ-3529">DBZ-3529</a></p>
+</li>
+<li>
+<p>Connector CRD name and database.server.name cannot use the same value in OCP test-suite <a href="https://issues.jboss.org/browse/DBZ-3538">DBZ-3538</a></p>
+</li>
+<li>
+<p>SelectLobParser checks for lowercase "is null" instead of uppercase "IS NULL" <a href="https://issues.jboss.org/browse/DBZ-3545">DBZ-3545</a></p>
+</li>
+<li>
+<p>DDL ParsingException "mismatched input 'sharing'" for create table syntax. <a href="https://issues.jboss.org/browse/DBZ-3549">DBZ-3549</a></p>
+</li>
+<li>
+<p>DDL ParsingException on alter table <a href="https://issues.jboss.org/browse/DBZ-3554">DBZ-3554</a></p>
+</li>
+<li>
+<p>ORA-00310 when online redo log is archived and replaced by redo log with new sequence <a href="https://issues.jboss.org/browse/DBZ-3561">DBZ-3561</a></p>
+</li>
+<li>
+<p>Server name pattern is unnecessarily restrictive <a href="https://issues.jboss.org/browse/DBZ-3562">DBZ-3562</a></p>
+</li>
+<li>
+<p>ORA-01289 error encountered on Oracle RAC when multiple logs are mined with same sequence number <a href="https://issues.jboss.org/browse/DBZ-3563">DBZ-3563</a></p>
+</li>
+<li>
+<p>MySQL metrics documentation refers to legacy implementation <a href="https://issues.jboss.org/browse/DBZ-3572">DBZ-3572</a></p>
+</li>
+<li>
+<p>Update downstream MySQL doc to reference streaming metrics vs. binlog metrics  <a href="https://issues.jboss.org/browse/DBZ-3582">DBZ-3582</a></p>
+</li>
+<li>
+<p>No viable alternative at input "add COLUMN optional" <a href="https://issues.jboss.org/browse/DBZ-3586">DBZ-3586</a></p>
+</li>
+<li>
+<p>NPE when OracleValueConverters get unsupported jdbc type <a href="https://issues.jboss.org/browse/DBZ-3587">DBZ-3587</a></p>
+</li>
+<li>
+<p>SelectLobParser throws NullPointerException when parsing SQL for an unknown table <a href="https://issues.jboss.org/browse/DBZ-3591">DBZ-3591</a></p>
+</li>
+<li>
+<p>Pulsar sink tries to convert null key to string <a href="https://issues.jboss.org/browse/DBZ-3595">DBZ-3595</a></p>
+</li>
+<li>
+<p>Oracle RAC URL does not correctly substitute node IP addresses <a href="https://issues.jboss.org/browse/DBZ-3599">DBZ-3599</a></p>
+</li>
+<li>
+<p>Oracle Connector - got InputMismatchException mismatched input 'CASCADE' expecting {'AS', 'PURGE', ';'} <a href="https://issues.jboss.org/browse/DBZ-3606">DBZ-3606</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other_changes"><a class="anchor" href="#other_changes"></a>Other changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Unsupported column types should be ignored as with other connectors <a href="https://issues.jboss.org/browse/DBZ-814">DBZ-814</a></p>
+</li>
+<li>
+<p>Make outbox extensions dependency on tracing extension optional <a href="https://issues.jboss.org/browse/DBZ-2834">DBZ-2834</a></p>
+</li>
+<li>
+<p>Avoid copying in DML handling <a href="https://issues.jboss.org/browse/DBZ-3328">DBZ-3328</a></p>
+</li>
+<li>
+<p>Document impact of using --hostname when starting Connect container <a href="https://issues.jboss.org/browse/DBZ-3466">DBZ-3466</a></p>
+</li>
+<li>
+<p>Update external link to AMQ Streams documentation <a href="https://issues.jboss.org/browse/DBZ-3502">DBZ-3502</a></p>
+</li>
+<li>
+<p>Update external links in downstream docs to AMQ Streams deployment information  <a href="https://issues.jboss.org/browse/DBZ-3525">DBZ-3525</a></p>
+</li>
+<li>
+<p>Debezium Server Core builds plugin artifact <a href="https://issues.jboss.org/browse/DBZ-3542">DBZ-3542</a></p>
+</li>
+<li>
+<p>List contributors script fails when name contains a "/" character <a href="https://issues.jboss.org/browse/DBZ-3544">DBZ-3544</a></p>
+</li>
+<li>
+<p>Upgrade to Quarkus 2.0.0.CR3 <a href="https://issues.jboss.org/browse/DBZ-3550">DBZ-3550</a></p>
+</li>
+<li>
+<p>Reduce DB round-trips for LOB handling <a href="https://issues.jboss.org/browse/DBZ-3556">DBZ-3556</a></p>
+</li>
+<li>
+<p>Oracle benchmark does not execute LogMiner parser performance tests <a href="https://issues.jboss.org/browse/DBZ-3560">DBZ-3560</a></p>
+</li>
+<li>
+<p>Clarify purpose of database.history.retention.hours <a href="https://issues.jboss.org/browse/DBZ-3565">DBZ-3565</a></p>
+</li>
+<li>
+<p>Improve documentation related to signalling table DDL <a href="https://issues.jboss.org/browse/DBZ-3568">DBZ-3568</a></p>
+</li>
+<li>
+<p>cassandra-driver-core 3.5.0 managed in Debezium BOM too old for testcontainers 1.15.3 <a href="https://issues.jboss.org/browse/DBZ-3589">DBZ-3589</a></p>
+</li>
+<li>
+<p>Remove some dead code in Postgres connector <a href="https://issues.jboss.org/browse/DBZ-3596">DBZ-3596</a></p>
+</li>
+<li>
+<p>Debezium server sink oracle database to pulsar without default namespace "public/default" <a href="https://issues.jboss.org/browse/DBZ-3601">DBZ-3601</a></p>
+</li>
+<li>
+<p>Document OffsetContext.incrementalSnapshotEvents() <a href="https://issues.jboss.org/browse/DBZ-3607">DBZ-3607</a></p>
+</li>
+<li>
+<p>Database skipping logic isn&#8217;t correct <a href="https://issues.jboss.org/browse/DBZ-3608">DBZ-3608</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-1.6.0-beta1"><a class="anchor" href="#release-1.6.0-beta1"></a><strong>Release 1.6.0.Beta1</strong> <em>(May 20th, 2021)</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12357565">complete list of issues</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
+<div class="paragraph">
+<p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
+See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -585,13 +788,13 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes"><a class="anchor" href="#breaking_changes"></a>Breaking changes</h3>
+<h3 id="breaking_changes_2"><a class="anchor" href="#breaking_changes_2"></a>Breaking changes</h3>
 <div class="paragraph">
 <p><code>RENAME TABLE</code> statement with multiple tables now emits multiple schema change events, one for each of the renamed tables (<a href="https://issues.jboss.org/browse/DBZ-3399">DBZ-3399</a>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features"><a class="anchor" href="#new_features"></a>New Features</h3>
+<h3 id="new_features_2"><a class="anchor" href="#new_features_2"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -631,7 +834,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes"><a class="anchor" href="#fixes"></a>Fixes</h3>
+<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -710,7 +913,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes"><a class="anchor" href="#other_changes"></a>Other changes</h3>
+<h3 id="other_changes_2"><a class="anchor" href="#other_changes_2"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -776,14 +979,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12353176">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_3"><a class="anchor" href="#kafka_compatibility_3"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
+<h3 id="upgrading_3"><a class="anchor" href="#upgrading_3"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -799,14 +1002,14 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_2"><a class="anchor" href="#breaking_changes_2"></a>Breaking changes</h3>
+<h3 id="breaking_changes_3"><a class="anchor" href="#breaking_changes_3"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>Debezium now requires Java 11 as a build and a runtime environment (<a href="https://issues.jboss.org/browse/DBZ-2875">DBZ-2875</a>).
 The only exception is Debezium Cassandra connector that still uses Java 8.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_2"><a class="anchor" href="#new_features_2"></a>New Features</h3>
+<h3 id="new_features_3"><a class="anchor" href="#new_features_3"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -822,7 +1025,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
+<h3 id="fixes_3"><a class="anchor" href="#fixes_3"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -889,7 +1092,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_2"><a class="anchor" href="#other_changes_2"></a>Other changes</h3>
+<h3 id="other_changes_3"><a class="anchor" href="#other_changes_3"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>

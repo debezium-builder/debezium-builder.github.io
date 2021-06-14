@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-06-10T09:46:08+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.5.2.Final Released</title><link href="https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/" rel="alternate" type="text/html" title="Debezium 1.5.2.Final Released" /><published>2021-05-28T00:00:00+00:00</published><updated>2021-05-28T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-06-14T15:22:51+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.Beta2 Released</title><link href="https://debezium.io/blog/2021/06/10/debezium-1-6-beta2-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.Beta2 Released" /><published>2021-06-10T00:00:00+00:00</published><updated>2021-06-10T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/10/debezium-1-6-beta2-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/10/debezium-1-6-beta2-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.6.0.Beta2&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release adds support for Pravega to Debezium Server, expands the snapshotting options of the Debezium Oracle connector,
+and provides a range of bug fixes and other improvements across different Debezium connectors.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;pravega_support_for_debezium_server&quot;&gt;Pravega Support for Debezium Server&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With &lt;a href=&quot;/documentation/reference/operations/debezium-server.html&quot;&gt;Debezium Server&lt;/a&gt;,
+we&amp;#8217;re on a mission to bring open-source change data capture to all the users,
+no matter which data streaming platform or commit log they are using.
+So we are very happy to receive a contribution which adds support for &lt;a href=&quot;https://pravega.io/&quot;&gt;Pravega&lt;/a&gt; to Debezium Server.
+A Cloud Native Computing Foundation (CNCF) sandbox and Apache 2.0 licensed open-source project,
+Pravega describes itself as a &quot;storage abstraction for continuously generated and unbounded data&quot;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Debezium Server Pravega sink adapter offers two modes: non-transactional and transactional.
+The non-transactional mode individually writes each event in a Debezium batch to Pravega.
+The transactional mode writes the Debezium batch to a Pravega transaction that commits when the batch is completed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To learn more about using Debezium with Pravega, please refer to the &lt;a href=&quot;/documentation/reference/operations/debezium-server.html#_pravega&quot;&gt;documentation&lt;/a&gt;.
+Many thanks to &lt;a href=&quot;https://twitter.com/derekm00r3&quot;&gt;Derek Moore&lt;/a&gt; for this fantastic contribution!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;oracle_snapshotting_improvements&quot;&gt;Oracle Snapshotting Improvements&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Debezium connector for Oracle received two improvements related to snapshotting:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Support for the &lt;code&gt;snapshot.include.collection.list&lt;/code&gt; option (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3062&quot;&gt;DBZ-3062&lt;/a&gt;); this allows to create an initial snapshot only for a subset of all those tables captured by the connector&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;New option &lt;code&gt;snapshot.locking.mode&lt;/code&gt; which provides control over the locking behavior when the connector captures the schema of the tables (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3557&quot;&gt;DBZ-3557&lt;/a&gt;); in particular, this allows to disable locking completely, which is very useful if you can guarantee that no DDL changes are happening while the connector is taking the (schema) snapshot&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In addition, there&amp;#8217;s several bug fixes for this connector, including a few ones related to DDL and DML parsing
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3545&quot;&gt;DBZ-3545&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3549&quot;&gt;DBZ-3549&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3554&quot;&gt;DBZ-3554&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3606&quot;&gt;DBZ-3606&lt;/a&gt;), handling of RAC installations (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3563&quot;&gt;DBZ-3563&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3599&quot;&gt;DBZ-3599&lt;/a&gt;),
+and more efficient handling of LOB columns (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3556&quot;&gt;DBZ-3556&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;further_improvements_and_bugfixes&quot;&gt;Further Improvements and Bugfixes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Debezium connector for SQL Server saw two performance-related improvments
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3486&quot;&gt;3486&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3515&quot;&gt;DBZ-3515&lt;/a&gt;).
+The schemas of change events from the Postgres connector contain default values now, based on the source column definition
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2790&quot;&gt;DBZ-2790&lt;/a&gt;).
+This comes in handy for instance when deriving downstream table schemas from a change event stream.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Other fixes include correct identification of primary members in MongoDB replica sets (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3522&quot;&gt;DBZ-3522&lt;/a&gt;),
+support for the &lt;code&gt;JSON&lt;/code&gt; function in the MySQL connector&amp;#8217;s DDL parser (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3559&quot;&gt;DBZ-3559&lt;/a&gt;),
+and the upgrade of the &lt;a href=&quot;/documentation/reference/integrations/outbox.html&quot;&gt;Debezium Quarkus extension&lt;/a&gt; for implementing the outbox pattern to Quarkus 2.0 (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3550&quot;&gt;DBZ-3550&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Overall, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-400?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.6.0.Beta2%20ORDER%20BY%20key%20ASC%2C%20component%20ASC&quot;&gt;48 issues&lt;/a&gt; have been addressed in Debezium 1.6.0.Beta2.
+We&amp;#8217;re deeply grateful to all the community members contributing to this release:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ani-sha&quot;&gt;Anisha Mohanty&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/roldanbob&quot;&gt;Bob Roldan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/ccollingwood&quot;&gt;Chris Collingwood&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/Naros&quot;&gt;Chris Cranford&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/derekm&quot;&gt;Derek Moore&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/eslep&quot;&gt;Eric Slep&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/gvaquez-ubi&quot;&gt;Gilles Vaquez&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/gunnarmorling&quot;&gt;Gunnar Morling&lt;/a&gt;,
+Jackey Zhang,
+&lt;a href=&quot;https://github.com/jcechace&quot;&gt;Jakub Cechacek&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/novotnyJiri&quot;&gt;Jiri Novotny&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/jpechane&quot;&gt;Jiri Pechanec&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/kppullin&quot;&gt;Kevin Pullin&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/patrichu-cisco&quot;&gt;Patrick Chu&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/roldanbob&quot;&gt;Robert Roldan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/sarafonseca-123&quot;&gt;Sara Fonseca&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/smiklosovic&quot;&gt;Stefan Miklosovic&lt;/a&gt;, and
+&lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With Beta2 through the door, we&amp;#8217;re entering the stabilization phase for the 1.6 release cycle.
+You can expect one or two CRs (candidate releases),
+before the final release, which is planned for the end of the month,
+barring any unforeseen complications of cause.
+Besides some more bug fixes and documentation improvements we&amp;#8217;re also intending to upgrade to Apache Kafka 2.8,
+which will allow you to take a sneak peak at using Debezium with &lt;a href=&quot;https://www.morling.dev/blog/exploring-zookeeper-less-kafka/&quot;&gt;ZooKeeper-less Kafka&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In parallel, we&amp;#8217;re going to work on the roadmap for Debezium 1.7 (due by the end of September).
+Please get in touch via the &lt;a href=&quot;https://groups.google.com/g/debezium/&quot;&gt;mailing list&lt;/a&gt; if you have specific feature requests for this release!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="outbox" /><summary type="html">It&amp;#8217;s my pleasure to announce the release of Debezium 1.6.0.Beta2! This release adds support for Pravega to Debezium Server, expands the snapshotting options of the Debezium Oracle connector, and provides a range of bug fixes and other improvements across different Debezium connectors.</summary></entry><entry><title type="html">Debezium 1.5.2.Final Released</title><link href="https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/" rel="alternate" type="text/html" title="Debezium 1.5.2.Final Released" /><published>2021-05-28T00:00:00+00:00</published><updated>2021-05-28T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/05/28/debezium-1-5-2-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Let me announce the bugfix release of Debezium 1.5, &lt;strong&gt;1.5.2.Final&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2849,24 +2958,4 @@ The team appreciates the invaluable feedback the community continually provides!
 &lt;p&gt;We’ve also received quite some interest from multiple communities in this project and we’ve decided to open-source &lt;a href=&quot;https://github.com/debezium/debezium-connector-vitess/&quot;&gt;Vitess Connector&lt;/a&gt; under the Debezium umbrella. Please feel free to learn more, and we welcome and value any contributions.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>keweishang, rgibaiev</name></author><category term="vitess" /><summary type="html">This post originally appeared on the Bolt Labs Engineering blog. Traditionally, MySQL has been used to power most of the backend services at Bolt. We&amp;#8217;ve designed our schemas in a way that they&amp;#8217;re sharded into different MySQL clusters. Each MySQL cluster contains a subset of data and consists of one primary and multiple replication nodes. Once data is persisted to the database, we use the Debezium MySQL Connector to capture data change events and send them to Kafka. This gives us an easy and reliable way to communicate changes between back-end microservices.</summary></entry><entry><title type="html">Hello Debezium!</title><link href="https://debezium.io/blog/2020/10/27/hello-debezium/" rel="alternate" type="text/html" title="Hello Debezium!" /><published>2020-10-27T16:19:59+00:00</published><updated>2020-10-27T16:19:59+00:00</updated><id>https://debezium.io/blog/2020/10/27/hello-debezium</id><content type="html" xml:base="https://debezium.io/blog/2020/10/27/hello-debezium/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Hello everyone, my name is Anisha Mohanty and I recently joined Red Hat and the Debezium team.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I started my journey with Red Hat in April 2020 after completing my graduation. I was introduced to open source in my early college days, but I wasn&amp;#8217;t aware of how organizations work and wanted to get the essence of open source ethics and values. That is something that I am fascinated to learn as I joined Red Hat.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;My work started under the Data Virtualization team with Teiid and then under the &lt;a href=&quot;https://graphqlcrud.org/&quot;&gt;GRAPHQLCRUD&lt;/a&gt; project which is a standard for a generic query interface on top of GraphQL. The project has started well and is in great shape right now. We have successfully added CRUD capabilities, paging, and filtering specifications.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Coming to Debezium, I first heard about it as some DV members started contributing here, well back then it was a completely new thing for me. I started exploring more, and it was not long when I had my first interaction with Gunnar and Jiri. With a warm welcome and great team here, I am really excited to work with the Debezium Community.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Can&amp;#8217;t wait to learn and explore awesome things. Happy to get started here!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;--Anisha&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Anisha Mohanty</name></author><category term="community" /><category term="news" /><summary type="html">Hello everyone, my name is Anisha Mohanty and I recently joined Red Hat and the Debezium team. I started my journey with Red Hat in April 2020 after completing my graduation. I was introduced to open source in my early college days, but I wasn&amp;#8217;t aware of how organizations work and wanted to get the essence of open source ethics and values. That is something that I am fascinated to learn as I joined Red Hat. My work started under the Data Virtualization team with Teiid and then under the GRAPHQLCRUD project which is a standard for a generic query interface on top of GraphQL. The project has started well and is in great shape right now. We have successfully added CRUD capabilities, paging, and filtering specifications. Coming to Debezium, I first heard about it as some DV members started contributing here, well back then it was a completely new thing for me. I started exploring more, and it was not long when I had my first interaction with Gunnar and Jiri. With a warm welcome and great team here, I am really excited to work with the Debezium Community.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>keweishang, rgibaiev</name></author><category term="vitess" /><summary type="html">This post originally appeared on the Bolt Labs Engineering blog. Traditionally, MySQL has been used to power most of the backend services at Bolt. We&amp;#8217;ve designed our schemas in a way that they&amp;#8217;re sharded into different MySQL clusters. Each MySQL cluster contains a subset of data and consists of one primary and multiple replication nodes. Once data is persisted to the database, we use the Debezium MySQL Connector to capture data change events and send them to Kafka. This gives us an easy and reliable way to communicate changes between back-end microservices.</summary></entry></feed>
