@@ -991,8 +991,8 @@ In other words, if you&#8217;re specifying a list of tables to monitor, this lis
 <p>This new feature has quite a number of use cases that we intend to explore in future releases.
 Lets discuss what signals are currently supported in this release.</p>
 </div>
-<div class="sect3">
-<h4 id="log_signal">Log Signal</h4>
+<div class="sect2">
+<h3 id="log_signal">Log Signal</h3>
 <div class="paragraph">
 <p>The log signal is detected when the <code>TYPE</code> column in the signal table is <code>log</code>.
 This signal requests that Debezium write the contents of the <code>DATA</code> column (payload) to the connector logs as-is.
@@ -1011,8 +1011,8 @@ This can be useful for a variety of purposes from debugging to tracking progress
 Debezium will recognize the signal and will then write <code>Hello World</code> to the connector logs using the <code>INFO</code> log level.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="schema_changes_signal">Schema Changes Signal</h4>
+<div class="sect2">
+<h3 id="schema_changes_signal">Schema Changes Signal</h3>
 <div class="paragraph">
 <p>The schema changes signal is detected when the <code>TYPE</code> column in the signal table is <code>schema-changes</code>.
 This signal tells Debezium to emit a <code>SchemaChangeEvent</code> to the schema changes topic that is based on the changes supplied in the row&#8217;s <code>DATA</code> column (payload).
