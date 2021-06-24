@@ -11,8 +11,25 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Debezium 1.6.0.CR1 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.6.0.CR1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release adds skipped operations optimizations for SQL Server, introduces Heartbeat support to the Oracle connector,
+Oracle BLOB/CLOB support is now opt-in only, and provides a range of bug fixes and other improvements across different Debezium connectors.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium 1.6.0.Beta2 Released</title>
@@ -707,25 +724,6 @@ Most importantly, the following bugs were fixed related to the &lt;a href=&quot;
 				<pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/11/12/debezium-1-3-1-final-released/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/11/12/debezium-1-3-1-final-released/</guid>
-			</item>
-		
-			<item>
-				<title>Streaming Vitess at Bolt</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;This post originally appeared on the &lt;a href=&quot;https://medium.com/bolt-labs/streaming-vitess-at-bolt-f8ea93211c3f&quot;&gt;Bolt Labs Engineering blog&lt;/a&gt;.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Traditionally, MySQL has been used to power most of the backend services at &lt;a href=&quot;https://bolt.eu/en/&quot;&gt;Bolt&lt;/a&gt;. We&amp;#8217;ve designed our schemas in a way that they&amp;#8217;re sharded into different MySQL clusters. Each MySQL cluster contains a subset of data and consists of one primary and multiple replication nodes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Once data is persisted to the database, we use the &lt;a href=&quot;https://debezium.io/documentation/reference/connectors/mysql.html&quot;&gt;Debezium MySQL Connector&lt;/a&gt; to &lt;a href=&quot;https://www.confluent.io/blog/how-bolt-adopted-cdc-with-confluent-for-real-time-data-and-analytics/&quot;&gt;capture data change events&lt;/a&gt; and send them to Kafka. This gives us an easy and reliable way to communicate changes between back-end microservices.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Wed, 04 Nov 2020 16:19:59 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/11/04/streaming-vitess-at-bolt/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/11/04/streaming-vitess-at-bolt/</guid>
 			</item>
 		
 	</channel>
