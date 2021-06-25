@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-06-24T12:36:13+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.CR1 Released</title><link href="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.CR1 Released" /><published>2021-06-24T00:00:00+00:00</published><updated>2021-06-24T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-06-25T10:01:44+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.CR1 Released</title><link href="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.CR1 Released" /><published>2021-06-24T00:00:00+00:00</published><updated>2021-06-24T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.6.0.CR1&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -37,14 +37,14 @@ Using this knowledge, the query to fetch changes from the capture table was adju
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;A heartbeat is a critical part of insuring that a connector&amp;#8217;s offsets remain synchronized with Kafka.
 Normally, the offsets are automatically maintained by Kafka Connect when we emit an event to a topic.
-But there are circumstances that occur in environments where event emission can be infrequent enough that stale offsets become a concern.&lt;/p&gt;
+But there are circumstances where event emission can be infrequent enough that stale offsets become a concern.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Regardless which adapter the Debezium Oracle connector is deployed to use, there are situations where events may be seen by the connector or offset state is updated but because we don&amp;#8217;t emit an event to Kafka, the offsets maintained locally by the connector may become stale.
-For example, the connector could be capturing changes for a table that changes very infrequently compared to other tables in the data source.&lt;/p&gt;
+&lt;p&gt;Regardless which adapter the Debezium Oracle connector is deployed to use, there are situations where events may be seen by the connector and in-memory offset state is updated but because we don&amp;#8217;t emit an event to Kafka, the offsets aren&amp;#8217;t synchronized to Kafka Connect.
+A great example is when the connector could be capturing changes for a table that changes very infrequently compared to other tables in the data source.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In order to guarantee that offsets remain synchronized with Kafka, specifically during periods of low capture activity, the &lt;code&gt;heartbeat.interval.ms&lt;/code&gt; configuration option can be set to periodically keep offsets in sync.&lt;/p&gt;
+&lt;p&gt;In order to guarantee that offsets remain synchronized with Kafka Connect, specifically during periods of low capture activity, the &lt;code&gt;heartbeat.interval.ms&lt;/code&gt; configuration option can be set to periodically keep offsets in sync.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -55,17 +55,19 @@ For example, the connector could be capturing changes for a table that changes v
 &lt;p&gt;While we added support for &lt;code&gt;BLOB&lt;/code&gt; and &lt;code&gt;CLOB&lt;/code&gt; data types to the Debezium connector for Oracle in an earlier 1.6 pre-release, we believe that the work towards fully supporting these types is still an ongoing one.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;There is a certain amount of overhead that these data types impose on the connector both from the fact there are certain steps that must be taken to reconcile transactions that have LOB operations to the memory footprint needed to store the LOB data prior to event emission.
-Additionally, users may not want to have LOB data emitted to Kafka in the first place due to its size.&lt;/p&gt;
+&lt;p&gt;There is a certain amount of overhead the connector has when handling BLOB and CLOB fields.
+Transactions which contain these data types require a reconciliation step at commit-time to merge certain events into a single logical emitted event.
+Additionally, LOB data types require a certain amount of memory footprint for their values to be kept in memory while the event to be emitted is constructed.
+Furthermore, users may not want to have LOB data emitted at all due to the size of the data.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So with that, the Oracle connector&amp;#8217;s suport for LOB data types is now an opt-in only feature.
+&lt;p&gt;So with that, the Oracle connector&amp;#8217;s support for LOB data types is now an opt-in only feature.
 This means that OOTB the connector won&amp;#8217;t attempt to capture LOB column data.
-If LOB columns need to be captured by the connector, the connector option, &lt;code&gt;lob.enabled&lt;/code&gt; must be set to &lt;code&gt;true&lt;/code&gt; so that the connector will pickup and process these column types.&lt;/p&gt;
+If LOB columns need to be captured by the connector, the connector option, &lt;code&gt;lob.enabled&lt;/code&gt;, must be set to &lt;code&gt;true&lt;/code&gt; so that the connector will pickup and process those column types.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Lastly, after a review of the LOB support, we also felt that since there is still some effort left to upon upon what we have delivered, it made sense to denote LOB support as &lt;em&gt;incubating&lt;/em&gt; for the short-term until we believe the solution has matured.
-We strongly encourage users to enable LOB data type support and give it test drive if you need to capture changes for LOB-based columns and provide any and all feedback, both good or bad, so that we can continue to improve support for LOB columns.&lt;/p&gt;
+&lt;p&gt;Lastly, we also felt that since there is still some ongoing effort for BLOB and CLOB support, it made sense to denote LOB support as &lt;em&gt;incubating&lt;/em&gt; for the short-term until we believe the solution has matured.
+We strongly encourage users who want to capture LOB-based columns to enable LOB support and give it test drive and provide any and all feedback, both good or bad, so that we can continue to improve support for LOB columns.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

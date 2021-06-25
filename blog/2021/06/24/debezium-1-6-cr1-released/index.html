@@ -947,14 +947,14 @@ Using this knowledge, the query to fetch changes from the capture table was adju
 <div class="paragraph">
 <p>A heartbeat is a critical part of insuring that a connector&#8217;s offsets remain synchronized with Kafka.
 Normally, the offsets are automatically maintained by Kafka Connect when we emit an event to a topic.
-But there are circumstances that occur in environments where event emission can be infrequent enough that stale offsets become a concern.</p>
+But there are circumstances where event emission can be infrequent enough that stale offsets become a concern.</p>
 </div>
 <div class="paragraph">
-<p>Regardless which adapter the Debezium Oracle connector is deployed to use, there are situations where events may be seen by the connector or offset state is updated but because we don&#8217;t emit an event to Kafka, the offsets maintained locally by the connector may become stale.
-For example, the connector could be capturing changes for a table that changes very infrequently compared to other tables in the data source.</p>
+<p>Regardless which adapter the Debezium Oracle connector is deployed to use, there are situations where events may be seen by the connector and in-memory offset state is updated but because we don&#8217;t emit an event to Kafka, the offsets aren&#8217;t synchronized to Kafka Connect.
+A great example is when the connector could be capturing changes for a table that changes very infrequently compared to other tables in the data source.</p>
 </div>
 <div class="paragraph">
-<p>In order to guarantee that offsets remain synchronized with Kafka, specifically during periods of low capture activity, the <code>heartbeat.interval.ms</code> configuration option can be set to periodically keep offsets in sync.</p>
+<p>In order to guarantee that offsets remain synchronized with Kafka Connect, specifically during periods of low capture activity, the <code>heartbeat.interval.ms</code> configuration option can be set to periodically keep offsets in sync.</p>
 </div>
 </div>
 </div>
@@ -965,17 +965,19 @@ For example, the connector could be capturing changes for a table that changes v
 <p>While we added support for <code>BLOB</code> and <code>CLOB</code> data types to the Debezium connector for Oracle in an earlier 1.6 pre-release, we believe that the work towards fully supporting these types is still an ongoing one.</p>
 </div>
 <div class="paragraph">
-<p>There is a certain amount of overhead that these data types impose on the connector both from the fact there are certain steps that must be taken to reconcile transactions that have LOB operations to the memory footprint needed to store the LOB data prior to event emission.
-Additionally, users may not want to have LOB data emitted to Kafka in the first place due to its size.</p>
+<p>There is a certain amount of overhead the connector has when handling BLOB and CLOB fields.
+Transactions which contain these data types require a reconciliation step at commit-time to merge certain events into a single logical emitted event.
+Additionally, LOB data types require a certain amount of memory footprint for their values to be kept in memory while the event to be emitted is constructed.
+Furthermore, users may not want to have LOB data emitted at all due to the size of the data.</p>
 </div>
 <div class="paragraph">
-<p>So with that, the Oracle connector&#8217;s suport for LOB data types is now an opt-in only feature.
+<p>So with that, the Oracle connector&#8217;s support for LOB data types is now an opt-in only feature.
 This means that OOTB the connector won&#8217;t attempt to capture LOB column data.
-If LOB columns need to be captured by the connector, the connector option, <code>lob.enabled</code> must be set to <code>true</code> so that the connector will pickup and process these column types.</p>
+If LOB columns need to be captured by the connector, the connector option, <code>lob.enabled</code>, must be set to <code>true</code> so that the connector will pickup and process those column types.</p>
 </div>
 <div class="paragraph">
-<p>Lastly, after a review of the LOB support, we also felt that since there is still some effort left to upon upon what we have delivered, it made sense to denote LOB support as <em>incubating</em> for the short-term until we believe the solution has matured.
-We strongly encourage users to enable LOB data type support and give it test drive if you need to capture changes for LOB-based columns and provide any and all feedback, both good or bad, so that we can continue to improve support for LOB columns.</p>
+<p>Lastly, we also felt that since there is still some ongoing effort for BLOB and CLOB support, it made sense to denote LOB support as <em>incubating</em> for the short-term until we believe the solution has matured.
+We strongly encourage users who want to capture LOB-based columns to enable LOB support and give it test drive and provide any and all feedback, both good or bad, so that we can continue to improve support for LOB columns.</p>
 </div>
 </div>
 </div>
