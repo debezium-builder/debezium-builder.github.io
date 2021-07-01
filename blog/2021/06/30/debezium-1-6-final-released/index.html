@@ -2,30 +2,30 @@
 <html>
 
 <head>
-  <title>Debezium 0.9.1.Final Released</title>
+  <title>Debezium 1.6.0.Final Released</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.">
 
   <meta content="Debezium" property="og:site_name">
   
-  <meta content="Debezium 0.9.1.Final Released" property="og:title">
+  <meta content="Debezium 1.6.0.Final Released" property="og:title">
   
   
   <meta content="https://debezium.io/assets/images/color_white_debezium_type_600px.svg" property="og:image">
   
   <meta property="og:description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong."> 
-  <meta property="og:url" content="https://debezium.io/blog/2019/02/13/debezium-0-9-1-final-released/"> 
+  <meta property="og:url" content="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/"> 
   <meta name="twitter:site" content="@debezium ‏">
-  <meta name="twitter:title" content="Debezium 0.9.1.Final Released">
+  <meta name="twitter:title" content="Debezium 1.6.0.Final Released">
   
-  <meta name="twitter:creator" content="@gmorling">
+  <meta name="twitter:creator" content="@ccranfor">
   
   
   <meta name="twitter:description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.">
   
   <meta name="twitter:card"  content="summary_large_image">
-  <meta property="twitter:url" content="https://debezium.io/blog/2019/02/13/debezium-0-9-1-final-released/"> 
+  <meta property="twitter:url" content="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/"> 
 
   <link rel="alternate" type="application/rss+xml" title="Debezium Blog" href="/blog.atom">
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" >
@@ -837,7 +837,7 @@
               "
             >
              
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                  <img src="/assets/images/ccranfor.jpg" style="width: 64px;"> 
                 
             </div>
           </div>
@@ -847,19 +847,19 @@
                 class="hidden-sm hidden-xs"
                 style="font-size: 2.75rem; line-height: 1"
               >
-                <a href="/blog/2019/02/13/debezium-0-9-1-final-released/">Debezium 0.9.1.Final Released</a>
+                <a href="/blog/2021/06/30/debezium-1-6-final-released/">Debezium 1.6.0.Final Released</a>
               </span>
               <span
                 class="hidden-md hidden-lg"
                 style="font-size: 2rem; line-height: 1"
               >
-                <a href="/blog/2019/02/13/debezium-0-9-1-final-released/">Debezium 0.9.1.Final Released</a>
+                <a href="/blog/2021/06/30/debezium-1-6-final-released/">Debezium 1.6.0.Final Released</a>
               </span>
               <div class="byline" style="line-height: 1">
                 
                     
-                    <em> February 13, 2019 by </em>
-                    <em> Gunnar Morling </em>
+                    <em> June 30, 2021 by </em>
+                    <em> Chris Cranford </em>
                 <div class="hidden-xs" style="margin-top: 5px">
                   
                   <a
@@ -876,12 +876,6 @@
                   
                   <a
                     class="label label-info hidden-sm hidden-xs"
-                    href="/tag/mongodb/"
-                    >mongodb</a
-                  >
-                  
-                  <a
-                    class="label label-info hidden-sm hidden-xs"
                     href="/tag/postgres/"
                     >postgres</a
                   >
@@ -894,14 +888,32 @@
                   
                   <a
                     class="label label-info hidden-sm hidden-xs"
+                    href="/tag/cassandra/"
+                    >cassandra</a
+                  >
+                  
+                  <a
+                    class="label label-info hidden-sm hidden-xs"
                     href="/tag/oracle/"
                     >oracle</a
                   >
                   
                   <a
                     class="label label-info hidden-sm hidden-xs"
-                    href="/tag/docker/"
-                    >docker</a
+                    href="/tag/db2/"
+                    >db2</a
+                  >
+                  
+                  <a
+                    class="label label-info hidden-sm hidden-xs"
+                    href="/tag/vitess/"
+                    >vitess</a
+                  >
+                  
+                  <a
+                    class="label label-info hidden-sm hidden-xs"
+                    href="/tag/outbox/"
+                    >outbox</a
                   >
                   
                 </div>
@@ -911,39 +923,113 @@
         </div>
       </div>
       <div class="grid__item width-12-12"><div class="paragraph">
-<p>Quickly following up to last week&#8217;s release of Debezium 0.9, it&#8217;s my pleasure today to announce the release of Debezium <strong>0.9.1.Final</strong>!</p>
+<p>I&#8217;m pleased to announce the release of Debezium <strong>1.6.0.Final</strong>!</p>
 </div>
 <div class="paragraph">
-<p>This release fixes a couple of bugs which were reported after the 0.9 release.
-Most importantly, there are two fixes to the new <a href="/docs/connectors/sqlserver/">Debezium connector for SQL Server</a>,
-which deal with correct handling of LSNs after connector restarts (<a href="https://issues.redhat.com/browse/DBZ-1128">DBZ-1128</a>, <a href="https://issues.redhat.com/browse/DBZ-1131">DBZ-1131</a>).
-The connector also uses more reasonable defaults for the <code>selectMethod</code> and <code>fetchSize</code> options of the SQL Server JDBC driver (<a href="https://issues.redhat.com/browse/DBZ-1065">DBZ-1065</a>),
-which can help to significantly increase through-put and reduce memory consumption of the connector.</p>
-</div>
-<div class="paragraph">
-<p>The MySQL connector supports <code>GENERATED</code> columns now with the new Antlr-based DDL parser (<a href="https://issues.redhat.com/browse/DBZ-1123">DBZ-1123</a>),
-and for the Postgres connector the handling of primary key column definition changes was improved (<a href="https://issues.redhat.com/browse/DBZ-997">DBZ-997</a>).</p>
+<p>This release is packed full with tons of new features, including support for incremental snapshotting that can be toggled using the new the <a href="/documentation/reference/1.6/configuration/signalling.html">Signal API</a>.
+Based on the excellent paper <a href="https://arxiv.org/pdf/2010.12597v1.pdf">DBLog: A Watermark Based Change-Data-Capture Framework</a> by Netflix engineers Andreas Andreakis and Ioannis Papapanagiotou,
+the notion of incremental snapshotting addresses several requirements around snapshotting that came up repeatedly in the Debezium community:</p>
 </div>
 <div class="paragraph">
 <p><!-- more --></p>
 </div>
-<div class="paragraph">
-<p>In terms of new features, there is a new container image provided on Docker Hub now:
-the <a href="https://hub.docker.com/r/debezium/tooling">debezium/tooling</a> image contains a couple of open-source CLI tools
-(currently <a href="https://github.com/edenhill/kafkacat">kafkacat</a>, <a href="https://github.com/jakubroztocil/httpie">httpie</a>, <a href="https://github.com/stedolan/jq">jq</a>, <a href="https://github.com/dbcli/mycli">mycli</a> and <a href="https://github.com/dbcli/pgcli">pqcli</a>)
-which greatly help when working with Debezium connectors, Apache Kafka and Kafka Connect on the command line
-(<a href="https://issues.redhat.com/browse/DBZ-1125">DBZ-1125</a>).
-A big thank you to the respective authors these fantastic tools!</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ability to resume an on-going snapshot after a connector restart</p>
+</li>
+<li>
+<p>Re-snapshot selected tables during streaming, e.g. to re-bootstrap Kafka topics with change events for specific tables</p>
+</li>
+<li>
+<p>Snapshot tables newly added to the list of captured tables after changing the filter configuration</p>
+</li>
+<li>
+<p>Begin to stream changes while an initial snapshot is running</p>
+</li>
+</ul>
 </div>
-<div class="imageblock centered-image">
-    <img src="/assets/images/debezium_shell.gif" class="responsive-image" alt="CLI tools for working with Debezium">
+<div class="paragraph">
+<p>Incremental snapshotting is an incubating feature as of Debezium 1.6,
+and we&#8217;re looking forward to your feedback on this feature.
+To learn more about this functionality, please refer to the individual connector docs, e.g. for the Debezium <a href="/documentation/reference/1./connectors/mysql#_incremental_snapshot">MySQL connector</a>.
+There are already some follow-up improvements in this area in the workings,
+for instance the <a href="https://github.com/debezium/debezium/pull/2430">usage of MySQL GTIDs</a> for setting the high/low watermarks required for this snapshotting approach,
+which will avoid the need for write access to the database by the connector.
+You can expect these improvements to be rolled out in one of the upcoming 1.7 preview releases.</p>
 </div>
 <div class="paragraph">
-<p>Altogether, <a href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%200.9.1.Final">12 issues</a> were resolved in this release.
-Please refer to the <a href="/docs/releases/#release-0-9-1-final">release notes</a> to learn more about all fixed bugs, update procedures etc.</p>
+<p>Besides incremental snapshotting, other new features in Debezium 1.6 include two brand new <a href="/documentation/reference/1.6/operations/debezium-server.html">Debezium Server</a> sinks,
+one for Apache Kafka and another for <a href="https://pravega.io/">Pravega</a>,
+as well as several notable enhancements to the <a href="/documentation/reference/1.6/connectors/oracle.html">Debezium connector for Oracle</a> which include reacting to DDL schema changes and an opt-in, incubating feature to emit <code>BLOB</code> and <code>CLOB</code> column data types.
+There&#8217;s also improvements to the community-led connectors for <a href="/documentation/reference/1.6/connectors/vitess.html">Vitess</a> and <a href="/documentation/reference/1.6/connectors/cassandra.html">Apache Cassandra</a>,
+as well as wide range of bug fixes and other smaller improvements.
+We&#8217;ve also upgraded the <a href="/documentation/reference/1.6/integrations/outbox.html">Debezium Quarkus extension</a> for implementing the outbox pattern to Quarkus 2.0.</p>
 </div>
 <div class="paragraph">
-<p>Thanks a lot to community members <a href="https://github.com/ivan-lorenz">Ivan Lorenz</a> and <a href="https://github.com/tomazlemos">Tomaz Lemos Fernandes</a> for their contributions to this release!</p>
+<p>Across all the 1.6 preview and the final releases, a grand total of <a href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.6.0.Alpha1%2C%201.6.0.Beta1%2C%201.6.0.Beta2%2C%201.6.0.CR1%2C%201.6.0.Final)">188 issues</a> has been addressed.</p>
+</div>
+<div class="paragraph">
+<p>For more details, please see the earlier announcements for the <a href="/blog/2021/05/06/debezium-1-6-alpha1-released/">1.6.0 Alpha1</a>,
+<a href="/blog/2021/05/20/debezium-1-6-beta1-released/">Beta1</a>,
+<a href="/blog/2021/06/10/debezium-1-6-beta2-released/">Beta2</a>,
+and <a href="/blog/2021/06/24/debezium-1-6-cr1-released/">CR1</a> releases.</p>
+</div>
+<div class="paragraph">
+<p>Since the CR1 release, we&#8217;ve primarily focused on documentation improvements and some bug fixes.
+But there was one last-minute feature addition, too, which allows you to specify archive log locations (<a href="https://issues.redhat.com/browse/DBZ-3661">DBZ-3661</a>) for the Oracle connector.</p>
+</div>
+<div class="paragraph">
+<p>Please refer to the <a href="/releases/1.6/release-notes#release-1.6.0-final">release notes</a> of Debezium 1.6.0.Final for the complete list of resolved issues as well as procedures for upgrading from earlier versions.</p>
+</div>
+<div class="paragraph">
+<p>As always, a big thank you to all the members from the community who helped with this release,
+be it via code contributions, bug report, testing, providing insight and expertise, etc.
+Kudos to the following individuals from the community which contributed to Debezium 1.6, bringing the <a href="https://github.com/debezium/debezium/graphs/contributors">overall number</a> of contributors to the Debezium core repository to 277:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ani-sha">Anisha Mohanty</a>,
+<a href="https://github.com/bingqinzhou">Bingqin Zhou</a>,
+<a href="https://github.com/roldanbob">Bob Roldan</a>,
+<a href="https://github.com/camilesing">Camile Sing</a>,
+<a href="https://github.com/CaoManhDat">Cao Manh Dat</a>,
+<a href="https://github.com/ccollingwood">Chris Collingwood</a>,
+<a href="https://github.com/derekm">Derek Moore</a>,
+<a href="https://github.com/eslep">Eric Slep</a>,
+<a href="https://github.com/gvaquez-ubi">Gilles Vaquez</a>,
+<a href="https://github.com/blcksrx">Hossein Torabi</a>,
+<a href="https://github.com/piee9818">Hyunjin Oh</a>,
+<a href="https://github.com/jcechace">Jakub Cechacek</a>,
+<a href="https://github.com/JapuDCret">JapuDCret</a>,
+<a href="https://github.com/novotnyJiri">Jiri Novotny</a>,
+<a href="https://github.com/kppullin">Kevin Pullin</a>,
+<a href="https://github.com/truman303">Mike</a>,
+<a href="https://github.com/ojacquemart">Olivier Jacquemart</a>,
+<a href="https://github.com/patrichu-cisco">Patrick Chu</a>,
+<a href="https://github.com/roldanbob">Robert Roldan</a>,
+<a href="https://github.com/sarafonseca-123">Sara Fonseca</a>,
+<a href="https://github.com/morozov">Sergei Morozov</a>,
+<a href="https://github.com/siufay325">SiuFay</a>,
+<a href="https://github.com/smiklosovic">Stefan Miklosovic</a>,
+<a href="https://github.com/zifeo">Teo Stocco</a>,
+<a href="https://github.com/TAregger">Thomas Aregger</a>, and
+<a href="https://github.com/ramanenka">Vadzim Ramanenka</a>!</p>
+</div>
+<div class="sect1">
+<h2 id="outlook">Outlook</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As always, Debezium will be following its normal quarterly release cadence with Debezium 1.7 planned by the end of September.
+There are a couple of key issues we intend to work on over the course of this version including support for incremental snapshots with the MongoDB and Oracle connectors.
+Additionally, we plan to explore some new buffering options for the Oracle connector&#8217;s LogMiner-based implementation,
+work on a tool for compacting large schema history topics,
+expand the feature set of <a href="https://github.com/debezium/debezium-ui/">Debezium UI</a>, and much more.</p>
+</div>
+<div class="paragraph">
+<p>In the coming week(s), keep an eye out on our <a href="https://debezium.io/roadmap/">roadmap</a> as we&#8217;ll be refining this in preparations for Debezium 1.7.
+If you have any specific feature requests or other input for the roadmap and future releases, please let us know via the <a href="https://groups.google.com/g/debezium">mailing list</a>!</p>
+</div>
+</div>
 </div></div>
     </div>
     
@@ -953,27 +1039,27 @@ Please refer to the <a href="/docs/releases/#release-0-9-1-final">release notes<
       <div class="well">
       <div class="row">
         <div class="col-md-8">
-          <h2>Gunnar Morling</h2>
+          <h2>Chris Cranford</h2>
           
           <p>
             <span class="bio-size"
-              >Gunnar is a software engineer at Red Hat and open-source enthusiast by heart. A long-time Hibernate core team member, he's now the project lead of Debezium. Gunnar is the spec lead for Bean Validation 2.0 (JSR 380). He’s based in Hamburg, Germany.</span
+              >Chris is a software engineer at Red Hat. He previously was a member of the Hibernate ORM team and now works on Debezium. He lives in North Carolina just a few hours from Red Hat towers.</span
             >
           </p>
           
           <p class="bio-size">
             
-            <a href="https://twitter.com/gunnarmorling">
-              <i class="icon-twitter"></i>
-            </a>
-            &nbsp;
             
-            
-            <a href="https://github.com/gunnarmorling">
+            <a href="https://github.com/naros">
               <i class="icon-github"></i>
             </a>
             &nbsp;
             
+            
+            <a href="https://www.linkedin.com/in/crancran">
+              <i class="icon-linkedin"></i>
+            </a>
+            &nbsp;
             
           </p>
         </div>
@@ -982,7 +1068,7 @@ Please refer to the <a href="/docs/releases/#release-0-9-1-final">release notes<
           <img
             alt=""
             class="img-responsive pull-right portrait"
-            src="/assets/images/gmorling.jpg"
+            src="/assets/images/ccranfor.jpg"
           />
           
         </div>
@@ -993,11 +1079,11 @@ Please refer to the <a href="/docs/releases/#release-0-9-1-final">release notes<
       <ul class="pager pager-blog">
         
           <li class="previous">
-            <a href="/blog/2019/02/05/debezium-0-9-0-final-released/" class="previous"> &laquo; Previous</a>
+            <a href="/blog/2021/06/24/debezium-1-6-cr1-released/" class="previous"> &laquo; Previous</a>
         </li>
                 
         
-        <li class="next"><a href="/blog/2019/02/13/debezium-webinar-at-devnation-live/">Next &raquo; </a></li>
+          <li class="next disabled"><a href="">Next &raquo; </a></li>
         
       </ul>
     

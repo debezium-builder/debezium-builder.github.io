@@ -1,4 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-06-30T07:41:14+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.CR1 Released</title><link href="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.CR1 Released" /><published>2021-06-24T00:00:00+00:00</published><updated>2021-06-24T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-07-01T07:33:48+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.Final Released</title><link href="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.Final Released" /><published>2021-06-30T00:00:00+00:00</published><updated>2021-06-30T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/30/debezium-1-6-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.6.0.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release is packed full with tons of new features, including support for incremental snapshotting that can be toggled using the new the &lt;a href=&quot;/documentation/reference/1.6/configuration/signalling.html&quot;&gt;Signal API&lt;/a&gt;.
+Based on the excellent paper &lt;a href=&quot;https://arxiv.org/pdf/2010.12597v1.pdf&quot;&gt;DBLog: A Watermark Based Change-Data-Capture Framework&lt;/a&gt; by Netflix engineers Andreas Andreakis and Ioannis Papapanagiotou,
+the notion of incremental snapshotting addresses several requirements around snapshotting that came up repeatedly in the Debezium community:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Ability to resume an on-going snapshot after a connector restart&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Re-snapshot selected tables during streaming, e.g. to re-bootstrap Kafka topics with change events for specific tables&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Snapshot tables newly added to the list of captured tables after changing the filter configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Begin to stream changes while an initial snapshot is running&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Incremental snapshotting is an incubating feature as of Debezium 1.6,
+and we&amp;#8217;re looking forward to your feedback on this feature.
+To learn more about this functionality, please refer to the individual connector docs, e.g. for the Debezium &lt;a href=&quot;/documentation/reference/1./connectors/mysql#_incremental_snapshot&quot;&gt;MySQL connector&lt;/a&gt;.
+There are already some follow-up improvements in this area in the workings,
+for instance the &lt;a href=&quot;https://github.com/debezium/debezium/pull/2430&quot;&gt;usage of MySQL GTIDs&lt;/a&gt; for setting the high/low watermarks required for this snapshotting approach,
+which will avoid the need for write access to the database by the connector.
+You can expect these improvements to be rolled out in one of the upcoming 1.7 preview releases.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Besides incremental snapshotting, other new features in Debezium 1.6 include two brand new &lt;a href=&quot;/documentation/reference/1.6/operations/debezium-server.html&quot;&gt;Debezium Server&lt;/a&gt; sinks,
+one for Apache Kafka and another for &lt;a href=&quot;https://pravega.io/&quot;&gt;Pravega&lt;/a&gt;,
+as well as several notable enhancements to the &lt;a href=&quot;/documentation/reference/1.6/connectors/oracle.html&quot;&gt;Debezium connector for Oracle&lt;/a&gt; which include reacting to DDL schema changes and an opt-in, incubating feature to emit &lt;code&gt;BLOB&lt;/code&gt; and &lt;code&gt;CLOB&lt;/code&gt; column data types.
+There&amp;#8217;s also improvements to the community-led connectors for &lt;a href=&quot;/documentation/reference/1.6/connectors/vitess.html&quot;&gt;Vitess&lt;/a&gt; and &lt;a href=&quot;/documentation/reference/1.6/connectors/cassandra.html&quot;&gt;Apache Cassandra&lt;/a&gt;,
+as well as wide range of bug fixes and other smaller improvements.
+We&amp;#8217;ve also upgraded the &lt;a href=&quot;/documentation/reference/1.6/integrations/outbox.html&quot;&gt;Debezium Quarkus extension&lt;/a&gt; for implementing the outbox pattern to Quarkus 2.0.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Across all the 1.6 preview and the final releases, a grand total of &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.6.0.Alpha1%2C%201.6.0.Beta1%2C%201.6.0.Beta2%2C%201.6.0.CR1%2C%201.6.0.Final)&quot;&gt;188 issues&lt;/a&gt; has been addressed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For more details, please see the earlier announcements for the &lt;a href=&quot;/blog/2021/05/06/debezium-1-6-alpha1-released/&quot;&gt;1.6.0 Alpha1&lt;/a&gt;,
+&lt;a href=&quot;/blog/2021/05/20/debezium-1-6-beta1-released/&quot;&gt;Beta1&lt;/a&gt;,
+&lt;a href=&quot;/blog/2021/06/10/debezium-1-6-beta2-released/&quot;&gt;Beta2&lt;/a&gt;,
+and &lt;a href=&quot;/blog/2021/06/24/debezium-1-6-cr1-released/&quot;&gt;CR1&lt;/a&gt; releases.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since the CR1 release, we&amp;#8217;ve primarily focused on documentation improvements and some bug fixes.
+But there was one last-minute feature addition, too, which allows you to specify archive log locations (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3661&quot;&gt;DBZ-3661&lt;/a&gt;) for the Oracle connector.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please refer to the &lt;a href=&quot;/releases/1.6/release-notes#release-1.6.0-final&quot;&gt;release notes&lt;/a&gt; of Debezium 1.6.0.Final for the complete list of resolved issues as well as procedures for upgrading from earlier versions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As always, a big thank you to all the members from the community who helped with this release,
+be it via code contributions, bug report, testing, providing insight and expertise, etc.
+Kudos to the following individuals from the community which contributed to Debezium 1.6, bringing the &lt;a href=&quot;https://github.com/debezium/debezium/graphs/contributors&quot;&gt;overall number&lt;/a&gt; of contributors to the Debezium core repository to 277:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ani-sha&quot;&gt;Anisha Mohanty&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/roldanbob&quot;&gt;Bob Roldan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/camilesing&quot;&gt;Camile Sing&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/CaoManhDat&quot;&gt;Cao Manh Dat&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/ccollingwood&quot;&gt;Chris Collingwood&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/derekm&quot;&gt;Derek Moore&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/eslep&quot;&gt;Eric Slep&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/gvaquez-ubi&quot;&gt;Gilles Vaquez&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/blcksrx&quot;&gt;Hossein Torabi&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/piee9818&quot;&gt;Hyunjin Oh&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/jcechace&quot;&gt;Jakub Cechacek&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/JapuDCret&quot;&gt;JapuDCret&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/novotnyJiri&quot;&gt;Jiri Novotny&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/kppullin&quot;&gt;Kevin Pullin&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/truman303&quot;&gt;Mike&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/ojacquemart&quot;&gt;Olivier Jacquemart&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/patrichu-cisco&quot;&gt;Patrick Chu&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/roldanbob&quot;&gt;Robert Roldan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/sarafonseca-123&quot;&gt;Sara Fonseca&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/siufay325&quot;&gt;SiuFay&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/smiklosovic&quot;&gt;Stefan Miklosovic&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/zifeo&quot;&gt;Teo Stocco&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/TAregger&quot;&gt;Thomas Aregger&lt;/a&gt;, and
+&lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;outlook&quot;&gt;Outlook&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As always, Debezium will be following its normal quarterly release cadence with Debezium 1.7 planned by the end of September.
+There are a couple of key issues we intend to work on over the course of this version including support for incremental snapshots with the MongoDB and Oracle connectors.
+Additionally, we plan to explore some new buffering options for the Oracle connector&amp;#8217;s LogMiner-based implementation,
+work on a tool for compacting large schema history topics,
+expand the feature set of &lt;a href=&quot;https://github.com/debezium/debezium-ui/&quot;&gt;Debezium UI&lt;/a&gt;, and much more.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the coming week(s), keep an eye out on our &lt;a href=&quot;https://debezium.io/roadmap/&quot;&gt;roadmap&lt;/a&gt; as we&amp;#8217;ll be refining this in preparations for Debezium 1.7.
+If you have any specific feature requests or other input for the roadmap and future releases, please let us know via the &lt;a href=&quot;https://groups.google.com/g/debezium&quot;&gt;mailing list&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">I&amp;#8217;m pleased to announce the release of Debezium 1.6.0.Final! This release is packed full with tons of new features, including support for incremental snapshotting that can be toggled using the new the Signal API. Based on the excellent paper DBLog: A Watermark Based Change-Data-Capture Framework by Netflix engineers Andreas Andreakis and Ioannis Papapanagiotou, the notion of incremental snapshotting addresses several requirements around snapshotting that came up repeatedly in the Debezium community:</summary></entry><entry><title type="html">Debezium 1.6.0.CR1 Released</title><link href="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.CR1 Released" /><published>2021-06-24T00:00:00+00:00</published><updated>2021-06-24T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/24/debezium-1-6-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It&amp;#8217;s my pleasure to announce the release of Debezium &lt;strong&gt;1.6.0.CR1&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2692,69 +2800,4 @@ The above emitted message&amp;#8217;s headers would now contain &lt;code&gt;__ti
 &lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m excited to announce the release of Debezium 1.4.0.Alpha2! This second pass of the 1.4 release line provides a few useful new features: New API hook for the PostgreSQL Snapshotter interface Field renaming using ExtractNewRecordState SMT&amp;#8217;s add.fields and add.headers configurations</summary></entry><entry><title type="html">Debezium 1.3.1.Final Released</title><link href="https://debezium.io/blog/2020/11/12/debezium-1-3-1-final-released/" rel="alternate" type="text/html" title="Debezium 1.3.1.Final Released" /><published>2020-11-12T00:00:00+00:00</published><updated>2020-11-12T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/11/12/debezium-1-3-1-final-released</id><content type="html" xml:base="https://debezium.io/blog/2020/11/12/debezium-1-3-1-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m excited to announce the release of Debezium &lt;strong&gt;1.3.1.Final&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release primarily focuses on bugs that were reported after the 1.3 release.
-Most importantly, the following bugs were fixed related to the &lt;a href=&quot;/docs/connectors/oracle&quot;&gt;Debezium connector for Oracle&lt;/a&gt; LogMiner adapter thanks to the continued feedback by the Debezium community.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;SQLExceptions thrown when using Oracle LogMiner (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2624&quot;&gt;DBZ-2624&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;LogMiner mining session stopped due to WorkerTask killed (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2629&quot;&gt;DBZ-2629&lt;/a&gt;)
-&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In addition, there were other bugs identified and fixed in this release, including:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;[MongoDB] Sanitization of field names not applied to nested struct fields (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2680&quot;&gt;DBZ-2680&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] MariaDB nextval function is not supported by grammar (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2671&quot;&gt;DBZ-2671&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MSSQL] Hide stack-trace when default value cannot be parsed (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2642&quot;&gt;DBZ-2642&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] Upgrade JDBC driver to 8.0.19 (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2626&quot;&gt;DBZ-2626&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] ANTLR parser fails to interpret &lt;code&gt;BLOB(size)&lt;/code&gt; types (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2641&quot;&gt;DBZ-2641&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] Should allow non-ascii character in SQL (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2670&quot;&gt;DBZ-2670&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] Connector fails if non-existing view with same name as table is dropped (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2688&quot;&gt;DBZ-2688&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] No viable alternative at input error when column uses aggregate function names (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2738&quot;&gt;DBZ-2738&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] No snapshot found based on specified time (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-1446&quot;&gt;DBZ-1446&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[PostgreSQL] WAL logs are not properly flushed (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2653&quot;&gt;DBZ-2653&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Server] Event Hubs plugin support (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2660&quot;&gt;DBZ-2660&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Altogether, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.3.1.Final&quot;&gt;14 issues&lt;/a&gt; were resolved in this release.
-Please refer to the &lt;a href=&quot;/releases/1.3/release-notes/#release-1.3.1-final&quot;&gt;release notes&lt;/a&gt; to learn more about all fixed bugs, update procedures etc.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A big thank you to everyone who helped test and identify these bugs.
-The team appreciates the invaluable feedback the community continually provides!&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">I&amp;#8217;m excited to announce the release of Debezium 1.3.1.Final! This release primarily focuses on bugs that were reported after the 1.3 release. Most importantly, the following bugs were fixed related to the Debezium connector for Oracle LogMiner adapter thanks to the continued feedback by the Debezium community. SQLExceptions thrown when using Oracle LogMiner (DBZ-2624) LogMiner mining session stopped due to WorkerTask killed (DBZ-2629)</summary></entry></feed>
+&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m excited to announce the release of Debezium 1.4.0.Alpha2! This second pass of the 1.4 release line provides a few useful new features: New API hook for the PostgreSQL Snapshotter interface Field renaming using ExtractNewRecordState SMT&amp;#8217;s add.fields and add.headers configurations</summary></entry></feed>
