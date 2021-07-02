@@ -417,39 +417,39 @@ i.e. patch releases for the current stable minor release (e.g. 1.2.1.Final) are 
 </table>
 </div>
 <div class="sect1">
-<h2 id="1_6">1.6</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Move to Java 11 as minimum Java version</p>
-</li>
-<li>
-<p>Further improve and expand Oracle connector based on LogMiner</p>
-</li>
-<li>
-<p>DB history topic compaction tool</p>
-</li>
-<li>
-<p>Explore "interactive" snapshots based on commands in the signalling table (allowing to re-snapshot specific tables, resume snapshots after a restart, change include/exclude filters, begin streaming while snapshots are running, etc.</p>
-</li>
-<li>
-<p>Support for multiple connector tasks in SQL Server connector and common framework (community-led)</p>
-</li>
-<li>
-<p>Analyze and fix performance bottlenecks (ongoing)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="1_7">1.7</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
 <p>Explore differences in MariaDB binlog format and what&#8217;s needed to support MariaDB</p>
+</li>
+<li>
+<p>Add history compaction tool</p>
+</li>
+<li>
+<p>Incremental snapshotting for more connectors (MongoDB, Oracle)</p>
+</li>
+<li>
+<p>SPIs for snapshotting and offset storage</p>
+</li>
+<li>
+<p>Transaction buffer rework for Oracle connector</p>
+</li>
+<li>
+<p>Using JSON representation by default for database history</p>
+</li>
+<li>
+<p>Promote JSON support for schema changes topic to stable</p>
+</li>
+<li>
+<p>Expand Debezium UI</p>
+</li>
+<li>
+<p>Support for multiple connector tasks in SQL Server connector and common framework (community-led)</p>
+</li>
+<li>
+<p>Analyze and fix performance bottlenecks (ongoing)</p>
 </li>
 </ul>
 </div>
