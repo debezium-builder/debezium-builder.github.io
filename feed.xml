@@ -1,4 +1,304 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-07-05T14:39:06+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.6.0.Final Released</title><link href="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.Final Released" /><published>2021-06-30T00:00:00+00:00</published><updated>2021-06-30T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/30/debezium-1-6-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-07-12T07:25:45+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium Community Newsletter 01/2021</title><link href="https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/" rel="alternate" type="text/html" title="Debezium Community Newsletter 01/2021" /><published>2021-07-07T00:00:00+00:00</published><updated>2021-07-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021</id><content type="html" xml:base="https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Welcome to the newest edition of the Debezium community newsletter, in which we share all things CDC related including blog posts, group discussions, as well as StackOverflow
+questions that are relevant to our user community.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s been a long time since our last edition. But we are back again!
+In case you missed our last edition, you can check it out &lt;a href=&quot;/blog/2020/03/31/debezium-newsletter-01-2020/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;upcoming_events&quot;&gt;Upcoming Events&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Due to the ongoing global pandemic, all the conferences, and meet-ups have gone virtual.
+On the bright side, this means you get to attend some nice events from the comfort of your couch:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.meetup.com/apache-pinot/events/279202435/&quot;&gt;Apache Pinot meet-up&amp;#8201;&amp;#8212;&amp;#8201;&quot;Analyzing Real-time Order Deliveries using CDC with Debezium and Pinot&quot;&lt;/a&gt; by Kenny Bastani and Gunnar Morling&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.mongodb.com/live/agenda&quot;&gt;MongoDB.Live&amp;#8201;&amp;#8212;&amp;#8201;&quot;Dissecting our Legacy: The Strangler Fig Pattern with Apache Kafka, Debezium and MongoDB&quot;&lt;/a&gt; by Hans-Peter Grahsl and Gunnar Morling&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you&amp;#8217;d like to have a session on Debezium at your virtual meetup or conference, please get in touch!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;articles&quot;&gt;Articles&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There have been several blog posts about Debezium lately; here are some of the latest ones that you should not miss:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://shopify.engineering/capturing-every-change-shopify-sharded-monolith&quot;&gt;Capturing Every Change From Shopify’s Sharded Monolith&lt;/a&gt; by John Martin and Adam Bellemare&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;/blog/2020/11/04/streaming-vitess-at-bolt/&quot;&gt;Streaming Vitess at Bolt&lt;/a&gt; by Kewei Shang, and Ruslan Gibaiev&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.infoq.com/articles/saga-orchestration-outbox/&quot;&gt;Saga Orchestration for Microservices Using the Outbox Pattern&lt;/a&gt; by Gunnar Morling&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developers.redhat.com/articles/2021/06/14/application-modernization-patterns-apache-kafka-debezium-and-kubernetes/&quot;&gt;Application modernization patterns with Apache Kafka, Debezium, and Kubernetes&lt;/a&gt; by Bilgin Ibryam&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://inside.getyourguide.com/blog/2021/5/4/enhancing-the-outbox-pattern-with-kafka-streams/&quot;&gt;Enhancing the outbox pattern with Kafka Streams&lt;/a&gt; by Hinrik Örn Sigurðsson&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://thenewstack.io/kubernetes-run-analytics-at-the-edge-postgres-kafka-debezium/&quot;&gt;Kubernetes-Run Analytics at the Edge: Postgres, Kafka, Debezium&lt;/a&gt; by Jonathan Katz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;/blog/2021/03/18/understanding-non-key-joins-with-quarkus-extension-for-kafka-streams/&quot;&gt;Understanding Non-Key Joins With the Quarkus Extension for Kafka Streams&lt;/a&gt; by Anisha Mohanty&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/vimeo-engineering-blog/debezium-event-flattening-with-sql-in-snowflake-b0e8397cfac2/&quot;&gt;Debezium event flattening with SQL in Snowflake&lt;/a&gt; by Obed&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A series of really insightful blog posts about Debezium and change data capture in general by Dunith Dhanushka:&lt;/p&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/event-driven-utopia/a-gentle-introduction-to-event-driven-change-data-capture-683297625f9b/&quot;&gt;A Gentle Introduction to Event-driven Change Data Capture&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/event-driven-utopia/a-visual-introduction-to-debezium-32563e23c6b8/&quot;&gt;A Visual Introduction to Debezium&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/event-driven-utopia/8-practical-use-cases-of-change-data-capture-8f059da4c3b7/&quot;&gt;8 Practical Use Cases of Change Data Capture&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/apache-pinot-developer-blog/change-data-analysis-with-debezium-and-apache-pinot-b4093dc178a7/&quot;&gt;Change Data Analysis with Debezium and Apache Pinot&lt;/a&gt; by Kenny Bastani&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://noti.st/morsapaes/liQzgs/change-data-capture-with-flink-sql-and-debezium&quot;&gt;Change Data Capture with Flink SQL and Debezium&lt;/a&gt; by Marta Paes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.wix.engineering/post/change-data-capture-at-deviantart/&quot;&gt;Change Data Capture at DeviantArt&lt;/a&gt; by Ruslan Danilin&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And if watching a talk is more your kind of thing, here&amp;#8217;s the recording of the session &lt;a href=&quot;https://2021.berlinbuzzwords.de/session/change-data-streaming-patterns-distributed-systems/&quot;&gt;Change Data Streaming Patterns in Distributed Systems&lt;/a&gt; from this year&amp;#8217;s Berlin Buzzwords, by Gunnar Morling and Hans-Peter Grahsl:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;responsive-video&quot;&gt;
+&lt;iframe width=&quot;1600&quot; height=&quot;900&quot; src=&quot;https://www.youtube.com/embed/CLv2EcYnr2g&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please also check out our compiled list of &lt;a href=&quot;/documentation/online-resources/&quot;&gt;resources around Debezium&lt;/a&gt; for even more related posts, articles, podcasts and presentations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;integrations&quot;&gt;Integrations&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A few cool integrations and usages of Debezium appeared over the last few weeks and months.
+Here are several ones which we found especially fascinating:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A Debezium Server &lt;a href=&quot;https://github.com/memiiso/debezium-server-iceberg&quot;&gt;outbound adaptor for Apache Iceberg&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;a href=&quot;https://docs.scylladb.com/using-scylla/integrations/scylla-cdc-source-connector/&quot;&gt;ScyllaDB CDC Source Connector&lt;/a&gt;, based on Debezium&amp;#8217;s CDC connector framework&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/connectors/table/formats/debezium/&quot;&gt;Bespoke support&lt;/a&gt; for the Debezium change event format in Apache Flink&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://materialize.com/docs/sql/create-source/avro-kafka/#kafka-topic-requirements&quot;&gt;Support&lt;/a&gt; for Debezium change events in Materialize&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are getting started with Debezium, you can get hands-on learning and better understanding of how things work from the examples and demos
+in our &lt;a href=&quot;https://github.com/debezium/debezium-examples&quot;&gt;examples repository&lt;/a&gt;.
+We have introduced several new examples and updated the existing ones.
+Out of which we&amp;#8217;d like to highlight some new additions:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/debezium-server-mongo-pubsub/&quot;&gt;Integration of Debezium Server with MongoDB and Pub/Sub (GCP)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/distributed-caching/&quot;&gt;Integration of Debezium with Infinispan&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/kstreams-fk-join/&quot;&gt;Demonstrates non-key joins with the Quarkus Kafka Streams extension&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/monitoring/&quot;&gt;Demonstrates how to monitor a Debezium instance&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/saga&quot;&gt;Demonstrates the implementation of Saga pattern for realizing distributed transactions across multiple microservices&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are interested in showcasing a new demo or an example, please send us a GitHub pull request or reach out to us directly through our community channels found &lt;a href=&quot;/community&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;time_to_upgrade&quot;&gt;Time to Upgrade&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Debezium version &lt;a href=&quot;/blog/2021/06/30/debezium-1-6-final-released/&quot;&gt;1.6.0.Final&lt;/a&gt; was released last week.
+Apart from Debezium Server sinks for Apache Kafka and Pravega,
+the 1.6 release brought a brand-new feature for incremental and ad-hoc snapshots,
+providing long-awaited capabilities like resuming long-running snapshots after a connector restart,
+Re-snapshotting selected tables during streaming,
+and snapshotting tables newly added to the list of captured tables after changing the filter configuration.
+A big shout-out to Netflix engineers Andreas Andreakis and Ioannis Papapanagiotou for their paper &lt;a href=&quot;https://arxiv.org/pdf/2010.12597v1.pdf&quot;&gt;DBLog: A Watermark Based Change-Data-Capture Framework&lt;/a&gt;, upon which incremental snapshotting is based.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Given the long time since the last community newsletter,
+it&amp;#8217;s also worth mentioning some of the new features added in Debezium 1.5,
+&lt;a href=&quot;/blog/2021/04/08/debezium-1-5-final-released/&quot;&gt;released in April&lt;/a&gt; this year:
+the MySQL connector saw a substantial rewrite,
+now also supporting transaction marker events,
+Debezium&amp;#8217;s LogMiner-based CDC implementation for Oracle was declared stable,
+and we&amp;#8217;ve added support for Redis Streams to Debezium Server.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are using an older version, we urge you to check out the latest major release.
+For details on all the bug fixes, enhancements, and improvements, check out the &lt;a href=&quot;/releases/1.6/release-notes/&quot;&gt;release-notes&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Debezium team has also begun active development on the next version, 1.7.
+The major focus in 1.7 is implementing incremental snapshotting for more connectors (MongoDB, Oracle), reworking the transaction buffer for the Oracle connector,
+and expanding the Debezium UI. For details on the further upcoming release check out the &lt;a href=&quot;/docs/roadmap/&quot;&gt;Debezium roadmap&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can keep track of bug fixes, enhancements, and changes that will be coming up in the 1.7 release by visiting our &lt;a href=&quot;/releases/&quot;&gt;releases page&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;questions_and_answers&quot;&gt;Questions and Answers&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/68073799/mongodb-as-sink-connector-not-capturing-data-as-expected-kafka&quot;&gt;MongoDB as sink connector not capturing data as expected - kafka?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/67823515/additional-unique-index-referencing-columns-not-exposed-by-cdc-causes-exception&quot;&gt;Additional unique index referencing columns not exposed by CDC causes exception&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/66384583/unable-to-deserialise-dynamic-json-with-jackson-using-generics&quot;&gt;Unable to deserialise dynamic json with Jackson using generics&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/66150335/the-connector-does-not-work-after-stopping-the-debezium-connector-with-ctrlc-an&quot;&gt;The connector does not work after stopping the Debezium Connector with Ctrl+C and restart the connector again&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/66123544/debezium-heartbeat-action-not-firing&quot;&gt;Debezium Heartbeat Action not firing&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/66816670/flink-interrupted-while-waiting-for-data-to-be-acknowledged-by-pipeline&quot;&gt;Flink: Interrupted while waiting for data to be acknowledged by pipeline&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/67330280/cdc-with-debezium-in-docker&quot;&gt;CDC with debezium in docker&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/67368304/is-debezium-sqlserver-connector-task-multi-threading&quot;&gt;Is debezium sqlServer connector task multi-threading?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/68148783/how-to-create-subject-for-ksqldb-from-kafka-tapic&quot;&gt;How to create subject for ksqldb from kafka topic&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/65682694/debezium-kafka-connect-is-there-a-way-to-send-only-payload-and-not-schema&quot;&gt;Debezium, Kafka connect: is there a way to send only payload and not schema?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;getting_involved&quot;&gt;Getting Involved&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Getting started with a huge, and an existing code base can be intimidating, but we want to make sure that the process of getting started is extremely easy and smooth for you here.
+We are now a vibrant community with &lt;a href=&quot;https://github.com/debezium/debezium/graphs/contributors&quot;&gt;270+ contributors&lt;/a&gt; overall, and we welcome all kinds of community contributions, discussions, and enhancements.
+As a beginner you can grab some of the issues labeled with &lt;code&gt;easy-starter&lt;/code&gt; if you want to dive in quickly.
+Below is a list of issues that are open to grab:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Document &quot;schema.include.list&quot;/&quot;schema.exclude.list&quot; for SQL Server connector (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2793&quot;&gt;DBZ-2793&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Limit log output for &quot;Streaming requested from LSN&quot; warnings (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3007&quot;&gt;DBZ-3007&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create smoke test to make sure Debezium Server container image works (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3226&quot;&gt;DBZ-3226&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add signal table automatically to include list (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3293&quot;&gt;DBZ-3293&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Implement support for JSON_TABLE in MySQL parser (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3575&quot;&gt;DBZ-3575&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Implement window function in MySQL parser (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3576&quot;&gt;DBZ-3576&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Standardize &quot;snapshot.fetch.size default&quot; values across connectors (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3694&quot;&gt;DBZ-3694&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are new to open source, please check out our &lt;a href=&quot;https://github.com/debezium/debezium.github.io/blob/develop/CONTRIBUTING.md&quot;&gt;contributing guidelines&lt;/a&gt; to get started!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;call_to_action&quot;&gt;Call to Action&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Our &lt;a href=&quot;https://www.debezium.io/community/users&quot;&gt;community users&lt;/a&gt; page includes a variety of organizations that are currently using Debezium.
+If you are a user of Debezium, and would like to be included, please send us a GitHub pull request or reach out to us directly through our community channels found &lt;a href=&quot;/community&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And if you haven&amp;#8217;t yet done so, please consider &lt;a href=&quot;https://github.com/debezium/debezium/stargazers&quot;&gt;adding a ⭐&lt;/a&gt; for the GitHub repo;
+keep them coming, we&amp;#8217;re almost at 5,000 stars!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Also, we&amp;#8217;d like to learn about your requirements for future Debezium versions.
+In particular, we&amp;#8217;d be very curious about your feedback on the &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/saga&quot;&gt;CDC-based Sagas approach&lt;/a&gt; mentioned above.
+Is it something you&amp;#8217;d like to see supported in our &lt;a href=&quot;/documentation/reference/integrations/outbox.html&quot;&gt;Quarkus extension&lt;/a&gt; for instance?
+Please let us know about this, as well as any other feedback you may have, via the Debezium &lt;a href=&quot;https://groups.google.com/g/debezium&quot;&gt;mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Lastly, we&amp;#8217;re planning to continue our interview series &lt;a href=&quot;/blog/2020/10/08/debezium-community-stories-with-renato-mefi/&quot;&gt;Debezium Community Stories With&amp;#8230;&amp;#8203;&lt;/a&gt;;
+so if you got exciting stories to tell about your usage of Debezium,
+please reach out!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And as always, stay safe, and healthy. Wish you and your loved ones good health and strength.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Anisha Mohanty</name></author><category term="community" /><category term="news" /><category term="newsletter" /><summary type="html">Welcome to the newest edition of the Debezium community newsletter, in which we share all things CDC related including blog posts, group discussions, as well as StackOverflow questions that are relevant to our user community. It&amp;#8217;s been a long time since our last edition. But we are back again! In case you missed our last edition, you can check it out here.</summary></entry><entry><title type="html">Debezium 1.6.0.Final Released</title><link href="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/" rel="alternate" type="text/html" title="Debezium 1.6.0.Final Released" /><published>2021-06-30T00:00:00+00:00</published><updated>2021-06-30T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/06/30/debezium-1-6-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/06/30/debezium-1-6-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.6.0.Final&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2655,149 +2955,4 @@ Typically a full distributed trace consists of a sequence of multiple spans.&lt;
 &lt;a href=&quot;https://github.com/seeekr&quot;&gt;Denis Andrejew&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m pleased to announce the release of Debezium 1.4.0.Beta1! This release includes support for distributed tracing, lowercase table and schema naming for Db2, specifying MySQL snapshot records as create or read operations, and enhancements to Vitess for nullable and primary key columns.</summary></entry><entry><title type="html">Debezium 1.4.0.Alpha2 Released</title><link href="https://debezium.io/blog/2020/11/17/debezium-1-4-alpha2-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Alpha2 Released" /><published>2020-11-17T00:00:00+00:00</published><updated>2020-11-17T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/11/17/debezium-1-4-alpha2-released</id><content type="html" xml:base="https://debezium.io/blog/2020/11/17/debezium-1-4-alpha2-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m excited to announce the release of Debezium &lt;strong&gt;1.4.0.Alpha2&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This second pass of the 1.4 release line provides a few useful new features:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;New API hook for the PostgreSQL &lt;code&gt;Snapshotter&lt;/code&gt; interface&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Field renaming using &lt;code&gt;ExtractNewRecordState&lt;/code&gt; SMT&amp;#8217;s &lt;code&gt;add.fields&lt;/code&gt; and &lt;code&gt;add.headers&lt;/code&gt; configurations&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.Alpha2%20ORDER%20BY%20issuetype%20DESC&quot;&gt;37 issues&lt;/a&gt; for this release.
-Let&amp;#8217;s take a closer look at some of the highlights.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;postgresql_snapshotter_completion_hook&quot;&gt;PostgreSQL Snapshotter completion hook&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The PostgreSQL &lt;code&gt;Snapshotter&lt;/code&gt; API is a contract that allows for the customization of the snapshot process.
-This API was introduced in 0.9.3.Final and has continued to evolve in the releases since.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A new backward compatible completion hook has been added:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;void snapshotCompleted()&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This new hook is called by the snapshot process when the snapshot has concluded,
-allowing implementations to clean-up any resources it may have allocated prior streaming changes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;extractnewrecordstate_smt_field_renaming_support&quot;&gt;ExtractNewRecordState SMT field renaming support&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One of the features of the &lt;code&gt;ExtractNewRecordState&lt;/code&gt; SMT is that the transformation can retain parts of the original message in the transformed message&amp;#8217;s header or payload.
-This release extends this feature to allow specifying a new name to be used for the field when added to the message header or payload.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For example, to add the source database&amp;#8217;s event timestamp to the message header using the new renaming feature, the SMT configuration would be:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;transforms=unwrap
-transforms.unwrap.type=io.debezium.transforms.ExtractNewRecordState
-transforms.unwrap.add.headers=source.ts_ms:timestamp&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The format of the &lt;code&gt;add.headers&lt;/code&gt; and &lt;code&gt;add.fields&lt;/code&gt; configuration options have been improved to support a comma-separated list of fields with the syntax &lt;code&gt;&amp;lt;OLD_FIELD&amp;gt;[:NEW_FIELD]&lt;/code&gt;.
-The above emitted message&amp;#8217;s headers would now contain &lt;code&gt;__timestamp&lt;/code&gt; rather than the default &lt;code&gt;__source.ts_ms&lt;/code&gt; field.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This syntax improvement remains backward compatible.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Also a number of bugs were fixed, e.g.:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Oracle throw &quot;no snapshot found based on specified time&quot; when running flashback query &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-1446&quot;&gt;DBZ-1446&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Exception when PK definition precedes column definition &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2580&quot;&gt;DBZ-2580&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Patroni can&amp;#8217;t stop PostgreSQL when Debezium is streaming &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2617&quot;&gt;DBZ-2617&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ChangeRecord informations don&amp;#8217;t connect with the TableSchema &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2679&quot;&gt;DBZ-2679&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MySQL connector fails on a zero date &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2682&quot;&gt;DBZ-2682&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Oracle LogMiner doesn&amp;#8217;t support partition tables &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2683&quot;&gt;DBZ-2683&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;DB2 doesn&amp;#8217;t start reliably in OCP  &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2693&quot;&gt;DBZ-2693&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Dropped columns cause NPE in SqlServerConnector &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2716&quot;&gt;DBZ-2716&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Timestamp default value in 'yyyy-mm-dd' format fails MySQL connector &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2726&quot;&gt;DBZ-2726&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Connection timeout on write should retry &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2727&quot;&gt;DBZ-2727&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;No viable alternative at input error on &quot;min&quot; column &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2738&quot;&gt;DBZ-2738&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;SQLServer CI error in SqlServerConnectorIT.whenCaptureInstanceExcludesColumnsAndColumnsRenamedExpectNoErrors:1473 &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2747&quot;&gt;DBZ-2747&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;debezium-connector-db2: DB2 SQL Error: SQLCODE=-206 on DB2 for z/OS &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2755&quot;&gt;DBZ-2755&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;no viable alternative at input 'alter table &lt;code&gt;order&lt;/code&gt; drop CONSTRAINT' &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2760&quot;&gt;DBZ-2760&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Tests are failing on macos &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2762&quot;&gt;DBZ-2762&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A big thank you to all the contributors from the community who worked on this release:
-&lt;a href=&quot;https://github.com/Iskuskov&quot;&gt;Alexander Iskuskov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/alisator&quot;&gt;Alisa Houskova&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ani-sha&quot;&gt;Anisha Mohanty&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/AndreyIg&quot;&gt;Andrey Ignatenko&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/creactiviti&quot;&gt;Arik Cohen&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bduisenov&quot;&gt;Babur Duisenov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/grantcooksey&quot;&gt;Grant Cooksey&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/rgannu&quot;&gt;Ganesh Ramasubramanian&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/vanhoale&quot;&gt;Hoa Le&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/mans2singh&quot;&gt;Mans Singh&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/hussain-k1&quot;&gt;Mohamed Pudukulathan&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/zrlurb&quot;&gt;Peter Urbanetz&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/rareddy&quot;&gt;Ramesh Reddy&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m excited to announce the release of Debezium 1.4.0.Alpha2! This second pass of the 1.4 release line provides a few useful new features: New API hook for the PostgreSQL Snapshotter interface Field renaming using ExtractNewRecordState SMT&amp;#8217;s add.fields and add.headers configurations</summary></entry></feed>
+&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m pleased to announce the release of Debezium 1.4.0.Beta1! This release includes support for distributed tracing, lowercase table and schema naming for Db2, specifying MySQL snapshot records as create or read operations, and enhancements to Vitess for nullable and primary key columns.</summary></entry></feed>

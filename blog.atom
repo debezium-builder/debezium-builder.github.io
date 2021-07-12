@@ -11,8 +11,26 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Wed, 30 Jun 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Debezium Community Newsletter 01/2021</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Welcome to the newest edition of the Debezium community newsletter, in which we share all things CDC related including blog posts, group discussions, as well as StackOverflow
+questions that are relevant to our user community.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s been a long time since our last edition. But we are back again!
+In case you missed our last edition, you can check it out &lt;a href=&quot;/blog/2020/03/31/debezium-newsletter-01-2020/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium 1.6.0.Final Released</title>
@@ -689,32 +707,6 @@ and enhancements to Vitess for nullable and primary key columns.&lt;/p&gt;
 				<pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.4.0.Alpha2 Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m excited to announce the release of Debezium &lt;strong&gt;1.4.0.Alpha2&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This second pass of the 1.4 release line provides a few useful new features:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;New API hook for the PostgreSQL &lt;code&gt;Snapshotter&lt;/code&gt; interface&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Field renaming using &lt;code&gt;ExtractNewRecordState&lt;/code&gt; SMT&amp;#8217;s &lt;code&gt;add.fields&lt;/code&gt; and &lt;code&gt;add.headers&lt;/code&gt; configurations&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/11/17/debezium-1-4-alpha2-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/11/17/debezium-1-4-alpha2-released/</guid>
 			</item>
 		
 	</channel>
