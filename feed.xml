@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-07-30T06:09:05+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium Community Newsletter 01/2021</title><link href="https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/" rel="alternate" type="text/html" title="Debezium Community Newsletter 01/2021" /><published>2021-07-07T00:00:00+00:00</published><updated>2021-07-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021</id><content type="html" xml:base="https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-08-03T10:29:43+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.7.0.Alpha1 Released</title><link href="https://debezium.io/blog/2021/08/02/debezium-1-7-alpha1-released/" rel="alternate" type="text/html" title="Debezium 1.7.0.Alpha1 Released" /><published>2021-08-02T00:00:00+00:00</published><updated>2021-08-02T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/08/02/debezium-1-7-alpha1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/08/02/debezium-1-7-alpha1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.7 series, &lt;strong&gt;1.7.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With the summer in a full-swing, this release brings additional improvements to the Debezium Oracle connector but also to the others as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;alternative_oracle_connector_logminer_processors&quot;&gt;Alternative Oracle Connector LogMiner processors&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Debezium connector for Oracle uses an in-memory buffer to cache in-progress transaction changes until the transaction is either committed or rolled back.
+This cache can require a significant memory footprint depending on the number of events in the transaction,
+how many concurrent transactions are in-progress,
+as well as the data itself that represents each event such as large character or binary objects.
+This can be tough to manage for some environments that have ongoing long-running transactions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release introduces a significant refactoring to the connector processing code that allows for varied modes of processing LogMiner change events.
+Out-of-the-box the memory-based implementation remains the default,
+but we&amp;#8217;ve included a new implementation based on the &lt;a href=&quot;https://infinispan.org/&quot;&gt;Infinispan&lt;/a&gt; distributed data store.
+This implementation makes it possible to track any number of in-progress transactions regardless of their size or duration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To take advantage of the new Infinispan implementation, the following configuration options must be provided:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;json&quot;&gt;&lt;span class=&quot;error&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;
+&lt;span class=&quot;error&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;error&quot;&gt;e&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As this is early work, the new Infinispan buffer mode currently has a few limitations:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The Infinispan configuration is not exposed outside to the user for tuning&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Only file-based cache store is supported; if you work with multi-node Kafka Connect clusters, a networked filesystem must be used for the cache store in order to support rebalancing of connector tasks in the Connect cluster&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This should not stop you from giving it a test drive and send as much feedback as possible to us for further improvements.
+We expect to remove the above restrictions in the next release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;incremental_snapshotting&quot;&gt;Incremental Snapshotting&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The major feature of the 1.6 release has got also new improvements.
+The Debezium connector for Oracle now supports incremental snapshots in the same way as the other connectors, so Oracle users now can easily add new tables to the capture list and get them snapshotted on the fly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For the MySQL connector, there is a new incremental snapshot mode that could be used for databases that do not allow writing to the signal table.
+&lt;a href=&quot;https://github.com/kgalieva&quot;&gt;Kate Galieva&lt;/a&gt; invented a method based on GTID lists that could be used to provide watermarking without writing to the database. Thank you for the nice contribution!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Altogether, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.7.0.Alpha1%20ORDER%20BY%20component%20ASC&quot;&gt;49 issues&lt;/a&gt; were fixed for this release.
+A big thank you goes out to all the community members who contributed:
+Blake Peno,
+&lt;a href=&quot;https://github.com/Alfusainey&quot;&gt;Alfusainey Jallow&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/blcksrx&quot;&gt;Hossein Torabi&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/kgalieva&quot;&gt;Katerina Galieva&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/kyleyj&quot;&gt;Kyley Jex&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/mpermar&quot;&gt;Martín Pérez&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/krnaveen14&quot;&gt;Naveen Kumar KR&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/patrichu-cisco&quot;&gt;Patrick Chu&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/xaka&quot;&gt;Pavel Strashkin&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/raphaelauv&quot;&gt;Raphael Auv&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/Thiago-Dantas&quot;&gt;Thiago Dantas&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/tinntsea&quot;&gt;Tin Nguyen&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/tommyk-gears&quot;&gt;Tommy Karlsson&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/elgca&quot;&gt;WenChao Ke&lt;/a&gt;,
+and &lt;a href=&quot;https://github.com/jjiey&quot;&gt;yangsanity&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For the upcoming 1.7 preview releases, we&amp;#8217;re planning to focus on completing the follow-up task for the Oracle LogMiner processor and provide the support for JDBC based process too.
+We will explore incremental snapshotting support for MongoDB and do research on MariaDB support.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;release_of_1_6_1_final&quot;&gt;Release of 1.6.1.Final&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While the team&amp;#8217;s focus is primarily on 1.7, we have recently fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.6.1.Final%20ORDER%20BY%20component%20ASC&quot;&gt;9 issues&lt;/a&gt; to the 1.6 stream and released &lt;strong&gt;1.6.1.Final&lt;/strong&gt;.
+You can check out the &lt;a href=&quot;https://debezium.io/releases/1.6/release-notes#release-1.6.1.final&quot;&gt;release notes&lt;/a&gt; for details.
+We recommend if you&amp;#8217;re using a release prior to 1.6, take this opportunity to upgrade and get access to the latest new features!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.7 series, 1.7.0.Alpha1! With the summer in a full-swing, this release brings additional improvements to the Debezium Oracle connector but also to the others as well.</summary></entry><entry><title type="html">Debezium Community Newsletter 01/2021</title><link href="https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/" rel="alternate" type="text/html" title="Debezium Community Newsletter 01/2021" /><published>2021-07-07T00:00:00+00:00</published><updated>2021-07-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021</id><content type="html" xml:base="https://debezium.io/blog/2021/07/07/debezium-newsletter-01-2021/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Welcome to the newest edition of the Debezium community newsletter, in which we share all things CDC related including blog posts, group discussions, as well as StackOverflow
 questions that are relevant to our user community.&lt;/p&gt;
 &lt;/div&gt;
@@ -2855,104 +2955,4 @@ as well as the time of processing the event by the Debezium connector.&lt;/p&gt;
 Your feedback on this new functionality is highly welcomed!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="tracing" /><category term="jaeger" /><summary type="html">The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&amp;#8217;s runtime state. This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes. You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path. This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context. Distributed Tracing comes here to the rescue. Distributed Tracing Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;. SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs. And this is where Debezium becomes part of the picture. Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into. How long does it take for change events to flow from source database to sink systems? Where is the most time spent in the pipeline? Are there any anomalies like spikes in end-to-end lags? The integration of distributed tracing with Debezium can help to answer these questions. OpenTracing There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the OpenTracing specification. OpenTracing is an incubating project of Cloud Native Computing Foundation which guarantees that the user will be free of any vendor lock-in by adhering to an open standard. The OpenTracing project is in the process of being merged with OpenCensus to the improved OpenTelemetry standard. Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus), but it will use and support OpenTelemetry in the future, too. A distributed trace in OpenTracing consists of a set of spans. Each span represents a logical unit of work executed. The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span. OpenTracing is only the specification and the instrumentation API. To use it you need to have an implementation, too. While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the Jaeger distributed tracing platform. Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application. The Jaeger All-In-One container image will be used to simplify the deployment. Debezium and OpenTracing The Debezium integration with OpenTracing consists of three distinct components: ActivateTracingSpan SMT EventDispatcher in the Debezium outbox extension for Quarkus applications EventRouter SMT The first one is intended for general use. The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced. Outbox Distributed Tracing The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing. The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes. In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created: When an event arrives at EventDispatcher a new span outbox-write is created. It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available. The span metadata is exported into a distinct field of the outbox event. The outbox event is written to the outbox table. The Event Router SMT receives the event and imports the span metadata from the field Two new spans are created db-log-write with its start timestamp set to database write timestamp. The fields from the source block are added to the span as tags. debezium-read with its start time set to the processing timestamp. Fields from the envelope are added to the span as tags. Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata. Demo The outbox example was extended with distributed tracing support to demonstrate the functionality. This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern. This demo uses the Strimzi container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level. To try it yourself you need to: check out the repository and switch to the outbox directory build the services $ mvn clean install deploy the application export DEBEZIUM_VERSION=1.4 docker-compose up --build register a Debezium connector to listen on the outbox table $ http PUT http://localhost:8083/connectors/outbox-connector/config &amp;lt; register-postgres.json HTTP/1.1 201 Created execute multiple business requests $ http POST http://localhost:8080/orders &amp;lt; resources/data/create-order-request.json $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel-order-line-request.json check the Jaeger UI After all the steps above were completed you should see an introduction screen of the Jaeger UI: Filter on order-service as a service and click on Find Traces. Two traces should be available: Click on the addOrder service. A tree will open that displays how the initial request incoming via REST API was written to the database by the outbox extension read by Debezium and processed by outbox SMT written to a Kafka topic read from a Kafka topic by shipment-service processed in the different shipment-service business methods Click on the db-log-write and debezium-read spans. The tags of each of them contain extracted Debezium-related metadata like operation or source fields: Conclusion In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it. We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration. While this example was focused on the specific use case of microservices data exchange via the outbox pattern, Debezium integrates with distributed tracing also independently of this particular pattern. By means of the ActivateTracingSpan SMT, Debezium can produce spans representing the time of the change in the source database itself, as well as the time of processing the event by the Debezium connector. Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases. Your feedback on this new functionality is highly welcomed!</summary></entry><entry><title type="html">Debezium 1.4.0.Beta1 Released</title><link href="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Beta1 Released" /><published>2020-12-09T00:00:00+00:00</published><updated>2020-12-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release includes support for distributed tracing,
-lowercase table and schema naming for Db2,
-specifying MySQL snapshot records as create or read operations,
-and enhancements to Vitess for nullable and primary key columns.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.Beta1%20ORDER%20BY%20issuetype%20DESC&quot;&gt;39 issues&lt;/a&gt; for this release.
-Let&amp;#8217;s take a closer look at some of the highlights.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;distributed_tracing&quot;&gt;Distributed Tracing&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In a nutshell, distributed tracing is a pattern used to profile and monitor applications to allow quick identification of failures or performance concerns.
-Tracing works by having each component in a distributed process contribute a block of metadata called a &quot;span&quot;.
-Each span contains unique details about that component&amp;#8217;s unit of work.
-Typically a full distributed trace consists of a sequence of multiple spans.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Distributed tracing in Debezium is enabled by using the &lt;strong&gt;ActivateTracingSpan&lt;/strong&gt; SMT:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;&quot;transforms&quot;: &quot;tracing&quot;
-&quot;transforms.tracing.type&quot;: &quot;io.debezium.transforms.tracing.ActivateTracingSpan&quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The above configuration will lead to the emitted message header containing the tracing key/value pairs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A blog post discussing the distributed tracing support in depth, including end-to-end tracing for microservices data exchange via the outbox pattern, will follow up shortly.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Also a number of bugs were fixed, e.g.:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;DDL parser: Allow stored procedure variables in LIMIT clause &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2692&quot;&gt;DBZ-2692&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Wrong mysql command in openshift dpeloyment docs &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2746&quot;&gt;DBZ-2746&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;long running transaction will be abandoned and ignored &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2759&quot;&gt;DBZ-2759&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MS SQL Decimal with default value not matching the scale of the column definition cause exception &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2767&quot;&gt;DBZ-2767&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Cassandra Connector doesn&amp;#8217;t shut down completely &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2768&quot;&gt;DBZ-2768&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MySQL Parser fails for BINARY collation shortcut &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2771&quot;&gt;DBZ-2771&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;PostgresConnectorIT.shouldResumeStreamingFromSlotPositionForCustomSnapshot is failing for wal2json on CI &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2772&quot;&gt;DBZ-2772&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Connector configuration property &quot;database.out.server.name&quot; is not relevant for Logminer implementation but cannot be omitted &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2801&quot;&gt;DBZ-2801&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CHARACTER VARYING mysql identifier for varchar is not supported in debezium &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2821&quot;&gt;DBZ-2821&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;try-with-resources should not be used when OkHttp Response object is returned &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2827&quot;&gt;DBZ-2827&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;EmbeddedEngine does not shutdown when commitOffsets is interrupted &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2830&quot;&gt;DBZ-2830&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Rename user command parsing fails &lt;a href=&quot;https://issues.jboss.org/browse/DBZ-2743&quot;&gt;DBZ-2743&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A big thank you to all the contributors from the community who worked on this release:
-&lt;a href=&quot;https://github.com/jeremy-l-ford&quot;&gt;Jeremy Ford&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/hauntingEcho&quot;&gt;Matt Beary&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/johnjmartin&quot;&gt;John Martin&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/vanhoale&quot;&gt;Hoa Le&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/rareddy&quot;&gt;Ramesh Reddy&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/seeekr&quot;&gt;Denis Andrejew&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="db2" /><category term="oracle" /><category term="vitess" /><summary type="html">I&amp;#8217;m pleased to announce the release of Debezium 1.4.0.Beta1! This release includes support for distributed tracing, lowercase table and schema naming for Db2, specifying MySQL snapshot records as create or read operations, and enhancements to Vitess for nullable and primary key columns.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>Jiri Pechanec</name></author><category term="tracing" /><category term="jaeger" /><summary type="html">The current pattern in application development gravitates toward microservices and microservices architecture. While this approach gives the developer teams great flexibility in terms of independent deployments and development velocity, the drawback is at hand when you try to track a bug in production. Monolithic applications sit nicely at a single place so you can introspect the code flows and the application&amp;#8217;s runtime state. This is more challenging with microservice architectures, as a single business transaction can span across tens of services deployed in separate processes and compute nodes. You can rely on traditional methods like logging where you need to collect and correlate logs at a single place, so you can try to reconstruct the business transaction path. This is one of the tools in the box we can use, but it still can be crude and it will not provide all the necessary context. Distributed Tracing comes here to the rescue. Distributed Tracing Distributed tracing allows services to leave breadcrumbs during the execution with enough information to create an execution path of the business transaction enriched with contextual data like &quot;who&quot;, &quot;what&quot;, and &quot;where&quot;. SRE teams and developers can then use it to browse through the recorded executions and check for errors or anomalies in execution that can signify either problems with deployments (services unavailabe) or even bugs. And this is where Debezium becomes part of the picture. Data change events, as captured by Debezium from a database, and propagated via Kafka Connect and Apache Kafka to one more more downstream consumers are part of a data flow which is very valuable to have insight into. How long does it take for change events to flow from source database to sink systems? Where is the most time spent in the pipeline? Are there any anomalies like spikes in end-to-end lags? The integration of distributed tracing with Debezium can help to answer these questions. OpenTracing There are multiple solutions for distributed tracing, but as a starting point we have decided to follow and use the OpenTracing specification. OpenTracing is an incubating project of Cloud Native Computing Foundation which guarantees that the user will be free of any vendor lock-in by adhering to an open standard. The OpenTracing project is in the process of being merged with OpenCensus to the improved OpenTelemetry standard. Debezium uses OpenTracing at this point for alignment reasons with other projects (e.g. Quarkus), but it will use and support OpenTelemetry in the future, too. A distributed trace in OpenTracing consists of a set of spans. Each span represents a logical unit of work executed. The spans can form a tree when a larger part of the business transaction represented by one span can be compounded of multiple tasks represented by additional spans that have a parent-child relationship to the main span. OpenTracing is only the specification and the instrumentation API. To use it you need to have an implementation, too. While Debezium could be used any OpenTracing client implementation, our examples and documentation are based on the Jaeger distributed tracing platform. Jaeger consists of multiple components responsible for data collection and storage as well as a graphical user interface in form of a web application. The Jaeger All-In-One container image will be used to simplify the deployment. Debezium and OpenTracing The Debezium integration with OpenTracing consists of three distinct components: ActivateTracingSpan SMT EventDispatcher in the Debezium outbox extension for Quarkus applications EventRouter SMT The first one is intended for general use. The latter two must be used hand-in-hand when a (Quarkus-based) service using the outbox pattern should be traced. Outbox Distributed Tracing The biggest problem with tracing integration is keeping the trace across process boundaries so that all the related spans are recorded in the same trace to enable end-to-end tracing. The OpenTracing specification provides a way how to export and import trace related metadata so the trace can be passed among different processes. In the outbox extension we use this approach to export the metadata into a specific column in the outbox table, so that then the event router SMT can import them and resume the trace. In each of the steps executed one or more spans are created: When an event arrives at EventDispatcher a new span outbox-write is created. It is created as a child of a current active span (e.g. started by the invocation of an REST API of the current application), or as a root span if no parent span is available. The span metadata is exported into a distinct field of the outbox event. The outbox event is written to the outbox table. The Event Router SMT receives the event and imports the span metadata from the field Two new spans are created db-log-write with its start timestamp set to database write timestamp. The fields from the source block are added to the span as tags. debezium-read with its start time set to the processing timestamp. Fields from the envelope are added to the span as tags. Optionally, if OpenTracing integration is enabled at the Kafka producer level, a new span is created by the Kafka producer representing the write of the message to a Kafka topic with relevant metadata. Demo The outbox example was extended with distributed tracing support to demonstrate the functionality. This example contains two rudimentary microservices: an order service which exposes a REST API for placing purchase orders, and a shipment service which is notified by the order service about new purchase orders using the outbox pattern. This demo uses the Strimzi container image for Kafka Connect, as it already contains baked-in integration of OpenTracing at Kafka producer level. To try it yourself you need to: check out the repository and switch to the outbox directory build the services $ mvn clean install deploy the application export DEBEZIUM_VERSION=1.4 docker-compose up --build register a Debezium connector to listen on the outbox table $ http PUT http://localhost:8083/connectors/outbox-connector/config &amp;lt; register-postgres.json HTTP/1.1 201 Created execute multiple business requests $ http POST http://localhost:8080/orders &amp;lt; resources/data/create-order-request.json $ http PUT http://localhost:8080/orders/1/lines/2 &amp;lt; resources/data/cancel-order-line-request.json check the Jaeger UI After all the steps above were completed you should see an introduction screen of the Jaeger UI: Filter on order-service as a service and click on Find Traces. Two traces should be available: Click on the addOrder service. A tree will open that displays how the initial request incoming via REST API was written to the database by the outbox extension read by Debezium and processed by outbox SMT written to a Kafka topic read from a Kafka topic by shipment-service processed in the different shipment-service business methods Click on the db-log-write and debezium-read spans. The tags of each of them contain extracted Debezium-related metadata like operation or source fields: Conclusion In this blogpost, we have discussed what distributed tracing is and why it is beneficial to use it. We have seen how the distributed tracing integration is done at the Debezium level to enable end-to-end tracing and tried a demo application together with Jaeger UI exploration. While this example was focused on the specific use case of microservices data exchange via the outbox pattern, Debezium integrates with distributed tracing also independently of this particular pattern. By means of the ActivateTracingSpan SMT, Debezium can produce spans representing the time of the change in the source database itself, as well as the time of processing the event by the Debezium connector. Support for distributed tracing is a new feature in Debezium 1.4 (originally added in Beta1) and will evolve and mature in subsequent releases. Your feedback on this new functionality is highly welcomed!</summary></entry></feed>

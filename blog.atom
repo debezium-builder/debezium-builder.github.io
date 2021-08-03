@@ -11,8 +11,24 @@
 		<sy:updateFrequency>1</sy:updateFrequency>
 		<link>https://debezium.io</link>
 		<atom:link href="https://debezium.io/blog.atom" rel="self" type="application/rss+xml" />
-		<lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate>
 		
+		
+			<item>
+				<title>Debezium 1.7.0.Alpha1 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.7 series, &lt;strong&gt;1.7.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With the summer in a full-swing, this release brings additional improvements to the Debezium Oracle connector but also to the others as well.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2021/08/02/debezium-1-7-alpha1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2021/08/02/debezium-1-7-alpha1-released/</guid>
+			</item>
 		
 			<item>
 				<title>Debezium Community Newsletter 01/2021</title>
@@ -688,25 +704,6 @@ Your feedback on this new functionality is highly welcomed!&lt;/p&gt;
 				<pubDate>Wed, 16 Dec 2020 11:00:00 +0000</pubDate>
 				<link>https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2020/12/16/distributed-tracing-with-debezium/</guid>
-			</item>
-		
-			<item>
-				<title>Debezium 1.4.0.Beta1 Released</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release includes support for distributed tracing,
-lowercase table and schema naming for Db2,
-specifying MySQL snapshot records as create or read operations,
-and enhancements to Vitess for nullable and primary key columns.&lt;/p&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-				<link>https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2020/12/09/debezium-1-4-beta1-released/</guid>
 			</item>
 		
 	</channel>
