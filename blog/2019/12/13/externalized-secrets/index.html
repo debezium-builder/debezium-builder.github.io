@@ -181,6 +181,8 @@
             
           
             
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -599,7 +601,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 104%">
+            <a href="/tag/examples/" style="font-size: 106%">
               examples
             </a>
           </span>
@@ -641,7 +643,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/kafka-streams/" style="font-size: 82%">
+            <a href="/tag/kafka-streams/" style="font-size: 84%">
               kafka streams
             </a>
           </span>
@@ -737,7 +739,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 92%">
+            <a href="/tag/quarkus/" style="font-size: 94%">
               quarkus
             </a>
           </span>
@@ -1043,7 +1045,7 @@ It should be noted though that the file config provider is satisfactory in Kuber
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json">{
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory-connector</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">inventory-connector</span><span class="delimiter">&quot;</span></span>, <span class="error">@</span><span class="error">I</span><span class="error">n</span><span class="error">t</span><span class="error">e</span><span class="error">r</span><span class="error">c</span><span class="error">e</span><span class="error">p</span><span class="error">t</span><span class="error">o</span><span class="error">r</span> <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">connector.class</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">io.debezium.connector.mysql.MySqlConnector</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">database.user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${file:/secrets/mysql.properties:user}</span><span class="delimiter">&quot;</span></span>,
@@ -1072,8 +1074,21 @@ It should be noted though that the file config provider is satisfactory in Kuber
 <p>Please refer to the <a href="https://github.com/debezium/debezium-examples/tree/master/tutorial#using-externalized-secrets">README</a> of the tutorial example for complete instructions.</p>
 </div></div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="share-box">
+  <h3>Share:</h3>
+  <div 
+    data-social-share-privacy='true'
+    data-options='{
+      "order"    : ["fbshare", "twitter", "linkedin"]
+    }'
+  ></div>
+</div>
+
+      </div>
+    </div>
     
-   
       
       
       <div class="well">
@@ -1155,7 +1170,6 @@ It should be noted though that the file config provider is satisfactory in Kuber
         </p>
       </div>
     </div>
-    
     
   </div>
 </div>
@@ -1249,12 +1263,56 @@ It should be noted though that the file config provider is satisfactory in Kuber
     </a>
   </div>
 </div>
+<div class="text-center">env: staging</div>
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
+  <script>
+    addBackToTop({ scrollDuration: 400 })
+    hljs.initHighlightingOnLoad();
+  </script>
+
+  <script type="text/javascript" src="/assets/javascript/jquery.cookies.js"></script>
+  <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
+  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
+  <script type="application/x-social-share-privacy-settings">
+    {
+      "path_prefix":"/assets/socialshare/",
+      "layout":"line",
+      "services": {
+        "buffer": {
+            "status": false
+        },
+        "delicious": {
+            "status": false
+        },
+        "disqus": {
+            "status": false
+        },
+        "facebook": {
+          "status": false
+        },
+        "flattr": {
+            "status": false
+        },
+        "gplus": {
+            "status": false
+        },
+        "hackernews": {
+            "status": false
+        },
+        "pinterest": {
+            "status": false
+        },
+        "xing": {
+            "status": false
+        }
+      }
+    }
+  </script>
   <script>
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
