@@ -312,45 +312,6 @@ Let&amp;#8217;s explore some of the new features in the following.&lt;/p&gt;
 			</item>
 		
 			<item>
-				<title>Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</title>
-				
-				
-					<description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation/streams/&quot;&gt;Kafka Streams&lt;/a&gt; is a library for developing applications for processing records from topics in Apache Kafka.
-A Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner.
-The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;non_key_joins_in_kafka_streams&quot;&gt;Non-Key Joins in Kafka Streams&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org&quot;&gt;Apache Kafka&lt;/a&gt; 2.4 introduced the foreign key join (&lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable&quot;&gt;KIP-213&lt;/a&gt;) feature, in order &quot;to close the gap between the semantics of KTables in streams and tables in relational databases&quot;.
-Before KIP-213, in order to join messages from two Debezium change event topics, you&amp;#8217;d have to manually re-key the topic(s); so to make sure the same key is used on both sides of the join.
-Thanks to KIP-213, this isn&amp;#8217;t needed any longer, as it makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
-This resolved the problem of out-of-order processing due to foreign key changes in tables.
-Here is an interesting &lt;a href=&quot;https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/&quot;&gt;post&lt;/a&gt; by Hans-Peter Grahsl and Gunnar Morling on creating aggregated events from Debezium’s CDC events.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Debezium’s CDC source connectors makes it easy to capture data changes in databases and push them towards Elasticsearch in near real-time.
-This results in a 1:1 relationship between tables in the source database and a corresponding search index in Elasticsearch.
-Incase of 1:many relationship, say two tables with different primary keys and a foreign key relationship, Debezium provides a &lt;code&gt;message.key.columns&lt;/code&gt; option.
-By choosing that foreign key column as the message key for change events, the two table streams could be joined without the need for re-keying the topic manually.
-The &lt;code&gt;message.key.columns&lt;/code&gt; option can be used as:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;message.key.columns=dbserver1.inventory.customerdetails:CustomerId&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-				
-				<pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
-				<link>https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/</link>
-				<guid isPermaLink="true">https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/</guid>
-			</item>
-		
-			<item>
 				<title>Debezium 1.5.0.Alpha1 Released</title>
 				
 				
@@ -447,6 +408,22 @@ With 2020 in the books, I thought it&amp;#8217;d be nice to take a look back and
 				<pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
 				<link>https://debezium.io/blog/2021/01/06/debezium-2020-recap/</link>
 				<guid isPermaLink="true">https://debezium.io/blog/2021/01/06/debezium-2020-recap/</guid>
+			</item>
+		
+			<item>
+				<title>Debezium 1.4.0.CR1 Released</title>
+				
+				
+					<description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.0.CR1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release focuses primarily on polishing the 1.4 release.&lt;/p&gt;
+&lt;/div&gt;</description>
+				
+				<pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+				<link>https://debezium.io/blog/2020/12/17/debezium-1-4-cr1-released/</link>
+				<guid isPermaLink="true">https://debezium.io/blog/2020/12/17/debezium-1-4-cr1-released/</guid>
 			</item>
 		
 	</channel>
