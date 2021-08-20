@@ -181,6 +181,8 @@
             
           
             
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -599,7 +601,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 104%">
+            <a href="/tag/examples/" style="font-size: 106%">
               examples
             </a>
           </span>
@@ -641,7 +643,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/kafka-streams/" style="font-size: 82%">
+            <a href="/tag/kafka-streams/" style="font-size: 84%">
               kafka streams
             </a>
           </span>
@@ -737,7 +739,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 92%">
+            <a href="/tag/quarkus/" style="font-size: 94%">
               quarkus
             </a>
           </span>
@@ -841,6 +843,75 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2019/02/13/debezium-0-9-1-final-released/">Debezium 0.9.1.Final Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2019/02/13/debezium-0-9-1-final-released/">Debezium 0.9.1.Final Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> February 13, 2019 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>Quickly following up to last week&#8217;s release of Debezium 0.9, it&#8217;s my pleasure today to announce the release of Debezium <strong>0.9.1.Final</strong>!</p>
+</div>
+<div class="paragraph">
+<p>This release fixes a couple of bugs which were reported after the 0.9 release.
+Most importantly, there are two fixes to the new <a href="/docs/connectors/sqlserver/">Debezium connector for SQL Server</a>,
+which deal with correct handling of LSNs after connector restarts (<a href="https://issues.redhat.com/browse/DBZ-1128">DBZ-1128</a>, <a href="https://issues.redhat.com/browse/DBZ-1131">DBZ-1131</a>).
+The connector also uses more reasonable defaults for the <code>selectMethod</code> and <code>fetchSize</code> options of the SQL Server JDBC driver (<a href="https://issues.redhat.com/browse/DBZ-1065">DBZ-1065</a>),
+which can help to significantly increase through-put and reduce memory consumption of the connector.</p>
+</div>
+<div class="paragraph">
+<p>The MySQL connector supports <code>GENERATED</code> columns now with the new Antlr-based DDL parser (<a href="https://issues.redhat.com/browse/DBZ-1123">DBZ-1123</a>),
+and for the Postgres connector the handling of primary key column definition changes was improved (<a href="https://issues.redhat.com/browse/DBZ-997">DBZ-997</a>).</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2019/02/13/debezium-0-9-1-final-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -1125,81 +1196,6 @@ If an entry has been evicted from the cache, Hibernate ORM will load the latest 
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/11/22/debezium-0-9-0-beta1-released/">Debezium 0.9.0.Beta1 Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/11/22/debezium-0-9-0-beta1-released/">Debezium 0.9.0.Beta1 Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> November 22, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.9.0.Beta1</strong>!
-Oh, and to those of you who are celebrating it&#8201;&#8212;&#8201;Happy Thanksgiving!</p>
-</div>
-<div class="paragraph">
-<p>This new Debezium release comes with several great improvements to our work-in-progress SQL Server connector:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Initial snapshots can be done using the <code>snapshot</code> isolation level if enabled in the DB (<a href="https://issues.redhat.com/browse/DBZ-941">DBZ-941</a>)</p>
-</li>
-<li>
-<p>Changes to the structures of captured tables after the connector has been set up are supported now (<a href="https://issues.redhat.com/browse/DBZ-812">DBZ-812</a>)</p>
-</li>
-<li>
-<p>New connector option <code>decimal.handling.mode</code> (<a href="https://issues.redhat.com/browse/DBZ-953">DBZ-953</a>) and pass-through of any <code>database.*</code> option to the JDBC driver (<a href="https://issues.redhat.com/browse/DBZ-964">DBZ-964</a>)</p>
-</li>
-</ul>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/11/22/debezium-0-9-0-beta1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
 
     <ul class="pager">
       
@@ -1319,7 +1315,50 @@ Oh, and to those of you who are celebrating it&#8201;&#8212;&#8201;Happy Thanksg
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script>
+  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
+  <script type="application/x-social-share-privacy-settings">
+    {
+      "path_prefix":"/assets/socialshare/",
+      "layout":"line",
+      "services": {
+        
+        "buffer": {
+            "status": false
+        },
+        "delicious": {
+            "status": false
+        },
+        "disqus": {
+            "status": false
+        },
+        "facebook": {
+          "status": false
+        },
+        "flattr": {
+            "status": false
+        },
+        "gplus": {
+            "status": false
+        },
+        "hackernews": {
+            "status": false
+        },
+        "pinterest": {
+            "status": false
+        },
+        "xing": {
+            "status": false
+        },
+        "tumblr": {
+          "status": false
+      },
+      "stumble": {
+        "status": false
+      }
+    }
+  }
+  </script>
+  <script> 
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
   </script>
