@@ -181,8 +181,6 @@
             
           
             
-          
-            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -601,7 +599,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 106%">
+            <a href="/tag/examples/" style="font-size: 104%">
               examples
             </a>
           </span>
@@ -643,7 +641,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/kafka-streams/" style="font-size: 84%">
+            <a href="/tag/kafka-streams/" style="font-size: 82%">
               kafka streams
             </a>
           </span>
@@ -739,7 +737,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 94%">
+            <a href="/tag/quarkus/" style="font-size: 92%">
               quarkus
             </a>
           </span>
@@ -843,82 +841,6 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/anmohant.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2021/02/09/non-key-joins-in-kstreams/">Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2021/02/09/non-key-joins-in-kstreams/">Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> February 9, 2021 by </em>
-                    <em> Anisha Mohanty </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/kafka streams/">kafka streams</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/quarkus/">quarkus</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/examples/">examples</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p><a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a> is a library for developing applications for processing records from topics in Apache Kafka.
-A Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner.
-The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.</p>
-</div>
-<div class="sect1">
-<h2 id="non_key_joins_in_kafka_streams">Non-Key Joins in Kafka Streams</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://kafka.apache.org">Apache Kafka</a> 2.4 introduced the foreign key join (<a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable">KIP-213</a>) feature, in order "to close the gap between the semantics of KTables in streams and tables in relational databases".
-Before KIP-213, in order to join messages from two Debezium change event topics, you&#8217;d have to manually re-key the topic(s); so to make sure the same key is used on both sides of the join.
-Thanks to KIP-213, this isn&#8217;t needed any longer, as it makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
-This resolved the problem of out-of-order processing due to foreign key changes in tables.
-Here is an interesting <a href="https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/">post</a> by Hans-Peter Grahsl and Gunnar Morling on creating aggregated events from Debezium’s CDC events.</p>
-</div>
-<div class="paragraph">
-<p>Debezium’s CDC source connectors makes it easy to capture data changes in databases and push them towards Elasticsearch in near real-time.
-This results in a 1:1 relationship between tables in the source database and a corresponding search index in Elasticsearch.
-Incase of 1:many relationship, say two tables with different primary keys and a foreign key relationship, Debezium provides a <code>message.key.columns</code> option.
-By choosing that foreign key column as the message key for change events, the two table streams could be joined without the need for re-keying the topic manually.
-The <code>message.key.columns</code> option can be used as:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>message.key.columns=dbserver1.inventory.customerdetails:CustomerId</pre>
-</div>
-</div>
-</div>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2021/02/09/non-key-joins-in-kstreams/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -1203,6 +1125,71 @@ With 2020 in the books, I thought it&#8217;d be nice to take a look back and do 
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/ccranfor.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2020/12/17/debezium-1-4-cr1-released/">Debezium 1.4.0.CR1 Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2020/12/17/debezium-1-4-cr1-released/">Debezium 1.4.0.CR1 Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> December 17, 2020 by </em>
+                    <em> Chris Cranford </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/sqlserver/">sqlserver</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/cassandra/">cassandra</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/db2/">db2</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/oracle/">oracle</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/vitess/">vitess</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>I&#8217;m pleased to announce the release of Debezium <strong>1.4.0.CR1</strong>!</p>
+</div>
+<div class="paragraph">
+<p>This release focuses primarily on polishing the 1.4 release.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2020/12/17/debezium-1-4-cr1-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
 
     <ul class="pager">
       
@@ -1322,53 +1309,7 @@ With 2020 in the books, I thought it&#8217;d be nice to take a look back and do 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
-  <script type="application/x-social-share-privacy-settings">
-    {
-      "path_prefix":"/assets/socialshare/",
-      "layout":"line",
-      "services": {
-        
-        "buffer": {
-            "status": false
-        },
-        "delicious": {
-            "status": false
-        },
-        "disqus": {
-            "status": false
-        },
-        "facebook": {
-          "status": false
-        },
-        "flattr": {
-            "status": false
-        },
-        "gplus": {
-            "status": false
-        },
-        "hackernews": {
-            "status": false
-        },
-        "pinterest": {
-            "status": false
-        },
-        "xing": {
-            "status": false
-        },
-        "tumblr": {
-          "status": false
-        },
-        "stumble": {
-          "status": false
-        },
-        "stumbleupon": {
-          "status":false
-        }
-      }
-    }
-  </script>
-  <script> 
+  <script>
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
   </script>
