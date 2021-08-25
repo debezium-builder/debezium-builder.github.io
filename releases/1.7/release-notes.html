@@ -544,8 +544,311 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#release-1.7.0-beta1"><strong>Release 1.7.0.Beta1</strong> <em>(August 25th, 2021)</em></a></li>
 <li><a href="#release-1.7.0-alpha1"><strong>Release 1.7.0.Alpha1</strong> <em>(July 30th, 2021)</em></a></li>
 </ul>
+</div>
+<div class="sect1">
+<h2 id="release-1.7.0-beta1"><a class="anchor" href="#release-1.7.0-beta1"></a><strong>Release 1.7.0.Beta1</strong> <em>(August 25th, 2021)</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12359667">complete list of issues</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="kafka_compatibility"><a class="anchor" href="#kafka_compatibility"></a>Kafka compatibility</h3>
+<div class="paragraph">
+<p>This release has been built against Kafka Connect 2.8.0 and has been tested with version 2.8.0 of the Kafka brokers.
+See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading"><a class="anchor" href="#upgrading"></a>Upgrading</h3>
+<div class="paragraph">
+<p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
+</div>
+<div class="paragraph">
+<p>When you decide to upgrade one of these connectors to 1.7.0.Beta1 from any earlier versions,
+first check the migration notes for the version you&#8217;re using.
+Gracefully stop the running connector, remove the old plugin files, install the 1.7.0.Beta1 plugin files, and restart the connector using the same configuration.
+Upon restart, the 1.7.0.Beta1 connectors will continue where the previous connector left off.
+As one might expect, all change events previously written to Kafka by the old connector will not be modified.</p>
+</div>
+<div class="paragraph">
+<p>If you are using our docker images then do not forget to pull them fresh from Docker registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="breaking_changes"><a class="anchor" href="#breaking_changes"></a>Breaking changes</h3>
+<div class="paragraph">
+<p>The MySQL driver was updated to the latest version 8.0.26 (<a href="https://issues.jboss.org/browse/DBZ-3833">DBZ-3833</a>).
+This update comes with a new timezone handling and configuration options.</p>
+</div>
+<div class="paragraph">
+<p>Detailed information can be found in the <a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-connp-props-datetime-types-processing.html">MySQL docs</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new_features"><a class="anchor" href="#new_features"></a>New Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Sink adapter for Nats Streaming <a href="https://issues.jboss.org/browse/DBZ-3815">DBZ-3815</a></p>
+</li>
+<li>
+<p>Debezium Server&#8217;s run.sh startup script fails on msys or cygwin bash <a href="https://issues.jboss.org/browse/DBZ-3840">DBZ-3840</a></p>
+</li>
+<li>
+<p>Upgrade Debezium Server Pravega sink to 0.9.1 <a href="https://issues.jboss.org/browse/DBZ-3841">DBZ-3841</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fixes"><a class="anchor" href="#fixes"></a>Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Create example for using self-managed Debezium with MK <a href="https://issues.jboss.org/browse/DBZ-2947">DBZ-2947</a></p>
+</li>
+<li>
+<p>Exception when validating <code>field.exclude.list</code> for Mongo DB connectors <a href="https://issues.jboss.org/browse/DBZ-3028">DBZ-3028</a></p>
+</li>
+<li>
+<p>In case of <code>/api/connectors/1</code> takes longer time(more than pooling) to fail spinner keeps on loading. <a href="https://issues.jboss.org/browse/DBZ-3313">DBZ-3313</a></p>
+</li>
+<li>
+<p>SQL Server CDC event timestamps do not get converted to UTC <a href="https://issues.jboss.org/browse/DBZ-3479">DBZ-3479</a></p>
+</li>
+<li>
+<p>Debezium snapshot.select.statement.overrides overrides not used <a href="https://issues.jboss.org/browse/DBZ-3760">DBZ-3760</a></p>
+</li>
+<li>
+<p>Server name pattern is unnecessarily restrictive. <a href="https://issues.jboss.org/browse/DBZ-3765">DBZ-3765</a></p>
+</li>
+<li>
+<p>Crash when processing MySQL 5.7.28 TIME fields returns empty blob instead of null <a href="https://issues.jboss.org/browse/DBZ-3773">DBZ-3773</a></p>
+</li>
+<li>
+<p>Debezium UI and CDC   <a href="https://issues.jboss.org/browse/DBZ-3781">DBZ-3781</a></p>
+</li>
+<li>
+<p>Disable "Next" if any field value is changed after the validation. <a href="https://issues.jboss.org/browse/DBZ-3783">DBZ-3783</a></p>
+</li>
+<li>
+<p>Add DEFAULT to partition option engine <a href="https://issues.jboss.org/browse/DBZ-3784">DBZ-3784</a></p>
+</li>
+<li>
+<p>Initiating MongoDB connector causes oplog table scan <a href="https://issues.jboss.org/browse/DBZ-3788">DBZ-3788</a></p>
+</li>
+<li>
+<p>SRCFG00014: The config property debezium.sink.pravega.scope is required but it could not be found in any config source <a href="https://issues.jboss.org/browse/DBZ-3792">DBZ-3792</a></p>
+</li>
+<li>
+<p>LSN component of Postgres sequence numbers is not updated <a href="https://issues.jboss.org/browse/DBZ-3801">DBZ-3801</a></p>
+</li>
+<li>
+<p>Debezium 1.6.1 expecting database.port even when database.url is provided in config. <a href="https://issues.jboss.org/browse/DBZ-3813">DBZ-3813</a></p>
+</li>
+<li>
+<p>Postgres numeric default value throwing exception <a href="https://issues.jboss.org/browse/DBZ-3816">DBZ-3816</a></p>
+</li>
+<li>
+<p>SQL Server connector doesn&#8217;t handle retriable errors during task start <a href="https://issues.jboss.org/browse/DBZ-3823">DBZ-3823</a></p>
+</li>
+<li>
+<p>Debezium OpenShift integration test-suite failure <a href="https://issues.jboss.org/browse/DBZ-3824">DBZ-3824</a></p>
+</li>
+<li>
+<p>Debezium Server Kinesis Sink Cannot Handle Null Events <a href="https://issues.jboss.org/browse/DBZ-3827">DBZ-3827</a></p>
+</li>
+<li>
+<p>Timeout when reading from MongoDB oplog cannot be controlled <a href="https://issues.jboss.org/browse/DBZ-3836">DBZ-3836</a></p>
+</li>
+<li>
+<p>Snapshot locking mode "minimal_percona" incorrectly resets transaction &amp; isolation state <a href="https://issues.jboss.org/browse/DBZ-3838">DBZ-3838</a></p>
+</li>
+<li>
+<p>Properly skip tests when minor/patch are not specified <a href="https://issues.jboss.org/browse/DBZ-3839">DBZ-3839</a></p>
+</li>
+<li>
+<p>Truncate validation should verify key schema is null and not value schema <a href="https://issues.jboss.org/browse/DBZ-3842">DBZ-3842</a></p>
+</li>
+<li>
+<p>System test-suite fails if CRD already exist within the cluster <a href="https://issues.jboss.org/browse/DBZ-3846">DBZ-3846</a></p>
+</li>
+<li>
+<p>Incorrect test-tags for OcpAvroDB2ConnectorIT <a href="https://issues.jboss.org/browse/DBZ-3851">DBZ-3851</a></p>
+</li>
+<li>
+<p>System  test-suite CI job does not have RHEL image parameter <a href="https://issues.jboss.org/browse/DBZ-3852">DBZ-3852</a></p>
+</li>
+<li>
+<p>Typo with prodname asciidoc attribute usage <a href="https://issues.jboss.org/browse/DBZ-3856">DBZ-3856</a></p>
+</li>
+<li>
+<p>SQL Server Connector finds tables for streaming but not snapshot <a href="https://issues.jboss.org/browse/DBZ-3857">DBZ-3857</a></p>
+</li>
+<li>
+<p>Signaling table id column too small in example <a href="https://issues.jboss.org/browse/DBZ-3867">DBZ-3867</a></p>
+</li>
+<li>
+<p>Oracle unparsable DDL issue <a href="https://issues.jboss.org/browse/DBZ-3877">DBZ-3877</a></p>
+</li>
+<li>
+<p>Support AS clause in GRANT statement <a href="https://issues.jboss.org/browse/DBZ-3878">DBZ-3878</a></p>
+</li>
+<li>
+<p>Error Parsing Oracle DDL dropping PK <a href="https://issues.jboss.org/browse/DBZ-3886">DBZ-3886</a></p>
+</li>
+<li>
+<p>Q3 docs referencing Service Registry 2.0 docs <a href="https://issues.jboss.org/browse/DBZ-3891">DBZ-3891</a></p>
+</li>
+<li>
+<p>EMPTY_CLOB() and EMPTY_BLOB() should be treated as empty LOB values <a href="https://issues.jboss.org/browse/DBZ-3893">DBZ-3893</a></p>
+</li>
+<li>
+<p>Oracle DDL parsing issue <a href="https://issues.jboss.org/browse/DBZ-3896">DBZ-3896</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other_changes"><a class="anchor" href="#other_changes"></a>Other changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Debezium UI participating in upstream releases&#8201;&#8212;&#8201;follow-up <a href="https://issues.jboss.org/browse/DBZ-3169">DBZ-3169</a></p>
+</li>
+<li>
+<p>Discuss SMT predicates in docs <a href="https://issues.jboss.org/browse/DBZ-3227">DBZ-3227</a></p>
+</li>
+<li>
+<p>Test failure for SqlServerConnectorIT#excludeColumnWhenCaptureInstanceExcludesColumns <a href="https://issues.jboss.org/browse/DBZ-3228">DBZ-3228</a></p>
+</li>
+<li>
+<p>Adjust to changed Strimzi CRDs <a href="https://issues.jboss.org/browse/DBZ-3385">DBZ-3385</a></p>
+</li>
+<li>
+<p>Create a smoke test for Debezium with Kafka on RHEL <a href="https://issues.jboss.org/browse/DBZ-3387">DBZ-3387</a></p>
+</li>
+<li>
+<p>Promote Debezium support on RHEL to GA <a href="https://issues.jboss.org/browse/DBZ-3406">DBZ-3406</a></p>
+</li>
+<li>
+<p>Oracle Docs for TP <a href="https://issues.jboss.org/browse/DBZ-3407">DBZ-3407</a></p>
+</li>
+<li>
+<p>Upgrade to Kafka 2.8 <a href="https://issues.jboss.org/browse/DBZ-3444">DBZ-3444</a></p>
+</li>
+<li>
+<p>Update Debezium on RHEL documentation for GA <a href="https://issues.jboss.org/browse/DBZ-3462">DBZ-3462</a></p>
+</li>
+<li>
+<p>Options in outbox router docs not linked <a href="https://issues.jboss.org/browse/DBZ-3649">DBZ-3649</a></p>
+</li>
+<li>
+<p>Create Kafka related images based on UBI-8 for RHEL certification <a href="https://issues.jboss.org/browse/DBZ-3650">DBZ-3650</a></p>
+</li>
+<li>
+<p>Error in description of the property column.mask.hash.<em>hashAlgorithm</em>.with.salt.<em>salt</em> <a href="https://issues.jboss.org/browse/DBZ-3802">DBZ-3802</a></p>
+</li>
+<li>
+<p>Debezium does not provide up-to-date container images <a href="https://issues.jboss.org/browse/DBZ-3809">DBZ-3809</a></p>
+</li>
+<li>
+<p>Change DBZ kafka image , so its start script can be used on QA Rhel kafka <a href="https://issues.jboss.org/browse/DBZ-3810">DBZ-3810</a></p>
+</li>
+<li>
+<p>Test with Apicurio Registry 2.0 in system level test-suite <a href="https://issues.jboss.org/browse/DBZ-3812">DBZ-3812</a></p>
+</li>
+<li>
+<p>Upgrade commons-compress from 1.20 to 1.21 <a href="https://issues.jboss.org/browse/DBZ-3819">DBZ-3819</a></p>
+</li>
+<li>
+<p>Update jenkins job configuration to incorporate recent system-testsuite changes <a href="https://issues.jboss.org/browse/DBZ-3825">DBZ-3825</a></p>
+</li>
+<li>
+<p>Test Failure - RecordsStreamProducerIT#testEmptyChangesProducesHeartbeat <a href="https://issues.jboss.org/browse/DBZ-3828">DBZ-3828</a></p>
+</li>
+<li>
+<p>Upgrade UI proxy connectors to 1.6.1.Final <a href="https://issues.jboss.org/browse/DBZ-3837">DBZ-3837</a></p>
+</li>
+<li>
+<p>Improperly constructed links generating downstream build errors <a href="https://issues.jboss.org/browse/DBZ-3858">DBZ-3858</a></p>
+</li>
+<li>
+<p>CI Failure in VitessConnectorIT.shouldOutputRecordsInCloudEventsFormat <a href="https://issues.jboss.org/browse/DBZ-3863">DBZ-3863</a></p>
+</li>
+<li>
+<p>CI Failure for StreamingSourceIT.shouldFailOnSchemaInconsistency <a href="https://issues.jboss.org/browse/DBZ-3869">DBZ-3869</a></p>
+</li>
+<li>
+<p>Extract new top-level menu node for SMTs <a href="https://issues.jboss.org/browse/DBZ-3873">DBZ-3873</a></p>
+</li>
+<li>
+<p>Introduce documentation variables for AMQ <a href="https://issues.jboss.org/browse/DBZ-3879">DBZ-3879</a></p>
+</li>
+<li>
+<p>Don&#8217;t log error when dropping non-existent replication slot in tests <a href="https://issues.jboss.org/browse/DBZ-3889">DBZ-3889</a></p>
+</li>
+<li>
+<p>Intermittent test failures on CI: VitessConnectorIT::shouldUseUniqueKeyAsRecordKey <a href="https://issues.jboss.org/browse/DBZ-3900">DBZ-3900</a></p>
+</li>
+<li>
+<p>Intermittent test failures on CI: IncrementalSnapshotIT#updatesWithRestart <a href="https://issues.jboss.org/browse/DBZ-3901">DBZ-3901</a></p>
+</li>
+<li>
+<p>Test shouldNotEmitDdlEventsForNonTableObjects randomly fails <a href="https://issues.jboss.org/browse/DBZ-3902">DBZ-3902</a></p>
+</li>
+<li>
+<p>VOLUME instruction causes issue with recent Docker versions <a href="https://issues.jboss.org/browse/DBZ-3903">DBZ-3903</a></p>
+</li>
+<li>
+<p>Provide ability to denote UI order in field metadata <a href="https://issues.jboss.org/browse/DBZ-3904">DBZ-3904</a></p>
+</li>
+<li>
+<p>Make relocation.dir and offset.dir configs required. <a href="https://issues.jboss.org/browse/DBZ-2251">DBZ-2251</a></p>
+</li>
+<li>
+<p>Create Debezium API Spec Generator and static API definitions for connectors <a href="https://issues.jboss.org/browse/DBZ-3364">DBZ-3364</a></p>
+</li>
+<li>
+<p>Improve incremental snapshot metrics <a href="https://issues.jboss.org/browse/DBZ-3688">DBZ-3688</a></p>
+</li>
+<li>
+<p>Import Pattern-fly CSS from @patternfly/patternfly <a href="https://issues.jboss.org/browse/DBZ-3779">DBZ-3779</a></p>
+</li>
+<li>
+<p>Allow system testsuite  to produce Strimzi image for arbitrary released version of Debezium <a href="https://issues.jboss.org/browse/DBZ-3826">DBZ-3826</a></p>
+</li>
+<li>
+<p>PostgreSQL - Minor Performance bottleneck in PostgresChangeRecordEmitter <a href="https://issues.jboss.org/browse/DBZ-3870">DBZ-3870</a></p>
+</li>
+<li>
+<p>Oracle - Provide a more user-friendly way to update SCN <a href="https://issues.jboss.org/browse/DBZ-3876">DBZ-3876</a></p>
+</li>
+<li>
+<p>Test failure on CI - SqlServerConnectorIT#readOnlyApplicationIntent <a href="https://issues.jboss.org/browse/DBZ-2398">DBZ-2398</a></p>
+</li>
+<li>
+<p>Test failure for SqlServerConnectorIT#EventProcessingFailureHandlingIT <a href="https://issues.jboss.org/browse/DBZ-3229">DBZ-3229</a></p>
+</li>
+<li>
+<p>Remove underscore from Debezium Server NATS sink Java package name <a href="https://issues.jboss.org/browse/DBZ-3910">DBZ-3910</a></p>
+</li>
+<li>
+<p>LogMinerDatabaseStateWriter causes a SQLException <a href="https://issues.jboss.org/browse/DBZ-3911">DBZ-3911</a></p>
+</li>
+<li>
+<p>Maven release fails due to debezium-testing version handling <a href="https://issues.jboss.org/browse/DBZ-3909">DBZ-3909</a></p>
+</li>
+<li>
+<p>Zookeeper image should not use archive.apache.org <a href="https://issues.jboss.org/browse/DBZ-3914">DBZ-3914</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="release-1.7.0-alpha1"><a class="anchor" href="#release-1.7.0-alpha1"></a><strong>Release 1.7.0.Alpha1</strong> <em>(July 30th, 2021)</em></h2>
@@ -554,14 +857,14 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12354171">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility"><a class="anchor" href="#kafka_compatibility"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading"><a class="anchor" href="#upgrading"></a>Upgrading</h3>
+<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -577,13 +880,13 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes"><a class="anchor" href="#breaking_changes"></a>Breaking changes</h3>
+<h3 id="breaking_changes_2"><a class="anchor" href="#breaking_changes_2"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>There are no breaking changes in this release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features"><a class="anchor" href="#new_features"></a>New Features</h3>
+<h3 id="new_features_2"><a class="anchor" href="#new_features_2"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -620,7 +923,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes"><a class="anchor" href="#fixes"></a>Fixes</h3>
+<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -687,7 +990,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes"><a class="anchor" href="#other_changes"></a>Other changes</h3>
+<h3 id="other_changes_2"><a class="anchor" href="#other_changes_2"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -850,53 +1153,7 @@ As one might expect, all change events previously written to Kafka by the old co
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
-  <script type="application/x-social-share-privacy-settings">
-    {
-      "path_prefix":"/assets/socialshare/",
-      "layout":"line",
-      "services": {
-        
-        "buffer": {
-            "status": false
-        },
-        "delicious": {
-            "status": false
-        },
-        "disqus": {
-            "status": false
-        },
-        "facebook": {
-          "status": false
-        },
-        "flattr": {
-            "status": false
-        },
-        "gplus": {
-            "status": false
-        },
-        "hackernews": {
-            "status": false
-        },
-        "pinterest": {
-            "status": false
-        },
-        "xing": {
-            "status": false
-        },
-        "tumblr": {
-          "status": false
-        },
-        "stumble": {
-          "status": false
-        },
-        "stumbleupon": {
-          "status":false
-        }
-      }
-    }
-  </script>
-  <script> 
+  <script>
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
   </script>
