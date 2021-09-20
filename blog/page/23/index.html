@@ -185,6 +185,12 @@
             
           
             
+          
+            
+          
+            
+          
+            
             <li style="margin-bottom: 3px;">
               <a href="/blog/2020/11/04/streaming-vitess-at-bolt/" style="font-size: 95%;">
                 Streaming Vitess at Bolt
@@ -501,6 +507,12 @@
           
           
           <span class="site-tag">
+            <a href="/tag/apache-kafka/" style="font-size: 82%">
+              apache kafka
+            </a>
+          </span>
+          
+          <span class="site-tag">
             <a href="/tag/apache-kafka/" style="font-size: 88%">
               apache kafka
             </a>
@@ -579,7 +591,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/docker/" style="font-size: 182%">
+            <a href="/tag/docker/" style="font-size: 184%">
               docker
             </a>
           </span>
@@ -609,7 +621,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/examples/" style="font-size: 104%">
+            <a href="/tag/examples/" style="font-size: 108%">
               examples
             </a>
           </span>
@@ -651,7 +663,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/kafka-streams/" style="font-size: 82%">
+            <a href="/tag/kafka-streams/" style="font-size: 84%">
               kafka streams
             </a>
           </span>
@@ -699,7 +711,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/mysql/" style="font-size: 284%">
+            <a href="/tag/mysql/" style="font-size: 286%">
               mysql
             </a>
           </span>
@@ -717,19 +729,19 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/oracle/" style="font-size: 180%">
+            <a href="/tag/oracle/" style="font-size: 182%">
               oracle
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/outbox/" style="font-size: 130%">
+            <a href="/tag/outbox/" style="font-size: 132%">
               outbox
             </a>
           </span>
           
           <span class="site-tag">
-            <a href="/tag/postgres/" style="font-size: 254%">
+            <a href="/tag/postgres/" style="font-size: 256%">
               postgres
             </a>
           </span>
@@ -747,7 +759,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/quarkus/" style="font-size: 92%">
+            <a href="/tag/quarkus/" style="font-size: 94%">
               quarkus
             </a>
           </span>
@@ -759,7 +771,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/releases/" style="font-size: 268%">
+            <a href="/tag/releases/" style="font-size: 270%">
               releases
             </a>
           </span>
@@ -801,7 +813,7 @@
           </span>
           
           <span class="site-tag">
-            <a href="/tag/sqlserver/" style="font-size: 200%">
+            <a href="/tag/sqlserver/" style="font-size: 202%">
               sqlserver
             </a>
           </span>
@@ -851,6 +863,178 @@
         <h1 class="section full">Debezium Blog</h1>
         <div class="component-wrapper">
   <div class="grid__item width-10-12 width-12-12-m">
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/jpechane.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2018/05/24/querying-debezium-change-data-eEvents-with-ksql/">Querying Debezium Change Data Events With KSQL</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2018/05/24/querying-debezium-change-data-eEvents-with-ksql/">Querying Debezium Change Data Events With KSQL</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> May 24, 2018 by </em>
+                    <em> Jiri Pechanec </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/ksql/">ksql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/example/">example</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p><em>Last updated at Nov 21st 2018 (adjusted to new KSQL Docker images)</em>.</p>
+</div>
+<div class="paragraph">
+<p>Last year we have seen the inception of a new open-source project in the <a href="https://kafka.apache.org/">Apache Kafka</a> universe, <a href="https://github.com/confluentinc/ksql">KSQL</a>,
+which is a streaming SQL engine build on top of <a href="https://kafka.apache.org/documentation/streams/">Kafka Streams</a>.
+In this post, we are going to try out KSQL querying with data change events generated by Debezium from a MySQL database.</p>
+</div>
+<div class="paragraph">
+<p>As a source of data we will use the database and setup from our <a href="/docs/tutorial/">tutorial</a>.
+The result of this exercise should be similar to the recent <a href="/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/">post</a> about aggregation of events into <a href="https://martinfowler.com/bliki/DDD_Aggregate.html">domain driven aggregates</a>.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2018/05/24/querying-debezium-change-data-eEvents-with-ksql/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2018/03/20/debezium-0-7-5-released/">Debezium 0.7.5 Is Released</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2018/03/20/debezium-0-7-5-released/">Debezium 0.7.5 Is Released</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> March 20, 2018 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.7.5</strong>!</p>
+</div>
+<div class="paragraph">
+<p>This is a bugfix release to the 0.7 release line, which we decided to do while working towards Debezium 0.8.
+Most notably it fixes an unfortunate bug introduced in 0.7.3 (<a href="https://issues.redhat.com/browse/DBZ-663">DBZ-663</a>),
+where the internal database history topic of the Debezium MySQL connector could be partly deleted under some specific conditions.
+Please see the <a href="/2018/03/16/note-on-database-history-topic-configuration/">dedicated blog post</a> on this issue to find out whether this affects you and what you should do to prevent this issue.</p>
+</div>
+<div class="paragraph">
+<p>Together with this, we released a couple of other fixes and improvements.
+Thanks to <a href="https://github.com/maver1ck">Maciej Brynski</a>, the performance of the <a href="/docs/configuration/topic-routing/">logical table routing SMT</a> has been improved significantly (<a href="https://issues.redhat.com/browse/DBZ-655">DBZ-655</a>).
+Another fix contributed by Maciej is for <a href="https://issues.redhat.com/browse/DBZ-646">DBZ-646</a> which lets the MySQL connector handle <code>CREATE TABLE</code> statements for the TokuDB storage engine now.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2018/03/20/debezium-0-7-5-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
+    
+      <div class="blog-list-item grid-wrapper">
+        
+        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
+          <div class="col-sm-12" style="padding-left: 0px;"> 
+            <div style="display: table-cell; vertical-align: top;"> 
+              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
+                 
+                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
+                
+              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
+                <div style="margin-left: 8px;"> 
+                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
+                    <a href="/blog/2018/03/16/note-on-database-history-topic-configuration/">A Note On Database History Topic Configuration</a> 
+                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
+                    <a href="/blog/2018/03/16/note-on-database-history-topic-configuration/">A Note On Database History Topic Configuration</a> 
+                  </span> <div class="byline" style="line-height: 1;"> 
+                    
+                    
+                    <em> March 16, 2018 by </em>
+                    <em> Gunnar Morling </em>
+                    <div class="hidden-xs" style="margin-top: 5px;"> 
+                      
+                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
+                      
+                    </div> 
+                  </div> 
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        <div class="grid__item width-12-12">
+          
+            <p><div class="paragraph">
+<p>A user of the Debezium connector for MySQL informed us about a potential issue with the configuration of the connector&#8217;s internal database history topic,
+which may cause the deletion of parts of that topic (<a href="https://issues.redhat.com/browse/DBZ-663">DBZ-663</a>).
+Please continue reading if you&#8217;re using the Debezium MySQL connector in versions 0.7.3 or 0.7.4.</p>
+</div></p>
+          
+        </div>
+        <div class="read-more-div"> 
+          <a class="read-more" href="/blog/2018/03/16/note-on-database-history-topic-configuration/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span class="icon-arrow-right"></span> 
+          </a> 
+        </div>
+      </div>
+      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
+      
     
       <div class="blog-list-item grid-wrapper">
         
@@ -971,204 +1155,6 @@ please check out the <a href="/docs/releases/">release notes</a> of all versions
       <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
       
     
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/02/15/debezium-0-7-3-released/">Debezium 0.7.3 Is Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/02/15/debezium-0-7-3-released/">Debezium 0.7.3 Is Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> February 15, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>I&#8217;m very happy to announce the release of Debezium <strong>0.7.3</strong>!</p>
-</div>
-<div class="paragraph">
-<p>This is primarily a bugfix release, but we&#8217;ve also added a handful of smaller new features.
-It&#8217;s a recommended upgrade for all users.
-When upgrading from earlier versions,
-please check out the <a href="/docs/releases/">release notes</a> of all versions between the one your&#8217;re currently on and 0.7.3 in order to learn about any steps potentially required for upgrading.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s take a closer look at some of the new features.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/02/15/debezium-0-7-3-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/gmorling.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/01/25/debezium-0-7-2-released/">Debezium 0.7.2 Is Released</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/01/25/debezium-0-7-2-released/">Debezium 0.7.2 Is Released</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> January 25, 2018 by </em>
-                    <em> Gunnar Morling </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/releases/">releases</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mongodb/">mongodb</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/docker/">docker</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>It&#8217;s my pleasure to announce the release of Debezium <strong>0.7.2</strong>!</p>
-</div>
-<div class="paragraph">
-<p>Amongst the new features there&#8217;s support for geo-spatial types,
-a new snapshotting mode for recovering a lost DB history topic for the MySQL connector,
-and a message transformation for converting MongoDB change events into a structure which can be consumed by many more sink connectors.
-And of course we fixed a whole lot of bugs, too.</p>
-</div>
-<div class="paragraph">
-<p>Debezium 0.7.2 is a drop-in replacement for previous 0.7.x versions.
-When upgrading from versions earlier than 0.7.0,
-please check out the <a href="/docs/releases/">release notes</a> of all 0.7.x releases to learn about any steps potentially required for upgrading.</p>
-</div>
-<div class="paragraph">
-<p>A big thank you goes out to our fantastic community members for their hard work on this release:
-<a href="https://github.com/jchipmunk">Andrey Pustovetov</a>,
-<a href="https://github.com/notxcain">Denis Mikhaylov</a>,
-<a href="https://github.com/pgoranss">Peter Goransson</a>,
-<a href="https://github.com/rcoup">Robert Coup</a>,
-<a href="https://github.com/sairam881990">Sairam Polavarapu</a> and
-<a href="https://github.com/tombentley">Tom Bentley</a>.</p>
-</div>
-<div class="paragraph">
-<p>Now let&#8217;s take a closer look at some of new features.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/01/25/debezium-0-7-2-released/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
-      <div class="blog-list-item grid-wrapper">
-        
-        <div class="row" style="margin-left: 0; margin-right: 0; margin-bottom: 10px;"> 
-          <div class="col-sm-12" style="padding-left: 0px;"> 
-            <div style="display: table-cell; vertical-align: top;"> 
-              <div style="width: 72px; border: 1px solid #ccc; padding: 3px; display: inline-block;">
-                 
-                  <img src="/assets/images/jpechane.jpg" style="width: 64px;"> 
-                
-              </div> </div> <div style="display: table-cell; vertical-align: top;"> 
-                <div style="margin-left: 8px;"> 
-                  <span class="hidden-sm hidden-xs" style="font-size: 2.75rem; line-height: 1;"> 
-                    <a href="/blog/2018/01/17/streaming-to-elasticsearch/">Streaming Data Changes from Your Database to Elasticsearch</a> 
-                  </span> <span class="hidden-md hidden-lg" style="font-size: 2rem; line-height: 1;"> 
-                    <a href="/blog/2018/01/17/streaming-to-elasticsearch/">Streaming Data Changes from Your Database to Elasticsearch</a> 
-                  </span> <div class="byline" style="line-height: 1;"> 
-                    
-                    
-                    <em> January 17, 2018 by </em>
-                    <em> Jiri Pechanec </em>
-                    <div class="hidden-xs" style="margin-top: 5px;"> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/mysql/">mysql</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/postgres/">postgres</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/elasticsearch/">elasticsearch</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/smt/">smt</a> 
-                      
-                        <a class="label label-info hidden-sm hidden-xs" href="/tag/example/">example</a> 
-                      
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-            </div> 
-          </div>
-        <div class="grid__item width-12-12">
-          
-            <p><div class="paragraph">
-<p>We wish all the best to the Debezium community for 2018!</p>
-</div>
-<div class="paragraph">
-<p>While we&#8217;re working on the 0.7.2 release, we thought we&#8217;d publish another post describing an end-to-end data streaming use case based on Debezium.
-We have seen how to set up a change data stream to a downstream database <a href="/blog/2017/09/25/streaming-to-another-database/">a few weeks ago</a>.
-In this blog post we will follow the same approach to stream the data to an <a href="https://www.elastic.co/">Elasticsearch</a> server to leverage its excellent capabilities for full-text search on our data.
-But to make the matter a little bit more interesting, we will stream the data to both, a PostgreSQL database and Elasticsearch, so we will optimize access to the data via the SQL query language as well as via full-text search.</p>
-</div></p>
-          
-        </div>
-        <div class="read-more-div"> 
-          <a class="read-more" href="/blog/2018/01/17/streaming-to-elasticsearch/"> Read More&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span class="icon-arrow-right"></span> 
-          </a> 
-        </div>
-      </div>
-      <div style="border-bottom: 1px dashed #ccc; margin-top: 25px; margin-bottom: 15px;"></div>
-      
-    
 
     <ul class="pager">
       
@@ -1179,7 +1165,7 @@ But to make the matter a little bit more interesting, we will stream the data to
       
 
       <li class="pages ">
-        Page: 23 of 30
+        Page: 23 of 31
       </li>
       
       
@@ -1288,7 +1274,53 @@ But to make the matter a little bit more interesting, we will stream the data to
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script>
+  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
+  <script type="application/x-social-share-privacy-settings">
+    {
+      "path_prefix":"/assets/socialshare/",
+      "layout":"line",
+      "services": {
+        
+        "buffer": {
+            "status": false
+        },
+        "delicious": {
+            "status": false
+        },
+        "disqus": {
+            "status": false
+        },
+        "facebook": {
+          "status": false
+        },
+        "flattr": {
+            "status": false
+        },
+        "gplus": {
+            "status": false
+        },
+        "hackernews": {
+            "status": false
+        },
+        "pinterest": {
+            "status": false
+        },
+        "xing": {
+            "status": false
+        },
+        "tumblr": {
+          "status": false
+        },
+        "stumble": {
+          "status": false
+        },
+        "stumbleupon": {
+          "status":false
+        }
+      }
+    }
+  </script>
+  <script> 
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
   </script>

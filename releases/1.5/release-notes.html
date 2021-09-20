@@ -1827,8 +1827,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <div class="paragraph">
 <p>A new capturing implementation for the Debezium MySQL connector has been created (<a href="https://issues.jboss.org/browse/DBZ-1865">DBZ-1865</a>) based on the common connector framework used by all the other Kafka Connect connectors of Debezium.
 The connector behaviour is almost in parity with previous implementation,
-with the exception of the <strong>experimental</strong> parallel snapshotting feature (<a href="https://issues.redhat.com/browse/DBZ-175">DBZ-175</a>), which isn&#8217;t available with the new implementation yet and which is planned to be re-introduced later in a different form.
-If you encounter any issues with the new MySQL connector implementation, please log a <a href="https://issues.redhat.com/browse/DBZ">Jira issue</a>;
+with the exception of the <strong>experimental</strong> parallel snapshotting feature (<a href="https://issues.redhat.com/browse/DBZ-175">DBZ-175</a>), which isn&#8217;t available with the new implementation yet and which is planned to be re-introduced later in a different form.</p>
+</div>
+<div class="paragraph">
+<p>In addition, records in the schema change topic now have a non-optional field <code>tableChanges</code>, which describes the represented schema change in a structured way.
+If you are using a schema registry, use a compatibility setting of <code>FORWARD</code> for the schema change topic, so to make sure that the new schema version used for schema change events can be registered successfully.</p>
+</div>
+<div class="paragraph">
+<p>If you encounter any issues with the new MySQL connector implementation, please log a <a href="https://issues.redhat.com/browse/DBZ">Jira issue</a>;
 in this case, you can use the legacy implementation by setting the <code>internal.implementation=legacy</code> connector configuration option.</p>
 </div>
 </div>
@@ -2040,7 +2046,53 @@ in this case, you can use the legacy implementation by setting the <code>interna
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/assets/javascript/vanilla-back-to-top.min.js"></script>
   <script type="text/javascript" src="/assets/javascript/highlight.min.js"></script>
-  <script>
+  <script type="text/javascript" src="/assets/socialshare/javascript/jquery.socialshareprivacy.min.autoload.js"></script>
+  <script type="application/x-social-share-privacy-settings">
+    {
+      "path_prefix":"/assets/socialshare/",
+      "layout":"line",
+      "services": {
+        
+        "buffer": {
+            "status": false
+        },
+        "delicious": {
+            "status": false
+        },
+        "disqus": {
+            "status": false
+        },
+        "facebook": {
+          "status": false
+        },
+        "flattr": {
+            "status": false
+        },
+        "gplus": {
+            "status": false
+        },
+        "hackernews": {
+            "status": false
+        },
+        "pinterest": {
+            "status": false
+        },
+        "xing": {
+            "status": false
+        },
+        "tumblr": {
+          "status": false
+        },
+        "stumble": {
+          "status": false
+        },
+        "stumbleupon": {
+          "status":false
+        }
+      }
+    }
+  </script>
+  <script> 
     addBackToTop({ scrollDuration: 400 })
     hljs.initHighlightingOnLoad();
   </script>

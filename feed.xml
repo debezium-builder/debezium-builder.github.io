@@ -1,4 +1,276 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-08-26T17:28:57+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.7.0.Beta1 Released</title><link href="https://debezium.io/blog/2021/08/25/debezium-1-7-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.7.0.Beta1 Released" /><published>2021-08-25T00:00:00+00:00</published><updated>2021-08-25T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/08/25/debezium-1-7-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/08/25/debezium-1-7-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://debezium.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://debezium.io/" rel="alternate" type="text/html" /><updated>2021-09-20T17:52:08+00:00</updated><id>https://debezium.io/feed.xml</id><title type="html">Debezium</title><subtitle>Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong.</subtitle><entry><title type="html">Debezium 1.7.0.CR1 Released</title><link href="https://debezium.io/blog/2021/09/16/debezium-1-7-cr1-released/" rel="alternate" type="text/html" title="Debezium 1.7.0.CR1 Released" /><published>2021-09-16T00:00:00+00:00</published><updated>2021-09-16T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/09/16/debezium-1-7-cr1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/09/16/debezium-1-7-cr1-released/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I am very happy to announce the release of Debezium &lt;strong&gt;1.7.0.CR1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For this release, we&amp;#8217;ve reworked how column filters are handled during snapshotting,
+the Debezium container images have been updated to use Fedora 34 as their base,
+there&amp;#8217;s support for MySQL &lt;code&gt;INVISIBLE&lt;/code&gt; columns, and much more.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;column_filtering_during_snapshotting&quot;&gt;Column Filtering During Snapshotting&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While the different Debezium connectors already had the capability to exclude specific columns of the captured tables from change events,
+these filters were only applied when processing the data within the connectors.
+For initial snapshots, a more efficient approach has been implemented now:
+tailored SQL SELECT statements will be executed for fetching only the actually included columns
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2525&quot;&gt;DBZ-2525&lt;/a&gt;).
+This allows for significant performance gains when for instance excluding large &lt;code&gt;BLOB&lt;/code&gt; columns from change events.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;updated_container_image_base&quot;&gt;Updated Container Image Base&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;a href=&quot;https://hub.docker.com/u/debezium&quot;&gt;Debezium container images&lt;/a&gt; for Apache Kafka, Kafka Connect, and Apache ZooKeeper are based on the Fedora 34 minimal container base image
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3939&quot;&gt;DBZ-3939&lt;/a&gt;).
+This change became necessary as the previously used base image (derived from CentOS 7)
+was not maintained any longer.
+While this change will be transparent for most users of Debezium,
+some adjustments may be required for those users who derive their own custom images from the Debezium ones,
+e.g. when installing further packages using the operating system&amp;#8217;s package manager.
+Please refer to the &lt;a href=&quot;https://debezium.io/releases/1.7/release-notes#breaking_changes&quot;&gt;release notes&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;further_fixes&quot;&gt;Further Fixes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As we&amp;#8217;re approaching the 1.7 Final release,
+most changes have been centered around bug fixing and maturing the code base.
+Some of the resolved issues include:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Support for &lt;code&gt;INVISIBLE&lt;/code&gt; columns as available since MySQL 8.0.23 (&lt;a href=&quot;https://issues.jboss.org/browse/DBZ-3623&quot;&gt;DBZ-3623&lt;/a&gt;);
+we&amp;#8217;ve used that occassion to also update the Debezium example image for MySQL to version 8.0
+(&lt;a href=&quot;https://issues.jboss.org/browse/DBZ-3936&quot;&gt;DBZ-3936&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The SQL Server allows for the usage of custom connection factories
+(&lt;a href=&quot;https://issues.jboss.org/browse/DBZ-4001&quot;&gt;DBZ-4001&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Several fixes to DML and DDL parsing for MySQL
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3969&quot;&gt;DBZ-3969&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3984&quot;&gt;DBZ-3984&lt;/a&gt;)
+and Oracle
+(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3892&quot;&gt;DBZ-3892&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3962&quot;&gt;DBZ-3962&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Altogether, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.7.0.CR1&quot;&gt;47 issues&lt;/a&gt; have been fixed for this release.
+A big thank you to all contributors:
+&lt;a href=&quot;https://github.com/ani-sha&quot;&gt;Anisha Mohanty&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/ashmeet13&quot;&gt;Ashmeet Lamba&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/roldanbob&quot;&gt;Bob Roldan&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/camilesing&quot;&gt;Camile Sing&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/Naros&quot;&gt;Chris Cranford&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/d3vel0per&quot;&gt;Dhrubajyoti G&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/gunnarmorling&quot;&gt;Gunnar Morling&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/harveyyue&quot;&gt;Harvey Yue&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/uidoyen&quot;&gt;Hussain Ansari&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/indraraj&quot;&gt;Indra Shukla&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/jcechace&quot;&gt;Jakub Cechacek&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/Jiabao-Sun&quot;&gt;Jiabao Sun&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/novotnyJiri&quot;&gt;Jiri Novotny&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/jpechane&quot;&gt;Jiri Pechanec&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/kgalieva&quot;&gt;Katerina Galieva&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/rk3rn3r&quot;&gt;René Kerner&lt;/a&gt;, and
+&lt;a href=&quot;https://github.com/zhangyuan&quot;&gt;Yuan Zhang&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Going forward, we&amp;#8217;re planning to do another CR (candidate release) in a few days,
+followed by Debezium 1.7.0.Final at the end of the month.
+We&amp;#8217;ll primarily focus on bug fixing and some asorted performance optimizations.
+There&amp;#8217;ll also be some exciting improvements to the &lt;a href=&quot;/documentation/reference/1.7/operations/debezium-ui.html&quot;&gt;Debezium UI&lt;/a&gt;,
+which should be wrapped up for the 1.7 Final release:
+support for the configuration of single message transforms (SMTs),
+as well as the ability to configure topic creation settings.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In parallel, we&amp;#8217;re working on the roadmap for Debezium 1.8, planned to be released by the end of the year.
+Please reach out in the comments below or on the &lt;a href=&quot;https://groups.google.com/g/debezium&quot;&gt;mailing list&lt;/a&gt; if you&amp;#8217;d like to raise specific feature requests for this release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="oracle" /><category term="outbox" /><summary type="html">I am very happy to announce the release of Debezium 1.7.0.CR1! For this release, we&amp;#8217;ve reworked how column filters are handled during snapshotting, the Debezium container images have been updated to use Fedora 34 as their base, there&amp;#8217;s support for MySQL INVISIBLE columns, and much more.</summary></entry><entry><title type="html">Going ZooKeeper-less With the Debezium Container Image for Apache Kafka</title><link href="https://debezium.io/blog/2021/08/31/going-zookeeperless-with-debezium-container-image-for-apache-kafka/" rel="alternate" type="text/html" title="Going ZooKeeper-less With the Debezium Container Image for Apache Kafka" /><published>2021-08-31T00:00:00+00:00</published><updated>2021-08-31T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/08/31/going-zookeeperless-with-debezium-container-image-for-apache-kafka</id><content type="html" xml:base="https://debezium.io/blog/2021/08/31/going-zookeeperless-with-debezium-container-image-for-apache-kafka/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://blogs.apache.org/kafka/entry/what-s-new-in-apache5&quot;&gt;Apache Kafka 2.8&lt;/a&gt; allows for a first glimpse into the ZooKeeper-less future of the widely used event streaming platform:
+shipping with a preview of &lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-500%3A+Replace+ZooKeeper+with+a+Self-Managed+Metadata+Quorum&quot;&gt;KIP-500&lt;/a&gt; (&quot;Replace ZooKeeper with a Self-Managed Metadata Quorum&quot;),
+you can now run Kafka clusters without the need for setting up and operating Apache ZooKeeper.
+This does not only simplify running Kafka from an operational perspective,
+the new metadata quorum implementation
+(named &quot;KRaft&quot;, Kafka Raft metadata mode)
+also should provide much better scaling characteristics,
+for instance when it comes to large numbers of topics and partitions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.morling.dev/blog/exploring-zookeeper-less-kafka/&quot;&gt;I have blogged&lt;/a&gt; about my first experiences with KRaft and ZooKeeper-less Kafka a while ago over on my personal blog.
+Since then, the Debezium community has upgraded its &lt;a href=&quot;https://hub.docker.com/r/debezium/kafka&quot;&gt;container image&lt;/a&gt; for Apache Kafka to version 2.8,
+which makes it really simple to start your own explorations around running Kafka without ZooKeeper.
+Note that KRaft mode is an early access feature of Apache Kafka at this point in time and should not be used for production purposes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;enabling_kraft_mode&quot;&gt;Enabling KRaft Mode&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As of Debezium version 1.7, the container image for Kafka supports three new environment variables,
+to be specified when running the image:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CLUSTER_ID&lt;/code&gt;: A unique id, such as &quot;5Yr1SIgYQz-b-dgRabWx4g&quot;; if this variable is present, KRaft mode is enabled. Otherwise, the image behaves as before, and must be configured with a reference to ZooKeeper. When using KRaft mode, all nodes of the Kafka cluster must use the same cluster id.
+Values can be generated using the &lt;em&gt;kafka-storage.sh&lt;/em&gt; script coming with Apache Kafka.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;NODE_ROLE&lt;/code&gt;: Specifies the role of the Kafka node; must be one of &quot;controller&quot;, &quot;broker&quot;, or &quot;combined&quot;. In KRaft mode, Kafka nodes can either be part of the metadata quorum (controller nodes),
+they can be exclusively used for propagating messages (broker nodes), or they can do both (combined nodes). Depending on your use case and requirements, you might for instance go for a smaller Kafka cluster of three combined nodes, or for a larger one with three controllers and seven brokers. If no value is given, the image will start the broker in combined mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;NODE_ID&lt;/code&gt;; Specifies a unique id (1, 2, 3, &amp;#8230;&amp;#8203;) for each node in the cluster; the previously used variable &lt;code&gt;BROKER_ID&lt;/code&gt; has been deprecated in favour of &lt;code&gt;NODE_ID&lt;/code&gt;; for the time being, it still is supported as an alias for the new name, but using it will trigger a warning in the logs, and it is planned to be phased out eventually.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In addition, one more environment variable must be given when starting a Kafka cluster in KRaft mode using the Debezium container image: &lt;code&gt;KAFKA_CONTROLLER_QUORUM_VOTERS&lt;/code&gt;.
+This one is used to pass the &lt;code&gt;controller.quorum.voters&lt;/code&gt; configuration option to Kafka,
+referencing all controller nodes in the cluster in the format &quot;id-1@controller-node-1:controller-port-1,&amp;#8230;&amp;#8203;&quot;,
+for instance &lt;code&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;giving_it_a_try&quot;&gt;Giving it a Try&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And really that&amp;#8217;s all there is to it.
+So let&amp;#8217;s take a look at a Docker Compose file for starting up a three node Kafka cluster,
+formed of combined nodes solely:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;key&quot;&gt;version&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;'2'&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;key&quot;&gt;services&lt;/span&gt;:
+  &lt;span class=&quot;key&quot;&gt;kafka-1&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;19092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;19093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=1&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;key&quot;&gt;kafka-2&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;29092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;29093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=2&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;key&quot;&gt;kafka-3&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;39092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;39093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=3&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;One quick &lt;code&gt;docker compose up&lt;/code&gt; later, and you&amp;#8217;ll have your ZooKeeper-less Kafka cluster running,
+ready to be used with Debezium, Kafka Connect, or any other Kafka workload you may have.
+Just remember: don&amp;#8217;t roll it out to production just yet ;)
+Note that whether ZooKeeper is or isn&amp;#8217;t used by a given cluster, solely is an implementation detail of Kafka,
+i.e. it&amp;#8217;s fully transparent to Debezium, its history producers/consumers, and any other Kafka clients.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Setting up a cluster with dedicated controller and broker nodes isn&amp;#8217;t much more complex either.
+Here&amp;#8217;s the configuration for a cluster with one controller and three brokers
+(of course you&amp;#8217;d want to run with at least three controllers in reality,
+so to avoid the single point of failure of only one controller node):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;key&quot;&gt;version&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;'2'&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;key&quot;&gt;services&lt;/span&gt;:
+  &lt;span class=&quot;key&quot;&gt;kafka-1&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;19092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;19093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=1&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;NODE_ROLE=controller&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;key&quot;&gt;kafka-2&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;29092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;29093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=2&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;NODE_ROLE=broker&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;key&quot;&gt;kafka-3&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;39092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;39093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=3&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;NODE_ROLE=broker&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;key&quot;&gt;kafka-4&lt;/span&gt;:
+    &lt;span class=&quot;key&quot;&gt;image&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;debezium/kafka:1.7&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;ports&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;49092:9092&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;49093:9093&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;key&quot;&gt;environment&lt;/span&gt;:
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;CLUSTER_ID=5Yr1SIgYQz-b-dgRabWx4g&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;BROKER_ID=4&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-1:9093&lt;/span&gt;&lt;/span&gt;
+      - &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;content&quot;&gt;NODE_ROLE=broker&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can find extended versions of the two Compose files
+(&lt;a href=&quot;https://github.com/debezium/debezium-examples/blob/master/tutorial/docker-compose-zookeeperless-kafka-combined.yaml&quot;&gt;combined&lt;/a&gt;, &lt;a href=&quot;https://github.com/debezium/debezium-examples/blob/master/tutorial/docker-compose-zookeeperless-kafka.yaml&quot;&gt;controller/broker&lt;/a&gt;) in the Debezium examples repository,
+also containing services for Kafka Connect and a Postgres database,
+and accompanied by &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/tutorial#running-without-zookeeper&quot;&gt;instructions&lt;/a&gt; for running the &lt;a href=&quot;https://debezium.io/documentation/reference/tutorial.html&quot;&gt;Debezium tutorial&lt;/a&gt; with ZooKeeper-less Kafka.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As KRaft mode matures in Kafka 3.0 and later versions,
+we may do some adjustments to the container image,
+so to support the new mode of running Kafka in the best way possible.
+Eventually, the option to run with ZooKeeper will be removed, but it&amp;#8217;ll be quite some more time until then.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To learn more about KRaft, refer to &lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-500%3A+Replace+ZooKeeper+with+a+Self-Managed+Metadata+Quorum&quot;&gt;KIP-500&lt;/a&gt; and related KIPs, which describe the feature and its design in great detail,
+the &lt;a href=&quot;https://github.com/apache/kafka/blob/trunk/config/kraft/README.md&quot;&gt;KRaft README file&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/debezium/docker-images/tree/master/kafka/1.7&quot;&gt;the README&lt;/a&gt; of the Debezium 1.7 container image for Apache Kafka,
+and aforementioned blog post &lt;a href=&quot;https://www.morling.dev/blog/exploring-zookeeper-less-kafka/&quot;&gt;&quot;Exploring ZooKeeper-less Kafka&quot;&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;Many thanks to &lt;a href=&quot;https://twitter.com/rk3rn3r/&quot;&gt;René Kerner&lt;/a&gt; for providing feedback while writing this post.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="docker" /><category term="apache kafka" /><category term="examples" /><summary type="html">Apache Kafka 2.8 allows for a first glimpse into the ZooKeeper-less future of the widely used event streaming platform: shipping with a preview of KIP-500 (&quot;Replace ZooKeeper with a Self-Managed Metadata Quorum&quot;), you can now run Kafka clusters without the need for setting up and operating Apache ZooKeeper. This does not only simplify running Kafka from an operational perspective, the new metadata quorum implementation (named &quot;KRaft&quot;, Kafka Raft metadata mode) also should provide much better scaling characteristics, for instance when it comes to large numbers of topics and partitions.</summary></entry><entry><title type="html">Debezium 1.7.0.Beta1 Released</title><link href="https://debezium.io/blog/2021/08/25/debezium-1-7-beta1-released/" rel="alternate" type="text/html" title="Debezium 1.7.0.Beta1 Released" /><published>2021-08-25T00:00:00+00:00</published><updated>2021-08-25T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/08/25/debezium-1-7-beta1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/08/25/debezium-1-7-beta1-released/">&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It&amp;#8217;s my pleasure to announce the second release of the Debezium 1.7 series, &lt;strong&gt;1.7.0.Beta1&lt;/strong&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2554,325 +2826,480 @@ as discussed in the &lt;a href=&quot;/blog/2021/02/08/debezium-1-5-alpha1-releas
 &lt;a href=&quot;https://github.com/Cyril-Engels&quot;&gt;Yilong Chang&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">I&amp;#8217;m very happy to announce the release of Debezium 1.5.0.Beta1! This release adds a brand-new component&amp;#8201;&amp;#8212;&amp;#8201;the web-based Debezium UI --, transaction metadata support for the MySQL connector, a large number of improvements to the LogMiner-based capture implementation for the Debezium Oracle connector, support for Vitess 9.0, and much more. Let&amp;#8217;s explore some of the new features in the following.</summary></entry><entry><title type="html">Debezium 1.5.0.Alpha1 Released</title><link href="https://debezium.io/blog/2021/02/08/debezium-1-5-alpha1-released/" rel="alternate" type="text/html" title="Debezium 1.5.0.Alpha1 Released" /><published>2021-02-08T00:00:00+00:00</published><updated>2021-02-08T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/02/08/debezium-1-5-alpha1-released</id><content type="html" xml:base="https://debezium.io/blog/2021/02/08/debezium-1-5-alpha1-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.5 series, &lt;strong&gt;1.5.0.Alpha1&lt;/strong&gt;!&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">I&amp;#8217;m very happy to announce the release of Debezium 1.5.0.Beta1! This release adds a brand-new component&amp;#8201;&amp;#8212;&amp;#8201;the web-based Debezium UI --, transaction metadata support for the MySQL connector, a large number of improvements to the LogMiner-based capture implementation for the Debezium Oracle connector, support for Vitess 9.0, and much more. Let&amp;#8217;s explore some of the new features in the following.</summary></entry><entry><title type="html">Understanding Non-Key Joins With the Quarkus Kafka Streams Extension</title><link href="https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/" rel="alternate" type="text/html" title="Understanding Non-Key Joins With the Quarkus Kafka Streams Extension" /><published>2021-02-09T00:00:00+00:00</published><updated>2021-02-09T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams</id><content type="html" xml:base="https://debezium.io/blog/2021/02/09/non-key-joins-in-kstreams/">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org/documentation/streams/&quot;&gt;Kafka Streams&lt;/a&gt; is a library for developing applications for processing records from topics in Apache Kafka.
+A Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner.
+The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;non_key_joins_in_kafka_streams&quot;&gt;Non-Key Joins in Kafka Streams&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://kafka.apache.org&quot;&gt;Apache Kafka&lt;/a&gt; 2.4 introduced the foreign key join (&lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-213+Support+non-key+joining+in+KTable&quot;&gt;KIP-213&lt;/a&gt;) feature, in order &quot;to close the gap between the semantics of KTables in streams and tables in relational databases&quot;.
+Before KIP-213, in order to join messages from two Debezium change event topics, you&amp;#8217;d have to manually re-key the topic(s); so to make sure the same key is used on both sides of the join.
+Thanks to KIP-213, this isn&amp;#8217;t needed any longer, as it makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services.
+This resolved the problem of out-of-order processing due to foreign key changes in tables.
+Here is an interesting &lt;a href=&quot;https://debezium.io/blog/2018/03/08/creating-ddd-aggregates-with-debezium-and-kafka-streams/&quot;&gt;post&lt;/a&gt; by Hans-Peter Grahsl and Gunnar Morling on creating aggregated events from Debezium’s CDC events.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release brings many improvements to the LogMiner-based capture implementation for the Debezium Oracle connector,
-a large overhaul of the MySQL connector,
-as well as a wide range of bug fixes and other small feature additions.&lt;/p&gt;
+&lt;p&gt;Debezium’s CDC source connectors makes it easy to capture data changes in databases and push them towards Elasticsearch in near real-time.
+This results in a 1:1 relationship between tables in the source database and a corresponding search index in Elasticsearch.
+Incase of 1:many relationship, say two tables with different primary keys and a foreign key relationship, Debezium provides a &lt;code&gt;message.key.columns&lt;/code&gt; option.
+By choosing that foreign key column as the message key for change events, the two table streams could be joined without the need for re-keying the topic manually.
+The &lt;code&gt;message.key.columns&lt;/code&gt; option can be used as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;message.key.columns=dbserver1.inventory.customerdetails:CustomerId&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;improved_logminer_based_capture_implementation&quot;&gt;Improved LogMiner-based Capture Implementation&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Since we&amp;#8217;ve announced the LogMiner-based implementation for the Debezium Oracle connector in &lt;a href=&quot;/blog/2020/10/01/debezium-1-3-final-released/&quot;&gt;Debezium 1.3&lt;/a&gt;,
-we&amp;#8217;ve seen a constantly growing interest in this connector by folks from our lively community,
-who tested it out, provided feedback, logged bug reports and feature requests, submitted pull requests with fixes, and more.
-Based on all this input, the connector is rapidly maturing, and we aim to move the LogMiner-based implementation from &quot;Incubating&quot; to &quot;Stable&quot; state in Debezium 1.5, or 1.6 the latest.
-This first Alpha release of Debezium 1.5 contains a number of related improvements:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;java.sql.SQLException: ORA-01333: failed to establish Logminer Dictionary (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2939&quot;&gt;DBZ-2939&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Capture and report LogMiner state when mining session fails to start (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3055&quot;&gt;DBZ-3055&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Debezium Oracle Connector will appear stuck on large SCN jumps (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2982&quot;&gt;DBZ-2982&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Improve logging for Logminer adapter (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2999&quot;&gt;DBZ-2999&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;The join operations available in the Kafka Streams DSL differ based on which kinds of streams or tables that are being joined; for example, KStream-KStream joins, KTable-KTable joins or KTable-KStream joins, etc.
+Joining streams often involves defining input streams that are read from Kafka topics, delivering transformations on the joined streams to produce results, and finally writing the results back to Kafka topics.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Many thanks Martín Pérez, Milo van der Zee, Anton Kondratev, and all the others for their intensive testing, feedback, and contributions while working on this!
-One of the next steps in this area will be several performance-related improvements; stay tuned for the details.&lt;/p&gt;
+&lt;p&gt;Non-key joins or rather &lt;a href=&quot;https://kafka.apache.org/27/documentation/streams/developer-guide/dsl-api.html#ktable-ktable-fk-join&quot;&gt;foreign-key joins&lt;/a&gt; are analogous to joins in SQL. For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;class&quot;&gt;SELECT&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; CUSTOMER &lt;span class=&quot;keyword&quot;&gt;JOIN&lt;/span&gt; ADDRESS &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; CUSTOMER.ID = ADDRESS.CUSTOMER_ID&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The output of the join is a new KTable containing the join result.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;reworked_mysql_connector&quot;&gt;Reworked MySQL Connector&lt;/h2&gt;
+&lt;h2 id=&quot;database_overview&quot;&gt;Database Overview&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In order to reduce the maintenance effort for all the different Debezium connectors,
-we&amp;#8217;ve started work towards a common connector framework long time ago.
-This framework allows us to implement many features (and bug fixes) just once,
-and all the connectors based on this framework will be able to benefit from it.
-By now, almost all of the Debezium connectors have been ported to this framework,
-with the exception of the Cassandra and MySQL connectors.&lt;/p&gt;
+&lt;p&gt;As an example let&amp;#8217;s consider an application with the following data model:&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As of this release, also the MySQL connector provides an implementation based on this framework.
-Since the MySQL connector has been the first one amongst the Debezium connectors, and it has quite a few specific characteristics and features,
-we have decided to not simply replace the existing implementation with a new one,
-but rather keep both, existing and new, side by side for some time.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This allows the new implementation to mature, also giving users the choice of which implementation to use.
-While the new connector implementation is the default one as of this release,
-you can go back to the earlier one by setting the &lt;code&gt;internal.implementation&lt;/code&gt; option to &lt;code&gt;legacy&lt;/code&gt;.
-We don&amp;#8217;t have any immediate plans for removing the existing implementation,
-but focus for feature work and bug fixes will shift to the new implementation going forward.
-Please give the new connector implementation a try and let us know if you encounter any issues with it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While the new implementation is largely on par feature-wise with with the earlier one,
-there&amp;#8217;s one exception: the previous, experimental support for changing the filter configuration of a connector instance isn&amp;#8217;t part of the new implementation.
-We&amp;#8217;re planning to roll out a comparable feature for all the framework-based connectors in the near future.
-Now that there also is a framework-based implementation for the MySQL connector,
-we&amp;#8217;re planning to provide a range of improvements to snapshotting for all the (relational) connectors:
-for instance the aforementioned capability to change filter configurations,
-means of parallelizing snapshot operations, and more.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;other_features&quot;&gt;Other Features&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Besides these key features, there&amp;#8217;s a range of other improvements, smaller new features, and bug fixes coming with this release, including the following:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Correct handling of lists of user types in the Cassandra connector (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2974&quot;&gt;DBZ-2974&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Multiple DDL parser fixes for MySQL and MariaDB (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3018&quot;&gt;DBZ-3018&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3020&quot;&gt;DBZ-3020&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3023&quot;&gt;DBZ-3023&lt;/a&gt;, &lt;a href=&quot;https://issues.redhat.com/browse/DBZ-3039&quot;&gt;DBZ-3039&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Better snapshotting performance for large Postgres schemas with many tables (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2575&quot;&gt;DBZ-2575&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Ability to emit &lt;code&gt;TRUNCATE&lt;/code&gt; events via the Postgres connector (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2382&quot;&gt;DBZ-2382&lt;/a&gt;); note that, when enabled, this adds a new &lt;code&gt;op&lt;/code&gt; type &lt;code&gt;t&lt;/code&gt; for this connector&amp;#8217;s change events, so please ensure your consumers can handle such events gracefully&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Thanks to the work of &lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;, there is now instructions for following the Debezium tutorial example &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/tutorial#using-vitess&quot;&gt;using the incubating connector for Vitess&lt;/a&gt;
-(&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2678&quot;&gt;DBZ-2678&lt;/a&gt;),
-which was added in Debezium 1.4:&lt;/p&gt;
 &lt;div class=&quot;imageblock centered-image&quot;&gt;
-    &lt;img src=&quot;/assets/images/vitess-sharding-setup.png&quot; class=&quot;responsive-image&quot; alt=&quot;Vitess Tutorial Example Overview&quot; style=&quot;max-width:90%;&quot;&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+    &lt;img src=&quot;/assets/images/kstreams_db_diagram.jpg&quot; class=&quot;responsive-image&quot; alt=&quot;Database Overview&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Altogether, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.5.0.Alpha1%20ORDER%20BY%20component%20ASC&quot;&gt;32 issues&lt;/a&gt; were fixed for this release.
-A big thank you goes out to all the community members who contributed:
-&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/davecramer&quot;&gt;Dave Cramer&lt;/a&gt;
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/mpermar&quot;&gt;Martín Pérez&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/msillence&quot;&gt;Martin Sillence&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/pkpfr&quot;&gt;Nick Murray&lt;/a&gt;,
-and &lt;a href=&quot;https://github.com/krnaveen14&quot;&gt;Naveen Kumar&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For the upcoming 1.5 preview releases, we&amp;#8217;re planning to focus on further improving and stabilizing the LogMiner-based connector implementation for Oracle,
-wrap up some loose ends around the MySQL connector migration, and begin to explore the aforementioned snapshotting improvements.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We&amp;#8217;ve also made the decision to continue our efforts for creating a &lt;a href=&quot;/blog/2020/10/22/towards-debezium-ui/&quot;&gt;graphical Debezium user interface&lt;/a&gt;;
-this component is currently under active development, with support for more connectors, functionality for (re-)starting and stopping connectors, examining logs, and much more in the workings.
-If things go as planned, the UI will officially be part of the next Debezium 1.5 preview release!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content><author><name>Gunnar Morling</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">It&amp;#8217;s my pleasure to announce the first release of the Debezium 1.5 series, 1.5.0.Alpha1! This release brings many improvements to the LogMiner-based capture implementation for the Debezium Oracle connector, a large overhaul of the MySQL connector, as well as a wide range of bug fixes and other small feature additions.</summary></entry><entry><title type="html">Debezium 1.4.1.Final Released</title><link href="https://debezium.io/blog/2021/01/28/debezium-1-4-1-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.1.Final Released" /><published>2021-01-28T00:00:00+00:00</published><updated>2021-01-28T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/28/debezium-1-4-1-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/28/debezium-1-4-1-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m pleased to announce the release of Debezium &lt;strong&gt;1.4.1.Final&lt;/strong&gt;!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We highly recommend upgrading from 1.4.0.Final and earlier versions as this release includes bug fixes and enhancements to several Debezium connectors which includes some of the following:
-&lt;!-- more --&gt;&lt;/p&gt;
+&lt;p&gt;The picture above shows the ER diagram of the database used in our application. We are going to focus on two entities:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;[MySQL] - Use collation to get charset when charset is not set (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2922&quot;&gt;DBZ-2922&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;customer&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;[MySQL] - Debezium Connectors are failing while reading binlog: Unknown event type 100 (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2499&quot;&gt;DBZ-2499&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] - Some column default values are not extracted correctly while reading table structure (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2698&quot;&gt;DBZ-2698&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] - Default database charset is not recorded (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2921&quot;&gt;DBZ-2921&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[MySQL] - Labeled create procedure&amp;#8217;s body is not parsed (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2972&quot;&gt;DBZ-2972&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - Supplemental logging is required for entire database rather than per monitored table (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2711&quot;&gt;DBZ-2711&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - Missing log file error when current SCN differs from snapshotted in Oracle connector and Logminer (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2855&quot;&gt;DBZ-2855&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - DML statements longer than 4000 characters are incorrectly combined from V$LOGMNR_CONTENTS (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2920&quot;&gt;DBZ-2920&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - Snapshot causes ORA-08181 exception (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2949&quot;&gt;DBZ-2949&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - Deadlock in the XStream handler and offset commiter call concurrently (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2891&quot;&gt;DBZ-2891&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - Debezium swallows DML exception in certain cases (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2981&quot;&gt;DBZ-2981&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Oracle] - Implement Scn as a domain type (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2518&quot;&gt;DBZ-2518&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[PostgreSQL] - Instable test: PostgresConnectorIT#testCustomSnapshotterSnapshotCompleteLifecycleHook() (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2938&quot;&gt;DBZ-2938&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[PostgreSQL] - Postgres connector config validation fails because current connector is occupying replication slot (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2952&quot;&gt;DBZ-2952&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[SQL Server] - Add support for binary.handling.mode to the SQL Server connector (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2912&quot;&gt;DBZ-2912&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[SQL Server] - Retry on &quot;The server failed to resume the transaction&quot; (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2959&quot;&gt;DBZ-2959&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Vitess] - Sanitise DECIMAL string from VStream (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2906&quot;&gt;DBZ-2906&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Vitess] - Vitess Connector download link missing on website (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2907&quot;&gt;DBZ-2907&lt;/a&gt;)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;[Dependencies] - Upgrade to Apache Kafka Connect 2.6.1 (&lt;a href=&quot;https://issues.redhat.com/browse/DBZ-2630&quot;&gt;DBZ-2630&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;address&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Altogether, &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.1.Final&quot;&gt;35 issues&lt;/a&gt; were resolved in this release.
-Please refer to the &lt;a href=&quot;/releases/1.4/release-notes/#release-1.4.1-final&quot;&gt;release notes&lt;/a&gt; to learn more about all fixed bugs, update procedures etc.&lt;/p&gt;
+&lt;p&gt;They share a foreign key relationship from address to customer i.e. a customer can have multiple addresses.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A big thank you to everyone who helped test and identify these bugs and contributed to this release:
-&lt;a href=&quot;https://github.com/ahmedjami&quot;&gt;Ahmed Eljami&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/isopropylcyanide&quot;&gt;Aman Garg&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ant0nk&quot;&gt;Anton Kondratev&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/zxxz&quot;&gt;Giovanni De Stefano&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ismailsimsek&quot;&gt;Ismail Simsek&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/mpermar&quot;&gt;Martin Perez&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/NishantSinghChandel&quot;&gt;Nishant Singh&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/victorxiang30&quot;&gt;Shuguang Xiang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/siufay325&quot;&gt;siufay325&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/tjg184&quot;&gt;Troy Gaines&lt;/a&gt;!&lt;/p&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="mongodb" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="debezium-server" /><category term="outbox" /><summary type="html">I&amp;#8217;m pleased to announce the release of Debezium 1.4.1.Final! We highly recommend upgrading from 1.4.0.Final and earlier versions as this release includes bug fixes and enhancements to several Debezium connectors which includes some of the following:</summary></entry><entry><title type="html">Debezium 1.4.0.Final Released</title><link href="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/" rel="alternate" type="text/html" title="Debezium 1.4.0.Final Released" /><published>2021-01-07T00:00:00+00:00</published><updated>2021-01-07T00:00:00+00:00</updated><id>https://debezium.io/blog/2021/01/07/debezium-1-4-final-released</id><content type="html" xml:base="https://debezium.io/blog/2021/01/07/debezium-1-4-final-released/">&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I am pleased to announce the release of Debezium &lt;strong&gt;1.4.0.Final&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;Debezium&amp;#8217;s CDC allows to it emits events for each table(s) on distinct topics, and consumers often are interested in a view of such aggregate spanning multiple tables as a single document.
+Using Kafka Streams, the change event topics for both tables will be loaded into two KTables, which are joined on the customer id.
+The KStreams application is going to process data from the two Kafka topics.
+These topics receive CDC events based on the customers and addresses, each of which has its corresponding Jackson-annotated POJO (Customer and Address), enriched by a field holding the CDC event type (i.e. UPSERT/DELETE).
+Each insertion, update, or deletion of a record on either side will re-trigger the join.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This release concludes the major work put into Debezium over the last three months.
-Overall, the community fixed &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.4.0.Final%2C%201.4.0.Alpha1%2C%201.4.0.Beta1%2C%201.4.0.CR1)%20ORDER%20BY%20issuetype%20DESC%2C%20updated%20DESC%2C%20priority%20DESC&quot;&gt;117 issues&lt;/a&gt; during that time, including the following key features and changes:&lt;/p&gt;
+&lt;p&gt;As a runtime for the Kafka Streams application, we&amp;#8217;re going to use &lt;a href=&quot;https://quarkus.io/&quot;&gt;Quarkus&lt;/a&gt;, a stack for building cloud-native microservices, which (amongst many others) also provides an &lt;a href=&quot;https://quarkus.io/guides/kafka-streams&quot;&gt;extension&lt;/a&gt; for Kafka Streams. While it&amp;#8217;s general possible to run a Kafka Streams topology via a plain &lt;code&gt;main()&lt;/code&gt; method, using Quarkus and this extension as a foundation has a number of advantages:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;New &lt;a href=&quot;/documentation/reference/connectors/vitess.html&quot;&gt;Vitess&lt;/a&gt; connector, featured in an in-depth &lt;a href=&quot;/blog/2020/11/04/streaming-vitess-at-bolt/&quot;&gt;blog post&lt;/a&gt; by Kewei Shang&lt;/p&gt;
+&lt;p&gt;Management Topology&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Fine-grained selection of snapshotted tables&lt;/p&gt;
+&lt;p&gt;Health Checks&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;PostgreSQL &lt;code&gt;Snapshotter&lt;/code&gt; completion hook&lt;/p&gt;
+&lt;p&gt;Metrics&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Distributed &lt;a href=&quot;/blog/2020/12/16/distributed-tracing-with-debezium/&quot;&gt;Tracing&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;MySQL support for &lt;em&gt;create&lt;/em&gt; or &lt;em&gt;read&lt;/em&gt; records emitted during snapshot&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Many Oracle &lt;a href=&quot;/documentation/reference/connectors/oracle.html#_logminer&quot;&gt;Logminer adapter&lt;/a&gt; improvements&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Full support for Oracle JDBC connection strings&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Improved reporting of DDL errors&lt;/p&gt;
+&lt;p&gt;Dev Mode&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;!-- more --&gt;&lt;/p&gt;
+&lt;div class=&quot;imageblock centered-image&quot;&gt;
+    &lt;img src=&quot;/assets/images/kstreams_change_event_overview.png&quot; class=&quot;responsive-image&quot; alt=&quot;Change Event Overview&quot;&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Please refer to previous release announcements (&lt;a href=&quot;/blog/2020/10/23/debezium-1-4-alpha1-released/&quot;&gt;Alpha1&lt;/a&gt;, &lt;a href=&quot;/blog/2020/11/17/debezium-1-4-alpha2-released/&quot;&gt;Alpha2&lt;/a&gt;, &lt;a href=&quot;/blog/2020/12/09/debezium-1-4-beta1-released/&quot;&gt;Beta1&lt;/a&gt;, &lt;a href=&quot;/blog/2020/12/17/debezium-1-4-cr1-released/&quot;&gt;CR1&lt;/a&gt;) for more details.
-Since the CR1 release just before the holidays, we&amp;#8217;ve &lt;a href=&quot;https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20%3D%201.4.0.Final%20ORDER%20BY%20issuetype%20DESC%2C%20updated%20DESC%2C%20priority%20DESC&quot;&gt;focused&lt;/a&gt; on addressing some remaining bugs and improvements.&lt;/p&gt;
+&lt;p&gt;This picture shows the change events overview of the application.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Thank you to everyone involved in testing the previous releases, this is invaluable by spotting and addressing any problems with new features as well as regressions.
-And of course we&amp;#8217;d like to thank all the community members contributing to this release:
-&lt;a href=&quot;https://github.com/alisator&quot;&gt;Alisa Houskova&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ani-sha&quot;&gt;Anisha Mohanty&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/AndreyIg&quot;&gt;Andrey Ignatenko&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bingqinzhou&quot;&gt;Bingqin Zhou&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/bduisenov&quot;&gt;Babur Duisenov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/creactiviti&quot;&gt;Arik Cohen&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/Faizan&quot;&gt;Faizan&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/grantcooksey&quot;&gt;Grant Cooksey&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/hauntingEcho&quot;&gt;Matt Beary&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/hussain-k1&quot;&gt;Mohamed Pudukulathan&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/morozov&quot;&gt;Sergei Morozov&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/keweishang&quot;&gt;Kewei Shang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/mans2singh&quot;&gt;Mans Singh&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/martper2&quot;&gt;Martin Perez&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/michaelwang&quot;&gt;Michael Wang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/Iskuskov&quot;&gt;Alexander Iskuskov&lt;/a&gt;
-&lt;a href=&quot;https://github.com/jgormley6&quot;&gt;James Gormley&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jinguangyang&quot;&gt;jinguangyang&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/KaushikIyer16&quot;&gt;Kaushik Iyer&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/jeremy-l-ford&quot;&gt;Jeremy Ford&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/johnjmartin&quot;&gt;John Martin&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/ramanenka&quot;&gt;Vadzim Ramanenka&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/rareddy&quot;&gt;Ramesh Reddy&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/rgannu&quot;&gt;Ganesh Ramasubramanian&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/seeekr&quot;&gt;Denis Andrejew&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/telnicky&quot;&gt;Travis Elnicky&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/vanhoale&quot;&gt;Hoa Le&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/yimingl17&quot;&gt;Yiming Liu&lt;/a&gt;,
-&lt;a href=&quot;https://github.com/yrodiere&quot;&gt;Yoann Rodière&lt;/a&gt;, and
-&lt;a href=&quot;https://github.com/zrlurb&quot;&gt;Peter Urbanetz&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Overall, more than 245 individuals have contributed to the Debezium project and the number of Debezium &lt;a href=&quot;/community/users/&quot;&gt;users&lt;/a&gt; continues to grow.
-As we usher in 2021, check out our &lt;a href=&quot;/blog/2021/01/06/debezium-2020-recap/&quot;&gt;recap of Debezium in 2020&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;outlook&quot;&gt;Outlook&lt;/h2&gt;
+&lt;h2 id=&quot;creating_an_application_using_the_quarkus_kafka_streams_extension&quot;&gt;Creating an Application using the Quarkus Kafka Streams Extension&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;With 1.4 Final released, planning for the 1.5 version (due by the end of March) is currently underway.
-The &lt;a href=&quot;/roadmap/&quot;&gt;roadmap&lt;/a&gt; is still being discussed, so be sure to let us know about your requirements and feature requests.
-Some of the things we&amp;#8217;re considering for this next release are:&lt;/p&gt;
+&lt;p&gt;To create a new Quarkus project with this extension, run the following:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn io.quarkus:quarkus-maven-plugin:1.11.1.Final:create \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=kafka-streams-quickstart-aggregator \
+    -Dextensions=&quot;kafka-streams&quot; \
+     &amp;amp;&amp;amp; mv kafka-streams-quickstart-aggregator aggregator&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;understanding_the_stream_processing_topology&quot;&gt;Understanding the Stream Processing Topology&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We have an aggregator that will read from the two Kafka topics and process them in a streaming pipeline:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Moving the MySQL connector to the CDC connector framework shared by most other Debezium connectors; this will drastically reduce maintenance burden of this connector in the future&lt;/p&gt;
+&lt;p&gt;the two topics are joined on customer id&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Exploring more powerful snapshotting options (e.g. for parallelization and re-doing snapshots of selected tables)&lt;/p&gt;
+&lt;p&gt;each customer is mapped with its addresses depending upon upsert/delete&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Continued stability and improvements to the new LogMiner-based implementation for Oracle&lt;/p&gt;
+&lt;p&gt;this aggregated data is written out to a third topic (customersWithAddressesTopic)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Until then remain safe, it&amp;#8217;s onwards and upwards from here!&lt;/p&gt;
+&lt;p&gt;When using the Quarkus extension for Kafka Streams all we need to do for that is to declare a CDI producer method, which returns the &lt;code&gt;Topology&lt;/code&gt; of our stream processing application.
+A CDI producer method must be always annotated with &lt;code&gt;@Produces&lt;/code&gt;, and it must return a &lt;code&gt;Topology&lt;/code&gt; instance.
+The Quarkus extension will take care of configuring, starting and stopping the actual Kafka Streams engine.
+Now let&amp;#8217;s take a look at the actual streaming query implementation itself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@ApplicationScoped&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;TopologyProducer&lt;/span&gt; {
+
+    &lt;span class=&quot;annotation&quot;&gt;@ConfigProperty&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;customers.topic&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;) &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; customersTopic;
+
+    &lt;span class=&quot;annotation&quot;&gt;@ConfigProperty&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;addresses.topic&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; addressesTopic;
+
+    &lt;span class=&quot;annotation&quot;&gt;@ConfigProperty&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;customers.with.addresses.topic&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; customersWithAddressesTopic;
+
+    &lt;span class=&quot;annotation&quot;&gt;@Produces&lt;/span&gt;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Topology buildTopology() {
+        StreamsBuilder builder = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StreamsBuilder(); &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
+
+        Serde&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Long&lt;/span&gt;&amp;gt; adressKeySerde = DebeziumSerdes.payloadJson(&lt;span class=&quot;predefined-type&quot;&gt;Long&lt;/span&gt;.class);
+        adressKeySerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.emptyMap(), &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
+        Serde&amp;lt;Address&amp;gt; addressSerde = DebeziumSerdes.payloadJson(Address.class);
+        addressSerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.singletonMap(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;from.field&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;), &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;);
+
+        Serde&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;&amp;gt; customersKeySerde = DebeziumSerdes.payloadJson(&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;.class);
+        customersKeySerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.emptyMap(), &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
+        Serde&amp;lt;Customer&amp;gt; customersSerde = DebeziumSerdes.payloadJson(Customer.class);
+        customersSerde.configure(&lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.singletonMap(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;from.field&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;), &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;);
+
+        JsonbSerde&amp;lt;AddressAndCustomer&amp;gt; addressAndCustomerSerde = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; JsonbSerde&amp;lt;&amp;gt;(AddressAndCustomer.class); &lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;(3)&lt;/b&gt;
+        JsonbSerde&amp;lt;CustomerWithAddresses&amp;gt; customerWithAddressesSerde = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; JsonbSerde&amp;lt;&amp;gt;(CustomerWithAddresses.class);
+
+        KTable&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Long&lt;/span&gt;, Address&amp;gt; addresses = builder.table( &lt;i class=&quot;conum&quot; data-value=&quot;4&quot;&gt;&lt;/i&gt;&lt;b&gt;(4)&lt;/b&gt;
+                addressesTopic,
+                Consumed.with(adressKeySerde, addressSerde)
+        );
+
+        KTable&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;, Customer&amp;gt; customers = builder.table(
+                customersTopic,
+                Consumed.with(customersKeySerde, customersSerde)
+        );
+
+        KTable&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Integer&lt;/span&gt;, CustomerWithAddresses&amp;gt; customersWithAddresses = addresses.join( &lt;i class=&quot;conum&quot; data-value=&quot;5&quot;&gt;&lt;/i&gt;&lt;b&gt;(5)&lt;/b&gt;
+                customers,
+                address -&amp;gt; address.customer_id,
+                AddressAndCustomer::&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;,
+                Materialized.with(Serdes.Long(), addressAndCustomerSerde)
+            )
+            .groupBy( &lt;i class=&quot;conum&quot; data-value=&quot;6&quot;&gt;&lt;/i&gt;&lt;b&gt;(6)&lt;/b&gt;
+                (addressId, addressAndCustomer) -&amp;gt; KeyValue.pair(addressAndCustomer.customer.id, addressAndCustomer),
+                Grouped.with(Serdes.Integer(), addressAndCustomerSerde)
+            )
+            .aggregate( &lt;i class=&quot;conum&quot; data-value=&quot;7&quot;&gt;&lt;/i&gt;&lt;b&gt;(7)&lt;/b&gt;
+                CustomerWithAddresses::&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;,
+                (customerId, addressAndCustomer, aggregate) -&amp;gt; aggregate.addAddress(addressAndCustomer),
+                (customerId, addressAndCustomer, aggregate) -&amp;gt; aggregate.removeAddress(addressAndCustomer),
+                Materialized.with(Serdes.Integer(), customerWithAddressesSerde)
+            );
+
+        customersWithAddresses.toStream() &lt;i class=&quot;conum&quot; data-value=&quot;8&quot;&gt;&lt;/i&gt;&lt;b&gt;(8)&lt;/b&gt;
+        .to(
+                customersWithAddressesTopic,
+                Produced.with(Serdes.Integer(), customerWithAddressesSerde)
+        );
+
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; builder.build();
+    }
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Chris Cranford</name></author><category term="releases" /><category term="mysql" /><category term="postgres" /><category term="sqlserver" /><category term="cassandra" /><category term="oracle" /><category term="db2" /><category term="vitess" /><category term="outbox" /><summary type="html">I am pleased to announce the release of Debezium 1.4.0.Final! This release concludes the major work put into Debezium over the last three months. Overall, the community fixed 117 issues during that time, including the following key features and changes: New Vitess connector, featured in an in-depth blog post by Kewei Shang Fine-grained selection of snapshotted tables PostgreSQL Snapshotter completion hook Distributed Tracing MySQL support for create or read records emitted during snapshot Many Oracle Logminer adapter improvements Full support for Oracle JDBC connection strings Improved reporting of DDL errors</summary></entry></feed>
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;1&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The topic names are injected using the &lt;a href=&quot;https://microprofile.io/project/eclipse/microprofile-config&quot;&gt;MicroProfile Config API&lt;/a&gt;, with the values being provided in the Quarkus &lt;code&gt;application.properties&lt;/code&gt; configuration file.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;2&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Create an instance of &lt;code&gt;StreamsBuilder&lt;/code&gt;, which is the helper object that lets us build our topology.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;3&quot;&gt;&lt;/i&gt;&lt;b&gt;3&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;For serializing and deserializing Java types used in the streaming pipeline into/from JSON, Kafka provides the &lt;code&gt;class io.quarkus.kafka.client.serialization.JsonbSerde&lt;/code&gt;.
+The Serde implementation based is on &lt;a href=&quot;https://github.com/quarkusio/quarkus/blob/master/extensions/kafka-client/runtime/src/main/java/io/quarkus/kafka/client/serialization/JsonbSerde.java&quot;&gt;JSON-B&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;4&quot;&gt;&lt;/i&gt;&lt;b&gt;4&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;KTable-KTable foreign-key join functionality is used to extract the &lt;code&gt;customer#id&lt;/code&gt; and perform the join.
+&lt;code&gt;StreamsBuilder#table()&lt;/code&gt; to read a Kafka topic into a KTable i.e. &lt;code&gt;addresses&lt;/code&gt; and &lt;code&gt;customers&lt;/code&gt; respectively.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;5&quot;&gt;&lt;/i&gt;&lt;b&gt;5&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The message from the &lt;code&gt;addresses&lt;/code&gt; topic is joined with the corresponding &lt;code&gt;customers&lt;/code&gt; topic, using the topic’s key; the join result contains the data of the customer with its addresses.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;6&quot;&gt;&lt;/i&gt;&lt;b&gt;6&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;groupBy()&lt;/code&gt; operation will have the records to be grouped by &lt;code&gt;customer#id&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;7&quot;&gt;&lt;/i&gt;&lt;b&gt;7&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The first characteristic of aggregations in Kafka is that all aggregations are computed per key.
+That’s why we must group a KTable prior to the actual aggregation step in Kafka Streams via &lt;code&gt;groupBy()&lt;/code&gt;.
+The aggregation operation is applied to records of the same key. It is possible to store the aggregation results in a local state store.
+The &lt;code&gt;aggregate()&lt;/code&gt; operation will modify addresses per &lt;code&gt;customer#id&lt;/code&gt; depending upon the &lt;code&gt;upsert&lt;/code&gt; or &lt;code&gt;delete&lt;/code&gt; i.e. &lt;code&gt;addAddress()&lt;/code&gt; or &lt;code&gt;removeAddress()&lt;/code&gt; operation.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot; data-value=&quot;8&quot;&gt;&lt;/i&gt;&lt;b&gt;8&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;The results of the pipeline are written out to the &lt;code&gt;customersWithAddressesTopic&lt;/code&gt; topic.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;CustomerWithAddresses&lt;/code&gt; class keeps track of the aggregated values while the events are processed in the streaming pipeline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CustomerWithAddresses&lt;/span&gt; {
+
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Customer customer;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;Address&amp;gt; addresses = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;ArrayList&lt;/span&gt;&amp;lt;&amp;gt;();
+
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; CustomerWithAddresses addAddress(AddressAndCustomer addressAndCustomer) {
+
+        customer = addressAndCustomer.customer;
+        addresses.add(addressAndCustomer.address);
+
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; CustomerWithAddresses removeAddress(AddressAndCustomer addressAndCustomer) {
+
+        &lt;span class=&quot;predefined-type&quot;&gt;Iterator&lt;/span&gt;&amp;lt;Address&amp;gt; it = addresses.iterator();
+        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (it.hasNext()) {
+            Address a = it.next();
+            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (a.id == addressAndCustomer.address.id) {
+                it.remove();
+                &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
+            }
+        }
+
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Kafka Streams extension is configured via the Quarkus configuration file &lt;code&gt;application.properties&lt;/code&gt;.
+Along with the topic names, this file also has the information about the Kafka bootstrap server, stream options as follows:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;properties&quot;&gt;customers.topic=dbserver1.inventory.customers
+addresses.topic=dbserver1.inventory.addresses
+customers.with.addresses.topic=customers-with-addresses
+
+quarkus.kafka-streams.bootstrap-servers=localhost:9092
+quarkus.kafka-streams.application-id=kstreams-fkjoin-aggregator
+quarkus.kafka-streams.application-server=${hostname}:8080
+quarkus.kafka-streams.topics=${customers.topic},${addresses.topic}
+
+# streams options
+kafka-streams.cache.max.bytes.buffering=10240
+kafka-streams.commit.interval.ms=1000
+kafka-streams.metadata.max.age.ms=500
+kafka-streams.auto.offset.reset=earliest
+kafka-streams.metrics.recording.level=DEBUG
+kafka-streams.consumer.session.timeout.ms=150
+kafka-streams.consumer.heartbeat.interval.ms=100&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;building_and_running_the_application&quot;&gt;Building and Running the Application&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can now build the aggregator application using:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn clean package -f aggregator/pom.xml&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Setup the necessary environment variable:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;export DEBEZIUM_VERSION=1.4&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To launch all the containers and building aggregator container images run the &lt;a href=&quot;https://github.com/debezium/debezium-examples/blob/master/kstreams-fk-join/docker-compose.yaml&quot;&gt;docker-compose.yaml&lt;/a&gt;.
+You can find this in the &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/kstreams-fk-join&quot;&gt;
+debezium-examples/kstreams-fk-join&lt;/a&gt; repo.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;docker-compose up --build&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To connect with the Debezium Connector you have to specify the configuration properties like name of the connector, database hostname, user, password, port, logical name of the database, the database you want to monitor and, the type of converter in a &lt;a href=&quot;https://github.com/debezium/debezium-examples/blob/master/kstreams-fk-join/register-postgres.json&quot;&gt;register-postgres.json&lt;/a&gt; file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;json&quot;&gt;{
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;connector.class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;io.debezium.connector.postgresql.PostgresConnector&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;tasks.max&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;database.hostname&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;postgres&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;database.port&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;5432&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;database.user&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;postgres&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;database.password&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;postgres&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;database.dbname&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; : &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;postgres&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;database.server.name&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;dbserver1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema.include&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;inventory&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;decimal.handling.mode&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; : &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;key.converter&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.apache.kafka.connect.json.JsonConverter&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;key.converter.schemas.enable&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;value.converter&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.apache.kafka.connect.json.JsonConverter&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;key&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;value.converter.schemas.enable&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Configure the Debezium Connector:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;http PUT http://localhost:8083/connectors/inventory-connector/config &amp;lt; register-postgres.json&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now run an instance of the &lt;code&gt;debezium/tooling&lt;/code&gt; image, attaching to the same network all the other containers run in:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;docker run --tty --rm \
+    --network kstreams-fk-join-network \
+    debezium/tooling:1.1 \&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This image provides several useful tools such as &lt;a href=&quot;https://github.com/edenhill/kafkacat&quot;&gt;kafkacat&lt;/a&gt;. Within the tooling container, run kafkacat to examine the results of the streaming pipeline:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;kafkacat -b kafka:9092 -C -o beginning -q \
+    -t customers-with-addresses | jq .&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;running_natively&quot;&gt;Running Natively&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Kafka Streams applications can easily be scaled out i.e. the load will be shared amongst multiple instances of the application, each processing just a subset of the partitions of the input topic(s).
+Running Quarkus applications in native code via GraalVM has a very fast start-up time, the applications use significantly less memory when compiled to native code. This allows you to start as many instances of a Kafka Streams pipeline in parallel in a very memory-efficient way.
+If you want to run this application in &lt;code&gt;native&lt;/code&gt; mode, set the &lt;code&gt;QUARKUS_MODE&lt;/code&gt; as &lt;code&gt;native&lt;/code&gt; and run:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn clean package -f aggregator/pom.xml -Pnative&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here is a &lt;a href=&quot;https://quarkus.io/guides/kafka-streams#running-natively&quot;&gt;detailed guide&lt;/a&gt; for you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;more_insights_on_the_kafka_streams_extension&quot;&gt;More Insights on the Kafka Streams Extension&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This extension can help you address some of the common requirements when building microservices.
+For running your Kafka Streams application in production, you can also add health checks and metrics for the data pipeline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://quarkus.io/guides/microprofile-metrics&quot;&gt;Micrometer Metrics&lt;/a&gt; allow applications to gather various metrics and statistics that provide insights into what is happening inside the application.
+Using the MicroProfile Metrics API, these metrics can be exposed via HTTP using JSON format or the OpenMetrics format.
+From there they can be scraped by tools such as &lt;a href=&quot;https://prometheus.io/&quot;&gt;Prometheus&lt;/a&gt; and stored for analysis and visualization.
+Apart from application-specific metrics, you can utilize built-in metrics exposed by various Quarkus extensions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To monitor your application using Prometheus registry for an existing Quarkus application you can add &lt;code&gt;micrometer-registry-prometheus&lt;/code&gt; extension.
+This extension loads core micrometer extension as well as additional dependencies required to support Prometheus.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn quarkus:add-extension -Dextensions=&quot;micrometer-registry-prometheus&quot;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;On the other hand, we have &lt;a href=&quot;https://quarkus.io/guides/microprofile-health&quot;&gt;MicroProfile Health&lt;/a&gt;, which provides information about the liveness of the application i.e. states whether your application is running or not and whether your application is able to process requests.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To monitor the health status of your existing Quarkus application you can add the &lt;code&gt;smallrye-health&lt;/code&gt; extension.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;mvn quarkus:add-extension -Dextensions=&quot;smallrye-health&quot;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Using this extension will expose a health check via HTTP under &lt;code&gt;/health/live&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Along with Kafka Streams &lt;a href=&quot;https://quarkus.io/guides/kafka-streams#interactive-queries&quot;&gt;Interactive Queries&lt;/a&gt;, you can directly query the underlying state store of the pipeline for the value associated with a given key.
+By exposing a simple REST endpoint that queries the state store, the latest aggregation result can be retrieved without having to subscribe to any Kafka topic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Quarkus extension for Kafka Streams comes with everything needed to run stream processing pipelines on the JVM as well as in Native mode, along with additional bonuses of performing health checks, metrics and interactive queries.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this article we have discussed stream processing topology of foreign key joins in Kafka Streams and how to use the Quarkus Kafka Streams extension for running and building your application in JVM mode.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can find the complete &lt;a href=&quot;https://github.com/debezium/debezium-examples/tree/master/kstreams-fk-join&quot;&gt;source code&lt;/a&gt; of the implementation in the Debezium examples repo.
+If you got any questions or feedback, please let us know in the comments below.
+We&amp;#8217;re looking forward to your suggestions!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;Thanks a lot &lt;a href=&quot;https://twitter.com/gunnarmorling/&quot;&gt;Gunnar Morling&lt;/a&gt; for your feedback while working on this post!&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Anisha Mohanty</name></author><category term="kafka streams" /><category term="quarkus" /><category term="examples" /><summary type="html">Kafka Streams is a library for developing applications for processing records from topics in Apache Kafka. A Kafka Streams application processes record streams through a topology in real-time, processing data continuously, concurrently, and in a record-by-record manner. The Kafka Streams DSL provides a range of stream processing operations such as a map, filter, join, and aggregate. Non-Key Joins in Kafka Streams Apache Kafka 2.4 introduced the foreign key join (KIP-213) feature, in order &quot;to close the gap between the semantics of KTables in streams and tables in relational databases&quot;. Before KIP-213, in order to join messages from two Debezium change event topics, you&amp;#8217;d have to manually re-key the topic(s); so to make sure the same key is used on both sides of the join. Thanks to KIP-213, this isn&amp;#8217;t needed any longer, as it makes relational data liberated by connection mechanisms far easier to use, smoothing a transition to natively-built event-driven services. This resolved the problem of out-of-order processing due to foreign key changes in tables. Here is an interesting post by Hans-Peter Grahsl and Gunnar Morling on creating aggregated events from Debezium’s CDC events. Debezium’s CDC source connectors makes it easy to capture data changes in databases and push them towards Elasticsearch in near real-time. This results in a 1:1 relationship between tables in the source database and a corresponding search index in Elasticsearch. Incase of 1:many relationship, say two tables with different primary keys and a foreign key relationship, Debezium provides a message.key.columns option. By choosing that foreign key column as the message key for change events, the two table streams could be joined without the need for re-keying the topic manually. The message.key.columns option can be used as: message.key.columns=dbserver1.inventory.customerdetails:CustomerId</summary></entry></feed>

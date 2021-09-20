@@ -91,36 +91,6 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Transformations</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/index.html">Overview</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/topic-routing.html">Topic Routing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/event-flattening.html">New Record State Extraction</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/mongodb-event-flattening.html">MongoDB New Document State Extraction</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/outbox-event-router.html">Outbox Event Router</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/filtering.html">Message Filtering</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/content-based-routing.html">Content-Based Routing</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../transformations/applying-transformations-selectively.html">Using SMT Predicates to Selectively Apply Transformations</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
     <span class="nav-text">Connectors</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
@@ -149,6 +119,36 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="vitess.html">Vitess</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Transformations</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/index.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/topic-routing.html">Topic Routing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/event-flattening.html">New Record State Extraction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/mongodb-event-flattening.html">MongoDB New Document State Extraction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/outbox-event-router.html">Outbox Event Router</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/filtering.html">Message Filtering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/content-based-routing.html">Content-Based Routing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../transformations/applying-transformations-selectively.html">Using SMT Predicates to Selectively Apply Transformations</a>
   </li>
 </ul>
   </li>
@@ -747,6 +747,22 @@ In the following example, the <code>payload</code> field contains the key:</p>
 <h3 id="oracle-transaction-metadata"><a class="anchor" href="#oracle-transaction-metadata"></a>Transaction Metadata</h3>
 <div class="paragraph">
 <p>Debezium can generate events that represent transaction metadata boundaries and that enrich data change event messages.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Limits on when Debezium receives transaction metadata</div>
+<div class="paragraph">
+<p>Debezium registers and receives metadata only for transactions that occur after you deploy the connector.
+Metadata for transactions that occur before you deploy the connector is not available.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Database transactions are represented by a statement block that is enclosed between the <code>BEGIN</code> and <code>END</code> keywords.
@@ -3447,7 +3463,36 @@ To capture large object values and serialized them in change events, set this op
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A comma-separated list of Oracle Real Application Clusters (RAC) node host names or addresses.
-This field is required to enable use with Oracle RAC.</p>
+This field is required to enable Oracle RAC support.
+Specify the list of RAC nodes by using one of the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Specify a value for <a href="#oracle-property-database-port"><code>database.port</code></a>, and use the specified port value for each address in the <code>rac.nodes</code> list.
+For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">database.port=1521
+rac.nodes=192.168.1.100,192.168.1.101</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Specify a value for <a href="#oracle-property-database-port"><code>database.port</code></a>, and override the default port for one or more entries in the list.
+The list can include entries that use the default <code>database.port</code> value, and entries that define their own unique port values.
+For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">database.port=1521
+rac.nodes=192.168.1.100,192.168.1.101:1522</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you supply a raw JDBC URL for the database by using the <a href="#oracle-property-database-url"><code>database.url</code></a> property, instead of defining a value for <code>database.port</code>, each RAC node entry must explicitly specify a port value.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3667,7 +3712,13 @@ For example, the connector passes properties such as <code>database.foobar=false
 <div class="sect2">
 <h3 id="oracle-snapshot-metrics"><a class="anchor" href="#oracle-snapshot-metrics"></a>Snapshot Metrics</h3>
 <div id="oracle-monitoring-snapshots" class="paragraph">
-<p>The <strong>MBean</strong> is <code>debezium.oracle:type=connector-metrics,context=snapshot,server=<em>&lt;database.server.name&gt;</em></code>.</p>
+<p>The <strong>MBean</strong> is <code>debezium.oracle:type=connector-metrics,context=snapshot,server=<em>&lt;oracle.server.name&gt;</em></code>.</p>
+</div>
+<div class="paragraph">
+<p>Snapshot metrics are not exposed unless a snapshot operation is active, or if a snapshot has occurred since the last connector start.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the shapshot metrics that are available.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -3879,7 +3930,10 @@ Updates every 10,000 rows scanned and upon completing a table.</p>
 <div class="sect2">
 <h3 id="oracle-streaming-metrics"><a class="anchor" href="#oracle-streaming-metrics"></a>Streaming Metrics</h3>
 <div id="oracle-monitoring-streaming" class="paragraph">
-<p>The <strong>MBean</strong> is <code>debezium.oracle:type=connector-metrics,context=streaming,server=<em>&lt;database.server.name&gt;</em></code>.</p>
+<p>The <strong>MBean</strong> is <code>debezium.oracle:type=connector-metrics,context=streaming,server=<em>&lt;oracle.server.name&gt;</em></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the streaming metrics that are available.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -4621,7 +4675,10 @@ This should always be <code>0</code>; however when allowing unparsable DDL to be
 <div class="sect2">
 <h3 id="oracle-schema-history-metrics"><a class="anchor" href="#oracle-schema-history-metrics"></a>Schema History Metrics</h3>
 <div id="oracle-monitoring-schema-history" class="paragraph">
-<p>The <strong>MBean</strong> is <code>debezium.oracle:type=connector-metrics,context=schema-history,server=<em>&lt;database.server.name&gt;</em></code>.</p>
+<p>The <strong>MBean</strong> is <code>debezium.oracle:type=connector-metrics,context=schema-history,server=<em>&lt;oracle.server.name&gt;</em></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the schema history metrics that are available.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -5092,6 +5149,21 @@ END;
 /
 exit;</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When setting up an XStream Outbound Server to capture changes from a pluggable database,
+the <code>source_container_name</code> parameter should be provided specifying the pluggable database name.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="title">Configure the XStream user account to connect to the XStream Outbound Server</div>
