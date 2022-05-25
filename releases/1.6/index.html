@@ -16,7 +16,7 @@
   
   <meta property="og:description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong."> 
   <meta property="og:url" content="https://debezium.io/releases/1.6/"> 
-  <meta name="twitter:site" content="@debezium ‏">
+  <meta name="twitter:site" content="@debezium">
   <meta name="twitter:title" content="Debezium Release Series 1.6">
   
   <meta name="twitter:creator" content="@debezium">
@@ -135,8 +135,8 @@
                   
                   
                   <li class="item">
-                    <a href="/documentation/reference/1.7/">
-                      <div class="version">1.7</div>
+                    <a href="/documentation/reference/2.0/">
+                      <div class="version">2.0</div>
                       <div class="version-label">
                         <span class="label label-development"> development </span>
                       </div>
@@ -151,14 +151,26 @@
                   
                   
                   <li class="item">
-                    <a href="/documentation/reference/1.6/">
-                      <div class="version">1.6</div>
+                    <a href="/documentation/reference/1.9/">
+                      <div class="version">1.9</div>
                       <div class="version-label">
                         <span class="label label-stable"> latest stable </span>
                       </div>
                     </a>
                   </li>
                    
+                
+               
+               
+                 
+                
+               
+               
+                 
+                
+               
+               
+                 
                 
                
                
@@ -242,8 +254,8 @@
                   
                   
                   <li class="item">
-                    <a href="/releases/1.7/">
-                      <div class="version">1.7</div>
+                    <a href="/releases/2.0/">
+                      <div class="version">2.0</div>
                       <div class="version-label">
                         <span class="label label-development"> development </span>
                       </div>
@@ -257,14 +269,26 @@
                   
                   
                   <li class="item">
-                    <a href="/releases/1.6/">
-                      <div class="version">1.6</div>
+                    <a href="/releases/1.9/">
+                      <div class="version">1.9</div>
                       <div class="version-label">
                         <span class="label label-stable"> stable </span>
                       </div>
                     </a>
                   </li>
                    
+                
+               
+               
+                 
+                
+               
+               
+                 
+                
+               
+               
+                 
                 
                
                
@@ -386,7 +410,7 @@
             <div class="icon"><i class="icon-twitter"></i></div>
           </li>
           <li class="item">
-            <a href="http://www.gitter.im/debezium/user">Chat</a>
+            <a href="https://debezium.zulipchat.com/#narrow/stream/302529-users">Chat</a>
             <div class="icon"><i class="icon-comments"></i></div>
           </li>
           <li class="item">
@@ -422,6 +446,30 @@
         Version 1.6 <span class="caret"></span>
       </button>
       <ul class="dropdown-menu dropdown-menu-right">
+        
+           
+           
+          
+            <li class="item">
+              <a href="/releases/2.0/"> Version 2.0 </a>
+            </li>
+          
+        
+           
+           
+          
+            <li class="item">
+              <a href="/releases/1.9/"> Version 1.9 </a>
+            </li>
+          
+        
+           
+           
+          
+            <li class="item">
+              <a href="/releases/1.8/"> Version 1.8 </a>
+            </li>
+          
         
            
            
@@ -573,7 +621,7 @@
         "
       >
         <h4 style="margin: 0px; padding: 0px">
-          <span class="label label-stable">latest stable</span>
+          <span class="label label-stable">stable</span>
         </h4>
       </div>
     </div>
@@ -596,174 +644,206 @@
   <tbody>
     
       
-      <tr>
-        <td>Java</td>
-        
-          
-          
-          
-          
-            <td>11+</td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>Java</td>
+            
+            
+            
+            
+            
+              <td>11+</td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>Kafka Connect</td>
-        
-          
-          
-          
-          
-            <td>1.x, 2.x</td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>Kafka Connect</td>
+            
+            
+            
+            
+            
+              <td>1.x, 2.x</td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>MySQL</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 5.7, 8.0.x <br />
-              
-                <span class="test-with-subcategory"> JDBC Driver: </span> 8.0.21 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>MySQL</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 5.7, 8.0.x <br />
+                
+                  <span class="test-with-subcategory"> JDBC Driver: </span> 8.0.21 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>MongoDB</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 3.2, 3.4, 3.6, 4.0, 4.2 <br />
-              
-                <span class="test-with-subcategory"> Driver: </span> 4.1.1 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>MongoDB</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 3.2, 3.4, 3.6, 4.0, 4.2 <br />
+                
+                  <span class="test-with-subcategory"> Driver: </span> 4.2.1 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>PostgreSQL</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 9.6, 10, 11, 12 <br />
-              
-                <span class="test-with-subcategory"> JDBC Driver: </span> 42.2.14 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>PostgreSQL</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 9.6, 10, 11, 12 <br />
+                
+                  <span class="test-with-subcategory"> JDBC Driver: </span> 42.2.14 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>Oracle</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 12c, 19c <br />
-              
-                <span class="test-with-subcategory"> JDBC Driver: </span> 12.2.0.1, 19.8.0.0, 21.1.0.0 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>Oracle</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 12c, 19c <br />
+                
+                  <span class="test-with-subcategory"> JDBC Driver: </span> 12.2.0.1, 19.8.0.0, 21.1.0.0 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>SQL Server</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 2017, 2019 <br />
-              
-                <span class="test-with-subcategory"> JDBC Driver: </span> 7.2.2.jre8 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>SQL Server</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 2017, 2019 <br />
+                
+                  <span class="test-with-subcategory"> JDBC Driver: </span> 7.2.2.jre8 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>Cassandra</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 3.11.4 <br />
-              
-                <span class="test-with-subcategory"> Driver: </span> 3.11.0 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <tr>
+          <td>Cassandra</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 3.11.4 <br />
+                
+                  <span class="test-with-subcategory"> Driver: </span> 3.11.0 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
       
-      <tr>
-        <td>Db2</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 11.5 <br />
-              
-                <span class="test-with-subcategory"> JDBC Driver: </span> 11.5.0.0 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <!--
+        <tr><td>Cassandra 3</td><td>N/A</td></tr>
+        -->
+      
     
       
-      <tr>
-        <td>Vitess</td>
-        
-          
-          
-          
-          
-            <td>
-              <span class="test-with-subcategory"> Database: </span> 8.0.x*, 9.0.x <br />
-              
-                <span class="test-with-subcategory"> JDBC Driver: </span> 9.0.0 <br />
-              
-            </td>
-          
-        
-      </tr>
+      
+        <!--
+        <tr><td>Cassandra 4</td><td>N/A</td></tr>
+        -->
+      
+    
+      
+      
+        <tr>
+          <td>Db2</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 11.5 <br />
+                
+                  <span class="test-with-subcategory"> JDBC Driver: </span> 11.5.0.0 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
+    
+      
+      
+        <tr>
+          <td>Vitess</td>
+            
+            
+            
+            
+            
+              <td>
+                <span class="test-with-subcategory"> Database: </span> 8.0.x*, 9.0.x <br />
+                
+                  <span class="test-with-subcategory"> JDBC Driver: </span> 9.0.0 <br />
+                
+                
+              </td>
+            
+        </tr>
+      
     
   </tbody>
 </table>
@@ -809,6 +889,580 @@
     <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
       <h3 class="version" style="margin-top: 5px">
       
+        <span class="label label-stable">1.6.4.Final</span>
+      
+      </h3>
+      <h5 class="version-date">
+        <span class="label label-default" style="color: #656565"
+          >2021-12-01</span
+        >
+      </h5>
+    </div>
+    <div class="col-xs-7 col-sm-8 col-md-9 col-lg-9">
+      <span
+        >Oracle bug fixes; MySQL JDBC driver upgraded to 8.0.27</span
+      >
+      <div class="release-buttons">
+        <div class="btn-group" style="margin-top: 4px">
+          <a
+            class="btn btn-default"
+            href="https://search.maven.org/search?q=g:io.debezium%20and%20v:1.6.4.Final*"
+            target="_blank"
+          >
+            Maven artifacts&nbsp;&nbsp; <span class="icon-tags"></span>
+          </a>
+        </div>
+        <div class="btn-group" style="margin-top: 4px">
+          <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Downloads&nbsp;&nbsp;&nbsp; <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.4.Final/debezium-connector-cassandra-1.6.4.Final-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.4.Final/debezium-connector-db2-1.6.4.Final-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.4.Final/debezium-connector-mongodb-1.6.4.Final-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.4.Final/debezium-connector-mysql-1.6.4.Final-plugin.tar.gz"
+                    >MySQL Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.4.Final/debezium-connector-oracle-1.6.4.Final-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.6.4.Final/debezium-connector-postgres-1.6.4.Final-plugin.tar.gz"
+                    >PostgreSQL Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-sqlserver/1.6.4.Final/debezium-connector-sqlserver-1.6.4.Final-plugin.tar.gz"
+                    >SQL Server Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-vitess/1.6.4.Final/debezium-connector-vitess-1.6.4.Final-plugin.tar.gz"
+                    >Vitess Connector Plug-in</a
+                  >
+                </li>
+                
+              
+            
+          </ul>
+        </div>
+        <div class="btn-group" style="margin-top: 4px">
+          <a
+            class="btn btn-default"
+            href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.6.4.Final)%20ORDER%20BY%20updated"
+            target="_blank"
+          >
+            Resolved issues&nbsp;&nbsp;&nbsp; <span class="icon-tasks"></span>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+  <div class="row row-series-releases" style="margin-bottom: 10px">
+    <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+      <h3 class="version" style="margin-top: 5px">
+      
+        <span class="label label-stable">1.6.3.Final</span>
+      
+      </h3>
+      <h5 class="version-date">
+        <span class="label label-default" style="color: #656565"
+          >2021-10-21</span
+        >
+      </h5>
+    </div>
+    <div class="col-xs-7 col-sm-8 col-md-9 col-lg-9">
+      <span
+        >Oracle bug fixes; Incremental snapshotting fixes</span
+      >
+      <div class="release-buttons">
+        <div class="btn-group" style="margin-top: 4px">
+          <a
+            class="btn btn-default"
+            href="https://search.maven.org/search?q=g:io.debezium%20and%20v:1.6.3.Final*"
+            target="_blank"
+          >
+            Maven artifacts&nbsp;&nbsp; <span class="icon-tags"></span>
+          </a>
+        </div>
+        <div class="btn-group" style="margin-top: 4px">
+          <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Downloads&nbsp;&nbsp;&nbsp; <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.3.Final/debezium-connector-cassandra-1.6.3.Final-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.3.Final/debezium-connector-db2-1.6.3.Final-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.3.Final/debezium-connector-mongodb-1.6.3.Final-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.3.Final/debezium-connector-mysql-1.6.3.Final-plugin.tar.gz"
+                    >MySQL Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.3.Final/debezium-connector-oracle-1.6.3.Final-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.6.3.Final/debezium-connector-postgres-1.6.3.Final-plugin.tar.gz"
+                    >PostgreSQL Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-sqlserver/1.6.3.Final/debezium-connector-sqlserver-1.6.3.Final-plugin.tar.gz"
+                    >SQL Server Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-vitess/1.6.3.Final/debezium-connector-vitess-1.6.3.Final-plugin.tar.gz"
+                    >Vitess Connector Plug-in</a
+                  >
+                </li>
+                
+              
+            
+          </ul>
+        </div>
+        <div class="btn-group" style="margin-top: 4px">
+          <a
+            class="btn btn-default"
+            href="https://issues.redhat.com/issues/?jql=project%20%3D%20DBZ%20AND%20fixVersion%20in%20(1.6.3.Final)%20ORDER%20BY%20updated"
+            target="_blank"
+          >
+            Resolved issues&nbsp;&nbsp;&nbsp; <span class="icon-tasks"></span>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+  <div class="row row-series-releases" style="margin-bottom: 10px">
+    <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+      <h3 class="version" style="margin-top: 5px">
+      
         <span class="label label-stable">1.6.2.Final</span>
       
       </h3>
@@ -840,6 +1494,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.2.Final/debezium-connector-cassandra-1.6.2.Final-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.2.Final/debezium-connector-db2-1.6.2.Final-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.2.Final/debezium-connector-mongodb-1.6.2.Final-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.2.Final/debezium-connector-mysql-1.6.2.Final-plugin.tar.gz"
@@ -862,15 +1603,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.2.Final/debezium-connector-mongodb-1.6.2.Final-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.2.Final/debezium-connector-oracle-1.6.2.Final-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -912,27 +1661,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.2.Final/debezium-connector-oracle-1.6.2.Final-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -962,27 +1690,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.2.Final/debezium-connector-cassandra-1.6.2.Final-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -992,27 +1699,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.2.Final/debezium-connector-db2-1.6.2.Final-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -1095,6 +1781,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.1.Final/debezium-connector-cassandra-1.6.1.Final-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.1.Final/debezium-connector-db2-1.6.1.Final-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.1.Final/debezium-connector-mongodb-1.6.1.Final-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.1.Final/debezium-connector-mysql-1.6.1.Final-plugin.tar.gz"
@@ -1117,15 +1890,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.1.Final/debezium-connector-mongodb-1.6.1.Final-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.1.Final/debezium-connector-oracle-1.6.1.Final-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -1167,27 +1948,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.1.Final/debezium-connector-oracle-1.6.1.Final-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -1217,27 +1977,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.1.Final/debezium-connector-cassandra-1.6.1.Final-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -1247,27 +1986,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.1.Final/debezium-connector-db2-1.6.1.Final-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -1350,6 +2068,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Final/debezium-connector-cassandra-1.6.0.Final-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Final/debezium-connector-db2-1.6.0.Final-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Final/debezium-connector-mongodb-1.6.0.Final-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.0.Final/debezium-connector-mysql-1.6.0.Final-plugin.tar.gz"
@@ -1372,15 +2177,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Final/debezium-connector-mongodb-1.6.0.Final-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Final/debezium-connector-oracle-1.6.0.Final-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -1422,27 +2235,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Final/debezium-connector-oracle-1.6.0.Final-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -1472,27 +2264,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Final/debezium-connector-cassandra-1.6.0.Final-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -1502,27 +2273,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Final/debezium-connector-db2-1.6.0.Final-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -1614,6 +2364,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.CR1/debezium-connector-cassandra-1.6.0.CR1-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.CR1/debezium-connector-db2-1.6.0.CR1-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.CR1/debezium-connector-mongodb-1.6.0.CR1-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.0.CR1/debezium-connector-mysql-1.6.0.CR1-plugin.tar.gz"
@@ -1636,15 +2473,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.CR1/debezium-connector-mongodb-1.6.0.CR1-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.CR1/debezium-connector-oracle-1.6.0.CR1-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -1686,27 +2531,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.CR1/debezium-connector-oracle-1.6.0.CR1-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -1736,27 +2560,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.CR1/debezium-connector-cassandra-1.6.0.CR1-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -1766,27 +2569,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.CR1/debezium-connector-db2-1.6.0.CR1-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -1878,6 +2660,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Beta2/debezium-connector-cassandra-1.6.0.Beta2-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Beta2/debezium-connector-db2-1.6.0.Beta2-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Beta2/debezium-connector-mongodb-1.6.0.Beta2-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.0.Beta2/debezium-connector-mysql-1.6.0.Beta2-plugin.tar.gz"
@@ -1900,15 +2769,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Beta2/debezium-connector-mongodb-1.6.0.Beta2-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Beta2/debezium-connector-oracle-1.6.0.Beta2-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -1950,27 +2827,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Beta2/debezium-connector-oracle-1.6.0.Beta2-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -2000,27 +2856,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Beta2/debezium-connector-cassandra-1.6.0.Beta2-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -2030,27 +2865,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Beta2/debezium-connector-db2-1.6.0.Beta2-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -2142,6 +2956,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Beta1/debezium-connector-cassandra-1.6.0.Beta1-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Beta1/debezium-connector-db2-1.6.0.Beta1-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Beta1/debezium-connector-mongodb-1.6.0.Beta1-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.0.Beta1/debezium-connector-mysql-1.6.0.Beta1-plugin.tar.gz"
@@ -2164,15 +3065,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Beta1/debezium-connector-mongodb-1.6.0.Beta1-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Beta1/debezium-connector-oracle-1.6.0.Beta1-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -2214,27 +3123,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Beta1/debezium-connector-oracle-1.6.0.Beta1-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -2264,27 +3152,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Beta1/debezium-connector-cassandra-1.6.0.Beta1-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -2294,27 +3161,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Beta1/debezium-connector-db2-1.6.0.Beta1-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -2406,6 +3252,93 @@
             
               
                 
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Alpha1/debezium-connector-cassandra-1.6.0.Alpha1-plugin.tar.gz"
+                    >Cassandra Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Alpha1/debezium-connector-db2-1.6.0.Alpha1-plugin.tar.gz"
+                    >Db2 Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+            
+              
+                
+              
+                
+                <li>
+                  <a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Alpha1/debezium-connector-mongodb-1.6.0.Alpha1-plugin.tar.gz"
+                    >MongoDB Connector Plug-in</a
+                  >
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            
+              
+                
                 <li>
                   <a
                     href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/1.6.0.Alpha1/debezium-connector-mysql-1.6.0.Alpha1-plugin.tar.gz"
@@ -2428,15 +3361,23 @@
               
                 
               
+                
+              
+                
+              
             
+              
+                
+              
+                
               
                 
               
                 
                 <li>
                   <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-mongodb/1.6.0.Alpha1/debezium-connector-mongodb-1.6.0.Alpha1-plugin.tar.gz"
-                    >MongoDB Connector Plug-in</a
+                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Alpha1/debezium-connector-oracle-1.6.0.Alpha1-plugin.tar.gz"
+                    >Oracle Connector Plug-in</a
                   >
                 </li>
                 
@@ -2478,27 +3419,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/1.6.0.Alpha1/debezium-connector-oracle-1.6.0.Alpha1-plugin.tar.gz"
-                    >Oracle Connector Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-                
-              
                 
               
                 
@@ -2528,27 +3448,6 @@
               
                 
               
-            
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-cassandra/1.6.0.Alpha1/debezium-connector-cassandra-1.6.0.Alpha1-plugin.tar.gz"
-                    >Cassandra Plug-in</a
-                  >
-                </li>
-                
-              
                 
               
                 
@@ -2558,27 +3457,6 @@
                 
               
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                <li>
-                  <a
-                    href="https://repo1.maven.org/maven2/io/debezium/debezium-connector-db2/1.6.0.Alpha1/debezium-connector-db2-1.6.0.Alpha1-plugin.tar.gz"
-                    >Db2 Plug-in</a
-                  >
-                </li>
-                
-              
-                
-              
-            
               
                 
               
@@ -2632,6 +3510,7 @@
 
 
 
+
   </div>
 </div>
 
@@ -2643,7 +3522,7 @@
     <div class="col-md-5 col-md-offset-1">
       <h4>Debezium</h4>
       <p>
-        &#169; 2021 Debezium Community <br />
+        &#169; 2022 Debezium Community <br />
         <br />
         <i class="icon-fire"></i> Mixed with
         <a href="https://getbootstrap.com/">Bootstrap</a>, baked by
@@ -2668,16 +3547,20 @@
           >Privacy</a
         >
       </p>
+      <p>Rev: 
+        <a target="_blank" href="https://github.com/debezium/debezium.github.io/commit/"></a>
+      </p>
+
     </div>
     <div class="col-md-3">
       <h4>Documentation</h4>
       <ul class="list-unstyled">
-        <li><a href="/documentation/reference/features.html" title="Features">Features</a></li>
+        <li><a href="/documentation/reference/stable/features.html" title="Features">Features</a></li>
         <li>
-          <a href="documentation/reference/install.html" title="Install">Install</a>
+          <a href="/documentation/reference/stable/install.html" title="Install">Install</a>
         </li>
         <li>
-          <a href="/documentation/reference/architecture.html" title="Architecture"
+          <a href="/documentation/reference/stable/architecture.html" title="Architecture"
             >Architecture</a
           >
         </li>
@@ -2695,7 +3578,7 @@
           <a href="https://twitter.com/debezium" title="Twitter">Twitter</a>
         </li>
         <li><a href="https://github.com/debezium" title="GitHub">GitHub</a></li>
-        <li><a href="https://gitter.im/debezium/user" title="Chat">Chat</a></li>
+        <li><a href="https://debezium.zulipchat.com/#narrow/stream/302529-users" title="Chat">Chat</a></li>
         <li>
           <a
             href="https://groups.google.com/forum/#!forum/debezium"
@@ -2715,6 +3598,7 @@
   </div>
 </div>
 </footer>
+
       <div class="container" id="companyfooter">
   <div class="redhatlogo">
     <a href="https://www.redhat.com/">

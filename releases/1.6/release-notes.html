@@ -16,7 +16,7 @@
   
   <meta property="og:description" content="Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong."> 
   <meta property="og:url" content="https://debezium.io/releases/1.6/release-notes.html"> 
-  <meta name="twitter:site" content="@debezium ‏">
+  <meta name="twitter:site" content="@debezium">
   <meta name="twitter:title" content="Release Notes for Debezium 1.6">
   
   <meta name="twitter:creator" content="@debezium">
@@ -128,8 +128,8 @@
                   
                   
                   <li class="item">
-                    <a href="/documentation/reference/1.7/">
-                      <div class="version">1.7</div>
+                    <a href="/documentation/reference/2.0/">
+                      <div class="version">2.0</div>
                       <div class="version-label">
                         <span class="label label-development"> development </span>
                       </div>
@@ -144,14 +144,26 @@
                   
                   
                   <li class="item">
-                    <a href="/documentation/reference/1.6/">
-                      <div class="version">1.6</div>
+                    <a href="/documentation/reference/1.9/">
+                      <div class="version">1.9</div>
                       <div class="version-label">
                         <span class="label label-stable"> latest stable </span>
                       </div>
                     </a>
                   </li>
                    
+                
+               
+               
+                 
+                
+               
+               
+                 
+                
+               
+               
+                 
                 
                
                
@@ -235,8 +247,8 @@
                   
                   
                   <li class="item">
-                    <a href="/releases/1.7/">
-                      <div class="version">1.7</div>
+                    <a href="/releases/2.0/">
+                      <div class="version">2.0</div>
                       <div class="version-label">
                         <span class="label label-development"> development </span>
                       </div>
@@ -250,14 +262,26 @@
                   
                   
                   <li class="item">
-                    <a href="/releases/1.6/">
-                      <div class="version">1.6</div>
+                    <a href="/releases/1.9/">
+                      <div class="version">1.9</div>
                       <div class="version-label">
                         <span class="label label-stable"> stable </span>
                       </div>
                     </a>
                   </li>
                    
+                
+               
+               
+                 
+                
+               
+               
+                 
+                
+               
+               
+                 
                 
                
                
@@ -379,7 +403,7 @@
             <div class="icon"><i class="icon-twitter"></i></div>
           </li>
           <li class="item">
-            <a href="http://www.gitter.im/debezium/user">Chat</a>
+            <a href="https://debezium.zulipchat.com/#narrow/stream/302529-users">Chat</a>
             <div class="icon"><i class="icon-comments"></i></div>
           </li>
           <li class="item">
@@ -417,6 +441,30 @@
         Version 1.6 <span class="caret"></span>
       </button>
       <ul class="dropdown-menu dropdown-menu-right">
+        
+           
+           
+          
+            <li class="item">
+              <a href="/releases/2.0/"> Version 2.0 </a>
+            </li>
+          
+        
+           
+           
+          
+            <li class="item">
+              <a href="/releases/1.9/"> Version 1.9 </a>
+            </li>
+          
+        
+           
+           
+          
+            <li class="item">
+              <a href="/releases/1.8/"> Version 1.8 </a>
+            </li>
+          
         
            
            
@@ -544,6 +592,8 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#release-1.6.4.final"><strong>Release 1.6.4.Final</strong> <em>(December 1st, 2021)</em></a></li>
+<li><a href="#release-1.6.3.final"><strong>Release 1.6.3.Final</strong> <em>(October 21st, 2021)</em></a></li>
 <li><a href="#release-1.6.2.final"><strong>Release 1.6.2.Final</strong> <em>(September 2nd, 2021)</em></a></li>
 <li><a href="#release-1.6.1.final"><strong>Release 1.6.1.Final</strong> <em>(July 23rd, 2021)</em></a></li>
 <li><a href="#release-1.6.0.final"><strong>Release 1.6.0.Final</strong> <em>(June 30th, 2021)</em></a></li>
@@ -554,10 +604,10 @@ Release numbers follow <a href="http://semver.org">Semantic Versioning</a>.</p>
 </ul>
 </div>
 <div class="sect1">
-<h2 id="release-1.6.2.final"><a class="anchor" href="#release-1.6.2.final"></a><strong>Release 1.6.2.Final</strong> <em>(September 2nd, 2021)</em></h2>
+<h2 id="release-1.6.4.final"><a class="anchor" href="#release-1.6.4.final"></a><strong>Release 1.6.4.Final</strong> <em>(December 1st, 2021)</em></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12359557">complete list of issues</a>.</p>
+<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12376252">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="kafka_compatibility"><a class="anchor" href="#kafka_compatibility"></a>Kafka compatibility</h3>
@@ -572,10 +622,10 @@ See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka document
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
 <div class="paragraph">
-<p>When you decide to upgrade one of these connectors to 1.6.2.Final from any earlier versions,
+<p>When you decide to upgrade one of these connectors to 1.6.4.Final from any earlier versions,
 first check the migration notes for the version you&#8217;re using.
-Gracefully stop the running connector, remove the old plugin files, install the 1.6.2.Final plugin files, and restart the connector using the same configuration.
-Upon restart, the 1.6.2.Final connectors will continue where the previous connector left off.
+Gracefully stop the running connector, remove the old plugin files, install the 1.6.4.Final plugin files, and restart the connector using the same configuration.
+Upon restart, the 1.6.4.Final connectors will continue where the previous connector left off.
 As one might expect, all change events previously written to Kafka by the old connector will not be modified.</p>
 </div>
 <div class="paragraph">
@@ -591,11 +641,246 @@ As one might expect, all change events previously written to Kafka by the old co
 <div class="sect2">
 <h3 id="new_features"><a class="anchor" href="#new_features"></a>New Features</h3>
 <div class="paragraph">
-<p>There are no new features in the release.</p>
+<p>There are no new features in the releases.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="fixes"><a class="anchor" href="#fixes"></a>Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>OracleSchemaMigrationIT#shouldNotEmitDdlEventsForNonTableObjects fails for Xstream <a href="https://issues.redhat.com/browse/DBZ-4186">DBZ-4186</a></p>
+</li>
+<li>
+<p>DML statement couldn&#8217;t be parsed <a href="https://issues.redhat.com/browse/DBZ-4194">DBZ-4194</a></p>
+</li>
+<li>
+<p>Debezium log miner processes get terminated with ORA-04030 error in idle database environment. <a href="https://issues.redhat.com/browse/DBZ-4204">DBZ-4204</a></p>
+</li>
+<li>
+<p>io.debezium.text.ParsingException: DDL statement couldn&#8217;t be parsed. Please open a Jira issue with the statement 'DROP TABLE IF EXISTS condition' <a href="https://issues.redhat.com/browse/DBZ-4210">DBZ-4210</a></p>
+</li>
+<li>
+<p>DDL statement couldn&#8217;t be parsed <a href="https://issues.redhat.com/browse/DBZ-4224">DBZ-4224</a></p>
+</li>
+<li>
+<p>CHAR / NCHAR precision is not correctly derived from DDL statements <a href="https://issues.redhat.com/browse/DBZ-4233">DBZ-4233</a></p>
+</li>
+<li>
+<p>RelationalChangeRecordEmitter calls "LoggerFactory.getLogger(getClass())" for each instance of the emitter <a href="https://issues.redhat.com/browse/DBZ-4309">DBZ-4309</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other_changes"><a class="anchor" href="#other_changes"></a>Other changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Document incremental chunk size setting <a href="https://issues.redhat.com/browse/DBZ-4127">DBZ-4127</a></p>
+</li>
+<li>
+<p>Missing documentation for max.iteration.transactions option <a href="https://issues.redhat.com/browse/DBZ-4129">DBZ-4129</a></p>
+</li>
+<li>
+<p>Upgrade MySQL JDBC driver to 8.0.27 <a href="https://issues.redhat.com/browse/DBZ-4286">DBZ-4286</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-1.6.3.final"><a class="anchor" href="#release-1.6.3.final"></a><strong>Release 1.6.3.Final</strong> <em>(October 21st, 2021)</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12373670">complete list of issues</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
+<div class="paragraph">
+<p>This release has been built against Kafka Connect 2.7.1 and has been tested with version 2.7.1 of the Kafka brokers.
+See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
+<div class="paragraph">
+<p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
+</div>
+<div class="paragraph">
+<p>When you decide to upgrade one of these connectors to 1.6.3.Final from any earlier versions,
+first check the migration notes for the version you&#8217;re using.
+Gracefully stop the running connector, remove the old plugin files, install the 1.6.3.Final plugin files, and restart the connector using the same configuration.
+Upon restart, the 1.6.3.Final connectors will continue where the previous connector left off.
+As one might expect, all change events previously written to Kafka by the old connector will not be modified.</p>
+</div>
+<div class="paragraph">
+<p>If you are using our docker images then do not forget to pull them fresh from Docker registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="breaking_changes_2"><a class="anchor" href="#breaking_changes_2"></a>Breaking changes</h3>
+<div class="paragraph">
+<p>There are no breaking changes in the release.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new_features_2"><a class="anchor" href="#new_features_2"></a>New Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Oracle - Provide a more user-friendly way to update SCN <a href="https://issues.jboss.org/browse/DBZ-3876">DBZ-3876</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Status stays in RUNNING for Postgres Connector after Postgres is stopped <a href="https://issues.jboss.org/browse/DBZ-3655">DBZ-3655</a></p>
+</li>
+<li>
+<p>Oracle connector unable to start in archive only mode <a href="https://issues.jboss.org/browse/DBZ-3712">DBZ-3712</a></p>
+</li>
+<li>
+<p>Row hashing in LogMiner Query not able to differentiate between rows of a statement. <a href="https://issues.jboss.org/browse/DBZ-3834">DBZ-3834</a></p>
+</li>
+<li>
+<p>The chunk select statement is incorrect for combined primary key in incremental snapshot <a href="https://issues.jboss.org/browse/DBZ-3860">DBZ-3860</a></p>
+</li>
+<li>
+<p>DML statement couldn&#8217;t be parsed <a href="https://issues.jboss.org/browse/DBZ-3892">DBZ-3892</a></p>
+</li>
+<li>
+<p>Oracle Connector replicating data from all PDBs. Missing PDB filter during replication.  <a href="https://issues.jboss.org/browse/DBZ-3954">DBZ-3954</a></p>
+</li>
+<li>
+<p>Oracle connector Parsing Exception: DDL statement couldn&#8217;t be parsed <a href="https://issues.jboss.org/browse/DBZ-3962">DBZ-3962</a></p>
+</li>
+<li>
+<p>Oracle-Connector fails parsing a DDL statement <a href="https://issues.jboss.org/browse/DBZ-3977">DBZ-3977</a></p>
+</li>
+<li>
+<p>Oracle connector fails after error ORA-01327 <a href="https://issues.jboss.org/browse/DBZ-4010">DBZ-4010</a></p>
+</li>
+<li>
+<p>Incorrect incremental snapshot DDL triggers snapshot that generates unending* inserts against signalling table <a href="https://issues.jboss.org/browse/DBZ-4013">DBZ-4013</a></p>
+</li>
+<li>
+<p>Oracle-Connector fails parsing a DDL statement (truncate partition) <a href="https://issues.jboss.org/browse/DBZ-4017">DBZ-4017</a></p>
+</li>
+<li>
+<p>DDL statement couldn&#8217;t be parsed <a href="https://issues.jboss.org/browse/DBZ-4026">DBZ-4026</a></p>
+</li>
+<li>
+<p>Question about handling Raw column types <a href="https://issues.jboss.org/browse/DBZ-4037">DBZ-4037</a></p>
+</li>
+<li>
+<p>Incremental snapshotting of a table can be prematurely terminated after restart <a href="https://issues.jboss.org/browse/DBZ-4057">DBZ-4057</a></p>
+</li>
+<li>
+<p>Events are missed with Oracle connector due to LGWR buffer not being flushed to redo logs <a href="https://issues.jboss.org/browse/DBZ-4067">DBZ-4067</a></p>
+</li>
+<li>
+<p>Database history is constantly being reconfigured <a href="https://issues.jboss.org/browse/DBZ-4106">DBZ-4106</a></p>
+</li>
+<li>
+<p>Debezium deals with Oracle DDL appeared IndexOutOfBoundsException: Index: 0, Size: 0 <a href="https://issues.jboss.org/browse/DBZ-4135">DBZ-4135</a></p>
+</li>
+<li>
+<p>Possible OutOfMemoryError with tracking schema changes <a href="https://issues.jboss.org/browse/DBZ-4151">DBZ-4151</a></p>
+</li>
+<li>
+<p>DDL ParsingException - not all table compression modes are supported <a href="https://issues.jboss.org/browse/DBZ-4158">DBZ-4158</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other_changes_2"><a class="anchor" href="#other_changes_2"></a>Other changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Hyper-link references between options in the Outbox SMT options table  <a href="https://issues.jboss.org/browse/DBZ-3920">DBZ-3920</a></p>
+</li>
+<li>
+<p>Incorrect documentation for message.key.columns <a href="https://issues.jboss.org/browse/DBZ-3437">DBZ-3437</a></p>
+</li>
+<li>
+<p>Promote Outbox SMT to GA <a href="https://issues.jboss.org/browse/DBZ-3584">DBZ-3584</a></p>
+</li>
+<li>
+<p>Upgrade to binlog-client 0.25.3 <a href="https://issues.jboss.org/browse/DBZ-3787">DBZ-3787</a></p>
+</li>
+<li>
+<p>Document awareness of Oracle database tuning <a href="https://issues.jboss.org/browse/DBZ-3880">DBZ-3880</a></p>
+</li>
+<li>
+<p>Update antora.yml file with new values for SMT attributes <a href="https://issues.jboss.org/browse/DBZ-3922">DBZ-3922</a></p>
+</li>
+<li>
+<p>Add top-level Transformation menu node for downstream docs <a href="https://issues.jboss.org/browse/DBZ-3931">DBZ-3931</a></p>
+</li>
+<li>
+<p>Update docs to specify that connectors track metadata only for transactions that occur after deployment  <a href="https://issues.jboss.org/browse/DBZ-3961">DBZ-3961</a></p>
+</li>
+<li>
+<p>Remove <code>GRANT ALTER ANY TABLE</code> from Oracle documentation <a href="https://issues.jboss.org/browse/DBZ-4007">DBZ-4007</a></p>
+</li>
+<li>
+<p>Misc. MongoDB connector docs fixes <a href="https://issues.jboss.org/browse/DBZ-4149">DBZ-4149</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-1.6.2.final"><a class="anchor" href="#release-1.6.2.final"></a><strong>Release 1.6.2.Final</strong> <em>(September 2nd, 2021)</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12359557">complete list of issues</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="kafka_compatibility_3"><a class="anchor" href="#kafka_compatibility_3"></a>Kafka compatibility</h3>
+<div class="paragraph">
+<p>This release has been built against Kafka Connect 2.7.1 and has been tested with version 2.7.1 of the Kafka brokers.
+See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading_3"><a class="anchor" href="#upgrading_3"></a>Upgrading</h3>
+<div class="paragraph">
+<p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
+</div>
+<div class="paragraph">
+<p>When you decide to upgrade one of these connectors to 1.6.2.Final from any earlier versions,
+first check the migration notes for the version you&#8217;re using.
+Gracefully stop the running connector, remove the old plugin files, install the 1.6.2.Final plugin files, and restart the connector using the same configuration.
+Upon restart, the 1.6.2.Final connectors will continue where the previous connector left off.
+As one might expect, all change events previously written to Kafka by the old connector will not be modified.</p>
+</div>
+<div class="paragraph">
+<p>If you are using our docker images then do not forget to pull them fresh from Docker registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="breaking_changes_3"><a class="anchor" href="#breaking_changes_3"></a>Breaking changes</h3>
+<div class="paragraph">
+<p>There are no breaking changes in the release.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new_features_3"><a class="anchor" href="#new_features_3"></a>New Features</h3>
+<div class="paragraph">
+<p>There are no new features in the release.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fixes_3"><a class="anchor" href="#fixes_3"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -671,7 +956,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes"><a class="anchor" href="#other_changes"></a>Other changes</h3>
+<h3 id="other_changes_3"><a class="anchor" href="#other_changes_3"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -716,14 +1001,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12359005">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_2"><a class="anchor" href="#kafka_compatibility_2"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_4"><a class="anchor" href="#kafka_compatibility_4"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_2"><a class="anchor" href="#upgrading_2"></a>Upgrading</h3>
+<h3 id="upgrading_4"><a class="anchor" href="#upgrading_4"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -739,19 +1024,19 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_2"><a class="anchor" href="#breaking_changes_2"></a>Breaking changes</h3>
+<h3 id="breaking_changes_4"><a class="anchor" href="#breaking_changes_4"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>There are no breaking changes in the release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_2"><a class="anchor" href="#new_features_2"></a>New Features</h3>
+<h3 id="new_features_4"><a class="anchor" href="#new_features_4"></a>New Features</h3>
 <div class="paragraph">
 <p>There are no new features in the release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_2"><a class="anchor" href="#fixes_2"></a>Fixes</h3>
+<h3 id="fixes_4"><a class="anchor" href="#fixes_4"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -776,7 +1061,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_2"><a class="anchor" href="#other_changes_2"></a>Other changes</h3>
+<h3 id="other_changes_4"><a class="anchor" href="#other_changes_4"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -800,14 +1085,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12358966">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_3"><a class="anchor" href="#kafka_compatibility_3"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_5"><a class="anchor" href="#kafka_compatibility_5"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_3"><a class="anchor" href="#upgrading_3"></a>Upgrading</h3>
+<h3 id="upgrading_5"><a class="anchor" href="#upgrading_5"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -823,13 +1108,13 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_3"><a class="anchor" href="#breaking_changes_3"></a>Breaking changes</h3>
+<h3 id="breaking_changes_5"><a class="anchor" href="#breaking_changes_5"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>There are no breaking changes in the release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_3"><a class="anchor" href="#new_features_3"></a>New Features</h3>
+<h3 id="new_features_5"><a class="anchor" href="#new_features_5"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -839,7 +1124,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_3"><a class="anchor" href="#fixes_3"></a>Fixes</h3>
+<h3 id="fixes_5"><a class="anchor" href="#fixes_5"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -858,7 +1143,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_3"><a class="anchor" href="#other_changes_3"></a>Other changes</h3>
+<h3 id="other_changes_5"><a class="anchor" href="#other_changes_5"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -894,14 +1179,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12358695">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_4"><a class="anchor" href="#kafka_compatibility_4"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_6"><a class="anchor" href="#kafka_compatibility_6"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_4"><a class="anchor" href="#upgrading_4"></a>Upgrading</h3>
+<h3 id="upgrading_6"><a class="anchor" href="#upgrading_6"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -917,13 +1202,13 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_4"><a class="anchor" href="#breaking_changes_4"></a>Breaking changes</h3>
+<h3 id="breaking_changes_6"><a class="anchor" href="#breaking_changes_6"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>There are no breaking changes in the release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_4"><a class="anchor" href="#new_features_4"></a>New Features</h3>
+<h3 id="new_features_6"><a class="anchor" href="#new_features_6"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -942,7 +1227,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_4"><a class="anchor" href="#fixes_4"></a>Fixes</h3>
+<h3 id="fixes_6"><a class="anchor" href="#fixes_6"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -988,7 +1273,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_4"><a class="anchor" href="#other_changes_4"></a>Other changes</h3>
+<h3 id="other_changes_6"><a class="anchor" href="#other_changes_6"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1033,14 +1318,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12358021">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_5"><a class="anchor" href="#kafka_compatibility_5"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_7"><a class="anchor" href="#kafka_compatibility_7"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_5"><a class="anchor" href="#upgrading_5"></a>Upgrading</h3>
+<h3 id="upgrading_7"><a class="anchor" href="#upgrading_7"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -1056,13 +1341,13 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_5"><a class="anchor" href="#breaking_changes_5"></a>Breaking changes</h3>
+<h3 id="breaking_changes_7"><a class="anchor" href="#breaking_changes_7"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>There are no breaking changes in the release.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_5"><a class="anchor" href="#new_features_5"></a>New Features</h3>
+<h3 id="new_features_7"><a class="anchor" href="#new_features_7"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1096,7 +1381,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_5"><a class="anchor" href="#fixes_5"></a>Fixes</h3>
+<h3 id="fixes_7"><a class="anchor" href="#fixes_7"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1166,7 +1451,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_5"><a class="anchor" href="#other_changes_5"></a>Other changes</h3>
+<h3 id="other_changes_7"><a class="anchor" href="#other_changes_7"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1235,14 +1520,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12357565">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_6"><a class="anchor" href="#kafka_compatibility_6"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_8"><a class="anchor" href="#kafka_compatibility_8"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_6"><a class="anchor" href="#upgrading_6"></a>Upgrading</h3>
+<h3 id="upgrading_8"><a class="anchor" href="#upgrading_8"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -1258,13 +1543,13 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_6"><a class="anchor" href="#breaking_changes_6"></a>Breaking changes</h3>
+<h3 id="breaking_changes_8"><a class="anchor" href="#breaking_changes_8"></a>Breaking changes</h3>
 <div class="paragraph">
 <p><code>RENAME TABLE</code> statement with multiple tables now emits multiple schema change events, one for each of the renamed tables (<a href="https://issues.jboss.org/browse/DBZ-3399">DBZ-3399</a>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_6"><a class="anchor" href="#new_features_6"></a>New Features</h3>
+<h3 id="new_features_8"><a class="anchor" href="#new_features_8"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1304,7 +1589,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_6"><a class="anchor" href="#fixes_6"></a>Fixes</h3>
+<h3 id="fixes_8"><a class="anchor" href="#fixes_8"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1383,7 +1668,7 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_6"><a class="anchor" href="#other_changes_6"></a>Other changes</h3>
+<h3 id="other_changes_8"><a class="anchor" href="#other_changes_8"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1449,14 +1734,14 @@ As one might expect, all change events previously written to Kafka by the old co
 <p>See the <a href="https://issues.redhat.com/secure/ReleaseNote.jspa?projectId=12317320&amp;version=12353176">complete list of issues</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="kafka_compatibility_7"><a class="anchor" href="#kafka_compatibility_7"></a>Kafka compatibility</h3>
+<h3 id="kafka_compatibility_9"><a class="anchor" href="#kafka_compatibility_9"></a>Kafka compatibility</h3>
 <div class="paragraph">
 <p>This release has been built against Kafka Connect 2.7.0 and has been tested with version 2.7.0 of the Kafka brokers.
 See the <a href="https://kafka.apache.org/documentation/#upgrade">Kafka documentation</a> for compatibility with other versions of Kafka brokers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upgrading_7"><a class="anchor" href="#upgrading_7"></a>Upgrading</h3>
+<h3 id="upgrading_9"><a class="anchor" href="#upgrading_9"></a>Upgrading</h3>
 <div class="paragraph">
 <p>Before upgrading any connector, be sure to check the backward-incompatible changes that have been made since the release you were using.</p>
 </div>
@@ -1472,14 +1757,14 @@ As one might expect, all change events previously written to Kafka by the old co
 </div>
 </div>
 <div class="sect2">
-<h3 id="breaking_changes_7"><a class="anchor" href="#breaking_changes_7"></a>Breaking changes</h3>
+<h3 id="breaking_changes_9"><a class="anchor" href="#breaking_changes_9"></a>Breaking changes</h3>
 <div class="paragraph">
 <p>Debezium now requires Java 11 as a build and a runtime environment (<a href="https://issues.jboss.org/browse/DBZ-2875">DBZ-2875</a>).
 The only exception is Debezium Cassandra connector that still uses Java 8.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="new_features_7"><a class="anchor" href="#new_features_7"></a>New Features</h3>
+<h3 id="new_features_9"><a class="anchor" href="#new_features_9"></a>New Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1495,7 +1780,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixes_7"><a class="anchor" href="#fixes_7"></a>Fixes</h3>
+<h3 id="fixes_9"><a class="anchor" href="#fixes_9"></a>Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1562,7 +1847,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="other_changes_7"><a class="anchor" href="#other_changes_7"></a>Other changes</h3>
+<h3 id="other_changes_9"><a class="anchor" href="#other_changes_9"></a>Other changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1638,7 +1923,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
     <div class="col-md-5 col-md-offset-1">
       <h4>Debezium</h4>
       <p>
-        &#169; 2021 Debezium Community <br />
+        &#169; 2022 Debezium Community <br />
         <br />
         <i class="icon-fire"></i> Mixed with
         <a href="https://getbootstrap.com/">Bootstrap</a>, baked by
@@ -1663,16 +1948,20 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
           >Privacy</a
         >
       </p>
+      <p>Rev: 
+        <a target="_blank" href="https://github.com/debezium/debezium.github.io/commit/"></a>
+      </p>
+
     </div>
     <div class="col-md-3">
       <h4>Documentation</h4>
       <ul class="list-unstyled">
-        <li><a href="/documentation/reference/features.html" title="Features">Features</a></li>
+        <li><a href="/documentation/reference/stable/features.html" title="Features">Features</a></li>
         <li>
-          <a href="documentation/reference/install.html" title="Install">Install</a>
+          <a href="/documentation/reference/stable/install.html" title="Install">Install</a>
         </li>
         <li>
-          <a href="/documentation/reference/architecture.html" title="Architecture"
+          <a href="/documentation/reference/stable/architecture.html" title="Architecture"
             >Architecture</a
           >
         </li>
@@ -1690,7 +1979,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
           <a href="https://twitter.com/debezium" title="Twitter">Twitter</a>
         </li>
         <li><a href="https://github.com/debezium" title="GitHub">GitHub</a></li>
-        <li><a href="https://gitter.im/debezium/user" title="Chat">Chat</a></li>
+        <li><a href="https://debezium.zulipchat.com/#narrow/stream/302529-users" title="Chat">Chat</a></li>
         <li>
           <a
             href="https://groups.google.com/forum/#!forum/debezium"
@@ -1710,6 +1999,7 @@ The only exception is Debezium Cassandra connector that still uses Java 8.</p>
   </div>
 </div>
 </footer>
+
       <div class="container" id="companyfooter">
   <div class="redhatlogo">
     <a href="https://www.redhat.com/">
